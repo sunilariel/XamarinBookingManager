@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Feedback"
+             x:Class="Demo_App.FeedbackPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="5,10">
+                <Entry FontSize="10" FontAttributes="None" WidthRequest="500" Placeholder="Experience an issue or have a request? Let us know!" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

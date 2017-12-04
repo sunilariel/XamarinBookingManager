@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Login"
+             x:Class="Demo_App.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10,130,10,0" VerticalOptions="Center">
+            <Image Source="Icon.png" Margin="10,20,10,10"></Image>
+            <Entry Placeholder="Username"
+                       Text="{Binding userName}" x:Name="userName"/>
+            <Label x:Name="userNameError"></Label>
+            <Entry x:Name="userPwd" Placeholder="Password"
+                       Text="{Binding password}"
+                       IsPassword="true"/>
+            <Label x:Name="userPwdError" ></Label>
+            <Button Text="Login" Margin="0,0,0,30" TextColor="White" Image="" BackgroundColor="#50aaa5" Clicked="OnLoginClicked" HorizontalOptions="CenterAndExpand" WidthRequest="350" BorderRadius="10" BorderWidth="8" />
+            <Label Text="Forgot Password" HorizontalOptions="Center" Margin="10,5,2,10" TextColor="#50aaa5">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Forgot_Password"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                <Label Margin="100,0,0,0" Text="Create an account" TextColor="#50aaa5">
+                </Label>
+                <Label Text="- Free" Margin="0,0,0,30" TextColor="Black"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NavigateToRegisterPage"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

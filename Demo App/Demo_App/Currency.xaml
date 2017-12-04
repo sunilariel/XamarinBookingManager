@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Currency" NavigationPage.HasBackButton="True"
+             x:Class="Demo_App.Currency">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Label Text="Welcome to Xamarin Forms!" />-->
+            <StackLayout Margin="1,0,0,0">
+                <SearchBar Placeholder="Search"/>
+            </StackLayout>
+            
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="AFN Afghan afghani,AFN"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Kz Angolan Kwanza,AOA"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="$Argentine Peso ARS"
+                              TextColor="Gray" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="AFI Aruban Florin,AWG"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="$Australian Dollor,AUD"
+                              TextColor="Gray" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="BD Bahraini Dinar,BHD"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Banglaadeshi taka,BDT"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Babedian Dollor,BBD"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Br Belarusian ruble,BYR"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Bs. Bolivian boliviano,BOB"
+                              TextColor="Gray" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="BWP Botswana Pula,BWP" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="R$ Brazilian Real,BRL" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="BGN Bulgarian lev,BGN" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="K Burmese Kyat,MMK" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="F CFP france,XPF" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Indian Rupee,INR" TextColor="Gray"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>

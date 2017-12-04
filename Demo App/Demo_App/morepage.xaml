@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.MorePage"
+             Title="More" NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <TableView Intent="Settings" RowHeight="70">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="clock.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Import Staffs"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImportStaff_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" >
+                            <Image  Source="importcustomer.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Import Customers"
+                              TextColor="Black" />
+                            <Image HeightRequest="20"  WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImportCustomer_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="setting.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Widget Settings"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="share.png" WidthRequest="50" HeightRequest="50"/>
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Share Booking Page"
+                              TextColor="Black" />
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ShareBookingPage_Tapped"/>
+                            </StackLayout.GestureRecognizers>-->
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="share.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Share Setmore App"
+                              TextColor="Black" />
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="setting.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Support"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Chat_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="appointment_Slot.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Feedback"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20"  Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Feedback_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="setting.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Rate Setmore"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="setting.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="About"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="About_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="profile.png" WidthRequest="35" HeightRequest="35" />
+                            <Label Margin="0,25,0,0" HorizontalOptions="Center" Text="Profile"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Profile_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="logout.png" WidthRequest="35" HeightRequest="35" />
+                            <Label Margin="0,25,0,0" HorizontalOptions="Center" Text="Logout" TextColor="Black"></Label>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Logout_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

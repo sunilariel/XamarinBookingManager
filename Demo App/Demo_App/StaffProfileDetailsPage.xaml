@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.StaffProfileDetailsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="CustomerProfile" BackgroundColor="#25DBF1" HeightRequest="150" Grid.Row="0">
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Padding="10">
+                                    <Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                    Tapped="CrossClick"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Padding="0,5,0,0">
+                                    <Label Text="{Binding FirstName}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                                    <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40">
+                                        <!--<Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                     Tapped="OnOpenPupup"/>
+                                        </Image.GestureRecognizers>-->
+                                    </Image>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,5,10,0">
+                                    <Label Text="delete" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DeleteStaff"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <!--<Button Text="delete" TextColor="White" Clicked="DeleteStaff" HeightRequest="20"/>-->
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Padding="20">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image  Source="Appointment.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <Image  Source="CallingIcon.png" HeightRequest="30" WidthRequest="30" Grid.Column="1">
+                                    <!--<Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Tapped="CallingClick"/>
+                                    </Image.GestureRecognizers>-->
+                                </Image>
+                                <Image  Source="chat.png" HeightRequest="30" WidthRequest="30" Grid.Column="2">
+                                    <!--<Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Tapped="SendingMessageClick"/>
+                                    </Image.GestureRecognizers>-->
+                                </Image>
+                                <Image  Source="mail.png" HeightRequest="30" WidthRequest="30" Grid.Column="3">
+                                    <!--<Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Tapped="EmailClick"/>
+                                    </Image.GestureRecognizers>-->
+                                </Image>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Grid RowSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="130"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout BackgroundColor="White" Grid.Row="0" >
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Column="0" Source="user.png" HeightRequest="20" WidthRequest="20"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="{Binding FirstName}" TextColor="Black"></Label>
+                                    <Label Text="{Binding Email}"></Label>
+                                    <Label Text="{Binding TelephoneNo}"></Label>
+                                    <Label Text="Address"></Label>
+                                    <Label Text="{Binding Address}" TextColor="Black"></Label>
+                                </StackLayout>
+                                <!--<Entry Placeholder="Last Name" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>-->
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout  BackgroundColor="White" Grid.Row="1">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Service Provided" TextColor="Gray"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" Padding="10">
+                                    <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ServiceProvidedClick"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout  BackgroundColor="White" Grid.Row="2">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Working Days" TextColor="Gray"></Label>
+                                    <Grid ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="M" TextColor="Gray" Grid.Column="0"/>
+                                        <Label Text="T" TextColor="Gray" Grid.Column="1"/>
+                                        <Label Text="W" TextColor="Gray" Grid.Column="2"/>
+                                        <Label Text="T" TextColor="Gray" Grid.Column="3"/>
+                                        <Label Text="F" TextColor="Gray" Grid.Column="4"/>
+                                        <Label Text="S" TextColor="Gray" Grid.Column="5"/>
+                                        <Label Text="S" TextColor="Gray" Grid.Column="6"/>
+                                    </Grid>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" Padding="10">
+                                    <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="WorkingDaysClick"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout  BackgroundColor="White" Grid.Row="3">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Breaks" TextColor="Gray"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" Padding="10">
+                                    <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="White" Grid.Row="4"></StackLayout>
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </StackLayout.GestureRecognizers>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

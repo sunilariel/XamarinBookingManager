@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Settings"
+             x:Class="Demo_App.SettingPage">
+    <ContentPage.Content>
+        <!--<StackLayout Padding="10">
+            --><!--<Label Text="Welcome to Xamarin Forms!" />--><!--
+            <Button Text="Business Hours" TextColor="Black" Image="Icon.png" BackgroundColor="White" Clicked="business_Hours"/>
+            <Button Text="Currency" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
+            <Button Text="TimeZone" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
+            <Button Text="Off-Hours Booking" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
+            <Button Text="Appoitment Slots" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
+            <Button Text="Week Start Day" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
+        </StackLayout>-->
+        <TableView Intent="Settings" RowHeight="70">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Business Hours"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="business_Hours"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Currency"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Currency_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="timezone.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Timezone"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Timezone_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Off-Hours Booking"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Double Booking"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Appointment Slots"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="appointment_slot"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Week Start Day"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Show Google Events"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Show Outlook/Office Events"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="setting.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Show Slot Blocker"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Image  Source="weekstartday.png" />
+                            <Label Margin="0,10,0,0" HorizontalOptions="Center" Text="Show Weekly Income"
+                              TextColor="Black" />
+                            <Switch
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+    
+</ContentPage>

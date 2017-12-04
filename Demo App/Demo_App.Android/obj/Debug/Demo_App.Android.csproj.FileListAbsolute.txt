@@ -1,0 +1,817 @@
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+C:\Users\ariel\source\repos\Demo App_23oct_Backup\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\importcustomer.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\share.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\timezone.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\weekstartday.png
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+D:\Xamarin_Mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\importcustomer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\share.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\timezone.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\weekstartday.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App BackUp 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\importcustomer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\share.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\timezone.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\weekstartday.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\ExifLib.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.Platform.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Core.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Forms.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Forms.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.IOC.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Platform.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Platform.Droid.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Serialization.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewServicePage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FloatingButtonPopup.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddressPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffServicePeofile.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceProviderPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChooseCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddNotesPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddServiceToCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CategoryDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.TestPage.xaml.g.cs
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\importcustomer.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\share.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\timezone.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\weekstartday.png
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+D:\Xamarin_Mayank\BackUp Xamarin\Demo App Latest 3112017\Demo App Latest 3112017\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.config
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.apk
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android-Signed.apk
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\ExifLib.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.Droid.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Rg.Plugins.Popup.Platform.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Android.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.Forms.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.List.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Primitives.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Common.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Input.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.Primitives.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Telerik.XamarinForms.SkiaSharp.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Design.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v4.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.v8.RenderScript.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XamForms.Controls.Calendar.Droid.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Core.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Forms.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Forms.Droid.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.IOC.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Platform.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Platform.Droid.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\XLabs.Serialization.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Currency.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewServicePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.FloatingButtonPopup.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddressPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffServicePeofile.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceProviderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ChooseCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServiceDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddNotesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddServiceToCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CategoryDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CutomerProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.StaffProfileDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.BreaksPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.ServicesProviderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.EditCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AddAppointmentsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AppointmentDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\icon.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\tabbar.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\layout\toolbar.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\values\styles.xml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\calender.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\facebook.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customer.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\account.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\activity.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\more.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\setting.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\left_arrow.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment_slot.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\clock.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\profile.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\logout.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\plus2.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\email.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\lock.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\user.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\chat.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\importcustomer.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\share.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\timezone.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\weekstartday.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\serviceprofile.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\customentery.xaml
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\cross.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\mail.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\callingicon.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb

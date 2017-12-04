@@ -1,0 +1,266 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Syncfusion.UI.Xaml.Schedule">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="PhoneForegroundBrush" Color="White" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="PhoneForegroundBrush" Color="{StaticResource SystemColorWindowColor}" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="PhoneForegroundBrush" Color="Black" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <local:IsAlldaytoWordellipseConverter x:Key="alldaytotrim" />
+    <local:StartTimeConverter x:Key="Starttime" />
+
+    <DataTemplate x:Key="DefaultMobileDayViewAppointmentTemplate">
+        <Grid x:Name="PART_DayAppointment" Background="{Binding Path=AppointmentSelectionBrush, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle
+                Name="PART_DayStatus"
+                Grid.RowSpan="2"
+                Fill="{Binding Status.Brush}"
+                Stretch="Fill" />
+            <TextBlock
+                Name="PART_DaySubject"
+                Grid.Column="1"
+                Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                Path=AppWidth}"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="{Binding Subject}"
+                TextTrimming="{Binding AllDay,
+                                       Converter={StaticResource alldaytotrim}}"
+                TextWrapping="NoWrap" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DefaultMobileTimeLineViewAppointmentTemplate">
+        <Grid Name="PART_TimeLineAppointment" Background="{Binding Path=AppointmentSelectionBrush, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="{Binding Status.Brush}" Stretch="Fill" />
+            <TextBlock
+                Grid.Column="1"
+                Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                Path=AppWidth}"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="{Binding Subject}"
+                TextTrimming="{Binding AllDay,
+                                       Converter={StaticResource alldaytotrim}}"
+                TextWrapping="WrapWholeWords" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DefaultMobileMonthViewAppointmentTemplate">
+        <Grid x:Name="PART_MonthAppointment">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Text="{Binding Converter={StaticResource Starttime}}" />
+            <TextBlock
+                x:Name="PART_MonthSubject"
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="15,0,0,0"
+                Foreground="{Binding AppointmentBackground}"
+                Text="{Binding Subject}"
+                TextWrapping="NoWrap" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="15,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontWeight="Normal"
+                Foreground="{Binding Path=AppointmentSelectionBrush,
+                                     RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                Text="{Binding Subject}"
+                TextWrapping="NoWrap" />
+
+            <TextBlock
+                x:Name="PART_Monthlocation"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="15,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Foreground="{Binding AppointmentBackground}"
+                Text="{Binding Location}" />
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="15,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Foreground="{Binding Path=AppointmentSelectionBrush,
+                                     RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                Text="{Binding Location}" />
+
+        </Grid>
+    </DataTemplate>
+
+
+    <Style TargetType="local:ScheduleDaysAppointmentViewControl">
+        <Setter Property="AppointmentTemplate" Value="{StaticResource DefaultMobileDayViewAppointmentTemplate}" />
+        <Setter Property="Background" Value="#FF2671EB" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BorderBrush" Value="#FFB0B6BE" />
+        <Setter Property="Margin" Value="0.5,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid x:Name="Dayappointment">
+                        <Border
+                            Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                            Path=AppWidth}"
+                            BorderBrush="Transparent"
+                            BorderThickness="1">
+                            <Grid>
+                                <Rectangle Fill="{Binding AppointmentBackground}" />
+                                <ContentControl
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    ContentTemplate="{Binding AppointmentTemplate,
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                    DataContext="{Binding CustomTemplateDataContext,
+                                                          RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            Name="PART_Events"
+                            Width="{TemplateBinding Width}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="14"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Padding="0,0,15,0"
+                            Text="{Binding EventCount}" />
+                        <Border Name="PART_DayReadOnly" Visibility="{Binding ReadOnlyVisibility}">
+                            <Rectangle Fill="White" Opacity="0.5" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ExpandedAppointmentViewControl">
+        <Setter Property="AppointmentTemplate" Value="{StaticResource DefaultMobileMonthViewAppointmentTemplate}" />
+        <Setter Property="Background" Value="#FF2671EB" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="BorderBrush" Value="#FFB0B6BE" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExpandedAppointmentViewControl">
+                    <Grid x:Name="ExpandedAppointment">
+                        <ContentControl
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Stretch"
+                            ContentTemplate="{Binding AppointmentTemplate,
+                                                      RelativeSource={RelativeSource TemplatedParent}}"
+                            DataContext="{Binding CustomTemplateDataContext,
+                                                  RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border Name="PART_MonthReadOnly" Visibility="{Binding ReadOnlyVisibility}">
+                            <Rectangle Fill="White" Opacity="0.5" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:AllDayAppointmentItemscontrol">
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <local:CustomStackPanel Background="Transparent" Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0">
+                        <Grid>
+                            <ScrollViewer
+                                x:Name="AllDayScrollViewer"
+                                HorizontalScrollBarVisibility="Disabled"
+                                HorizontalScrollMode="Disabled"
+                                ZoomMode="Disabled">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ScheduleHorizontalAppointmentViewControl">
+        <Setter Property="AppointmentTemplate" Value="{StaticResource DefaultMobileTimeLineViewAppointmentTemplate}" />
+        <Setter Property="BorderBrush" Value="#FFB0B6BE" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleHorizontalAppointmentViewControl">
+                    <Grid x:Name="TimeLineAppointment">
+                        <Border
+                            Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                            Path=AppWidth}"
+                            BorderBrush="Gray"
+                            BorderThickness="1,0,0,1">
+                            <Grid>
+                                <Rectangle Fill="{Binding AppointmentBackground}" />
+                                <ContentControl
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    ContentTemplate="{Binding AppointmentTemplate,
+                                                              RelativeSource={RelativeSource TemplatedParent}}"
+                                    DataContext="{Binding CustomTemplateDataContext,
+                                                          RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Grid>
+                        </Border>
+                        <!--</Border>-->
+                        <Border Name="PART_TimeLineReadOnly" Visibility="{Binding ReadOnlyVisibility}">
+                            <Rectangle Fill="White" Opacity="0.5" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+

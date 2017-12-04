@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.SetAppointmentPage"
+             Title="Calendar" NavigationPage.HasNavigationBar="True" NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Name="menu" Icon="calender.png" Activated="tbi_Clicked" Clicked="tbi_Clicked" Command="{Binding}"/>-->
+        <ToolbarItem x:Name="CalendarIconButton" Icon="calender.png" Clicked="tbi_Clicked" />
+    </ContentPage.ToolbarItems>
+    <Grid ColumnSpacing="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ContentView x:Name="Placeholder" Grid.Row="0"/>
+        <StackLayout Grid.Row="1" HorizontalOptions="End" Padding="0,0,10,0">
+            <Image x:Name="floataction" Source="plus.png" HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnOpenPupup"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <BoxView BackgroundColor="#dcdcdc" Grid.Row="2"/>
+        <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="AliceBlue">
+                <Image HeightRequest="30" Source="calender.png"/>
+                <Label Text="CALENDER" FontSize="10"
+                       HorizontalOptions="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon1_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            
+
+            <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="AliceBlue">
+                <Image HeightRequest="30" Source="Activity.png"/>
+                <Label Text="ACTIVITY" FontSize="10"
+                       HorizontalOptions="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon3_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout Spacing="0" Grid.Column="1" BackgroundColor="AliceBlue">
+                <Image HeightRequest="30" Source="customer.png"/>
+                <Label Text="CUSTOMER" FontSize="10"
+                       HorizontalOptions="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon2_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="AliceBlue">
+                <Image HeightRequest="30" Source="account.png"/>
+                <Label Text="ACCOUNT" FontSize="10"
+                       HorizontalOptions="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon4_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout Spacing="0" Grid.Column="4" BackgroundColor="AliceBlue">
+                <Image HeightRequest="30" Source="more.png"/>
+                <Label Text="MORE" FontSize="10"
+                       HorizontalOptions="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon5_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

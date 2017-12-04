@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Category"
+             x:Class="Demo_App.ServiceCategoriesPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="White" HeightRequest="50">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="0,20,0,0">
+                            <Image  Source="plus2.png" WidthRequest="40" HeightRequest="40" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,20,0,0">
+                            <Label Text="New Category" HorizontalOptions="StartAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddNewCategory"/>
+                        </StackLayout.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <ListView x:Name="ListofCategoriesData">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}" TextColor="Black" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Import Customer"
+             x:Class="Demo_App.ImportCustomerPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <SearchBar Placeholder="Search"/>
+            </StackLayout>
+            <TableView RowHeight="70">
+                <TableView.Root>
+                    <TableSection>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                        <Button Text="TEXT1"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Image Margin="0,1,0,0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Text="Test"></Label>
+                                        <Label Text="9887667677"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

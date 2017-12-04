@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="About"
+             x:Class="Demo_App.AboutPage">
+    <ContentPage.Content>
+        <TableView Intent="Settings" RowHeight="70">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="clock.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="App Version"
+                              TextColor="Black" />
+                            <Label Margin="0,20,0,0" Text="2.0.9.20170808" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="clock.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Terms of Use"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="clock.png" WidthRequest="50" HeightRequest="50" />
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Privacy Policy"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             Title="Calendar"
+             x:Class="Demo_App.CalenderPage">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Name="menu" Activated="tbi_Clicked" Icon="plus.png" Clicked="tbi_Clicked"  Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.Content>
+        <!--<telerikInput:RadCalendar x:Name="calendar" HeightRequest="200" WidthRequest="240" WeekNumbersDisplayMode="Hide" ViewChanged="tbi_Clicked"/>-->
+
+        <syncfusion:SfSchedule x:Name="schedule"  />
+        
+
+    </ContentPage.Content>
+</ContentPage>

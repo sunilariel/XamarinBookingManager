@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <ManifestDocuments>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\AndroidManifest.xml</ManifestDocument>
+  </ManifestDocuments>
+  <NativeLibraries />
+  <Jars>
+    <Jar>obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\bin\Common.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\bin\Data.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\bin\Input.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\bin\List.jar</Jar>
+    <Jar>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\bin\Primitives.jar</Jar>
+  </Jars>
+</Paths>

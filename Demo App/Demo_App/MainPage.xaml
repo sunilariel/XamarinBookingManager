@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Demo_App.MainPage">
+    <TabbedPage.Children>
+        <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo_App"
+             x:Class="Demo_App.MainPage">
+        </ContentPage>-->
+
+        <ContentPage Title="Profile" Icon="Icon.png" xmlns:local="clr-namespace:Demo_App">
+            <StackLayout Spacing="20" Padding="20"
+                         VerticalOptions="Center">
+                <Entry Placeholder="Username"
+                       Text="{Binding userName}" x:Name="userName"/>
+                <Entry  x:Name="userPwd" Placeholder="Password"
+                       Text="{Binding password}"
+                       IsPassword="true"/>
+                <Button Text="Login" TextColor="White"
+                        BackgroundColor="#77D065"
+                        Clicked="OnLoginClicked"
+                        />
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Registration" Icon="Icon.png" xmlns:local="clr-namespace:Demo_App">
+            <!-- Settings -->
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

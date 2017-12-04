@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Profile"
+             x:Class="Demo_App.ProfilePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView RowHeight="70">
+                <TableView.Root>
+                    <TableSection>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,10">
+                                    <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                    <StackLayout>
+                                        <Label Margin="0,10,0,0" Text="Name"></Label>
+                                        <!--<Entry Margin="0,0,30,30" Placeholder="First Name" Text="Test"/>-->
+                                        <Entry Margin="0,0,0,20" HeightRequest="40" Placeholder="First Name" Text="" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,10">
+                                    <StackLayout >
+                                        <Label Margin="30,0,0,0" Text="Last Name"></Label>
+                                        <Entry Margin="30,0,0,0" HeightRequest="40" Text="" Placeholder="Last Name"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,10">
+                                    <Image Source="email.png" HeightRequest="35" WidthRequest="35"/>
+                                    <StackLayout>
+                                        <Label Text="Email"></Label>
+                                        <!--<Entry Placeholder="Email" Text="test@gmail.com"/>-->
+                                        <Entry HeightRequest="40" Text="" Placeholder="Email"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,10">
+                                    <Image Source="lock.png" HeightRequest="20" WidthRequest="20"/>
+                                    <StackLayout>
+                                        <Label Text="Password"></Label>
+                                        <Label Text="Change Password"/>
+                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangePassword_tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

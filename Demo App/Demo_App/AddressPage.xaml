@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.AddressPage"
+             Title="Address">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <ScrollView>
+                <Grid RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="140"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Street (optional)" HorizontalOptions="Start"></Label>
+                        <Entry  Placeholder="Street" FontSize="Small"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="City (optional)" HorizontalOptions="Start"></Label>
+                        <Entry  Placeholder="City" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                        <!--<TimePicker x:Name="duration" HorizontalOptions="FillAndExpand" TextColor="Gray"/>-->
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Zip (optional)" HorizontalOptions="Start"></Label>
+                        <Entry Placeholder="Zip Code" FontSize="Small"/>
+                        <!--<TimePicker x:Name="BufferTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>-->
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" BackgroundColor="White">
+
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" BackgroundColor="White"></StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

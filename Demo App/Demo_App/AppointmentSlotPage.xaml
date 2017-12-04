@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 Title="Appointment Slots"
+             x:Class="Demo_App.AppointmentSlotPage">
+    <ContentPage.Content>
+        <!--<StackLayout>
+            <Label Margin="15,2,0,15" Text="Set interval between available slots. Eg. 1 hour will show slots at 8am, 9am, 10am, etc."></Label>
+        </StackLayout>-->
+        <TableView Intent="Settings" RowHeight="70">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Picker Title="Select a Hour" x:Name="pickHour" HorizontalOptions="StartAndExpand">
+                            </Picker>
+                            <Picker  Title="Select a minute" x:Name="pickMins" HorizontalOptions="EndAndExpand">
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

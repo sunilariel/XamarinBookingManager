@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.NewServicePage"
+             Title="New Service">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem x:Name="NewServiceToolbar" Text="Next" Order="Primary" Priority="0" Clicked="SelectServiceProvider"/>-->
+        <ToolbarItem x:Name="NewServiceToolbar" Text="Next" Order="Primary" Priority="0" Clicked="AddService"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <ScrollView>
+                <Grid RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Name" HorizontalOptions="Start"></Label>
+                        <Entry  x:Name="ServiceName"  Placeholder="Service Name" FontSize="Small"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Duration" HorizontalOptions="Start"></Label>
+                        <!--<Entry  Placeholder="0 min" FontSize="Small" HorizontalOptions="FillAndExpand"/>-->
+                        <TimePicker x:Name="ServiceDuration" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Buffer Time (optional)" HorizontalOptions="Start"></Label>
+                        <!--<Entry  Placeholder="0 min" FontSize="Small"/>-->
+                        <TimePicker x:Name="ServiceBufferTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Padding="10,10,0,0" BackgroundColor="White">
+                        <Label Text="Cost" HorizontalOptions="Start"></Label>
+                        <Entry x:Name="ServiceCost"  Placeholder="0" FontSize="Small"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4"></StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
