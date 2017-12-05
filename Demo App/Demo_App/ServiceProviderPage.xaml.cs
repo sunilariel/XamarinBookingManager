@@ -29,6 +29,7 @@ namespace Demo_App
             PreviousPageName = PageName;
             ServiceId = serviceId;
             ListofServiceProviders = ListofProviders;
+            
             AllServiceProvider.ItemsSource = ListofServiceProviders;
 
         }
@@ -38,29 +39,47 @@ namespace Demo_App
        //     Navigation.PushAsync(new ChooseCategoriesPage(ServiceDetail));
         }
 
-        public void AssignProvider(object Sender,EventArgs args)
-        {            
+        public void AssignAllProvider(object Sender,EventArgs args)
+        {
+            
             CheckBox AllProvider = (CheckBox)Sender;
             if (AllProvider.Checked == true)
             {
                 foreach( var item in ListofServiceProviders)
-                {
+                {                
+                    //AllStaffChecked.Checked = true;
+                 
                     item.confirmed = true;
                 }
             }
             else
             {
                 foreach (var item in ListofServiceProviders)
-                {
+                {                  
+                    //AllStaffChecked.Checked = false;
                     item.confirmed = false;
                 }
-            }           
+            }                                
+        }
+
+        public void AssignProvider(object Sender, EventArgs args)
+        {
+            for (int i = 0; i < ListofServiceProviders.Count; i++)
+            {
+                if (ListofServiceProviders[i].confirmed == false)
+                {
+                    break;
+                }
+                else
+                {
+                }
+            }
         }
 
         public void AddProviderstoService()
         {
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
-            var Method = "POST";
+            var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/AssignServiceToStaff";
+         
 
             foreach( var item in ListofServiceProviders)
             {
@@ -74,7 +93,7 @@ namespace Demo_App
 
                     var SerializedData = JsonConvert.SerializeObject(obj);
 
-                    var result = PostData(Method, SerializedData, Url);
+                    var result = PostData("POST", SerializedData, Url);
                 }
                 else
                 {
@@ -99,26 +118,13 @@ namespace Demo_App
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null) return;
-
             // add the checkmark in the event because the item was clicked
             // be able to check the item here
-
             DisplayAlert("Tapped", e.SelectedItem + " row was tapped", "OK");
             ((ListView)sender).SelectedItem = null;
         }
 
-        //public void GetStaff()
-        //{           
-        //    var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-        //    var Method = "GET";
-
-        //    var result = PostData(Method, "", Url);
-
-        //    ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
-
-        //    AllServiceProvider.ItemsSource = ListofServiceProviders;
-        //}
-
+       
         public ObservableCollection<AssignCategory> GetCategories()
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
@@ -133,9 +139,7 @@ namespace Demo_App
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetServiceById?id=" + ServiceId;
 
             var result = PostData("GET", "", apiUrl);
-
             Service ServiceDetail = JsonConvert.DeserializeObject<Service>(result);
-
             return ServiceDetail;
         }
 
@@ -149,7 +153,10 @@ namespace Demo_App
                 httpRequest.ContentType = "application/json";
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
-                httpRequest.ContentLength = 0;
+                if (Url != "http://bookingmanager24-001-site1.ftempurl.com/api/companyregistration/AssignServiceToStaff")
+                {
+                    httpRequest.ContentLength = 0;
+                }
 
                 if (SerializedData != "")
                 {

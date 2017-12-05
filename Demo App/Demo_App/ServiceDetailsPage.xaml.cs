@@ -18,15 +18,16 @@ namespace Demo_App
 	{
         string CompanyId = Application.Current.Properties["CompanyId"].ToString();
         string ServiceId;
-		public ServiceDetailsPage (Service Servicedata)
+        public ServiceDetails service = null;
+        public ServiceDetailsPage (Service Servicedata)
 		{
 			InitializeComponent ();
             ServiceId = (Servicedata.Id).ToString();
-            ServiceDetails obj = new ServiceDetails();
-            obj.Id = Servicedata.Id;
-            obj.DurationInMinutes =  Servicedata.DurationInMinutes + "min";
-            obj.Cost = "$" + Servicedata.Cost;
-            obj.Name = Servicedata.Name;
+             service = new ServiceDetails();
+            service.Id = Servicedata.Id;
+            service.DurationInMinutes =  Servicedata.DurationInMinutes + "min";
+            service.Cost = "$" + Servicedata.Cost;
+            service.Name = Servicedata.Name;
             var category = GetCategoriesAssignedtoService();
             var CategoryString = "";
             foreach( var item in category)
@@ -38,14 +39,15 @@ namespace Demo_App
             }
             if (CategoryString.Length > 0)
             {
-                obj.Categories = CategoryString.Substring(0, CategoryString.Length - 1);
+                service.Categories = CategoryString.Substring(0, CategoryString.Length - 1);
             }
             else
             {
-                obj.Categories = "No Category";
+                service.Categories = "No Category";
             }
 
             var provider = GetServiceProvider();
+          
             var ProviderString = "";
             foreach( var item in provider)
             {
@@ -56,9 +58,9 @@ namespace Demo_App
             }
             if (ProviderString.Length > 0)
             {
-                obj.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
+                service.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
             }
-            BindingContext = obj;
+            BindingContext = service;
         }
         private void PrivateServiceToggle(object sender, ToggledEventArgs e)
         {
@@ -150,7 +152,7 @@ namespace Demo_App
         }
         private void SetnewService(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new NewServicePage());
+            Navigation.PushAsync(new EditServiceDetails(service));
         }
         private void EditCategories(object sender, EventArgs args)
         {
@@ -169,6 +171,16 @@ namespace Demo_App
         {
             Navigation.PushAsync(new AddNotesPage());
         }
+
+        private void DeleteService()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
+            var result = PostData("DELETE", "", apiUrl);
+
+            Navigation.PushAsync(new ServicePage());
+        }
+
+
 
 
         public string PostData(string Method, string SerializedData, string Url)

@@ -35,6 +35,9 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="20,5,10,0">
                                     <Label Text="delete" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DeleteService"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
