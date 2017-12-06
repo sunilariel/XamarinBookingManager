@@ -1,6 +1,8 @@
 ﻿using Demo_App.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,13 +17,20 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StaffProfileDetailsPage : ContentPage
 	{
+       
         public int StaffId;
+        public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
+        ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
+        int ListofServicesCount = 0;
+        int ListofAllocatedServicesCount = 0;
         public StaffProfileDetailsPage (Staff staff)
 		{
             BindingContext = staff;
             StaffId = staff.Id;
             InitializeComponent ();
-		}
+            GetAllocatedServicetoStaff();
+            ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
+        }
 
         private void CrossClick(object sender, EventArgs e)
         {
@@ -37,7 +46,44 @@ namespace Demo_App
         }
         private void ServiceProvidedClick(object sender, EventArgs e)
         {
-            //Navigation.PushAsync(new SelectServiceProviderPage());
+            Navigation.PushAsync(new ServicesProviderPage(StaffId, ListOfServices));
+        }
+
+        public void GetAllocatedServicetoStaff()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
+
+            var result = PostData("GET", "", apiUrl);
+
+            ObservableCollection<AssignedServicetoStaff> ListofAllocatedService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+            ListOfServices = GetAllService();
+
+            ListofServicesCount = ListOfServices.Count;
+            ListofAllocatedServicesCount = ListofAllocatedService.Count;
+
+            foreach (var service in ListOfServices)
+            {
+                foreach(var selectedservice in ListofAllocatedService)
+                {
+                    if(service.Id==selectedservice.Id)
+                    {
+                        service.isAssigned = true;
+                    }
+                }
+            }
+
+        }
+
+        public ObservableCollection<AssignedServicetoStaff> GetAllService()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+            var result = PostData("GET", "", apiUrl);
+
+            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+            return ListofServices;
+
         }
 
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
@@ -55,16 +101,13 @@ namespace Demo_App
 
         public void DeleteStaff(int Id)
         {
-
             var CompanyId = Application.Current.Properties["CompanyId"];
             var Method = "DELETE";
             var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeleteStaff?id=" + StaffId;
             var result= PostData(Method, null, Url);
             Navigation.PushAsync(new StaffPage());
-
         }
 
-       
         public string PostData(string Method, string SerializedData, string Url)
         {
             try
@@ -76,7 +119,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != null)
+                if (SerializedData != "" )
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);

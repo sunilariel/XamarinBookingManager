@@ -23,21 +23,24 @@ namespace Demo_App
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int EmployeeId;
         ObservableCollection<AssignedServicetoStaff> ListofServices = new ObservableCollection<AssignedServicetoStaff>();
-        public ServicesProviderPage (int StaffId)
+        public ServicesProviderPage (int StaffId,ObservableCollection<AssignedServicetoStaff> ListofAllocatedServices)
 		{
             EmployeeId = StaffId;
 			InitializeComponent ();
-            GetService();
-        }
-
-        public void GetService()
-        {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
-
-            ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+            ListofServices = ListofAllocatedServices;
             ListofAllServices.ItemsSource = ListofServices;
+
+            // GetService();
         }
+
+        //public void GetService()
+        //{
+        //    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+        //    var result = PostData("GET", "", apiUrl);
+
+        //    ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+        //    ListofAllServices.ItemsSource = ListofServices;
+        //}
 
         public void AssignServicetoStaff()
         {
@@ -59,8 +62,21 @@ namespace Demo_App
                     var result = PostData("POST", SerializedData, apiUrl);
                 }
             }
-            Navigation.PushAsync(new StaffServicePeofile(EmployeeId, null));
+            Navigation.PushAsync(new StaffProfileDetailsPage(GetSelectedStaff()));
         }
+
+        public Staff GetSelectedStaff()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + EmployeeId;
+
+            var result = PostData("GET", "", apiUrl);
+
+            Staff obj = JsonConvert.DeserializeObject<Staff>(result);
+
+            return obj;
+
+        }
+
 
 
         public string PostData(string Method, string SerializedData, string Url)

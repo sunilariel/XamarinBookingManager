@@ -21,24 +21,22 @@ namespace Demo_App
         string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         int ServiceId;
         string PreviousPageName = "";
+            
         ObservableCollection<AssignCategory> ListofAllCategories = new ObservableCollection<AssignCategory>();
          ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
+
         public ServiceProviderPage (ObservableCollection<AssignProvider> ListofProviders,int serviceId,string PageName)
 		{
 			InitializeComponent ();
             PreviousPageName = PageName;
-            ServiceId = serviceId;
+            ServiceId = serviceId;          
             ListofServiceProviders = ListofProviders;
-            
+           
+            AllocatedProviderCount.Text =  GetAllocatedServiceCount() + " " + "Staff selected" ;
             AllServiceProvider.ItemsSource = ListofServiceProviders;
 
         }
-
-        private void ChooseCategories(object sender, EventArgs args)
-        {
-       //     Navigation.PushAsync(new ChooseCategoriesPage(ServiceDetail));
-        }
-
+        
         public void AssignAllProvider(object Sender,EventArgs args)
         {
             
@@ -46,41 +44,65 @@ namespace Demo_App
             if (AllProvider.Checked == true)
             {
                 foreach( var item in ListofServiceProviders)
-                {                
-                    //AllStaffChecked.Checked = true;
-                 
+                {
+                    //  AllStaffChecked.Checked = true;    
+                    item.AllConfirmed = true;
                     item.confirmed = true;
                 }
             }
             else
             {
                 foreach (var item in ListofServiceProviders)
-                {                  
-                    //AllStaffChecked.Checked = false;
+                {
+                    //  AllStaffChecked.Checked = false;
+                    item.AllConfirmed = true;
                     item.confirmed = false;
                 }
-            }                                
+            }
+            AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Staff selected";
         }
 
         public void AssignProvider(object Sender, EventArgs args)
         {
-            for (int i = 0; i < ListofServiceProviders.Count; i++)
-            {
-                if (ListofServiceProviders[i].confirmed == false)
+            
+                for (int i = 0; i < ListofServiceProviders.Count; i++)
                 {
-                    break;
+                    if (ListofServiceProviders[i].confirmed == false)
+                    {
+                  foreach( var item in ListofServiceProviders)
+                    {                        
+                        item.AllConfirmed = false;
+                    }
+                        break;
+                    }
+                    else
+                    {
+                 
+                    ListofServiceProviders[i].AllConfirmed = true;
+                    // AllStaffChecked.Checked = true;
+                    }
                 }
-                else
+            AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Staff selected";
+
+        }
+
+        public int GetAllocatedServiceCount()
+        {
+            int count = 0;
+            foreach(var item in ListofServiceProviders)
+            {
+                if(item.confirmed==true)
                 {
+                    count++;
                 }
             }
+            return count ;
         }
 
         public void AddProviderstoService()
         {
             var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/AssignServiceToStaff";
          
-
             foreach( var item in ListofServiceProviders)
             {
                 if (item.confirmed == true)
@@ -92,13 +114,11 @@ namespace Demo_App
                     obj.CreationDate = DateTime.Now.ToString();
 
                     var SerializedData = JsonConvert.SerializeObject(obj);
-
                     var result = PostData("POST", SerializedData, Url);
                 }
                 else
                 {
                     var apiUrl = Application.Current.Properties["DomainUrl"] + "api/companyregistration/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + item.Id + "&serviceId=" + ServiceId;
-
                     var result = PostData("POST", "", apiUrl);
                 }
 
@@ -114,7 +134,6 @@ namespace Demo_App
             }
         }
 
-
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null) return;
@@ -123,21 +142,18 @@ namespace Demo_App
             DisplayAlert("Tapped", e.SelectedItem + " row was tapped", "OK");
             ((ListView)sender).SelectedItem = null;
         }
-
        
         public ObservableCollection<AssignCategory> GetCategories()
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
             var result = PostData("GET", "", apiUrl);
             ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
-
             return ListofAllCategories;
         }
 
         public Service GetSelectedService()
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetServiceById?id=" + ServiceId;
-
             var result = PostData("GET", "", apiUrl);
             Service ServiceDetail = JsonConvert.DeserializeObject<Service>(result);
             return ServiceDetail;

@@ -25,7 +25,8 @@ namespace Demo_App
             ServiceId = (Servicedata.Id).ToString();
              service = new ServiceDetails();
             service.Id = Servicedata.Id;
-            service.DurationInMinutes =  Servicedata.DurationInMinutes + "min";
+            service.DurationInMinutes =  Servicedata.DurationInMinutes + " " + "min";
+            service.BufferTimeInMinutes = Servicedata.Buffer + " " + "min";
             service.Cost = "$" + Servicedata.Cost;
             service.Name = Servicedata.Name;
             var category = GetCategoriesAssignedtoService();
@@ -150,7 +151,7 @@ namespace Demo_App
         {
             Navigation.PushAsync(new NewServicePage());
         }
-        private void SetnewService(object sender, EventArgs args)
+        private void EditService(object sender, EventArgs args)
         {
             Navigation.PushAsync(new EditServiceDetails(service));
         }

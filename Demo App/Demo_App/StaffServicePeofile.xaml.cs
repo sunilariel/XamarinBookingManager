@@ -1,6 +1,7 @@
 ﻿using Demo_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,6 @@ namespace Demo_App
 			InitializeComponent ();
             StaffId = EmployeeId;
             BindingContext = staffdata;
-
         }
         private void WorkingDays(object sender, EventArgs args)
         {
@@ -27,7 +27,7 @@ namespace Demo_App
         }
         private void ServiceProvided(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new ServicesProviderPage(StaffId));
+            //Navigation.PushAsync(new ServicesProviderPage(StaffId,ObservableCollection< AssignedServicetoStaff> obj));
         }
         private void BreaksClick(object sender, EventArgs args)
         {

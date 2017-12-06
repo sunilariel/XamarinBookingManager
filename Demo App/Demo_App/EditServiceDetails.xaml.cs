@@ -23,7 +23,12 @@ namespace Demo_App
             ServiceId = service.Id.ToString();
             EditServiceName.Text = service.Name;
             EditServiceCost.Text = service.Cost.ToString();
-                        
+            int minutes = Convert.ToInt32(service.DurationInMinutes.Split(' ')[0]);         
+            TimeSpan serviceDuration = new TimeSpan(0,minutes, 0);
+            EditServiceDuration.Time = serviceDuration;
+            int bufferminutes = Convert.ToInt32(service.BufferTimeInMinutes.Split(' ')[0]);
+            TimeSpan serviceBufferDuration = new TimeSpan(0, bufferminutes, 0);
+            EditServiceBufferTime.Time = serviceBufferDuration;
         }
 
         public void EditServiceInformation()

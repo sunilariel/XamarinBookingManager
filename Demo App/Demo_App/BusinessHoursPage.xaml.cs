@@ -22,7 +22,7 @@ namespace Demo_App
     public partial class BusinessHoursPage : ContentPage
     {
         int EmployeeId;
-        ObservableCollection<StaffWorkingHours> listofWorkingDays = new ObservableCollection<StaffWorkingHours>();
+        ObservableCollection<ProviderWorkingHours> listofWorkingDays = new ObservableCollection<ProviderWorkingHours>();
         public BusinessHoursPage(int StaffId)
         {
             //ObservableCollection<StaffWorkingHours> listofWorkingDays = new ObservableCollection<StaffWorkingHours>();
@@ -71,7 +71,7 @@ namespace Demo_App
             string[] Days = new string[] {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
             for (var i = 0; i <= 6; i++)
             {
-                StaffWorkingHours obj = new StaffWorkingHours();
+                ProviderWorkingHours obj = new ProviderWorkingHours();
                 obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                // obj.CompanyId = 2;
                 obj.EmployeeId = EmployeeId;
@@ -85,9 +85,10 @@ namespace Demo_App
                 {
                     obj.IsOffAllDay = true;
                 }
-
-                obj.Start = "08:00";
-                obj.End = "17:00";
+                TimeSpan startTime = new TimeSpan(8, 0, 0);
+                TimeSpan endTime = new TimeSpan(17, 0, 0);
+                obj.Start = startTime;
+                obj.End = endTime;
 
                 obj.CreationDate = DateTime.Now.ToString();
 
@@ -100,11 +101,11 @@ namespace Demo_App
 
         public void SaveStaffWorkingHours(object sender,EventArgs e)
         {
-            ObservableCollection<StaffWorkingHours> StaffWorkingHours = listofWorkingDays;
+            ObservableCollection<ProviderWorkingHours> StaffWorkingHours = listofWorkingDays;
 
             foreach( var item in StaffWorkingHours)
-            {              
-                StaffWorkingHours obj = new StaffWorkingHours();
+            {
+                ProviderWorkingHours obj = new ProviderWorkingHours();
                 obj.EmployeeId = EmployeeId;
                 obj.Id = item.Id;
                 obj.CompanyId = item.CompanyId;
@@ -145,75 +146,5 @@ namespace Demo_App
             //}
         }
     }
-
-
-   
-
-    //private void TuesdayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblTuesday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblTuesday.TextColor = Color.Gray;
-    //    }
-    //}
-    //private void WednesdayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblWednesday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblWednesday.TextColor = Color.Gray;
-    //    }
-    //}
-    //private void ThursdayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblThursday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblThursday.TextColor = Color.Gray;
-    //    }
-    //}
-    //private void FridayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblFriday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblFriday.TextColor = Color.Gray;
-    //    }
-    //}
-    //private void SaturdayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblSaturday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblSaturday.TextColor = Color.Gray;
-    //    }
-    //}
-    //private void SundayToggled(object sender, ToggledEventArgs e)
-    //{
-    //    if (e.Value == true)
-    //    {
-    //        lblSunday.TextColor = Color.Black;
-    //    }
-    //    else
-    //    {
-    //        lblSunday.TextColor = Color.Gray;
-    //    }
-    //}
 
 }

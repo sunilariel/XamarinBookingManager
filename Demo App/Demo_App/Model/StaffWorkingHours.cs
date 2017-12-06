@@ -18,5 +18,19 @@ namespace Demo_App.Model
             public string EntityStatus { get; set; }
     }
 
-   
+    public class ProviderWorkingHours
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
+        public TimeSpan Start { get; set; }
+        public TimeSpan End { get; set; }
+        public int NameOfDay { get; set; }
+        public string NameOfDayAsString { get; set; }
+        public bool IsOffAllDay { get; set; }
+        public string CreationDate { get; set; }
+        public string EntityStatus { get; set; }
+    }
+
+
 }

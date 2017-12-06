@@ -175,7 +175,9 @@ namespace Demo_App.Model
     public class AssignProvider :INotifyPropertyChanged
     {
         bool _confirmed;
-      
+        bool _allconfirmed;
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int Id { get; set; }
@@ -198,21 +200,21 @@ namespace Demo_App.Model
 
         public string CreationDate { get; set; }
 
-        //public bool  AllConfirmed
-        //{
-        //    get
-        //    {
-        //        return _allconfirmed;
-        //    }
-        //    set
-        //    {
-        //        if(_allconfirmed != value)
-        //        {
-        //            _allconfirmed = value;
-        //            OnPropertyChanged("AllConfirmed");
-        //        }
-        //    }
-        //}
+        public bool AllConfirmed
+        {
+            get
+            {
+                return _allconfirmed;
+            }
+            set
+            {
+                if (_allconfirmed != value)
+                {
+                    _allconfirmed = value;
+                    OnPropertyChanged("AllConfirmed");
+                }
+            }
+        }
 
         public bool confirmed{
             get

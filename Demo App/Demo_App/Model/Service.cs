@@ -46,6 +46,7 @@ namespace Demo_App.Model
         public string Name { get; set; }
         public string Categories { get; set; }
         public string DurationInMinutes { get; set; }
+        public string BufferTimeInMinutes { get; set; }
         public string  ServiceProviders { get; set; }
         public string Cost { get; set; }
     }

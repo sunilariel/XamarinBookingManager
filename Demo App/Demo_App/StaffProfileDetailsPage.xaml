@@ -120,6 +120,7 @@
                                 <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
                                 <StackLayout Grid.Column="1">
                                     <Label Text="Service Provided" TextColor="Gray"></Label>
+                                    <Label x:Name="ServiceAllocationCount" TextColor="Black"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Padding="10">
                                     <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />

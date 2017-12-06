@@ -12,7 +12,7 @@
             <ListView x:Name="BusinessHoursData" BackgroundColor="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Height="100">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="35"/>
@@ -27,16 +27,15 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TimePicker Time="{Binding Start,Mode=TwoWay}" x:Name="{Binding Start}"  HorizontalOptions="Start" Grid.Column="0"></TimePicker>
+                                        <TimePicker Time="{Binding Start,Mode=TwoWay}" x:Name="{Binding Start}" HorizontalOptions="Start" Grid.Column="0"></TimePicker>
                                         <TimePicker Time="{Binding End,Mode=TwoWay}" x:Name="{Binding End}"  HorizontalOptions="Center" Grid.Column="1"></TimePicker>
                                     </Grid>
                                 </StackLayout>
                                 <Switch Toggled="MondayToggled" IsToggled="{Binding IsOffAllDay}"  Grid.Column="2" HorizontalOptions="EndAndExpand"></Switch>
                             </Grid>
                             <!--<TextCell Text="{Binding NameOfDayAsString}" TextColor="Black" />-->
-                            </ViewCell>
+                        </ViewCell>
                     </DataTemplate>
-
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
