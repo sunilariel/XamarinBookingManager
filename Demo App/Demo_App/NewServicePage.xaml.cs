@@ -21,10 +21,10 @@ namespace Demo_App
 	{
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
+
         public NewServicePage ()
 		{
-			InitializeComponent ();
-           
+			InitializeComponent ();          
         }
 
         private void SelectServiceProvider(object sender, EventArgs args)
@@ -33,16 +33,13 @@ namespace Demo_App
         }
        
         public void AddService()
-        {
-           
+        {           
             Service obj = new Service();
             obj.Id = 0;
             obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
             obj.Name = ServiceName.Text;
             obj.CategoryName = "";
             obj.CategoryId = 0;
-
-
             obj.DurationInMinutes = Convert.ToInt32(ServiceDuration.Time.TotalMinutes);
             obj.DurationInHours = 0;
             obj.Cost = Convert.ToDouble(ServiceCost.Text);
@@ -51,7 +48,6 @@ namespace Demo_App
             obj.Buffer = Convert.ToInt32(ServiceBufferTime.Time.TotalMinutes);
             obj.CreationDate = "2017-11-08T12:19:27.628Z";
             obj.Description = "";
-
 
             var SerializedData = JsonConvert.SerializeObject(obj);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddService";
@@ -62,25 +58,18 @@ namespace Demo_App
             int ServiceId = Convert.ToInt32(responseValue.Value);
             if(ServiceId != null)
             {
-                // Navigation.PushAsync(new ServiceProviderPage(ServiceId));
-                
+                // Navigation.PushAsync(new ServiceProviderPage(ServiceId));               
                 Navigation.PushAsync(new ServiceProviderPage(GetStaff(),ServiceId, "AddService"));
-            }
-          
+            }          
             //Navigation.PushAsync(new ServicePage());
         }
 
         public ObservableCollection<AssignProvider> GetStaff()
         {
-
             var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
             var Method = "GET";
-
             var result = PostData(Method, "", Url);
-
             ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
-
-
             return ListofServiceProviders;
         }
 
@@ -88,9 +77,7 @@ namespace Demo_App
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
             var result = PostData("GET", "", apiUrl);
-
             ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
-
             return ListofServices;
         }
 
@@ -99,7 +86,6 @@ namespace Demo_App
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/DeleteService?companyId=" + 0;
             var result = PostData("DELETE", "", apiUrl);
         }
-
 
         public void AddCategories()
         {
@@ -112,11 +98,8 @@ namespace Demo_App
 
             var SerializedData = JsonConvert.SerializeObject(obj);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";
-
             var result = PostData("POST", SerializedData, apiUrl);
-
         }
-
 
         public void DeleteCategory()
         {
@@ -141,13 +124,11 @@ namespace Demo_App
             obj.CreationDate = "2017-11-08T12:19:27.628Z";
             obj.Description = "";
 
-
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/UpdateService";
             var SerializedData = JsonConvert.SerializeObject(obj);
             var result = PostData("POST", SerializedData, apiUrl);
             return result;
         }
-
 
         public string AssignCategorytoService(string CompanyId, string SeviceId, string CategoryId)
         {
@@ -156,13 +137,11 @@ namespace Demo_App
             return result;
         }
 
-
         public string DeAllocateCategoryFromService(string CompanyId, string SeviceId, string CategoryId)
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryId + "&serviceId=" + SeviceId;
             var result = PostData("POST", "", apiUrl);
             return result;
-
         }
 
         public string GetCategoriesAssignedToService(string CompanyId, string ServiceId)
@@ -171,7 +150,6 @@ namespace Demo_App
             var result = PostData("GET", "", apiUrl);
             return result;
         }
-
 
         public string GetAllServices(string CompanyId)
         {
@@ -240,9 +218,7 @@ namespace Demo_App
                     streamWriter.Write(SerializedData);
                     streamWriter.Close();
                 }
-
                 var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
-
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
                     return result = StreamReader.ReadToEnd();
@@ -253,11 +229,5 @@ namespace Demo_App
                 return e.ToString();
             }
         }
-
-
-
-
-
-
     }
 }

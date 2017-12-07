@@ -151,13 +151,13 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="M" TextColor="Gray" Grid.Column="0"/>
-                                        <Label Text="T" TextColor="Gray" Grid.Column="1"/>
-                                        <Label Text="W" TextColor="Gray" Grid.Column="2"/>
-                                        <Label Text="T" TextColor="Gray" Grid.Column="3"/>
-                                        <Label Text="F" TextColor="Gray" Grid.Column="4"/>
-                                        <Label Text="S" TextColor="Gray" Grid.Column="5"/>
-                                        <Label Text="S" TextColor="Gray" Grid.Column="6"/>
+                                        <Label Text="M" x:Name="Monday" Grid.Column="0"/>
+                                        <Label Text="T" x:Name="Tuesday" Grid.Column="1"/>
+                                        <Label Text="W" x:Name="Wednesday" Grid.Column="2"/>
+                                        <Label Text="T" x:Name="Thursday" Grid.Column="3"/>
+                                        <Label Text="F" x:Name="Friday" Grid.Column="4"/>
+                                        <Label Text="S" x:Name="Saturday" Grid.Column="5"/>
+                                        <Label Text="S" x:Name="Sunday" Grid.Column="6"/>
                                     </Grid>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Padding="10">

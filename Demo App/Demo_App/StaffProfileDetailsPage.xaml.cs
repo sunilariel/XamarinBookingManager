@@ -16,19 +16,20 @@ namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StaffProfileDetailsPage : ContentPage
-	{
-       
+	{      
         public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
         int ListofServicesCount = 0;
         int ListofAllocatedServicesCount = 0;
+
         public StaffProfileDetailsPage (Staff staff)
 		{
             BindingContext = staff;
             StaffId = staff.Id;
             InitializeComponent ();
             GetAllocatedServicetoStaff();
+           GetAllTimeOffForEmployee();
             ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
         }
 
@@ -47,6 +48,91 @@ namespace Demo_App
         private void ServiceProvidedClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ServicesProviderPage(StaffId, ListOfServices));
+        }
+
+        public void GetAllTimeOffForEmployee()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + StaffId;
+            var result = PostData("GET", "", apiUrl);
+
+            List<ProviderWorkingHours> WorkingHourStatus = JsonConvert.DeserializeObject< List<ProviderWorkingHours>>(result);
+
+            foreach(var item in WorkingHourStatus)
+            {
+                switch(item.NameOfDayAsString)
+                {
+                    case "Sunday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Sunday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Sunday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Monday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Monday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Monday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Tuesday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Tuesday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Tuesday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Wednesday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Wednesday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Wednesday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Thursday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Thursday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Thursday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Friday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Friday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Friday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;
+                    case "Saturday":
+                        if (item.IsOffAllDay == true)
+                        {
+                            Saturday.TextColor = Xamarin.Forms.Color.Gray;
+                        }
+                        else
+                        {
+                            Saturday.TextColor = Xamarin.Forms.Color.Black;
+                        }
+                        break;                   
+                }                  
+            }
         }
 
         public void GetAllocatedServicetoStaff()
@@ -72,7 +158,6 @@ namespace Demo_App
                     }
                 }
             }
-
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllService()
@@ -81,9 +166,7 @@ namespace Demo_App
             var result = PostData("GET", "", apiUrl);
 
             ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-
             return ListofServices;
-
         }
 
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
@@ -120,6 +203,7 @@ namespace Demo_App
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
                 if (SerializedData != "" )
+
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);

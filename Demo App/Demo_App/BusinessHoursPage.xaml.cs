@@ -24,14 +24,70 @@ namespace Demo_App
         int EmployeeId;
         ObservableCollection<ProviderWorkingHours> listofWorkingDays = new ObservableCollection<ProviderWorkingHours>();
         public BusinessHoursPage(int StaffId)
-        {
-            //ObservableCollection<StaffWorkingHours> listofWorkingDays = new ObservableCollection<StaffWorkingHours>();
-            InitializeComponent();
-            GetBusinessHours();
+        {            
+            InitializeComponent();           
             EmployeeId = StaffId;
-            //BindingContext = new StaffWorkingHours();
-            //TestListview.ItemsSource = listofWorkingDays;
-            //TestListview.ItemsSource = new List<string> {"fasfasf","fasfas"};
+            GetBuisnessHoursofStaff();                        
+        }
+
+        public void GetBuisnessHoursofStaff()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + EmployeeId;
+
+            var result = PostData("GET", "", apiUrl);
+
+            listofWorkingDays = JsonConvert.DeserializeObject<ObservableCollection<ProviderWorkingHours>>(result);
+
+            foreach(var day in listofWorkingDays)
+            {
+                day.IsOffAllDay= day.IsOffAllDay==true?false:true;
+            }
+        
+            BusinessHoursData.ItemsSource = listofWorkingDays;
+        }
+
+      
+        public void SaveStaffWorkingHours(object sender,EventArgs e)
+        {           
+            foreach( var item in listofWorkingDays)
+            {
+                ProviderWorkingHours obj = new ProviderWorkingHours();
+                obj.EmployeeId = EmployeeId;
+                obj.Id = item.Id;
+                obj.CompanyId = item.CompanyId;
+                obj.NameOfDay = item.NameOfDay;
+                obj.NameOfDayAsString = item.NameOfDayAsString;
+                if (item.IsOffAllDay == false)
+                {
+                    obj.IsOffAllDay = true;
+                }
+                else
+                {
+                    obj.IsOffAllDay = false;
+                }
+                obj.Start = item.Start;
+                obj.End = item.End;
+                obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
+                obj.EntityStatus = "0";
+
+                var SerializedObj = JsonConvert.SerializeObject(obj);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
+                var result = PostData("POST", SerializedObj, apiUrl);               
+            }
+            Navigation.PushAsync(new StaffProfileDetailsPage(GetSelectedStaff()));
+        }
+
+        public Staff GetSelectedStaff()
+        {
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + EmployeeId;
+            var result = PostData("GET", "", apiUrl);
+            Staff obj = JsonConvert.DeserializeObject<Staff>(result);
+            return obj;
+        }
+
+        private void MondayToggled(object sender, ToggledEventArgs e)
+        {
+            var data = listofWorkingDays;        
         }
 
         public string PostData(string Method, string SerializedData, string Url)
@@ -45,7 +101,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != null)
+                if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);
@@ -63,87 +119,6 @@ namespace Demo_App
             {
                 return e.ToString();
             }
-        }
-
-
-        public void GetBusinessHours()
-        {
-            string[] Days = new string[] {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-            for (var i = 0; i <= 6; i++)
-            {
-                ProviderWorkingHours obj = new ProviderWorkingHours();
-                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-               // obj.CompanyId = 2;
-                obj.EmployeeId = EmployeeId;
-                obj.NameOfDay = i;
-                obj.NameOfDayAsString = Days[i];
-                if (Days[i] == "Sunday" || Days[i] == "Saturday")
-                {
-                    obj.IsOffAllDay = false;
-                }
-                else
-                {
-                    obj.IsOffAllDay = true;
-                }
-                TimeSpan startTime = new TimeSpan(8, 0, 0);
-                TimeSpan endTime = new TimeSpan(17, 0, 0);
-                obj.Start = startTime;
-                obj.End = endTime;
-
-                obj.CreationDate = DateTime.Now.ToString();
-
-                listofWorkingDays.Add(obj);
-            }
-
-            BusinessHoursData.ItemsSource = listofWorkingDays;
-        }
-
-
-        public void SaveStaffWorkingHours(object sender,EventArgs e)
-        {
-            ObservableCollection<ProviderWorkingHours> StaffWorkingHours = listofWorkingDays;
-
-            foreach( var item in StaffWorkingHours)
-            {
-                ProviderWorkingHours obj = new ProviderWorkingHours();
-                obj.EmployeeId = EmployeeId;
-                obj.Id = item.Id;
-                obj.CompanyId = item.CompanyId;
-                obj.NameOfDay = item.NameOfDay;
-                obj.NameOfDayAsString = item.NameOfDayAsString;
-                if (item.IsOffAllDay == false)
-                {
-                    obj.IsOffAllDay = true;
-                }
-                else
-                {
-                    obj.IsOffAllDay = false;
-
-                }
-                obj.Start = item.Start;
-                obj.End = item.End;
-                obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
-                obj.EntityStatus = "0";
-
-                var SerializedObj = JsonConvert.SerializeObject(obj);
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
-                    var result = PostData("POST", SerializedObj, apiUrl);
-           
-            }               
-            }
-
-
-        private void MondayToggled(object sender, ToggledEventArgs e)
-        {
-            var data = listofWorkingDays;
-            //if (e.Value == true)
-            //{
-            //    lblMonday.TextColor = Color.Black;
-            //}
-            //else
-            //{
-            //    lblMonday.TextColor = Color.Gray;
-            //}
         }
     }
 
