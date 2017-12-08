@@ -39,7 +39,7 @@ namespace Demo_App
         }
         private void BreaksClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BreaksPage());
+            Navigation.PushAsync(new BreaksPage(StaffId));
         }
         private void WorkingDaysClick(object sender, EventArgs e)
         {
@@ -191,6 +191,10 @@ namespace Demo_App
             Navigation.PushAsync(new StaffPage());
         }
 
+        private void EditStaffDetails(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditStaffPage());
+        }
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

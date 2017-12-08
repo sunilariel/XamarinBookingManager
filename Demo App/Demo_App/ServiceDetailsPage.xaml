@@ -178,7 +178,7 @@
                                     <!--<Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png" HorizontalOptions="EndAndExpand"/>-->
                                 </StackLayout>
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Setnewcost"/>
+                                    <TapGestureRecognizer Tapped="EditServiceCost"/>
                                 </StackLayout.GestureRecognizers>
                             </Grid>
                         </StackLayout>

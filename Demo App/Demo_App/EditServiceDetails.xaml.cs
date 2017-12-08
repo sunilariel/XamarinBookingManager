@@ -41,7 +41,15 @@ namespace Demo_App
             obj.CategoryId = 0;
             obj.DurationInMinutes = Convert.ToInt32(EditServiceDuration.Time.TotalMinutes);
             obj.DurationInHours = 0;
-            obj.Cost = Convert.ToDouble(EditServiceCost.Text.Substring(1,EditServiceCost.Text.Length-1));
+            if (EditServiceCost.Text.Contains("$"))
+            {
+                var index = EditServiceCost.Text.IndexOf("$");              
+                obj.Cost = Convert.ToDouble(EditServiceCost.Text.Remove(index, 1));
+            }
+            else
+            {
+                obj.Cost = Convert.ToDouble(EditServiceCost.Text);
+            }                     
             obj.Currency = "";
             obj.Colour = "";
             obj.Buffer = Convert.ToInt32(EditServiceBufferTime.Time.TotalMinutes);

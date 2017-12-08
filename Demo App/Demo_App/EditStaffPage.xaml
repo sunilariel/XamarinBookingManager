@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.EditStaffPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="Staffstack" BackgroundColor="#25DBF1" HeightRequest="150" Grid.Row="0">
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="10">
+                            <Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    Tapped="CrossClick"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Padding="0,5,0,0">
+                            <Label Text="New Staff" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                            <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40">
+                                <!--<Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                     Tapped="OnOpenPupup"/>
+                                </Image.GestureRecognizers>-->
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,5,10,0">
+                            <Label Text="Update" TextColor="White" HorizontalOptions="End"></Label>
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="UpdateStaff"/>
+                            </StackLayout.GestureRecognizers>-->
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Grid RowSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout BackgroundColor="White" Grid.Row="0" >
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Column="0" Source="user.png" HeightRequest="20" WidthRequest="20"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Name"></Label>
+                                    <!--<local:CustomEntry Text="First Name" TextColor="Gray" FontSize="Small"/>-->
+                                    <Entry x:Name="EditStaffFirstName"  FontSize="Small"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" Padding="10,25,10,10">
+                                    <!--<local:CustomEntry Text="Last Name" TextColor="Gray" FontSize="Small" />-->
+                                    <Entry x:Name="EditStaffLastName" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout  BackgroundColor="White" Grid.Row="1" >
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Image  Source="user.png" HeightRequest="30" WidthRequest="30" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Email (optional)"></Label>
+                                    <!--<local:CustomEntry Text="Email" TextColor="Gray" FontSize="Small"/>-->
+                                    <Entry x:Name="EditStaffEmail"  FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="White" Grid.Row="2">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Phone Number (optional)"></Label>
+                                    <!--<local:CustomEntry Text="Phone number" TextColor="Gray" FontSize="Small"/>-->
+                                    <Entry x:Name="EditStaffPhoneNumber" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout  BackgroundColor="White" Grid.Row="3">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Address (optional)"></Label>
+                                    <!--<local:CustomEntry Text="Address" TextColor="Gray" FontSize="Small"/>-->
+                                    <Entry x:Name="EditStaffAddress" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="White" Grid.Row="4">
+                            <Grid ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Image Source="user.png" HeightRequest="30" WidthRequest="30" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="CC Email (optional)"></Label>
+                                    <!--<local:CustomEntry Text="CC Email" TextColor="Gray" FontSize="Small"/>-->
+                                    <Entry x:Name="EditStaffCCEmail" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </StackLayout.GestureRecognizers>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

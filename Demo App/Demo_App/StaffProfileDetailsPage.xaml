@@ -108,6 +108,9 @@
                                 </StackLayout>
                                 <!--<Entry Placeholder="Last Name" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>-->
                             </Grid>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EditStaffDetails"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
 
                         <StackLayout  BackgroundColor="White" Grid.Row="1">

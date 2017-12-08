@@ -147,9 +147,10 @@ namespace Demo_App
             return ListofServiceProviders;
         }
 
-        private void Setnewcost(object sender, EventArgs args)
+        private void EditServiceCost(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new NewServicePage());
+            // Navigation.PushAsync(new NewServicePage());
+            Navigation.PushAsync(new EditServiceDetails(service));
         }
         private void EditService(object sender, EventArgs args)
         {
@@ -180,9 +181,7 @@ namespace Demo_App
 
             Navigation.PushAsync(new ServicePage());
         }
-
-
-
+       
 
         public string PostData(string Method, string SerializedData, string Url)
         {
