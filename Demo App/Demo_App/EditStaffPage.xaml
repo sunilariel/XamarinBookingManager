@@ -37,9 +37,9 @@
                         </StackLayout>
                         <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,5,10,0">
                             <Label Text="Update" TextColor="White" HorizontalOptions="End"></Label>
-                            <!--<StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="UpdateStaff"/>
-                            </StackLayout.GestureRecognizers>-->
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EditStaffInformation"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -67,11 +67,11 @@
                                 <StackLayout Grid.Column="1">
                                     <Label Text="Name"></Label>
                                     <!--<local:CustomEntry Text="First Name" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="EditStaffFirstName"  FontSize="Small"/>
+                                    <Entry x:Name="EditStaffFirstName" Text="{Binding FirstName}"  FontSize="Small"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Padding="10,25,10,10">
                                     <!--<local:CustomEntry Text="Last Name" TextColor="Gray" FontSize="Small" />-->
-                                    <Entry x:Name="EditStaffLastName" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>
+                                    <Entry x:Name="EditStaffLastName" Text="{Binding LastName}" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -88,7 +88,7 @@
                                 <StackLayout Grid.Column="1">
                                     <Label Text="Email (optional)"></Label>
                                     <!--<local:CustomEntry Text="Email" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="EditStaffEmail"  FontSize="Small"/>
+                                    <Entry x:Name="EditStaffEmail" Text="{Binding Email}" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -103,7 +103,7 @@
                                 <StackLayout Grid.Column="1">
                                     <Label Text="Phone Number (optional)"></Label>
                                     <!--<local:CustomEntry Text="Phone number" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="EditStaffPhoneNumber" FontSize="Small"/>
+                                    <Entry x:Name="EditStaffPhoneNumber" Text="{Binding TelephoneNo}" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -118,7 +118,7 @@
                                 <StackLayout Grid.Column="1">
                                     <Label Text="Address (optional)"></Label>
                                     <!--<local:CustomEntry Text="Address" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="EditStaffAddress" FontSize="Small"/>
+                                    <Entry x:Name="EditStaffAddress" Text="{Binding Address}" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -135,7 +135,7 @@
                                 <StackLayout Grid.Column="1">
                                     <Label Text="CC Email (optional)"></Label>
                                     <!--<local:CustomEntry Text="CC Email" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="EditStaffCCEmail" FontSize="Small"/>
+                                    <Entry x:Name="EditStaffCCEmail" Text="{Binding Email}" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>

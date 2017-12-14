@@ -50,4 +50,11 @@ namespace Demo_App.Model
         public string  ServiceProviders { get; set; }
         public string Cost { get; set; }
     }
+
+    public class ServicesAllocatedToCategory
+    {
+        public int AllocatedServiceCount { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }      
+    }
 }

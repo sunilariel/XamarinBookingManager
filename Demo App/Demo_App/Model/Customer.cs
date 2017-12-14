@@ -28,4 +28,18 @@ namespace Demo_App.Model
 
         public int EntityStatus { get; set; }
     }
+
+    public class Address
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+
+        public string StreetName { get; set; }
+
+        public string CityName { get; set; }
+
+        public int ZipCode { get; set; }
+
+        public string CreationDate { get; set; }
+    }
 }

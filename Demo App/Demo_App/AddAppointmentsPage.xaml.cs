@@ -20,5 +20,10 @@ namespace Demo_App
         {
             Navigation.PushAsync(new AppointmentDetailsPage());
         }
+
+        private void AddAppointmentsClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SelectServiceCategory());
+        }
     }
 }

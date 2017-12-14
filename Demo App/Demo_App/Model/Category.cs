@@ -9,8 +9,7 @@ namespace Demo_App.Model
         public int Id { get; set; }
         public string CompanyId { get; set; }
         public string Name { get; set; }
-        public string CreationDate { get; set; }
-        public string EntityStatus { get; set; }
+        public string CreationDate { get; set; }       
     }
 
     public class AssignCategory
@@ -21,5 +20,15 @@ namespace Demo_App.Model
         public string CreationDate { get; set; }
         public string EntityStatus { get; set; }
         public bool Confirmed { get; set; }
+    }
+
+    public class AssignServiceToCategory
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public string Name { get; set; }
+        public string CategoryName { get; set; }
+        public int ServiceId { get; set; }      
+        public string CreationDate { get; set; }
     }
 }

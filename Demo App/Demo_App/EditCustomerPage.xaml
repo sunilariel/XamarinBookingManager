@@ -23,18 +23,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="70"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" Padding="5,0,0,0">
-                                    <!--<Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="40" WidthRequest="40"/>-->
+                                <StackLayout Grid.Column="0" Padding="10,5,0,0">
+                                    <Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20"/>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Tapped="CrossClick"/>
+                                    </Image.GestureRecognizers>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,5,0,0">
-                                    <Label Text="New Customer" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                                    <Label Text="{Binding FirstName}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
                                     <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40"/>
                                 </StackLayout>
-                                <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="20,5,10,0">
+                                <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="10,5,10,0">
                                     <Label Text="Update" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EditCustomerInformation"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Grid>
-                        </StackLayout>
+                        </StackLayout> 
                         <StackLayout Grid.Row="1">
                             <!--<Label Text="dynamic data" TextColor="White"></Label>-->
                         </StackLayout>
@@ -52,24 +59,21 @@
                         <StackLayout Grid.Row="0" Padding="10,10,0,0" BackgroundColor="White">
                             <Label Text="Name" HorizontalOptions="Start"></Label>
                             <!--<local:CustomEntry Text="Customer Name" TextColor="Gray" FontSize="Small"/>-->
-                            <Entry  Placeholder="Customer Name" TextColor="Gray" FontSize="Small"/>
+                            <Entry x:Name="EditCustomerName" Text="{Binding FirstName}" TextColor="Black" FontSize="Small"/>
                         </StackLayout>
                         <StackLayout Grid.Row="1" Padding="10,10,0,0" BackgroundColor="White">
                             <Label Text="Email" HorizontalOptions="Start"></Label>
-                            <!--<local:CustomEntry Text="Email" TextColor="Gray" FontSize="Small"/>-->
-                            <Entry  Placeholder="Email" FontSize="Small" HorizontalOptions="FillAndExpand"/>
-                            <!--<TimePicker x:Name="duration" HorizontalOptions="FillAndExpand" TextColor="Gray"/>-->
+                            <Entry x:Name="EditCustomerEmail"  Text="{Binding Email}" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                            
                         </StackLayout>
                         <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
                             <Label Text="Phone Number (optional)" HorizontalOptions="Start"></Label>
-                            <!--<local:CustomEntry Text="+91" Placeholder="XXXX-XXXX" TextColor="Gray" FontSize="Small"/>-->
-                            <Entry Text="+91" Placeholder="XXXX-XXXX" TextColor="Gray" FontSize="Small"/>
-                            <!--<TimePicker x:Name="BufferTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>-->
+                            <Entry x:Name="EditCustomerPhoneNo" Text="{Binding TelephoneNo}" TextColor="Black" FontSize="Small"/>
                         </StackLayout>
                         <StackLayout Grid.Row="3" Padding="10,10,0,0" BackgroundColor="White">
                             <Label Text="Address" HorizontalOptions="Start"></Label>
                             <!--<local:CustomEntry Text="Address" TextColor="Gray" FontSize="Small"/>-->
-                            <Entry  Placeholder="Address" FontSize="Small" TextColor="Gray" IsEnabled="False"/>
+                            <Entry  Text="{Binding Address}" FontSize="Small" TextColor="Gray" IsEnabled="False"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="AddressClick"/>
                             </StackLayout.GestureRecognizers>

@@ -1,7 +1,9 @@
 ﻿using Demo_App.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,14 +16,28 @@ namespace Demo_App
 	public partial class CutomerProfilePage : ContentPage
 	{
         //string phonNumber;
-
-        public CutomerProfilePage (Customer Cust)
+        int CustomerId;
+        public Customer objCust = null;
+        public CutomerProfilePage (Customer Cust,Notes obj)
 		{
             //this.phonNumber = Cust.TelephoneNo;
              BindingContext = Cust;
-
+            CustomerId = Cust.Id;
             InitializeComponent ();
-		}
+            objCust = new Customer();
+            objCust.Id = Cust.Id;
+            objCust.FirstName = Cust.FirstName;
+            objCust.LastName = Cust.LastName;
+            objCust.UserName = Cust.UserName;
+            objCust.Email = Cust.Email;
+            objCust.TelephoneNo = Cust.TelephoneNo;
+            objCust.Address = Cust.Address;
+            BindingContext = objCust;
+            Noteslbl.Text = obj.Description;
+
+            GetAllCustomerNotes();
+
+        }
         private void CrossClick(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
@@ -42,7 +58,7 @@ namespace Demo_App
 
         private void AddNotesClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddNotesPage());
+            Navigation.PushAsync(new AddNotesPage(objCust));
         }
         private void AppointmentsClicks(object sender, EventArgs e)
         {
@@ -50,7 +66,61 @@ namespace Demo_App
         }
         private void EditCustomerClick(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new EditCustomerPage());
+            Navigation.PushAsync(new EditCustomerPage(objCust));
+        }
+
+        public void DeleteCustomer()
+        {
+
+            var CompanyId = Application.Current.Properties["CompanyId"];
+            var Method = "DELETE";
+            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/DeleteCustomer?companyId=" + CompanyId + "&customerId=" + CustomerId;
+            PostData(Method, "", Url);
+
+            Navigation.PushAsync(new CustomerPage());
+        }
+
+
+
+        public void GetAllCustomerNotes()
+        {
+            var CompanyId = Application.Current.Properties["CompanyId"];
+            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetAllCustomerNotes?companyId=" + CompanyId+ "&customerId=" + CustomerId;
+            var Method = "GET";
+
+            var result = PostData(Method, "", Url);
+        }
+
+        public string PostData(string Method, string SerializedData, string Url)
+        {
+            try
+            {
+                var result = "";
+                HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
+                httpRequest.Method = Method;
+                httpRequest.ContentType = "application/json";
+                httpRequest.ProtocolVersion = HttpVersion.Version10;
+                httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+                if (SerializedData != 
+                    "")
+                {
+                    var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
+                    streamWriter.Write(SerializedData);
+                    streamWriter.Close();
+                }
+
+                var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+                using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                {
+                    return result = StreamReader.ReadToEnd();
+                }
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
         }
     }
 }

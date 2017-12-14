@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Demo_App.CategoryDetailsPage">
+             x:Class="Demo_App.CategoryDetailsPage"
+             Title="Category Details">
     <ContentPage.ToolbarItems>
-        <ToolbarItem  Text="Save" Order="Primary" Priority="0"/>
+        <ToolbarItem  Text="Save" Order="Primary" Priority="0" Clicked="SaveCategoryDetails"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -13,11 +14,19 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" BackgroundColor="White">
-                    <!--<Label Text="Category Name"></Label>-->                 
+                <StackLayout Grid.Row="0" BackgroundColor="White"  Padding="10,0,0,0">
+                    <Label Text="Category Name"></Label>
+                    <Label x:Name="CategoryName" TextColor="Black"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EditCategory"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Row="1" BackgroundColor="White">
+                <StackLayout Grid.Row="1" BackgroundColor="White" Padding="10,0,0,0">
                     <Label Text="Service"></Label>
+                    <Label x:Name="CategoryServices" TextColor="Black"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EditCategoryService"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
 

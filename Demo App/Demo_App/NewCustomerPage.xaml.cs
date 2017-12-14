@@ -24,7 +24,7 @@ namespace Demo_App
 		}
         private void AddressClick(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new AddressPage());
+            //Navigation.PushAsync(new AddressPage());
         }
 
 

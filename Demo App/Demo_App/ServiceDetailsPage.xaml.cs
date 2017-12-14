@@ -171,7 +171,7 @@ namespace Demo_App
         }
         private void AddNotes(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new AddNotesPage());
+            //Navigation.PushAsync(new AddNotesPage());
         }
 
         private void DeleteService()
@@ -215,5 +215,9 @@ namespace Demo_App
             }
         }
 
+        private void CrossClick(object sender, EventArgs e)
+        {
+            Navigation.PopAsync(true);
+        }
     }
 }

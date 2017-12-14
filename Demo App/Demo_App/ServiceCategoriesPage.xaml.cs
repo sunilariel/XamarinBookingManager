@@ -19,11 +19,17 @@ namespace Demo_App
 	public partial class ServiceCategoriesPage : ContentPage
 	{
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        public ServiceCategoriesPage ()
+        int CategoryID;
+        ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
+        public ServicesAllocatedToCategory serviceCount = null;
+        public ServiceCategoriesPage (int CategoryId)
 		{
 			InitializeComponent ();
-            GetCategories(CompanyId);
-		}
+            CategoryID = CategoryId;
+            GetCategories(CompanyId);                                            
+            BindingContext = serviceCount;
+        }
+
         private void AddNewCategory(object sender, EventArgs args)
         {
             Navigation.PushAsync(new NewCategoryPage());
@@ -33,10 +39,23 @@ namespace Demo_App
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + Id;
             var result = PostData("GET", "", apiUrl);
-            ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
-            ListofCategoriesData.ItemsSource = ListofAllCategories;
-        }
+            ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);          
+            foreach(var item in ListofAllCategories)
+            {
+                var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
+                var resultData = PostData("GET", "", ApiUrl);
+                ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
 
+                ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
+                AllocateServices.CategoryName = item.Name;
+                AllocateServices.CategoryId = item.Id;
+                AllocateServices.AllocatedServiceCount = ListOfAssignService.Count;
+
+                ListOfAssignServiceCount.Add(AllocateServices);
+            }
+            ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
+        }       
+        
 
         public string PostData(string Method, string SerializedData, string Url)
         {
@@ -67,6 +86,12 @@ namespace Demo_App
             {
                 return e.ToString();
             }
+        }
+
+        private void EditCategory(object sender, SelectedItemChangedEventArgs e)
+        {
+            var Category = e.SelectedItem as ServicesAllocatedToCategory;
+            Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName));
         }
     }
 }

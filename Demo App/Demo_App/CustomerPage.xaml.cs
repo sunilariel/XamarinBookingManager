@@ -71,7 +71,8 @@ namespace Demo_App
         {
             var Cust = e.SelectedItem as Customer;
             //Navigation.PushAsync(new CutomerProfilePage(PhoneNumber));
-            Application.Current.MainPage.Navigation.PushAsync(new CutomerProfilePage(Cust));
+            Notes obj =new Notes();
+            Application.Current.MainPage.Navigation.PushAsync(new CutomerProfilePage(Cust, obj));
         }
     }
 }

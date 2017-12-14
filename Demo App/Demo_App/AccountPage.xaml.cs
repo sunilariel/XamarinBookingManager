@@ -12,7 +12,8 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AccountPage : ContentPage
 	{
-		public AccountPage ()
+        int CategoryID;
+        public AccountPage ()
 		{
             InitializeComponent();
 		}
@@ -34,7 +35,8 @@ namespace Demo_App
 
         private void ServiceCategories_Tapped(object sender, EventArgs args)
         {
-            Application.Current.MainPage.Navigation.PushAsync(new ServiceCategoriesPage());
+            
+            Application.Current.MainPage.Navigation.PushAsync(new ServiceCategoriesPage( CategoryID));
         }
 
         private void Service_Tapped(object sender, EventArgs args)

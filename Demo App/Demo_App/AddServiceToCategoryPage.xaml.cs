@@ -11,24 +11,50 @@ using System.Net;
 using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Collections.ObjectModel;
+
 
 namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddServiceToCategoryPage : ContentPage
 	{
+        ObservableCollection<AssignedServicetoStaff> ListofAllService = new ObservableCollection<AssignedServicetoStaff>();
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        public AddServiceToCategoryPage ()
+        int CategoryID;
+        string CategoryName = "";
+        public AddServiceToCategoryPage (ObservableCollection<AssignedServicetoStaff> ListofServices,int  CategoryId,string categoryName)
 		{
 			InitializeComponent();
-            GetService(CompanyId);
+            ListofAllService = ListofServices;
+            CategoryID = CategoryId;
+            CategoryName = categoryName.ToString();
+            ListofAllServiceData.ItemsSource = ListofAllService;
         }
-        private void CategoriesDetails(object sender, EventArgs args)
+     
+        public void AddServicestoCategory()
         {
-            Navigation.PushAsync(new CategoryDetailsPage());
-           
-        }
+            foreach (var item in ListofAllService)
+            {
+                if (item.isAssigned == true)
+                {
+                    var Url = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" +item.Id;
+                    AssignServiceToCategory obj = new AssignServiceToCategory();
+                    obj.CompanyId = Convert.ToInt32(CompanyId);                   
+                    obj.Id = item.Id;
+                    obj.CreationDate = DateTime.Now.ToString(); 
+                     var SerializedData = JsonConvert.SerializeObject(obj);
+                    var result = PostData("PUT", SerializedData, Url);
+                }
+                else
+                {
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
+                    var result = PostData("POST", "", apiUrl);
+                }
+            }
 
+            Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName));
+        }
 
         public void GetService(string CompanyId)
         {
@@ -37,10 +63,8 @@ namespace Demo_App
 
             List<Service> ListofServices = JsonConvert.DeserializeObject<List<Service>>(result);
             ListofAllServiceData.ItemsSource = ListofServices;
-            
         }
-
-
+       
         public string PostData(string Method, string SerializedData, string Url)
         {
             try
@@ -52,6 +76,11 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
+                if(Url.Contains("http://bookingmanager24-001-site1.ftempurl.com/api/services/DeAllocateCategoryFromService"))
+                {
+                    httpRequest.ContentLength = 0;
+                }
+
                 if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
@@ -60,7 +89,6 @@ namespace Demo_App
                 }
 
                 var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
-
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
                     return result = StreamReader.ReadToEnd();

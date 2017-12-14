@@ -12,41 +12,55 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json.Linq;
 
 namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewCategoryPage : ContentPage
-	{
-        string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-
+	{               
+        string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);        
         public NewCategoryPage ()
 		{
 			InitializeComponent ();
           
         }
-        private void AddServiceToCategory(object sender, EventArgs args)
+        //private void AddServiceToCategory(object sender, EventArgs args)
+        //{
+        //    Navigation.PushAsync(new AddServiceToCategoryPage(ListofServices));
+        //}
+
+        public ObservableCollection<AssignedServicetoStaff> GetAllServices(string CompanyId)
         {
-            Navigation.PushAsync(new AddServiceToCategoryPage());
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+            var result = PostData("GET", "", apiUrl);
+
+
+            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+            return ListofServices;
         }
 
         public void AddCategory()
         {
-            //category obj = new category();
-            //obj.id = 0;
-            //obj.companyid = companyid;
-            //obj.name = categoryname.text;
-            //obj.creationdate = "2017-11-08t12:19:27.628z";
-            //obj.entitystatus = "0";
+            Category obj = new Category();
+            obj.Id = 0;
+            obj.CompanyId = CompanyId;
+            obj.Name = CategoryName.Text;
+            obj.CreationDate = "2017-11-08t12:19:27.628z";
+          
 
-            //var serializeddata = jsonconvert.serializeobject(obj);
-            //var apiurl = application.current.properties["domainurl"] + "/api/services/createcategory";
+            var SerializedData = JsonConvert.SerializeObject(obj);
+            var apiurl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";
 
-            //var result = postdata("post", serializeddata, apiurl);
+            var result = PostData("POST", SerializedData, apiurl);
 
-            Navigation.PushAsync(new AddServiceToCategoryPage());
+            JObject responsedata = JObject.Parse(result);
+            dynamic ResponseValue = responsedata["ReturnObject"]["CategoryId"];
+            int CategoryId = Convert.ToInt32(ResponseValue.Value);
+            string categoryName = obj.Name;
 
-           // Navigation.PushAsync(new ChooseCategoriesPage());
+            Navigation.PushAsync(new AddServiceToCategoryPage(GetAllServices(CompanyId), CategoryId, categoryName));
         }
 
 

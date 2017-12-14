@@ -16,7 +16,8 @@ namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StaffProfileDetailsPage : ContentPage
-	{      
+	{
+        public Staff Objstaff = null;
         public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
@@ -31,6 +32,15 @@ namespace Demo_App
             GetAllocatedServicetoStaff();
            GetAllTimeOffForEmployee();
             ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
+
+            Objstaff = new Staff();
+            Objstaff.Id = staff.Id;
+            Objstaff.FirstName = staff.FirstName;
+            Objstaff.LastName = staff.LastName;
+            Objstaff.Email = staff.Email;
+            Objstaff.TelephoneNo = staff.TelephoneNo;
+            Objstaff.Address = staff.Address;
+            BindingContext = Objstaff;
         }
 
         private void CrossClick(object sender, EventArgs e)
@@ -193,7 +203,8 @@ namespace Demo_App
 
         private void EditStaffDetails(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditStaffPage());
+            //Staff staff = new Staff();
+            Navigation.PushAsync(new EditStaffPage(Objstaff));
         }
         public string PostData(string Method, string SerializedData, string Url)
         {

@@ -21,6 +21,7 @@ namespace Demo_App
 		{
 			InitializeComponent ();
             ServiceId = service.Id.ToString();
+            EditserviceProfileTitle.Text = service.Name;
             EditServiceName.Text = service.Name;
             EditServiceCost.Text = service.Cost.ToString();
             int minutes = Convert.ToInt32(service.DurationInMinutes.Split(' ')[0]);         
@@ -31,6 +32,10 @@ namespace Demo_App
             EditServiceBufferTime.Time = serviceBufferDuration;
         }
 
+        private void CrossClick(object sender,EventArgs e)
+        {
+            Navigation.PopAsync(true);
+        }
         public void EditServiceInformation()
         {
             Service obj = new Service();

@@ -5,7 +5,7 @@
              x:Class="Demo_App.AddServiceToCategoryPage"
              Title="Add Service to Category">
     <ContentPage.ToolbarItems>
-        <ToolbarItem  Text="Next" Order="Primary" Priority="0" Clicked="CategoriesDetails"/>
+        <ToolbarItem  Text="Next" Order="Primary" Priority="0" Clicked="AddServicestoCategory"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -22,7 +22,7 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="10,15,0,0">
-                            <Label Text="No" HorizontalOptions="StartAndExpand"></Label>
+                          
                         </StackLayout>
                         <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,15,0,0">
                             <Label Text="Select All" HorizontalOptions="End"></Label>
@@ -52,7 +52,7 @@
                                                 <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"   />
                                             </StackLayout>
                                             <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
-                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding isAssigned,Mode=TwoWay}"/>
                                             </StackLayout>
                                         </Grid>
                                     </StackLayout>

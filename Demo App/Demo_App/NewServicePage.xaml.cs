@@ -93,8 +93,7 @@ namespace Demo_App
             obj.Id = 0;
             obj.CompanyId = CompanyId;
             obj.Name = "c2";
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
-            obj.EntityStatus = "0";
+            obj.CreationDate = "2017-11-08T12:19:27.628Z";           
 
             var SerializedData = JsonConvert.SerializeObject(obj);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";

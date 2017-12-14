@@ -33,7 +33,7 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,5,0,0">
                                     <Label Text="{Binding FirstName }"
-                                           HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                                           HorizontalOptions="Center" VerticalOptions="Start" TextColor="White"></Label>
                                     <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40">
                                         <!--<Image.GestureRecognizers>
                                             <TapGestureRecognizer 
@@ -41,7 +41,11 @@
                                         </Image.GestureRecognizers>-->
                                     </Image>
                                 </StackLayout>
-                                <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="20,5,10,0">
+                                <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="10,5,10,0">
+                                    <Label Text="delete" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DeleteCustomer"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -136,7 +140,7 @@
                                 <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
                                 <StackLayout Grid.Column="1" Padding="0,10,0,0">
                                     <Label Text="Notes"></Label>
-                                    <Label Text="Add Notes" FontAttributes="Bold"></Label>
+                                    <Label x:Name="Noteslbl" FontAttributes="Bold"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Padding="10">
                                     <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />
