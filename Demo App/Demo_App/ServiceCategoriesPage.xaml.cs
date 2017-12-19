@@ -49,7 +49,7 @@ namespace Demo_App
                 ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
                 AllocateServices.CategoryName = item.Name;
                 AllocateServices.CategoryId = item.Id;
-                AllocateServices.AllocatedServiceCount = ListOfAssignService.Count;
+                AllocateServices.AllocatedServiceCount = ListOfAssignService.Count+"services";
 
                 ListOfAssignServiceCount.Add(AllocateServices);
             }

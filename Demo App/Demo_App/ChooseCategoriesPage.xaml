@@ -32,7 +32,7 @@
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
-                    <ListView x:Name="CategoriesData">
+                    <ListView x:Name="CategoriesData" BackgroundColor="White">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

@@ -14,10 +14,16 @@
                     <Label Text="All Services" TextColor="Black" HorizontalOptions="StartAndExpand"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <ListView x:Name="ListofCategoriesData">
+                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding Name}" TextColor="Black" />
+                                <!--<TextCell Text="{Binding Name}" TextColor="Black" />-->
+                                <ViewCell Height="70">
+                                    <StackLayout Padding="10,0,0,0" BackgroundColor="White">
+                                        <Label Text="{Binding CategoryName}" TextColor="Black"/>
+                                        <Label Text="{Binding AllocatedServiceCount}" />
+                                    </StackLayout>
+                                </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

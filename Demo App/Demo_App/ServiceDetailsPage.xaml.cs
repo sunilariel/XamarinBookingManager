@@ -16,6 +16,8 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ServiceDetailsPage : ContentPage
 	{
+        ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+        ObservableCollection<object> todaycollection = new ObservableCollection<object>();
         string CompanyId = Application.Current.Properties["CompanyId"].ToString();
         string ServiceId;
         public ServiceDetails service = null;
@@ -163,7 +165,8 @@ namespace Demo_App
         }
         private void SetnewDuration(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new NewServicePage());
+            
+            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
         }
         private void EditServiceProvider(object sender, EventArgs args)
         {           

@@ -53,7 +53,7 @@ namespace Demo_App.Model
 
     public class ServicesAllocatedToCategory
     {
-        public int AllocatedServiceCount { get; set; }
+        public string AllocatedServiceCount { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }      
     }

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo_App"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              x:Class="Demo_App.NewServicePage"
              Title="New Service">
     <ContentPage.ToolbarItems>
@@ -25,10 +27,20 @@
                     <StackLayout Grid.Row="1" Padding="10,10,0,0" BackgroundColor="White">
                         <Label Text="Duration" HorizontalOptions="Start"></Label>
                         <!--<Entry  Placeholder="0 min" FontSize="Small" HorizontalOptions="FillAndExpand"/>-->
-                        <TimePicker x:Name="ServiceDuration" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
+                        <!--<TimePicker x:Name="ServiceDuration" HorizontalOptions="FillAndExpand" TextColor="Gray"/>-->
+                        <Label x:Name="duration" HorizontalOptions="Start"></Label>
+                        <local:DurationTimePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Clicked"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
                         <Label Text="Buffer Time (optional)" HorizontalOptions="Start"></Label>
+                        <Label x:Name="BufferTime" HorizontalOptions="Start"></Label>
+                        <local:BufferTimePicker x:Name="buffer" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BufferButton_Clicked"/>
+                        </StackLayout.GestureRecognizers>
                         <!--<Entry  Placeholder="0 min" FontSize="Small"/>-->
                         <TimePicker x:Name="ServiceBufferTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
                     </StackLayout>

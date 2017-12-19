@@ -41,7 +41,11 @@ namespace Demo_App
 
         public void AddServiceNavigation()
         {
-             Navigation.PushAsync(new NewServicePage());
+            Application.Current.Properties["ServiceName"] = null;
+            Application.Current.Properties["ServiceDurationTime"] = null;
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
            
         }
 

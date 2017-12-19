@@ -21,10 +21,54 @@ namespace Demo_App
 	{
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
-
-        public NewServicePage ()
+        string name = "";
+        string DurationOfService = "";
+        public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer)
 		{
-			InitializeComponent ();          
+			InitializeComponent ();
+           
+            if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")                
+            {
+                ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
+            }
+            if (todaycollection.Count > 0)
+            {
+                //string TimeData = todaycollection[0] + ":" + todaycollection[1];
+                int Minutes = Convert.ToInt32(todaycollection[0]) * 60 + Convert.ToInt32(todaycollection[1]);
+                 DurationOfService = Minutes + " min";
+        
+                //ServiceName.Text = name;
+                duration.Text = DurationOfService;               
+                //BufferTime.Text = DurationOfService;
+            }
+
+            if(todaycollectionBuffer.Count>0)
+            {
+                int Min= Convert.ToInt32(todaycollectionBuffer[0]) * 60 + Convert.ToInt32(todaycollectionBuffer[1]);
+                string BufferTimeOfService = Min + " min";
+                // ServiceName.Text = name;
+                if (Application.Current.Properties["ServiceDurationTime"] != null)
+                {
+                    duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
+                }
+                BufferTime.Text = BufferTimeOfService;
+            }
+        }
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.Properties["ServiceName"] = ServiceName.Text;          
+            //open picker dialog
+            date.IsOpen = !date.IsOpen;
+                     
+        }
+        private void BufferButton_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.Properties["ServiceName"] = ServiceName.Text;
+            Application.Current.Properties["ServiceDurationTime"] = duration.Text;
+            //open picker dialog
+            buffer.IsOpen = !buffer.IsOpen;
+            //((Demo_App)App.Current).DurationTimePicker();
+
         }
 
         private void SelectServiceProvider(object sender, EventArgs args)
@@ -33,19 +77,23 @@ namespace Demo_App
         }
        
         public void AddService()
-        {           
+        {
+            string Duration = duration.Text;
+            string bufferTime = BufferTime.Text;
+           var ServiceDuration = Duration.Split(' ');
+            var ServiceBufferTime= bufferTime.Split(' ');
             Service obj = new Service();
             obj.Id = 0;
             obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
             obj.Name = ServiceName.Text;
             obj.CategoryName = "";
             obj.CategoryId = 0;
-            obj.DurationInMinutes = Convert.ToInt32(ServiceDuration.Time.TotalMinutes);
+            obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
             obj.DurationInHours = 0;
             obj.Cost = Convert.ToDouble(ServiceCost.Text);
             obj.Currency = "";
             obj.Colour = "";
-            obj.Buffer = Convert.ToInt32(ServiceBufferTime.Time.TotalMinutes);
+            obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
             obj.CreationDate = "2017-11-08T12:19:27.628Z";
             obj.Description = "";
 

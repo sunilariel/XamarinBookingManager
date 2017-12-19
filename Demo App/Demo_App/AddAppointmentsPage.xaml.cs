@@ -12,6 +12,7 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddAppointmentsPage : ContentPage
 	{
+        int CategoryId;
 		public AddAppointmentsPage ()
 		{
 			InitializeComponent ();
@@ -23,7 +24,7 @@ namespace Demo_App
 
         private void AddAppointmentsClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory());
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId));
         }
     }
 }

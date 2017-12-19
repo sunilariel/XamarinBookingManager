@@ -13,7 +13,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout  BackgroundColor="#25DBF1" HeightRequest="150" Grid.Row="0">
+                <StackLayout  BackgroundColor="#25DBF1" HeightRequest="130" Grid.Row="0">
                     <Grid RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -48,7 +48,7 @@
                         <StackLayout Grid.Row="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="70"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>

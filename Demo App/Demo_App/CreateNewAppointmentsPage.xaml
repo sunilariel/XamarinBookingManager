@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             x:Class="Demo_App.CreateNewAppointmentsPage"
+             Title="New Appointment">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Label Text="Set Available Time"/>
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

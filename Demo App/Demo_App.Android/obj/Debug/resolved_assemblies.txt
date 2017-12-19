@@ -8,6 +8,9 @@ D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\a
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\SkiaSharp.dll
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\SkiaSharp.Views.Android.dll
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\SkiaSharp.Views.Forms.dll
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfPicker.Android.dll
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfPicker.XForms.Android.dll
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfPicker.XForms.dll
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfSchedule.Android.dll
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfSchedule.XForms.Android.dll
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Syncfusion.SfSchedule.XForms.dll

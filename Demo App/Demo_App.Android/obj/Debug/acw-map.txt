@@ -46,6 +46,26 @@ SkiaSharp.Views.Forms.SKGLViewRenderer, SkiaSharp.Views.Forms;md5fd6dcadcadfbb91
 SkiaSharp.Views.Forms.SKGLViewRenderer, SkiaSharp.Views.Forms, Version=1.55.0.0, Culture=neutral, PublicKeyToken=null;md5fd6dcadcadfbb9163aef75bcc33a94ed.SKGLViewRenderer
 SkiaSharp.Views.Forms.SKGLViewRenderer;md5fd6dcadcadfbb9163aef75bcc33a94ed.SKGLViewRenderer
 skiasharp.views.forms.SKGLViewRenderer;md5fd6dcadcadfbb9163aef75bcc33a94ed.SKGLViewRenderer
+Com.Syncfusion.SfPicker.SfParentPicker, Syncfusion.SfPicker.Android;md5fbc885eff19d56b339d51367a1c38f86.SfParentPicker
+Com.Syncfusion.SfPicker.SfParentPicker, Syncfusion.SfPicker.Android, Version=15.4451.0.17, Culture=neutral, PublicKeyToken=null;md5fbc885eff19d56b339d51367a1c38f86.SfParentPicker
+Com.Syncfusion.SfPicker.SfParentPicker;md5fbc885eff19d56b339d51367a1c38f86.SfParentPicker
+com.syncfusion.sfpicker.SfParentPicker;md5fbc885eff19d56b339d51367a1c38f86.SfParentPicker
+Com.Syncfusion.SfPicker.SfPicker, Syncfusion.SfPicker.Android;md5fbc885eff19d56b339d51367a1c38f86.SfPicker
+Com.Syncfusion.SfPicker.SfPicker, Syncfusion.SfPicker.Android, Version=15.4451.0.17, Culture=neutral, PublicKeyToken=null;md5fbc885eff19d56b339d51367a1c38f86.SfPicker
+Com.Syncfusion.SfPicker.SfPicker;md5fbc885eff19d56b339d51367a1c38f86.SfPicker
+com.syncfusion.sfpicker.SfPicker;md5fbc885eff19d56b339d51367a1c38f86.SfPicker
+Com.Syncfusion.SfPicker.SfLine, Syncfusion.SfPicker.Android;md5fbc885eff19d56b339d51367a1c38f86.SfLine
+Com.Syncfusion.SfPicker.SfLine, Syncfusion.SfPicker.Android, Version=15.4451.0.17, Culture=neutral, PublicKeyToken=null;md5fbc885eff19d56b339d51367a1c38f86.SfLine
+Com.Syncfusion.SfPicker.SfLine;md5fbc885eff19d56b339d51367a1c38f86.SfLine
+com.syncfusion.sfpicker.SfLine;md5fbc885eff19d56b339d51367a1c38f86.SfLine
+Com.Syncfusion.SfPicker.SfPickerEngine, Syncfusion.SfPicker.Android;md5fbc885eff19d56b339d51367a1c38f86.SfPickerEngine
+Com.Syncfusion.SfPicker.SfPickerEngine, Syncfusion.SfPicker.Android, Version=15.4451.0.17, Culture=neutral, PublicKeyToken=null;md5fbc885eff19d56b339d51367a1c38f86.SfPickerEngine
+Com.Syncfusion.SfPicker.SfPickerEngine;md5fbc885eff19d56b339d51367a1c38f86.SfPickerEngine
+com.syncfusion.sfpicker.SfPickerEngine;md5fbc885eff19d56b339d51367a1c38f86.SfPickerEngine
+Syncfusion.SfPicker.XForms.Droid.SfPickerRenderer, Syncfusion.SfPicker.XForms.Android;md5f891ad76e7c60663693f379bd01070f6.SfPickerRenderer
+Syncfusion.SfPicker.XForms.Droid.SfPickerRenderer, Syncfusion.SfPicker.XForms.Android, Version=15.4451.0.17, Culture=neutral, PublicKeyToken=null;md5f891ad76e7c60663693f379bd01070f6.SfPickerRenderer
+Syncfusion.SfPicker.XForms.Droid.SfPickerRenderer;md5f891ad76e7c60663693f379bd01070f6.SfPickerRenderer
+syncfusion.sfpicker.xforms.droid.SfPickerRenderer;md5f891ad76e7c60663693f379bd01070f6.SfPickerRenderer
 Com.Syncfusion.Schedule.SfSchedule, Syncfusion.SfSchedule.Android;md5104259c50fe84cd459ebd6b5a8b7b0ad.SfSchedule
 Com.Syncfusion.Schedule.SfSchedule, Syncfusion.SfSchedule.Android, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=null;md5104259c50fe84cd459ebd6b5a8b7b0ad.SfSchedule
 Com.Syncfusion.Schedule.SfSchedule;md5104259c50fe84cd459ebd6b5a8b7b0ad.SfSchedule
