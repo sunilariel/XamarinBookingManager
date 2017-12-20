@@ -5,7 +5,7 @@
              Title="Select Staff">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListofSelectedStaff" SelectedItem="AddNewAppointment">
+            <ListView x:Name="ListofSelectedStaff" ItemSelected="AddNewAppointmentForCustomerClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!--<TextCell Text="{Binding Name}" TextColor="Black" />-->

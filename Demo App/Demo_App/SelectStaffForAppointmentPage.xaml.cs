@@ -45,9 +45,11 @@ namespace Demo_App
             ListofSelectedStaff.ItemsSource = ListofData;
         }
 
-        public void AddNewAppointment(object sender,SelectedItemChangedEventArgs e)
+        private void AddNewAppointmentForCustomerClick(object sender,SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new CreateNewAppointmentsPage());
+            AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
+             EmployeeData = e.SelectedItem as AssignedServicetoStaff;
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, EmployeeData.Id));
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()
