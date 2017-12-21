@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo_App.AppointmentDetailsPage"
              Title="Appointments Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="delete" Order="Primary" Priority="1"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
             <Grid RowSpacing="1">

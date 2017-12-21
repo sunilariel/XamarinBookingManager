@@ -17,6 +17,17 @@
                     </StackLayout>
                     <StackLayout Grid.Row="1">
                         <Label Text="Set Available Time"/>
+                        <ListView x:Name="ListofTimeSlots" ItemSelected="CreateAppointmentClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="70">
+                                        <StackLayout BackgroundColor="White">
+                                            <Label Text="{Binding }"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
 
                 </Grid>

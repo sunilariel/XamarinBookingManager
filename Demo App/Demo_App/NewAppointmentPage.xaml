@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.NewAppointmentPage"
+             Title="New Appointment">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Done" Order="Primary" Priority="1"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" HeightRequest="50">
+                    <Picker x:Name="newAppointmentsPicker" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="thu"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="2" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Name of Customer"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="3" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Staff"/>
+                            <Label Text="{Binding EmployeeName}" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="4" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Service"/>
+                            <Label Text="{Binding ServiceName}" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="5" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Cost"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="6" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Comments"/>
+                            <Label Text="Add Comments" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Grid.Row="7" BackgroundColor="White">
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Padding="0,20,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Padding="0,20,0,0">
+                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

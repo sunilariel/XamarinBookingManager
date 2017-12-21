@@ -87,6 +87,21 @@ namespace Demo_App.Model
         public int Status { get; set; }
     }
 
+    public class AddAppointments
+    {
+        public int CompanyId { get; set; }
+        public int ServiceId { get; set; }
+        public string ServiceName { get; set; }
+        public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
+        public double Cost { get; set; }
+        public string Currency { get; set; }
+        public int DurationInMinutes { get; set; }
+        public int DurationInHours { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+    }
+
 
     public class AppointmentDetails
     {

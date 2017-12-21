@@ -20,6 +20,7 @@ namespace Demo_App
         ObservableCollection<AssignProvider> ListofProvider = new ObservableCollection<AssignProvider>();      
         //int EmployeeId;
         int ServiceId;
+        string ServiceName = "";
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         public AssignedServicetoStaff serviceobj = null;
         ObservableCollection<AssignedServicetoStaff> ListofData = new ObservableCollection<AssignedServicetoStaff>();        
@@ -27,8 +28,8 @@ namespace Demo_App
 		{
 			InitializeComponent ();
             ServiceId = service.Id;
-      
-            var staffData=GetServiceProvider();           
+            ServiceName = service.Name;
+                  var staffData=GetServiceProvider();           
             //GetSelectedStaff();
             foreach(var item in staffData)
             {
@@ -49,7 +50,7 @@ namespace Demo_App
         {
             AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
              EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, EmployeeData.Id));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name));
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()
