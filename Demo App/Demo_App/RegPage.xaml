@@ -6,11 +6,11 @@
         <StackLayout Padding="10" VerticalOptions="Center">
             <Image Source="Icon.png" Margin="10,20,10,10"></Image>
             <Entry Placeholder="Name"
-                       Text="{Binding name}"/>
+                       Text="{Binding Name}"/>
             <Entry Placeholder="Email"
-                       Text="{Binding email}"/>
+                       Text="{Binding Email}"/>
             <Entry Placeholder="Password"
-                       Text="{Binding password}" IsPassword="True"/>
+                       Text="{Binding Password}" IsPassword="True"/>
             <Button Text="Create an account" TextColor="White" BackgroundColor="#50aaa5" HorizontalOptions="Center" WidthRequest="360" BorderRadius="10" BorderWidth="8" Clicked="OnRegClicked"/>
             <!--<Label Text="Or Use" HorizontalOptions="Center" Margin="10,2,2,10" TextColor="Black"></Label>
             <Button Text="Facebook" Margin="0,0,0,0" TextColor="White" BackgroundColor="#577BC9" HorizontalOptions="Center" WidthRequest="360" BorderRadius="10" BorderWidth="8"/>

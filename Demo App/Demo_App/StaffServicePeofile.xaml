@@ -32,6 +32,9 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="20,5,10,0">
                                     <Label Text="Done" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DoneClick"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -74,6 +77,7 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
                                     <Label Text="Service Provided" HorizontalOptions="StartAndExpand"></Label>
+                                    <Label x:Name="AllocationCount" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="10,20,20,10">
                                     <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png" HorizontalOptions="EndAndExpand"/>
@@ -95,6 +99,24 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
                                     <Label Text="Working Days" HorizontalOptions="StartAndExpand"></Label>
+                                    <Grid ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="M" x:Name="Monday" Grid.Column="0"/>
+                                        <Label Text="T" x:Name="Tuesday" Grid.Column="1"/>
+                                        <Label Text="W" x:Name="Wednesday" Grid.Column="2"/>
+                                        <Label Text="T" x:Name="Thursday" Grid.Column="3"/>
+                                        <Label Text="F" x:Name="Friday" Grid.Column="4"/>
+                                        <Label Text="S" x:Name="Saturday" Grid.Column="5"/>
+                                        <Label Text="S" x:Name="Sunday" Grid.Column="6"/>
+                                    </Grid>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="10,20,20,10">
                                     <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png" HorizontalOptions="EndAndExpand"/>

@@ -970,11 +970,12 @@ D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\u
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SelectServicesForAppontment.xaml.g.cs
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CreateNewAppointmentsPage.xaml.g.cs
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.SelectStaffForAppointmentPage.xaml.g.cs
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewAppointmentPage.xaml.g.cs
+D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AssignServiceToStaffPage.xaml.g.cs
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
-D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
-D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewAppointmentPage.xaml.g.cs

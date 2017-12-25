@@ -19,6 +19,7 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewServicePage : ContentPage
 	{
+       
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
         string name = "";
@@ -78,16 +79,24 @@ namespace Demo_App
        
         public void AddService()
         {
+            string []  ServiceBufferTime= { };
+            string[] ServiceDuration= { };
             string Duration = duration.Text;
             string bufferTime = BufferTime.Text;
-           var ServiceDuration = Duration.Split(' ');
-            var ServiceBufferTime= bufferTime.Split(' ');
+            if (Duration != null)
+            {
+                 ServiceDuration = Duration.Split(' ');
+            }
+            if (bufferTime != null)
+            {
+                ServiceBufferTime = bufferTime.Split(' ');
+            }
             Service obj = new Service();
             obj.Id = 0;
             obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
             obj.Name = ServiceName.Text;
             obj.CategoryName = "";
-            obj.CategoryId = 0;
+            obj.CategoryId = 0;              
             obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
             obj.DurationInHours = 0;
             obj.Cost = Convert.ToDouble(ServiceCost.Text);
