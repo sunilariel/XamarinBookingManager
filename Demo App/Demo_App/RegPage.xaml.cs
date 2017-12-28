@@ -64,25 +64,6 @@ namespace Demo_App
 
                 HttpResponseMessage response = await client.PostAsync(url, content);
 
-
-
-
-                //HttpWebRequest httpWebRequest = HttpWebRequest.CreateHttp("http://bookingmanager20-001-site1.btempurl.com/api/companyregistration/CreateAccount");
-                //httpWebRequest.Method = "POST";
-                //httpWebRequest.ContentType = "application/json";
-
-
-                //var StreamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
-                //StreamWriter.Write(data);
-                //StreamWriter.Flush();
-
-                //var StreamReader = new StreamReader();
-
-
-
-
-                //var StreamReader = new StreamReader(response.GetResponsetrtea);
-              
                 if (response.IsSuccessStatusCode)
                 {
                     //result = await response.Content.ReadAsStringAsync();

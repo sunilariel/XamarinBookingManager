@@ -21,9 +21,18 @@ namespace Demo_App
         int CategoryID;
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
         public ServicesAllocatedToCategory serviceCount = null;
-        public SelectServiceCategory (int CategoryId)
+        public Customer objCust = null;
+        public SelectServiceCategory (int CategoryId,Customer Cust)
 		{
 			InitializeComponent ();
+            objCust = new Customer();
+            objCust.Id = Cust.Id;
+            objCust.FirstName = Cust.FirstName;
+            objCust.LastName = Cust.LastName;
+            objCust.UserName = Cust.UserName;
+            objCust.Email = Cust.Email;
+            objCust.TelephoneNo = Cust.TelephoneNo;
+            objCust.Address = Cust.Address;
             CategoryID = CategoryId;
             GetCategories(CompanyId);
             BindingContext = serviceCount;
@@ -33,7 +42,7 @@ namespace Demo_App
         {
             
                 var Category = e.SelectedItem as ServicesAllocatedToCategory;           
-                Navigation.PushAsync(new SelectServicesForAppontment(Category.CategoryId));
+                Navigation.PushAsync(new SelectServicesForAppontment(Category.CategoryId, objCust));
         }
 
         public void GetCategories(string Id)

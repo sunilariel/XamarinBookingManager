@@ -18,6 +18,7 @@ namespace Demo_App
         //string phonNumber;
         int CustomerId;
         public Customer objCust = null;
+        public BookAppointment objBookAppointment = null;
         public CutomerProfilePage (Customer Cust,Notes obj)
 		{
             //this.phonNumber = Cust.TelephoneNo;
@@ -62,7 +63,7 @@ namespace Demo_App
         }
         private void AppointmentsClicks(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddAppointmentsPage());
+            Navigation.PushAsync(new AddAppointmentsPage(objCust, objBookAppointment));
         }
         private void EditCustomerClick(object sender, EventArgs args)
         {

@@ -4,7 +4,7 @@
              x:Class="Demo_App.NewAppointmentPage"
              Title="New Appointment">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Done" Order="Primary" Priority="1"/>
+        <ToolbarItem Text="Done" Order="Primary" Priority="1" Clicked="CreateAppointment"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -34,7 +34,8 @@
                             <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="thu"/>
+                            <Label x:Name="AppointmentDatelbl" TextColor="Black"/>
+                            <Label x:Name="AppointmentTime" Text="{Binding StartTime}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -52,7 +53,9 @@
                             <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="Name of Customer"/>
+                            <Label x:Name="CustName" Text="{Binding FirstName}" TextColor="Black"/>
+                            <Label x:Name="CustEmail" Text="{Binding Email}" TextColor="Black"/>
+                            <Label x:Name="CustPhoneNo" Text="{Binding TelephoneNo}" TextColor="Black"/>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -108,6 +111,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Cost"/>
+                            <Label Text="{Binding Cost}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -127,13 +131,15 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Comments"/>
-                            <Label Text="Add Comments" TextColor="Black"/>
+                            <Label x:Name="AddComment" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddCommentClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
-
                 </StackLayout>
                 <StackLayout Grid.Row="7" BackgroundColor="White">
                     <Grid ColumnSpacing="0">

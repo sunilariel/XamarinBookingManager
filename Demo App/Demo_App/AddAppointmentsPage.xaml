@@ -29,10 +29,57 @@
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <Label Text="temprarory click here" HorizontalOptions="Center"></Label>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="AppointmentsdetailsClick"/>
-                    </StackLayout.GestureRecognizers>
+                    <ListView x:Name="CustomerAppoimentList" ItemSelected="AppointmentsdetailsClick" RowHeight="70">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <!--<TextCell Text="{Binding StartTime}" TextColor="Black" />-->
+                                    <StackLayout Padding="10">
+                                       
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" Padding="10">
+                                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1">
+                                                <Label Text="{Binding BookingDate}" TextColor="Black"/>
+                                                <Label Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                            </StackLayout>
+                                        </Grid>
+                                        <!--<Label Text="{Binding AppointmentDetail}" TextColor="Gray"/>-->
+                                        <!--<Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" Padding="10">
+                                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1">
+                                                <Label Text="{Binding EmployeeName}" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="2">
+                                                <Label Text="{Binding ServiceName}" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="3">
+                                                <Label Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="4">
+                                                <Label Text="{Binding Cost}" TextColor="Black"/>
+                                            </StackLayout>
+                                        </Grid>-->
+
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </Grid>
         </StackLayout>

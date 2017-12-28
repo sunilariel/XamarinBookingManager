@@ -17,10 +17,10 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddNotesPage : ContentPage
     {
-        public Customer objCust = null;
+        public Customer objCust = null;      
         public AddNotesPage (Customer Cust)
 		{
-			InitializeComponent ();
+			InitializeComponent ();           
             objCust = new Customer();
             objCust = Cust;
             //BindingContext = objCust;
@@ -40,9 +40,8 @@ namespace Demo_App
             var ApiMethod = "POST";
 
             var result = PostData(ApiMethod, data, Url);
-                        
-            Navigation.PushAsync(new CutomerProfilePage(objCust, obj));
-
+           
+                Navigation.PushAsync(new CutomerProfilePage(objCust, obj));
         }
 
         public string PostData(string Method, string SerializedData, string Url)

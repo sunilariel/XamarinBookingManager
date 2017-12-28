@@ -34,7 +34,7 @@
                             <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="thu"/>
+                            <Label Text="{Binding BookingDate}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -52,7 +52,9 @@
                             <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="Name of Customer"/>
+                            <Label x:Name="AppointmentCustomerName" TextColor="Black"/>
+                            <Label x:Name="AppointmentCustomerEmail" />
+                            <Label x:Name="AppointmentCustomerMobNo" />
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -68,6 +70,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Staff"/>
+                            <Label Text="{Binding EmployeeName}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -87,6 +90,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Service"/>
+                            <Label Text="{Binding ServiceName}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -106,6 +110,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Cost"/>
+                            <Entry Text="{Binding Cost}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
@@ -125,7 +130,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Comments"/>
-                            <Label Text="Add Comments" TextColor="Black"/>
+                            <Label Text="{Binding CommentNotes}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />

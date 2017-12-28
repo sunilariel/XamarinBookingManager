@@ -85,33 +85,7 @@ namespace Demo_App
 
             return result;
         }
-
-        public string AddAppointment(BookAppointment appointment)
-        {
-            try
-            {
-                DateTime obj = DateTime.Parse(appointment.Start);
-                appointment.Start = obj.ToString("yyyy-MM-dd T HH:mm:ss");
-                appointment.End = obj.AddMinutes(appointment.EndMinute).ToString("yyyy-MM-dd T HH:mm:ss");
-
-                var StartTime = DateTime.Parse(appointment.StartHour, CultureInfo.InvariantCulture);
-                var Time = StartTime.ToString("HH:mm").Split(':');
-
-                appointment.StartHour = Time[0];
-                appointment.StartMinute = Time[1];
-
-                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/booking/BookAppointment";
-                var jsonString = JsonConvert.SerializeObject(appointment);
-
-                var result = PostData("POST", jsonString, apiURL);               
-                return result;
-            }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
-        }
-
+       
         public void UpdateAppointment(UpdateBookAppointment appointment)
         {
             

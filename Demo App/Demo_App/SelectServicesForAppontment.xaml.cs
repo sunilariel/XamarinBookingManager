@@ -21,10 +21,19 @@ namespace Demo_App
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;       
         int ServiceID;
-        ObservableCollection<AssignedServicetoStaff> ListOfAssignServiceData = new ObservableCollection<AssignedServicetoStaff>();               
-        public SelectServicesForAppontment (int CategoryId)
+        ObservableCollection<AssignedServicetoStaff> ListOfAssignServiceData = new ObservableCollection<AssignedServicetoStaff>();
+        public Customer objCust = null;
+        public SelectServicesForAppontment (int CategoryId,Customer Cust)
 		{
 			InitializeComponent ();
+            objCust = new Customer();
+            objCust.Id = Cust.Id;
+            objCust.FirstName = Cust.FirstName;
+            objCust.LastName = Cust.LastName;
+            objCust.UserName = Cust.UserName;
+            objCust.Email = Cust.Email;
+            objCust.TelephoneNo = Cust.TelephoneNo;
+            objCust.Address = Cust.Address;
             CategoryID = CategoryId;
             GetSelectedService();
         }
@@ -41,7 +50,8 @@ namespace Demo_App
             Service service = new Service();
             service.Name = servicedata.Name;
             service.Id = servicedata.Id;
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service));
+            service.Cost = servicedata.Cost;
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust));
         }
 
        
