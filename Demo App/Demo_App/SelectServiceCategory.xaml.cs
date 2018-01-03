@@ -22,9 +22,11 @@ namespace Demo_App
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
         public ServicesAllocatedToCategory serviceCount = null;
         public Customer objCust = null;
-        public SelectServiceCategory (int CategoryId,Customer Cust)
+        string PageName = "";
+        public SelectServiceCategory (int CategoryId,Customer Cust,string pagename)
 		{
 			InitializeComponent ();
+            PageName = pagename;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -42,7 +44,7 @@ namespace Demo_App
         {
             
                 var Category = e.SelectedItem as ServicesAllocatedToCategory;           
-                Navigation.PushAsync(new SelectServicesForAppontment(Category.CategoryId, objCust));
+                Navigation.PushAsync(new SelectServicesForAppontment(Category.CategoryId, objCust, PageName));
         }
 
         public void GetCategories(string Id)

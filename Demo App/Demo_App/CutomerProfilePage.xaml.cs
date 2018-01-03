@@ -43,6 +43,11 @@ namespace Demo_App
         {
             Navigation.PopAsync(true);
         }
+        //private void OnOpenPupup(object sender,EventArgs e)
+        //{
+        //    deletelbl.IsVisible = true;
+        //    plusimsge.IsVisible = false;
+        //}
 
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {

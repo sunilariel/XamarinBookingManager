@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +17,8 @@ namespace Demo_App
 	public partial class AppointmentDetailsPage : ContentPage
 	{
         public Customer objCust = null;
-        public AppointmentDetails obj = null;
+        public AppointmentDetails obj = null;       
+        int CategoryId;
         public AppointmentDetailsPage (Customer Cust, AppointmentDetails appointment)
 		{
 			InitializeComponent ();
@@ -55,5 +58,54 @@ namespace Demo_App
                 AppointmentsPicker.Items.Add(Data[i]);
             }
         }
-	}
+
+        private void EditServiceForAppointmentClick(object sender,EventArgs e)
+        {
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust,"EditServiceForAppointment"));
+        }
+
+        //private void EditStaffForAppointmentClick(object sender,EventArgs e)
+        //{
+        //    Navigation.PushAsync(new SelectStaffForAppointmentPage(objservice, objCust, "EditStaffForAppointment"));
+        //}
+
+        public string DeleteAppointment()
+        {
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/DeleteBooking?bookingId=" + obj.BookingId;
+
+            var result = PostData("DELETE", "", apiUrl);
+            return result;
+        }
+
+        public string PostData(string Method, string SerializedData, string Url)
+        {
+            try
+            {
+                var result = "";
+                HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
+                httpRequest.Method = Method;
+                httpRequest.ContentType = "application/json";
+                httpRequest.ProtocolVersion = HttpVersion.Version10;
+                httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+                if (SerializedData != null)
+                {
+                    var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
+                    streamWriter.Write(SerializedData);
+                    streamWriter.Close();
+                }
+
+                var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+                using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+                {
+                    return result = StreamReader.ReadToEnd();
+                }
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+    }
 }

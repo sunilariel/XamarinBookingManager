@@ -22,18 +22,47 @@ namespace Demo_App
         public CustomerPage ()
 		{
             NavigationPage.SetHasBackButton(this, false);
-            NavigationPage.SetBackButtonTitle(this, "Customer");
-            
+            NavigationPage.SetBackButtonTitle(this, "Customer");           
             InitializeComponent ();
-            GetAllCustomer();
+           var customerlist= GetAllCustomer();
+            if(customerlist.Count>5)
+            {
+                CustomerSearchBar.IsVisible = true;
+            }
           
         }
-        public void GetAllCustomer()
+        public ObservableCollection<Customer> GetAllCustomer()
         {
             string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
             var result = PostData("GET", "", apiURL);
             ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
             CustomersList.ItemsSource = ListOfCustomer;
+            return ListOfCustomer;
+        }
+       
+        public void SearchCustomersByTerm()
+        {
+            try
+            {
+                var result = "";
+                string apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/SearchCustomersByTerm?companyId=" + Application.Current.Properties["CompanyId"] + "&searchTerm=" + CustomerSearchBar.Text;
+                var httpWebRequest = HttpWebRequest.Create(apiUrl);
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+                var httpResponse = httpWebRequest.GetResponse();
+                using (var StreamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    result = StreamReader.ReadToEnd();
+                }
+                ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
+                CustomersList.ItemsSource = ListOfCustomer;
+            }
+            catch (Exception e)
+            {
+               e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

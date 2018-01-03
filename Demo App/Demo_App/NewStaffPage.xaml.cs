@@ -27,40 +27,46 @@ namespace Demo_App
 
         public void AddStaff(object sender, SelectedItemChangedEventArgs e)
         {
-            Staff obj = new Staff();
-            obj.Id = 0;
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.UserName = StaffEmail.Text;
-            obj.Password = "";
-            obj.FirstName = StaffFirstName.Text;
-            obj.LastName = StaffLastName.Text;
-            obj.Address = StaffAddress.Text;
-            obj.Email = StaffEmail.Text;
-            obj.TelephoneNo = StaffPhoneNumber.Text;
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
+            if (StaffFirstName.Text == null)
+            {
+                return;
+            }
+            else
+            {
+                Staff obj = new Staff();
+                obj.Id = 0;
+                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                obj.UserName = StaffEmail.Text;
+                obj.Password = "";
+                obj.FirstName = StaffFirstName.Text;
+                obj.LastName = StaffLastName.Text;
+                obj.Address = StaffAddress.Text;
+                obj.Email = StaffEmail.Text;
+                obj.TelephoneNo = StaffPhoneNumber.Text;
+                obj.CreationDate = "2017-11-08T12:19:27.628Z";
 
-            var data = JsonConvert.SerializeObject(obj);
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
-            var ApiMethod = "POST";
+                var data = JsonConvert.SerializeObject(obj);
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
+                var ApiMethod = "POST";
 
-            var result = PostData(ApiMethod, data, Url);
+                var result = PostData(ApiMethod, data, Url);
 
-            //var Requestresponse = JsonConvert.DeserializeObject(result);
-            //var jobject = (JObject)JsonConvert.DeserializeObject(result);
-            //var jvalue = (JValue)jobject["ReturnObject"]["EmloyeeId"];
+                //var Requestresponse = JsonConvert.DeserializeObject(result);
+                //var jobject = (JObject)JsonConvert.DeserializeObject(result);
+                //var jvalue = (JValue)jobject["ReturnObject"]["EmloyeeId"];
 
-            JObject responsedata = JObject.Parse(result);
-            dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
-            int EmployeeId = Convert.ToInt32(ResponseValue.Value);
+                JObject responsedata = JObject.Parse(result);
+                dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
+                int EmployeeId = Convert.ToInt32(ResponseValue.Value);
 
-            SetBuisnessHours(EmployeeId);
-            // Navigation.PushAsync(new StaffPage());
+                SetBuisnessHours(EmployeeId);
+                // Navigation.PushAsync(new StaffPage());
 
-            //var staffdata =e.SelectedItem as Staff;
-            //Navigation.PushAsync(new StaffServicePeofile(EmployeeId, staffdata)); 
+                //var staffdata =e.SelectedItem as Staff;
+                //Navigation.PushAsync(new StaffServicePeofile(EmployeeId, staffdata)); 
 
-            Navigation.PushAsync(new StaffServicePeofile(EmployeeId, obj));
-
+                Navigation.PushAsync(new StaffServicePeofile(EmployeeId, obj));
+            }
         }
 
         public void GetStaff()

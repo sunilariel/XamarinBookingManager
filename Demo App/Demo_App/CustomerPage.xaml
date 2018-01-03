@@ -5,6 +5,8 @@
              x:Class="Demo_App.CustomerPage">
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar x:Name="CustomerSearchBar" HorizontalOptions="FillAndExpand"
+                       Placeholder="Search Customer" FontSize="14" TextChanged="SearchCustomersByTerm" IsVisible="False"/>
             <ListView x:Name="CustomersList" ItemSelected="CustomerProfileClick" RowHeight="70">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -24,7 +26,6 @@
                                         <Label x:Name="PhnNumbr" Text="{Binding TelephoneNo}" TextColor="Silver" FontSize="10"></Label>
                                     </StackLayout>
                                 </Grid>
-                               
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

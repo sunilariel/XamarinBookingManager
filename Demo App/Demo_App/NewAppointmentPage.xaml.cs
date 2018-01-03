@@ -1,5 +1,6 @@
 ﻿using Demo_App.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -115,6 +116,10 @@ namespace Demo_App
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/BookAppointment";
             var result = PostData("POST", SerializedData, apiUrl);
 
+            dynamic data = JObject.Parse(result);
+            var msg = Convert.ToString(data.Message);
+            DisplayAlert("Success", msg,"ok");
+
             Navigation.PushAsync(new AddAppointmentsPage(objCust, objbookAppointment));
         }
 
@@ -157,8 +162,10 @@ namespace Demo_App
 
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
-                    return result = StreamReader.ReadToEnd();
+                    return result = StreamReader.ReadToEnd(); 
+                    //var SuccessMsz=StreamReader.
                 }
+
             }
             catch (Exception e)
             {

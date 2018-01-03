@@ -27,7 +27,7 @@ namespace Demo_App
         public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer)
 		{
 			InitializeComponent ();
-           
+
             if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")                
             {
                 ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
@@ -71,53 +71,55 @@ namespace Demo_App
             //((Demo_App)App.Current).DurationTimePicker();
 
         }
-
-        private void SelectServiceProvider(object sender, EventArgs args)
-        {
-        //    Navigation.PushAsync(new ServiceProviderPage());
-        }
        
         public void AddService()
         {
-            string []  ServiceBufferTime= { };
-            string[] ServiceDuration= { };
-            string Duration = duration.Text;
-            string bufferTime = BufferTime.Text;
-            if (Duration != null)
-            {
-                 ServiceDuration = Duration.Split(' ');
-            }
-            if (bufferTime != null)
-            {
-                ServiceBufferTime = bufferTime.Split(' ');
-            }
-            Service obj = new Service();
-            obj.Id = 0;
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.Name = ServiceName.Text;
-            obj.CategoryName = "";
-            obj.CategoryId = 0;              
-            obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
-            obj.DurationInHours = 0;
-            obj.Cost = Convert.ToDouble(ServiceCost.Text);
-            obj.Currency = "";
-            obj.Colour = "";
-            obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
-            obj.Description = "";
+            if (ServiceName.Text == "")
+                return;
 
-            var SerializedData = JsonConvert.SerializeObject(obj);
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddService";
-            var result = PostData("POST", SerializedData, apiUrl);
+            if (duration.Text != "" || BufferTime.Text != "" || ServiceCost.Text != "") {
 
-            JObject responsedata = JObject.Parse(result);
-            dynamic responseValue = responsedata["ReturnObject"]["ServiceId"];
-            int ServiceId = Convert.ToInt32(responseValue.Value);
-            if(ServiceId != null)
-            {
-                // Navigation.PushAsync(new ServiceProviderPage(ServiceId));               
-                Navigation.PushAsync(new ServiceProviderPage(GetStaff(),ServiceId, "AddService"));
-            }          
+                string[] ServiceBufferTime = { };
+                string[] ServiceDuration = { };
+                string Duration = duration.Text;
+                string bufferTime = BufferTime.Text;
+                if (Duration != null)
+                {
+                    ServiceDuration = Duration.Split(' ');
+                }
+                if (bufferTime != null)
+                {
+                    ServiceBufferTime = bufferTime.Split(' ');
+                }
+                Service obj = new Service();
+                obj.Id = 0;
+                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                obj.Name = ServiceName.Text;
+                obj.CategoryName = "";
+                obj.CategoryId = 0;
+                obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
+                obj.DurationInHours = 0;
+                obj.Cost = Convert.ToDouble(ServiceCost.Text);
+                obj.Currency = "";
+                obj.Colour = "";
+                obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
+                obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                obj.Description = "";
+
+                var SerializedData = JsonConvert.SerializeObject(obj);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddService";
+                var result = PostData("POST", SerializedData, apiUrl);
+
+                JObject responsedata = JObject.Parse(result);
+                dynamic responseValue = responsedata["ReturnObject"]["ServiceId"];
+                int ServiceId = Convert.ToInt32(responseValue.Value);
+                if (ServiceId != null)
+                {
+                    // Navigation.PushAsync(new ServiceProviderPage(ServiceId));               
+                    Navigation.PushAsync(new ServiceProviderPage(GetStaff(), ServiceId, "AddService"));
+                }
+            }
+                      
             //Navigation.PushAsync(new ServicePage());
         }
 

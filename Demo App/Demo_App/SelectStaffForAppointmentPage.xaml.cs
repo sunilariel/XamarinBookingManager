@@ -26,9 +26,11 @@ namespace Demo_App
         public AssignedServicetoStaff serviceobj = null;
         ObservableCollection<AssignedServicetoStaff> ListofData = new ObservableCollection<AssignedServicetoStaff>();
         public Customer objCust = null;
-        public SelectStaffForAppointmentPage (Service service,Customer Cust)
+        string PageName = "";
+        public SelectStaffForAppointmentPage (Service service,Customer Cust,string pagename)
 		{
 			InitializeComponent ();
+            PageName = pagename;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -61,7 +63,7 @@ namespace Demo_App
         {
             AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
              EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name, objCust,Cost));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name, objCust,Cost, PageName));
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()

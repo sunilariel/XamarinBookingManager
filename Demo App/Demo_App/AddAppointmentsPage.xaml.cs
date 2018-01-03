@@ -18,6 +18,7 @@ namespace Demo_App
     public partial class AddAppointmentsPage : ContentPage
     {
         int CategoryId;
+        string PageName = "";
         public Customer objCust = null;
         public AppointmentDetails obj = null;
         public BookAppointment objBookAppointment = null;
@@ -33,7 +34,7 @@ namespace Demo_App
             objCust.Email = Cust.Email;
             objCust.TelephoneNo = Cust.TelephoneNo;
             objCust.Address = Cust.Address;
-
+            BindingContext = objCust;
             if (objAppointment != null)
             {
                 objBookAppointment = new BookAppointment();
@@ -59,13 +60,32 @@ namespace Demo_App
         }
         private void AppointmentsdetailsClick(object sender, SelectedItemChangedEventArgs e)
         {
+            var data=e.SelectedItem as AppointmentDetails;
+            obj = new AppointmentDetails();
+            obj.BookingId = data.BookingId;
+            obj.EmployeeId = data.EmployeeId.ToString();
+            obj.ServiceId = data.ServiceId.ToString();
+            obj.EmployeeName = (data.EmployeeName) == null ? "" : data.EmployeeName;
+            obj.ServiceName = (data.ServiceName) == null ? "" : data.ServiceName;
+            obj.DurationInHours = (data.DurationInHours) == null ? 0 : data.DurationInHours;
+            obj.DurationInMinutes = (data.DurationInMinutes) == null ? 0 : data.DurationInMinutes;
+            obj.Cost = (data.Cost) == null ? 0 : data.Cost;
+            obj.Currency = (data.Currency) == null ? "" : data.Currency;
+            obj.status = data.status;
+            obj.StartTime = data.StartTime;
+            obj.EndTime = data.EndTime;
+            obj.BookingDate = data.BookingDate;
+            obj.Colour = (data.Colour) == null ? "" : data.Colour;
+            obj.DurationHrsMin = data.DurationHrsMin;
+            obj.AppointmentDetail = data.AppointmentDetail;
+            obj.CommentNotes = data.CommentNotes;
             Navigation.PushAsync(new AppointmentDetailsPage(objCust, obj));
         }
 
 
         private void AddAppointmentsClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust));
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, PageName));
         }
 
         public ObservableCollection<AppointmentDetails> GetAppointmentDetails()

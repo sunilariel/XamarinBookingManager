@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
 
 namespace Demo_App
 {
@@ -33,6 +35,7 @@ namespace Demo_App
 
         public async void OnRegClicked(object sender, EventArgs args)
         {
+            if (!IsValid()) return;
             var regdata = reg;
             string RegisterUrl = "http://bookingmanager20-001-site1.btempurl.com/api/companyregistration/CreateAccount";
             var result = await RegisterMethod(RegisterUrl, regdata);
@@ -43,7 +46,7 @@ namespace Demo_App
             string result = "";
             try
             {
-                HttpClient client = new HttpClient();
+                //HttpClient client = new HttpClient();
 
                 RequestData objRequestData = new RequestData();
                 objRequestData.Id = -1;
@@ -61,15 +64,31 @@ namespace Demo_App
 
                 var data = JsonConvert.SerializeObject(objRequestData);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Content = content;
 
-                HttpResponseMessage response = await client.PostAsync(url, content);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    //result = await response.Content.ReadAsStringAsync();
-                    //var product = JsonConvert.DeserializeObject<Register>(result);
-                    //successfulRegisterMsg();                    
-                    redirectToLoginPage();
+                    var response = await client.SendAsync(request);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var strRes = await response.Content.ReadAsStringAsync();
+
+                        var jsonObject = JObject.Parse(strRes);
+
+                    }
+
+
+                    // HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    //if (response.IsSuccessStatusCode)
+                    //{
+                    //    //result = await response.Content.ReadAsStringAsync();
+                    //    //var product = JsonConvert.DeserializeObject<Register>(result);
+                    //    //successfulRegisterMsg();                    
+                    //    redirectToLoginPage();
+                    //}
                 }
             }
             catch (Exception ex)
@@ -100,7 +119,50 @@ namespace Demo_App
 
         }
 
-       
+        private bool IsValid()
+        {
+            if (string.IsNullOrEmpty(nametxt.Text))
+            {
+                DisplayAlert("Error", "Enter Your Name", "OK");
+                return false;
+            }
+           
+
+            if (string.IsNullOrEmpty(Emailtxt.Text))
+            {
+                DisplayAlert("Error", "Enter Email Address", "OK");
+                return false;
+            }
+            if (!IsEmailValid(Emailtxt.Text.Trim()))
+            {
+                DisplayAlert("Error", "Please enter correct email address", "Ok");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(Passwordtxt.Text))
+            {
+                DisplayAlert("Error", "Enter Password", "OK");
+                return false;
+            }
+
+            //if (PasswordEntry.Text != ConfirmPasswordEntry.Text)
+            //{
+            //    DisplayAlert("Error", "The password and confirmation password do not match.", "OK");
+            //    return false;
+            //}
+
+            return true;
+        }
+
+        public bool IsEmailValid(string email)
+        {
+            if (string.IsNullOrEmpty(email)) return false;
+
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            return match.Success;
+        }
+        
 
     }
 }

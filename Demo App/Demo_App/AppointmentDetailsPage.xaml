@@ -4,7 +4,7 @@
              x:Class="Demo_App.AppointmentDetailsPage"
              Title="Appointments Details">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="delete" Order="Primary" Priority="1"/>
+        <ToolbarItem Text="delete" Order="Secondary" Priority="1" Clicked="DeleteAppointment"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -95,6 +95,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditServiceForAppointmentClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>

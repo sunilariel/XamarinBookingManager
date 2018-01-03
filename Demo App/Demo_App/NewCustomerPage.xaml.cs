@@ -12,6 +12,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Globalization;
+using Newtonsoft.Json.Linq;
 
 namespace Demo_App
 {
@@ -44,7 +45,12 @@ namespace Demo_App
             obj.CreationDate = Convert.ToString(DateTime.Now);
             var data = JsonConvert.SerializeObject(obj);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
-            PostData("POST", data, apiUrl);
+           var result = PostData("POST", data, apiUrl);
+
+            dynamic successData = JObject.Parse(result);
+            var msg = Convert.ToString(successData.Message);
+            DisplayAlert("Success", msg, "ok");
+            Navigation.PushAsync(new CustomerPage());
         }
 
         public string DeleteCustomer(string CompanyId, string CustomerId)

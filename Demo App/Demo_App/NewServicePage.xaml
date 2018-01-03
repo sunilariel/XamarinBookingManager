@@ -7,7 +7,7 @@
              Title="New Service">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem x:Name="NewServiceToolbar" Text="Next" Order="Primary" Priority="0" Clicked="SelectServiceProvider"/>-->
-        <ToolbarItem x:Name="NewServiceToolbar" Text="Next" Order="Primary" Priority="0" Clicked="AddService" IsDestructive="False"/>
+        <ToolbarItem x:Name="NewServiceToolbar" Text="Next" Order="Primary" Priority="0" Clicked="AddService"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">

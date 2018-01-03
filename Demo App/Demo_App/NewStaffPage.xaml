@@ -39,7 +39,7 @@
                             </Image>
                         </StackLayout>
                         <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,5,10,0">
-                            <Label Text="Create" TextColor="White" HorizontalOptions="End"></Label>
+                            <Label x:Name="AddStaffCreateButton" Text="Create" TextColor="White" IsEnabled="False" HorizontalOptions="End"></Label>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="AddStaff"/>
                             </StackLayout.GestureRecognizers>

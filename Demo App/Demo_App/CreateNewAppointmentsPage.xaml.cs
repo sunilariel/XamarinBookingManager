@@ -26,6 +26,7 @@ namespace Demo_App
         int EmployeeId;
         string EmployeeName = "";
         string CurrentSelectedDay = "";
+        string PageName = "";
         DateTime SelectedDateOfBooking;
         public static WorkingHoursofEmployee objbookingSlot;
         ObservableCollection<StaffWorkingHours> ListofFreetimeSlots = new ObservableCollection<StaffWorkingHours>();
@@ -33,9 +34,10 @@ namespace Demo_App
         public AddAppointments objAddAppointment = null;
         public Customer objCust = null;
         public Notes objnotes = null;
-        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,Customer Cust,double Cost)
+        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,Customer Cust,double Cost,string pagename)
         {
             InitializeComponent();
+            PageName = pagename;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -144,8 +146,16 @@ namespace Demo_App
         private void CreateAppointmentClick(object sender,SelectedItemChangedEventArgs e)
         {
             var data = e.SelectedItem;
-            objAddAppointment.StartTime = data.ToString();          
-            Navigation.PushAsync(new NewAppointmentPage(objAddAppointment, objCust, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
+            objAddAppointment.StartTime = data.ToString();
+            AppointmentDetails objAppointment = new AppointmentDetails();
+            if (PageName == "EditServiceForAppointment")
+            {
+                Navigation.PushAsync(new AppointmentDetailsPage(objCust, objAppointment));
+            }
+            else
+            {
+                Navigation.PushAsync(new NewAppointmentPage(objAddAppointment, objCust, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)
