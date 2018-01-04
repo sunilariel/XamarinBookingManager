@@ -18,14 +18,14 @@ namespace Demo_App
     public partial class AddAppointmentsPage : ContentPage
     {
         int CategoryId;
-        string PageName = "";
+        string PageName = "";       
         public Customer objCust = null;
         public AppointmentDetails obj = null;
         public BookAppointment objBookAppointment = null;
         ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
         public AddAppointmentsPage(Customer Cust, BookAppointment objAppointment)
         {
-            InitializeComponent();
+            InitializeComponent();           
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -61,7 +61,13 @@ namespace Demo_App
         private void AppointmentsdetailsClick(object sender, SelectedItemChangedEventArgs e)
         {
             var data=e.SelectedItem as AppointmentDetails;
+            string bookingdate = data.BookingDate.Split(',')[0];
             obj = new AppointmentDetails();
+            DateTime startTime = Convert.ToDateTime(data.StartTime);
+            string TimeStart = startTime.ToShortTimeString();
+            DateTime endTime = Convert.ToDateTime(data.EndTime);
+            string TimeEnd = endTime.ToShortTimeString();
+            string timeperiod = TimeStart + "-" + TimeEnd;
             obj.BookingId = data.BookingId;
             obj.EmployeeId = data.EmployeeId.ToString();
             obj.ServiceId = data.ServiceId.ToString();
@@ -74,11 +80,12 @@ namespace Demo_App
             obj.status = data.status;
             obj.StartTime = data.StartTime;
             obj.EndTime = data.EndTime;
-            obj.BookingDate = data.BookingDate;
+            obj.BookingDate = bookingdate;
             obj.Colour = (data.Colour) == null ? "" : data.Colour;
             obj.DurationHrsMin = data.DurationHrsMin;
             obj.AppointmentDetail = data.AppointmentDetail;
             obj.CommentNotes = data.CommentNotes;
+            obj.TimePeriod = timeperiod;
             Navigation.PushAsync(new AppointmentDetailsPage(objCust, obj));
         }
 
@@ -92,16 +99,14 @@ namespace Demo_App
         {
             try
             {
-                //if (objBookAppointment != null)
-                //{
+                string[] StartTime = { };
                 var startDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(-1)).ToString("dd-MM-yyyy");
 
                 var endDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(1)).ToString("dd-MM-yyyy");
 
 
                 string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForCustomerByIdBetweenDates?customerId=" + objCust.Id + "&startDate=" + startDate + "&endDate=" + endDate;
-                //string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetAllBookingForCustomer?customerId=" + objBookAppointment.CustomerIdsCommaSeperated + "&dateOfBooking=" + objBookAppointment.Start;
-
+                
                 var result = PostData("GET", "", apiURL);
 
                 ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
@@ -116,8 +121,12 @@ namespace Demo_App
                     string durhrs = DurationHours + "hrs";
                     string durationMins = durmin + "mins";
                     string Duration = durhrs + " " + durationMins;
-                    string DateOFbooking = appointment.BookingDate.ToString("dd-MMM-yyyy");
+                    var datebooking = appointment.Start; 
+                     var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
                     string detail = appointment.Employee.FirstName + "," + appointment.Service.Name + "," + Duration + "," + appointment.Service.Cost;
+                    DateTime startTime = Convert.ToDateTime(appointment.Start);
+                    string Time = startTime.ToShortTimeString();
+                    var DateTimeofBooking = DateOFbooking + "," + Time;
                     obj = new AppointmentDetails();
                     obj.BookingId = appointment.Id;
                     obj.EmployeeId = appointment.EmployeeId.ToString();
@@ -131,7 +140,7 @@ namespace Demo_App
                     obj.status = appointment.Status;
                     obj.StartTime = appointment.Start;
                     obj.EndTime = appointment.End;
-                    obj.BookingDate = DateOFbooking;
+                    obj.BookingDate = DateTimeofBooking;
                     obj.Colour = (appointment.Service) == null ? "" : appointment.Service.Colour;
                     obj.DurationHrsMin = Duration;
                     obj.AppointmentDetail = detail;
@@ -140,8 +149,7 @@ namespace Demo_App
                     ListofAppointment.Add(obj);
 
                 }
-
-                //}
+               
             }
             catch (Exception e)
             {

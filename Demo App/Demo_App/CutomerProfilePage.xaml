@@ -44,10 +44,10 @@
                                 <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="10,5,10,0">
                                     <!--<Image x:Name="plusimsge" Source="plus2.png"   HeightRequest="20" WidthRequest="20"/>-->
                                     <Label x:Name="deletelbl" Text="delete" TextColor="White" />
-                                    <Image.GestureRecognizers>
+                                    <!--<Image.GestureRecognizers>
                                             <TapGestureRecognizer 
                                      Tapped="OnOpenPupup"/>
-                                        </Image.GestureRecognizers>
+                                        </Image.GestureRecognizers>-->
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="DeleteCustomer"/>
                                     </StackLayout.GestureRecognizers>

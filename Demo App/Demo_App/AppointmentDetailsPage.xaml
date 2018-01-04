@@ -35,6 +35,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="{Binding BookingDate}"/>
+                            <Label Text="{Binding TimePeriod}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />

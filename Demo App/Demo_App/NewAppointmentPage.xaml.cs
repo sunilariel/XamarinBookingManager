@@ -28,6 +28,7 @@ namespace Demo_App
         public AddAppointments obj = null;
         public NewAppointmentPage(AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking,Notes objNotes)
         {
+            GetAppointmentWorkinghours();
             GetAllCustomerNotes();
             InitializeComponent();
             day = Day;
@@ -130,6 +131,23 @@ namespace Demo_App
             List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
         }
 
+        public string GetAppointmentWorkinghours()
+        {
+            string apiURL = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + EmpID;
+            string result = "";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiURL);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return result;
+        }
+
         public void GetAllCustomerNotes()
         {
             var CompanyId = Application.Current.Properties["CompanyId"];
@@ -138,6 +156,7 @@ namespace Demo_App
 
             var result = PostData(Method, "", Url);
         }
+
 
         public string PostData(string Method, string SerializedData, string Url)
         {

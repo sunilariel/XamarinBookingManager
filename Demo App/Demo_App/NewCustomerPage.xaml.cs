@@ -67,54 +67,8 @@ namespace Demo_App
             var result = PostData("GET", "", apiURL);
             return result;
         }
-
-        public string UpdateCustomer(Customer customer)
-        {
-            var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-
-            Customer obj = new Customer();
-            obj.Id = 0;
-            obj.CompanyId = CompanyId;
-            obj.UserName = "customer2@gmail.com";
-            obj.Password = "123456";
-            obj.FirstName = "customer2";
-            obj.LastName = "";
-            obj.Address = "";
-            obj.Email = "customer2@gmail.com";
-            obj.TelephoneNo = "123456";
-            obj.CreationDate = Convert.ToString(DateTime.Now);
-
-
-            string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/Update";
-            var jsonString = JsonConvert.SerializeObject(obj);
-            var result = PostData("POST", jsonString, apiURL);
-
-            return result;
-        }
-       
-        public void UpdateAppointment(UpdateBookAppointment appointment)
-        {
-            
-                DateTime obj = DateTime.Parse(appointment.Start);
-                appointment.Start = obj.ToString("yyyy-MM-dd T HH:mm:ss");
-                appointment.End = obj.AddMinutes(appointment.EndMinute).ToString("yyyy-MM-dd T HH:mm:ss");
-
-                var StartTime = DateTime.Parse(appointment.StartHour, CultureInfo.InvariantCulture);
-                var Time = StartTime.ToString("HH:mm").Split(':');
-
-                appointment.StartHour = Time[0];
-                appointment.StartMinute = Time[1];
-
-                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/booking/UpdateBooking";
-                var jsonString = JsonConvert.SerializeObject(appointment);
-
-                PostData("POST", jsonString, apiURL);
-
+      
               
-            
-            
-        }
-
         public string GetSelectedService(string ServiceId)
         {
           
@@ -130,62 +84,7 @@ namespace Demo_App
             var result = PostData("GET", "", apiURL);           
             return result;
         }
-
-        public string GetAppointmentWorkinghours(string EmployeeId)
-        {
-            string apiURL = Application.Current.Properties["DomainUrl"] + "/api/staff/GetWorkingHours?employeeId=" + EmployeeId;
-            var result = PostData("GET", "", apiURL);           
-            return result;
-        }
-
-        public string GetFreeBookingSlotsForEmployee(WorkingHoursofEmployee dataObj)
-        {          
-                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/booking/GetFreeBookingSlotsForEmployee?companyId=" + dataObj.CompanyId + "&serviceId=" + dataObj.ServiceId + "&employeeId=" + dataObj.EmployeeId + "&dateOfBooking=" + dataObj.DateOfBooking + "&day=" + dataObj.Day;
-
-                var result = PostData("GET", "", apiURL);              
-                return result;          
-        }
-
-        public string GetAppointmentDetails(string CustomerId)
-        {
-            
-                var startDate = DateTime.Now.Date.AddYears(-1).ToShortDateString().Replace("/", "-");
-
-                var endDate = DateTime.Now.Date.AddYears(1).ToShortDateString().Replace("/", "-");
-
-                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/booking/GetBookingsForCustomerByIdBetweenDates?customerId=" + CustomerId + "&startDate=" + startDate + "&endDate=" + endDate;
-
-                var result = PostData("GET", "", apiURL);            
-
-                List<AllAppointments> appointments = JsonConvert.DeserializeObject<List<AllAppointments>>(result);
-                List<AppointmentDetails> ListofAppointment = new List<AppointmentDetails>();
-                foreach (var appointment in appointments)
-                {
-                    AppointmentDetails obj = new AppointmentDetails();
-                    obj.BookingId = appointment.Id;
-                    obj.EmployeeId = appointment.EmployeeId.ToString();
-                    obj.ServiceId = appointment.ServiceId.ToString();
-                    obj.EmployeeName = (appointment.Employee) == null ? "" : appointment.Employee.FirstName;
-                    obj.ServiceName = appointment.Service.Name;
-                    obj.DurationInHours = appointment.Service.DurationInHours;
-                    obj.DurationInMinutes = appointment.Service.DurationInMinutes;
-                    obj.Cost = appointment.Service.Cost;
-                    obj.Currency = appointment.Service.Currency;
-                    obj.status = appointment.Status;
-                    obj.StartTime = appointment.Start;
-                    obj.EndTime = appointment.End;
-                    obj.Colour = appointment.Service.Colour;
-
-                    ListofAppointment.Add(obj);
-
-                }
-
-                var jsondata = JsonConvert.SerializeObject(ListofAppointment);
-
-                return jsondata;
-          
-        }
-
+       
         public string SetStatusOfAppointment(string status, string BookingId)
         {         
                 string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/SetStatus?status=" + status + "&bookingId=" + BookingId;
@@ -201,16 +100,7 @@ namespace Demo_App
                 var result = PostData("POST", JsonString, apiUrl);                          
                 return result;                  
         }
-
-        public string DeleteAppointment(string BookingId)
-        {
-            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/DeleteBooking?bookingId=" + BookingId;
-
-            var result = PostData("DELETE", "", apiUrl);
-            return result;
-        }
-
-
+      
         public string GetCustomerStats(string CompanyId, string CustomerId, string Year, string Month)
         {
                    

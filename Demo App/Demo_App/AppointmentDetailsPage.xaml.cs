@@ -19,9 +19,11 @@ namespace Demo_App
         public Customer objCust = null;
         public AppointmentDetails obj = null;       
         int CategoryId;
+
         public AppointmentDetailsPage (Customer Cust, AppointmentDetails appointment)
 		{
 			InitializeComponent ();
+            Application.Current.Properties["BookingID"] = appointment.BookingId;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -51,6 +53,7 @@ namespace Demo_App
             obj.DurationHrsMin = appointment.DurationHrsMin;
             obj.AppointmentDetail = appointment.AppointmentDetail;
             obj.CommentNotes = appointment.CommentNotes;
+            obj.TimePeriod = appointment.TimePeriod;
             BindingContext = obj;
             string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
             for (var i = 0; i < Data.Length; i++)

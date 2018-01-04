@@ -16,7 +16,7 @@ namespace Demo_App
 	public partial class CutomerProfilePage : ContentPage
 	{
         //string phonNumber;
-        int CustomerId;
+        int CustomerId;      
         public Customer objCust = null;
         public BookAppointment objBookAppointment = null;
         public CutomerProfilePage (Customer Cust,Notes obj)

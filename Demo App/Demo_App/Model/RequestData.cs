@@ -77,15 +77,16 @@ namespace Demo_App.Model
         public int ServiceId { get; set; }
         public int EmployeeId { get; set; }
         public string CustomerIdsCommaSeperated { get; set; }
-        public string StartHour { get; set; }
-        public string StartMinute { get; set; }
+        public int StartHour { get; set; }
+        public int StartMinute { get; set; }
         public int EndHour { get; set; }
         public int EndMinute { get; set; }
         public bool IsAdded { get; set; }
         public string Message { get; set; }
+        public string Notes { get; set; }
         public List<int> CustomerIds { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
         public int Status { get; set; }
     }
 
@@ -104,6 +105,23 @@ namespace Demo_App.Model
         public string EndTime { get; set; }       
     }
 
+    public class UpdateAppointments
+    {
+        public int CompanyId { get; set; }
+        public int ServiceId { get; set; }
+        public string ServiceName { get; set; }
+        public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
+        public double Cost { get; set; }
+        public string Currency { get; set; }
+        public int DurationInMinutes { get; set; }
+        public int DurationInHours { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string BookingDate { get; set; }
+        public string TimePeriod { get; set; }
+        public string CommentNotes { get; set; }
+    }
 
     public class AppointmentDetails
     {
@@ -125,6 +143,7 @@ namespace Demo_App.Model
         public string BookingDate { get; set; }
         public string AppointmentDetail { get; set; }
         public string CommentNotes { get; set; }
+        public string TimePeriod { get; set; }
 
 
     }
@@ -163,7 +182,7 @@ namespace Demo_App.Model
         public int Status { get; set; }
         public string Start { get; set; }
         public string End { get; set; }
-        public DateTime BookingDate { get; set; }
+        public string BookingDate { get; set; }
         public string Notes { get; set; }
 
 

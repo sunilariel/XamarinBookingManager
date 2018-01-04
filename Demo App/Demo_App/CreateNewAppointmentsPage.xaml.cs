@@ -147,10 +147,11 @@ namespace Demo_App
         {
             var data = e.SelectedItem;
             objAddAppointment.StartTime = data.ToString();
-            AppointmentDetails objAppointment = new AppointmentDetails();
+            //AppointmentDetails objAppointment = new AppointmentDetails();
+
             if (PageName == "EditServiceForAppointment")
             {
-                Navigation.PushAsync(new AppointmentDetailsPage(objCust, objAppointment));
+                Navigation.PushAsync(new UpdateAppointmentDetailsPage(objCust, objAddAppointment, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
             }
             else
             {
