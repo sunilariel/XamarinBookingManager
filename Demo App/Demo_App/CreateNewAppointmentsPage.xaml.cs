@@ -20,6 +20,7 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateNewAppointmentsPage : ContentPage
     {
+        #region GloblesVariables
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         public static SfSchedule schedulee;
         int serviceID;
@@ -34,7 +35,9 @@ namespace Demo_App
         public AddAppointments objAddAppointment = null;
         public Customer objCust = null;
         public Notes objnotes = null;
-        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,Customer Cust,double Cost,string pagename)
+        #endregion
+
+        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,Customer Cust,double Cost,string pagename,Notes objNotes)
         {
             InitializeComponent();
             PageName = pagename;
@@ -77,7 +80,7 @@ namespace Demo_App
         private void GetAvailableTimeForAppointments(object sender, CellTappedEventArgs e)
         {
             //DisplayAlert("CustomizeHeader", "888888888", "cancel");
-            var currentDay = e.Datetime.DayOfWeek;
+            var currentDay = e.Datetime.DayOfWeek;           
             var dateOfBooking = e.Datetime.Date;
             CurrentSelectedDay= currentDay.ToString();
             SelectedDateOfBooking = dateOfBooking;
@@ -149,7 +152,7 @@ namespace Demo_App
             objAddAppointment.StartTime = data.ToString();
             //AppointmentDetails objAppointment = new AppointmentDetails();
 
-            if (PageName == "EditServiceForAppointment")
+            if (PageName == "EditAppointment")
             {
                 Navigation.PushAsync(new UpdateAppointmentDetailsPage(objCust, objAddAppointment, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
             }

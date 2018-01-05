@@ -980,5 +980,4 @@ D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\a
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
-D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.UpdateNewAppointmentsPage.xaml.g.cs
 D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.UpdateAppointmentDetailsPage.xaml.g.cs

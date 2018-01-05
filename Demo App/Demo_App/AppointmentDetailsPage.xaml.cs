@@ -13,17 +13,61 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AppointmentDetailsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AppointmentDetailsPage : ContentPage
+    {
+        #region GlobalVariables
         public Customer objCust = null;
-        public AppointmentDetails obj = null;       
+        public AppointmentDetails obj = null;
+        public Service service = null;
+        public AddAppointments addAppointments = null;
+        public Notes objNotes = null;
         int CategoryId;
+        int ServiceID;
+        string ServiceName = "";
+        int EmpID;
+        string empName = "";
+        double Cost;
+        string Day = "";
+        DateTime DateOfBooking;
+        Dictionary<string, int> Data = null;
+        #endregion
 
-        public AppointmentDetailsPage (Customer Cust, AppointmentDetails appointment)
-		{
-			InitializeComponent ();
+        public AppointmentDetailsPage(Customer Cust, AppointmentDetails appointment)
+        {
+            InitializeComponent();
+            objNotes = new Notes();
+            objNotes.CompanyId= Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+            objNotes.CustomerId = Cust.Id;
+            objNotes.Description = CommentNotes.Text;
             Application.Current.Properties["BookingID"] = appointment.BookingId;
+
+            DateOfBooking = Convert.ToDateTime(appointment.BookingDate);
+            Day = DateOfBooking.DayOfWeek.ToString();
+            ServiceID = Convert.ToInt32(appointment.ServiceId);
+            ServiceName = appointment.ServiceName;
+            EmpID = Convert.ToInt32(appointment.EmployeeId);
+            empName = appointment.EmployeeName;
+            Cost = appointment.Cost;
+            DateTime startTime = Convert.ToDateTime(appointment.StartTime);
+            string TimeStart = startTime.ToShortTimeString();
+            DateTime endTime = Convert.ToDateTime(appointment.EndTime);
+            string TimeEnd = endTime.ToShortTimeString();
+            string timeperiod = TimeStart + "-" + TimeEnd;
+            addAppointments = new AddAppointments();
+            addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+            addAppointments.EmployeeId = EmpID;
+            addAppointments.EmployeeName = empName;
+            addAppointments.ServiceId = ServiceID;
+            addAppointments.ServiceName = ServiceName;
+            addAppointments.Cost = Cost;
+            addAppointments.StartTime = appointment.StartTime;
+            addAppointments.EndTime = appointment.EndTime;
+            addAppointments.TimePeriod = timeperiod;
+            service = new Service();
+            service.Id = Convert.ToInt32(appointment.ServiceId);
+            service.Name = appointment.ServiceName;
+            service.Cost = appointment.Cost;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -55,22 +99,37 @@ namespace Demo_App
             obj.CommentNotes = appointment.CommentNotes;
             obj.TimePeriod = appointment.TimePeriod;
             BindingContext = obj;
-            string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
-            for (var i = 0; i < Data.Length; i++)
+
+            Data = new Dictionary<string, int>
             {
-                AppointmentsPicker.Items.Add(Data[i]);
-            }
+               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
+               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+            };           
+            foreach (var item in Data.Keys)
+            {
+                AppointmentsPicker.Items.Add(item);
+            }            
         }
 
-        private void EditServiceForAppointmentClick(object sender,EventArgs e)
+        private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust,"EditServiceForAppointment"));
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "EditAppointment", objNotes));
         }
 
-        //private void EditStaffForAppointmentClick(object sender,EventArgs e)
-        //{
-        //    Navigation.PushAsync(new SelectStaffForAppointmentPage(objservice, objCust, "EditStaffForAppointment"));
-        //}
+        private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, objCust, Cost, "EditAppointment",objNotes));
+        }
+
+        private void UpdateAppointmentbyStaffClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, "EditAppointment", objNotes));
+        }
+
+        private void EditCommentClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, Day, DateOfBooking, "EditAppointment"));
+        }
 
         public string DeleteAppointment()
         {

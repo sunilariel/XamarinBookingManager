@@ -18,15 +18,27 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UpdateAppointmentDetailsPage : ContentPage
 	{
+        #region globles
         int EmpID;
+        string empName = "";
         int ServiceID;
+        string ServiceName = "";
         int CustID;
+        double Cost;
         string day = "";
         DateTime dateOfBooking;
         public Customer objCust = null;
+        public Service service = null;
+        public Notes objNotes = null;
         public UpdateAppointments obj = null;
+        public AddAppointments addAppointments = null;
         public UpdateBookAppointment UpdatebookAppointment = null;
         int CategoryId;
+        int StatusId;
+        Dictionary<string, int> Data = null;
+
+        #endregion
+
         public UpdateAppointmentDetailsPage (Customer Cust, AddAppointments appointment,string Day, DateTime DateOfBooking, Notes objNotes)
 		{
 
@@ -34,8 +46,25 @@ namespace Demo_App
             day = Day;
             dateOfBooking = DateOfBooking;
             EmpID = appointment.EmployeeId;
+            empName = appointment.EmployeeName;
+            Cost = appointment.Cost;
             CustID = Cust.Id;
             ServiceID = appointment.ServiceId;
+            ServiceName = appointment.ServiceName;
+            service = new Service();
+            service.Id = Convert.ToInt32(appointment.ServiceId);
+            service.Name = appointment.ServiceName;
+            service.Cost = appointment.Cost;
+            addAppointments = new AddAppointments();
+            addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+            addAppointments.EmployeeId = EmpID;
+            addAppointments.EmployeeName = empName;
+            addAppointments.ServiceId = ServiceID;
+            addAppointments.ServiceName = ServiceName;
+            addAppointments.Cost = Cost;
+            addAppointments.StartTime = appointment.StartTime;
+            addAppointments.EndTime = appointment.EndTime;
+            addAppointments.TimePeriod = appointment.StartTime; ;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -61,26 +90,47 @@ namespace Demo_App
             obj.StartTime = strttime;
             obj.EndTime = endtime;
             obj.BookingDate = day+","+ dateOfBooking.ToString("dd-MMM-yyyy");           
-            //obj.CommentNotes = appointment.CommentNotes;
+            obj.CommentNotes = objNotes == null ? "": objNotes.Description; 
             obj.TimePeriod = appointment.StartTime;
             BindingContext = obj;
-            string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
-            for (var i = 0; i < Data.Length; i++)
+            //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
+
+            Data = new Dictionary<string, int>
             {
-                AppointmentsPicker.Items.Add(Data[i]);
+               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
+               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+            };
+           
+            foreach (var item in Data.Keys)
+            {
+                AppointmentsPicker.Items.Add(item);
             }
+
+            
+           // var id = Data.TryGetValue("No Label", out StatusId);
+            
         }
 
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "EditServiceForAppointment"));
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "EditAppointment",objNotes));
         }
 
 
-        //private void EditStaffForAppointmentClick(object sender,EventArgs e)
-        //{
-        //    Navigation.PushAsync(new SelectStaffForAppointmentPage(objservice, objCust, "EditStaffForAppointment"));
-        //}      
+        private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, objCust, Cost, "EditAppointment",objNotes));
+        }
+
+        private void EditCommentClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, day, dateOfBooking, "EditAppointment"));
+        }
+
+        private void UpdateAppointmentbyStaffClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, "EditAppointment",objNotes));
+        }
 
         public void UpdateAppointments()
         {
@@ -97,6 +147,11 @@ namespace Demo_App
                 Endmins = TimeAppointment[1].Split(':');
                 Endmin = Endmins[1].Split(' ');
             }
+            if(AppointmentsPicker.SelectedItem!=null)
+            { 
+            string selectedValue = (AppointmentsPicker.SelectedItem).ToString();
+            Data.TryGetValue(selectedValue, out StatusId);
+                }
             var GetAllCustomerData = GetAllCustomer();
             List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
             UpdatebookAppointment = new UpdateBookAppointment();
@@ -115,7 +170,7 @@ namespace Demo_App
             UpdatebookAppointment.CustomerIds = custIDs;
             UpdatebookAppointment.Start = dateOfBooking;
             UpdatebookAppointment.End = dateOfBooking;
-            UpdatebookAppointment.Status = 0;
+            UpdatebookAppointment.Status = StatusId;
 
             var SerializedData = JsonConvert.SerializeObject(UpdatebookAppointment);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/UpdateBooking";

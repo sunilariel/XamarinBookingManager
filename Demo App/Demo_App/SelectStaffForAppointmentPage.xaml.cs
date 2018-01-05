@@ -17,7 +17,8 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectStaffForAppointmentPage : ContentPage
 	{
-        ObservableCollection<AssignProvider> ListofProvider = new ObservableCollection<AssignProvider>();      
+        #region globles
+        ObservableCollection<AssignProvider> ListofProvider = new ObservableCollection<AssignProvider>();
         //int EmployeeId;
         int ServiceId;
         string ServiceName = "";
@@ -26,8 +27,11 @@ namespace Demo_App
         public AssignedServicetoStaff serviceobj = null;
         ObservableCollection<AssignedServicetoStaff> ListofData = new ObservableCollection<AssignedServicetoStaff>();
         public Customer objCust = null;
+        public Notes objNotes = null;
         string PageName = "";
-        public SelectStaffForAppointmentPage (Service service,Customer Cust,string pagename)
+        #endregion
+
+        public SelectStaffForAppointmentPage (Service service,Customer Cust,string pagename,Notes objNotes)
 		{
 			InitializeComponent ();
             PageName = pagename;
@@ -63,7 +67,7 @@ namespace Demo_App
         {
             AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
              EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name, objCust,Cost, PageName));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name, objCust,Cost, PageName,objNotes));
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()

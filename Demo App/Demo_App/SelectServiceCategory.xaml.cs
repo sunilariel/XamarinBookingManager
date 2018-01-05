@@ -23,7 +23,7 @@ namespace Demo_App
         public ServicesAllocatedToCategory serviceCount = null;
         public Customer objCust = null;
         string PageName = "";
-        public SelectServiceCategory (int CategoryId,Customer Cust,string pagename)
+        public SelectServiceCategory (int CategoryId,Customer Cust,string pagename,Notes objNotes)
 		{
 			InitializeComponent ();
             PageName = pagename;

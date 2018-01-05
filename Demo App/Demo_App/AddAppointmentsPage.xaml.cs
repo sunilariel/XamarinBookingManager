@@ -17,12 +17,16 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddAppointmentsPage : ContentPage
     {
+        #region GloblesVariables
         int CategoryId;
-        string PageName = "";       
+        string PageName = "";
         public Customer objCust = null;
         public AppointmentDetails obj = null;
+        public Notes objNotes = null;
         public BookAppointment objBookAppointment = null;
         ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
+        #endregion
+
         public AddAppointmentsPage(Customer Cust, BookAppointment objAppointment)
         {
             InitializeComponent();           
@@ -35,6 +39,7 @@ namespace Demo_App
             objCust.TelephoneNo = Cust.TelephoneNo;
             objCust.Address = Cust.Address;
             BindingContext = objCust;
+            this.Title = objCust.FirstName + "'s" + "appointments";
             if (objAppointment != null)
             {
                 objBookAppointment = new BookAppointment();
@@ -92,7 +97,7 @@ namespace Demo_App
 
         private void AddAppointmentsClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, PageName));
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, PageName,objNotes));
         }
 
         public ObservableCollection<AppointmentDetails> GetAppointmentDetails()

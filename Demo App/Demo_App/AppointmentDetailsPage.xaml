@@ -20,8 +20,8 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" HeightRequest="50">
-                    <Picker x:Name="AppointmentsPicker" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                <StackLayout Grid.Row="0" HeightRequest="50" BackgroundColor="White">
+                    <Picker x:Name="AppointmentsPicker" HorizontalOptions="EndAndExpand" WidthRequest="100"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
                     <Grid>
@@ -35,11 +35,14 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="{Binding BookingDate}"/>
-                            <Label Text="{Binding TimePeriod}" TextColor="Black"/>
+                            <Label x:Name="TimePeriodlbl" Text="{Binding TimePeriod}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
-                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
+                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" /> 
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="UpdateAppointmentbyBookingDateClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -76,6 +79,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="UpdateAppointmentbyStaffClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -134,11 +140,14 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Comments"/>
-                            <Label Text="{Binding CommentNotes}" TextColor="Black"/>
+                            <Label x:Name="CommentNotes" Text="{Binding CommentNotes}" TextColor="Black"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditCommentClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>

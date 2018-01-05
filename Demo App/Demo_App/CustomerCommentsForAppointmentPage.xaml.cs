@@ -16,13 +16,18 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CustomerCommentsForAppointmentPage : ContentPage
 	{
+        #region GloblesVariables
         string day = "";
         DateTime dateOfBooking;
-        public Customer objCust = null;       
+        public Customer objCust = null;
         public AddAppointments obj = null;
-        public CustomerCommentsForAppointmentPage (AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking)
+        string PageName = "";
+        #endregion
+
+        public CustomerCommentsForAppointmentPage (AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking,string pagename)
 		{
 			InitializeComponent ();
+            PageName = pagename;
             day = Day;
             dateOfBooking = DateOfBooking;
             obj = new AddAppointments();
@@ -34,6 +39,7 @@ namespace Demo_App
             obj.Cost = objAddAppointments.Cost;
             obj.StartTime = objAddAppointments.StartTime;
             obj.EndTime = objAddAppointments.EndTime;
+            obj.TimePeriod = objAddAppointments.TimePeriod;
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -59,7 +65,15 @@ namespace Demo_App
 
             var result = PostData(ApiMethod, data, Url);
           
-            Navigation.PushAsync(new NewAppointmentPage(obj, objCust,  day, dateOfBooking, objNotes));
+            if(PageName== "EditAppointment")
+            {
+                Navigation.PushAsync(new UpdateAppointmentDetailsPage(objCust, obj , day, dateOfBooking, objNotes));
+            }
+            else
+            {
+                Navigation.PushAsync(new NewAppointmentPage(obj, objCust, day, dateOfBooking, objNotes));
+            }
+            
             
         }
 

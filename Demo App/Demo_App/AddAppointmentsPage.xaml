@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo_App.AddAppointmentsPage"
-             Title="{Binding FirstName}">
+             >
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
             <Grid RowSpacing="1">

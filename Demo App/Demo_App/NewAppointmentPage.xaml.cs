@@ -18,6 +18,7 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewAppointmentPage : ContentPage
     {
+        #region GloblesVariables
         int EmpID;
         int ServiceID;
         int CustID;
@@ -26,10 +27,13 @@ namespace Demo_App
         public Customer objCust = null;
         public BookAppointment objbookAppointment = null;
         public AddAppointments obj = null;
+        Dictionary<string, int> Data = null;
+        int StatusId;
+        #endregion
+
         public NewAppointmentPage(AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking,Notes objNotes)
-        {
-            GetAppointmentWorkinghours();
-            GetAllCustomerNotes();
+        {            
+            //GetAllCustomerNotes();
             InitializeComponent();
             day = Day;
             dateOfBooking = DateOfBooking;
@@ -62,16 +66,23 @@ namespace Demo_App
                 AddComment.Text = objNotes.Description;
             }
             BindingContext = objAddAppointments;
-            string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
-            for (var i = 0; i < Data.Length; i++)
+
+            //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };          
+            Data = new Dictionary<string, int>
             {
-                newAppointmentsPicker.Items.Add(Data[i]);
+               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
+               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+            };
+
+            foreach (var item in Data.Keys)
+            {
+                newAppointmentsPicker.Items.Add(item);
             }
         }
 
         private void AddCommentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(obj,objCust, day,dateOfBooking));
+            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(obj,objCust, day,dateOfBooking,"addAppointment"));
         }
 
         public void CreateAppointment()
@@ -94,6 +105,8 @@ namespace Demo_App
                 Endmins = TimeAppointment[1].Split(':');
                 Endmin= Endmins[1].Split(' ');
             }
+            string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
+            Data.TryGetValue(selectedValue, out StatusId);
             var GetAllCustomerData = GetAllCustomer();
             List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
             objbookAppointment = new BookAppointment();           
@@ -111,7 +124,7 @@ namespace Demo_App
             objbookAppointment.CustomerIds = custIDs;
             objbookAppointment.Start = dateOfBooking;
             objbookAppointment.End = dateOfBooking;
-            objbookAppointment.Status = 0;
+            objbookAppointment.Status = StatusId;
 
             var SerializedData = JsonConvert.SerializeObject(objbookAppointment);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/BookAppointment";

@@ -102,7 +102,8 @@ namespace Demo_App.Model
         public int DurationInMinutes { get; set; }
         public int DurationInHours { get; set; }
         public string StartTime { get; set; }
-        public string EndTime { get; set; }       
+        public string EndTime { get; set; } 
+        public string TimePeriod { get; set; }
     }
 
     public class UpdateAppointments
