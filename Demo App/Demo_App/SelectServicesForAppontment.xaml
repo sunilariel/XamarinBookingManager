@@ -21,15 +21,8 @@
                                     </StackLayout>
                                     <StackLayout Grid.Column="1">
                                         <Label Text="{Binding Name}" TextColor="Black"/>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Text="{Binding DurationInMinutes}"/>
-                                            <Label Grid.Column="1" Text="{Binding Cost}"/>
-                                        </Grid>
-                                        
+                                        <Label Text="{Binding ServiceDetails}"/>
+                                        <!--<Label Grid.Column="1" Text="{Binding Cost}"/>-->
                                     </StackLayout>
                                 </Grid>
                                

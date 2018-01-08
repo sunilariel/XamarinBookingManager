@@ -1,4 +1,5 @@
-﻿using Demo_App.Model;
+﻿using Android.Widget;
+using Demo_App.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -20,15 +21,22 @@ namespace Demo_App
     {
         #region GloblesVariables
         int EmpID;
+        string empName = "";
         int ServiceID;
+        string ServiceName = "";
         int CustID;
+        double Cost;
         string day = "";
         DateTime dateOfBooking;
         public Customer objCust = null;
+        public Notes objNotes = null;
+        public Service service = null;
         public BookAppointment objbookAppointment = null;
         public AddAppointments obj = null;
         Dictionary<string, int> Data = null;
         int StatusId;
+        int CategoryId;
+        
         #endregion
 
         public NewAppointmentPage(AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking,Notes objNotes)
@@ -38,8 +46,15 @@ namespace Demo_App
             day = Day;
             dateOfBooking = DateOfBooking;
             EmpID = objAddAppointments.EmployeeId;
+            empName = objAddAppointments.EmployeeName;
             ServiceID = objAddAppointments.ServiceId;
+            ServiceName = objAddAppointments.ServiceName;
             CustID = Cust.Id;
+            Cost = objAddAppointments.Cost;
+            service = new Service();
+            service.Id = Convert.ToInt32(objAddAppointments.ServiceId);
+            service.Name = objAddAppointments.ServiceName;
+            service.Cost = objAddAppointments.Cost;
             obj = new AddAppointments();
             obj.CompanyId = objAddAppointments.CompanyId;
             obj.ServiceId = objAddAppointments.ServiceId;
@@ -49,6 +64,7 @@ namespace Demo_App
             obj.Cost = objAddAppointments.Cost;
             obj.StartTime = objAddAppointments.StartTime;
             obj.EndTime = objAddAppointments.EndTime;
+
             objCust = new Customer();
             objCust.Id = Cust.Id;
             objCust.FirstName = Cust.FirstName;
@@ -70,16 +86,30 @@ namespace Demo_App
             //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };          
             Data = new Dictionary<string, int>
             {
-               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
-               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
+               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
             };
 
             foreach (var item in Data.Keys)
             {
                 newAppointmentsPicker.Items.Add(item);
             }
+            newAppointmentsPicker.SelectedIndex = 0;
         }
 
+        private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, objCust, Cost, "NewAppointment", objNotes));
+        }
+
+        private void EditServiceForAppointmentClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "NewAppointment", objNotes));
+        }
+        private void EditAppointmentbyStaffClick(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, "NewAppointment", objNotes));
+        }
         private void AddCommentClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CustomerCommentsForAppointmentPage(obj,objCust, day,dateOfBooking,"addAppointment"));
@@ -105,8 +135,11 @@ namespace Demo_App
                 Endmins = TimeAppointment[1].Split(':');
                 Endmin= Endmins[1].Split(' ');
             }
-            string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
-            Data.TryGetValue(selectedValue, out StatusId);
+            if (newAppointmentsPicker.SelectedItem != null)
+            {
+                string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
+                Data.TryGetValue(selectedValue, out StatusId);
+            }
             var GetAllCustomerData = GetAllCustomer();
             List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
             objbookAppointment = new BookAppointment();           
@@ -133,6 +166,8 @@ namespace Demo_App
             dynamic data = JObject.Parse(result);
             var msg = Convert.ToString(data.Message);
             DisplayAlert("Success", msg,"ok");
+            //Context context = getApplicationContext();  
+            //Toast.MakeText(this.Content, msg, ToastLength.Short).Show();
 
             Navigation.PushAsync(new AddAppointmentsPage(objCust, objbookAppointment));
         }

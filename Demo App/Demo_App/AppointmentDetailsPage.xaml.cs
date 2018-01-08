@@ -1,4 +1,5 @@
 ﻿using Demo_App.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,6 +32,7 @@ namespace Demo_App
         string Day = "";
         DateTime DateOfBooking;
         Dictionary<string, int> Data = null;
+        int StatusId;
         #endregion
 
         public AppointmentDetailsPage(Customer Cust, AppointmentDetails appointment)
@@ -102,13 +104,15 @@ namespace Demo_App
 
             Data = new Dictionary<string, int>
             {
-               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
-               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
+               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
             };           
             foreach (var item in Data.Keys)
             {
                 AppointmentsPicker.Items.Add(item);
-            }            
+               
+            }
+            AppointmentsPicker.SelectedIndex = obj.status;
         }
 
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
@@ -138,6 +142,35 @@ namespace Demo_App
             var result = PostData("DELETE", "", apiUrl);
             return result;
         }
+
+        public string SetStatusOfAppointment()
+        {
+            try
+            {
+                string selectedValue = (AppointmentsPicker.SelectedItem).ToString();
+                Data.TryGetValue(selectedValue, out StatusId);
+                string apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/SetStatus?status=" + StatusId + "&bookingId=" + Application.Current.Properties["BookingID"];
+                string result = "";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+                httpWebRequest.Method = "POST";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.ProtocolVersion = HttpVersion.Version10;
+                httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+                httpWebRequest.ContentLength = 0;
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();                   
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+
 
         public string PostData(string Method, string SerializedData, string Url)
         {

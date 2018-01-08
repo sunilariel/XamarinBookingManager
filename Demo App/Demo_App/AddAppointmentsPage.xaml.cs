@@ -39,7 +39,7 @@ namespace Demo_App
             objCust.TelephoneNo = Cust.TelephoneNo;
             objCust.Address = Cust.Address;
             BindingContext = objCust;
-            this.Title = objCust.FirstName + "'s" + "appointments";
+            this.Title = objCust.FirstName + "'s" + " appointments";
             if (objAppointment != null)
             {
                 objBookAppointment = new BookAppointment();

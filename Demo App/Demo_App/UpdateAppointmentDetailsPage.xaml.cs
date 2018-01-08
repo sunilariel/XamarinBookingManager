@@ -97,8 +97,8 @@ namespace Demo_App
 
             Data = new Dictionary<string, int>
             {
-               { "No Label", 1 }, { "Pending", 2 }, { "Confirmed", 3 }, { "Done", 4 },
-               { "No-Show", 5}, { "Paid", 6 },{ "Running Late", 7 }, { "Custom Label", 8 },
+               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
+               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
             };
            
             foreach (var item in Data.Keys)
@@ -175,12 +175,28 @@ namespace Demo_App
             var SerializedData = JsonConvert.SerializeObject(UpdatebookAppointment);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/UpdateBooking";
             var result = PostData("POST", SerializedData, apiUrl);
+            BookAppointment objBookappointments = new BookAppointment();
+            objBookappointments.CompanyId = UpdatebookAppointment.CompanyId;
+            objBookappointments.CustomerIdsCommaSeperated = UpdatebookAppointment.CustomerIdsCommaSeperated;
+            objBookappointments.EmployeeId = UpdatebookAppointment.EmployeeId;
+            objBookappointments.ServiceId = UpdatebookAppointment.ServiceId;
+            objBookappointments.StartHour = UpdatebookAppointment.StartHour;
+            objBookappointments.StartMinute = UpdatebookAppointment.StartMinute;
+            objBookappointments.EndHour = UpdatebookAppointment.EndHour;
+            objBookappointments.EndMinute = UpdatebookAppointment.EndMinute;
+            objBookappointments.IsAdded = UpdatebookAppointment.IsAdded;
+            objBookappointments.Message = UpdatebookAppointment.Message;
+            objBookappointments.Notes = UpdatebookAppointment.Notes;
+            objBookappointments.CustomerIds = UpdatebookAppointment.CustomerIds;
+            objBookappointments.Start = UpdatebookAppointment.Start;
+            objBookappointments.End = UpdatebookAppointment.End;
+            objBookappointments.Status = UpdatebookAppointment.Status;
 
             dynamic data = JObject.Parse(result);
             var msg = Convert.ToString(data.Message);
             DisplayAlert("Success", msg, "ok");
 
-            //Navigation.PushAsync(new AddAppointmentsPage(objCust, UpdatebookAppointment));
+            Navigation.PushAsync(new AddAppointmentsPage(objCust, objBookappointments));
         }
 
         public List<Customer> GetAllCustomer()
@@ -188,6 +204,34 @@ namespace Demo_App
             string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
             var result = PostData("GET", "", apiURL);
             List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
+        }
+
+        public string SetStatusOfAppointment()
+        {
+            try
+            {
+                string selectedValue = (AppointmentsPicker.SelectedItem).ToString();
+                Data.TryGetValue(selectedValue, out StatusId);
+                string apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/SetStatus?status=" + StatusId + "&bookingId=" + Application.Current.Properties["BookingID"];
+                string result = "";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+                httpWebRequest.Method = "POST";
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.ProtocolVersion = HttpVersion.Version10;
+                httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+                httpWebRequest.ContentLength = 0;
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();                   
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

@@ -64,7 +64,13 @@ namespace Demo_App
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
             var result = PostData("GET", "", apiUrl);
 
-            ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);           
+            ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+            
+            foreach(var item in ListOfAssignServiceData)
+            {               
+                var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" +" "+item.Cost;
+                item.ServiceDetails = details;
+            }
             ListofAllServices.ItemsSource = ListOfAssignServiceData;
             return ListOfAssignServiceData;
         }

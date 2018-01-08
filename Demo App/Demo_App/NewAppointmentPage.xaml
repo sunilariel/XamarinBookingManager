@@ -21,7 +21,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0" HeightRequest="50" BackgroundColor="White" Padding="0,0,10,0">
-                    <Picker x:Name="newAppointmentsPicker" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                    <Picker x:Name="newAppointmentsPicker" HorizontalOptions="EndAndExpand" WidthRequest="100"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
                     <Grid>
@@ -40,6 +40,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="UpdateAppointmentbyBookingDateClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -76,6 +79,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditAppointmentbyStaffClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -96,6 +102,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditServiceForAppointmentClick"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>

@@ -38,6 +38,7 @@ namespace Demo_App.Model
         public string CreationDate { get; set; }
         public string Description { get; set; }
         public bool isAssigned { get; set; }
+        public string ServiceDetails { get; set; }
     }
 
     public class ServiceDetails
