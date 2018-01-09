@@ -322,6 +322,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\Appointment.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DropDownArrow.png" />
+  </ItemGroup>
   <Import Project="..\Demo_App\Demo_App.projitems" Label="Shared" Condition="Exists('..\Demo_App\Demo_App.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

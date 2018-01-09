@@ -17,9 +17,9 @@ namespace Demo_App
 
         public static void SetMainPage()
         {
-            new NavigationPage(new RegPage());
-            new NavigationPage(new LoginPage());
-            new NavigationPage(new SetAppointmentPage());
+            //new NavigationPage(new RegPage());
+            //new NavigationPage(new LoginPage());
+            //new NavigationPage(new SetAppointmentPage());
              Current.MainPage = new NavigationPage(new WelcomePage());
 
             //Current.MainPage = new NavigationPage(new ServicesProviderPage(40));

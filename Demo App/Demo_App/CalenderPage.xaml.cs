@@ -26,7 +26,6 @@ namespace Demo_App
         public static bool isCalenderPageOpen = false;
         public static SfSchedule schedulee;
         int i = 0;
-
         public CalenderPage()
         {
 
@@ -39,11 +38,7 @@ namespace Demo_App
             this.Content = schedulee;
 
             schedulee.ScheduleView = ScheduleView.MonthView;
-
-            //MonthViewSettings monthViewSettings = new MonthViewSettings();
-            //schedule.MonthViewSettings = monthViewSettings;
-            //monthViewSettings.MonthNavigationDirection = MonthNavigationDirections.Horizontal;
-
+                    
             var CurrentDate = DateTime.Now;
             DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
             schedulee.NavigateTo(SpecificDate);
@@ -71,53 +66,26 @@ namespace Demo_App
         {
             return schedulee;
         }
-
-        //private void schedule1_Loaded_1(object sender, EventArgs e)
-        //{
-
-        //}
-
+       
        
        private void schedule_celltapped(object sender, CellTappedEventArgs e)
         {
-            DisplayAlert("CustomizeHeader", "888888888", "cancel");
-            //editor_main_layout.IsVisible = true;
-            //Schedule.IsVisible = false;
+            
         }
 
         private void Schedule_onMonthRenderedEvent(object sender, MonthCellLoadedEventArgs args)
         {
-            //args.cellStyle.TextColor = Color.Red;
-            //if (args.isToday)
-            //{
-            //    args.cellStyle.BackgroundColor = Color.FromRgb(251, 211, 201);
-            //}
+            
         }
 
         private void Schedule_OnAppointmentLoadedEvent(object sender, AppointmentLoadedEventArgs args)
         {
 
-
-
-            //Button button = new Button();
-            //button.BackgroundColor = Color.Green;
-            //if (args.appointment != null)
-            //    button.Text = "ChangeView";
-            //args.view = button;
         }
 
         private void Schedule_VisibleDatesChangedEvent(object sender, VisibleDatesChangedEventArgs args)
         {
-            
-            //DisplayAlert("CustomizeHeader", "888888888", "cancel");
-            //SfSchedule Schedule = new SfSchedule();
-            //Schedule.HeaderHeight = 0;
-            //Button button = new Button();
-            //button.BackgroundColor = Color.Green;
-
-            //button.Text = "ChangeView";
-            
-            
+          
         }
 
 
@@ -130,13 +98,6 @@ namespace Demo_App
         private void PivotItem_Tapped(object sender, EventArgs e)
         {
             
-        }
-
-        private void tbi_Clicked(object sender, EventArgs e)
-        {
-           
-
-           // Navigation.PushAsync(new CustomerPage());
         }
 
         public string GetBookingsForEmployeesByIdBetweenDates(string CompanyId, string commaSeperatedEmployeeIds, string StartDate, string EndDate)
@@ -162,6 +123,7 @@ namespace Demo_App
                 var result= PostData("POST", jsonString, apiURL);                   
                return result;         
         }
+
 
         public string PostData(string Method, string SerializedData, string Url)
         {
