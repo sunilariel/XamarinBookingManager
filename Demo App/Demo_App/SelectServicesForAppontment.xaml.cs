@@ -18,13 +18,16 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectServicesForAppontment : ContentPage
 	{
+        #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        int CategoryID;       
+        int CategoryID;
         int ServiceID;
         ObservableCollection<AssignedServicetoStaff> ListOfAssignServiceData = new ObservableCollection<AssignedServicetoStaff>();
         public Customer objCust = null;
         public Notes objNotes = null;
         string PageName = "";
+        #endregion
+
         public SelectServicesForAppontment (int CategoryId,Customer Cust,string pagename)
 		{
 			InitializeComponent ();

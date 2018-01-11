@@ -11,7 +11,7 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\Demo App\\Demo App\\Demo_App\\PasscodeLockPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\PasscodeLockPage.xaml")]
     public partial class PasscodeLockPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

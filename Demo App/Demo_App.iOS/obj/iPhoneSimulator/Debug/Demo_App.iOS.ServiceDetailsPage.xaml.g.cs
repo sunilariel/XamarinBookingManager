@@ -11,23 +11,8 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\mayank\\Demo App\\Demo App\\Demo_App\\ServiceDetailsPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\ServiceDetailsPage.xaml")]
     public partial class ServiceDetailsPage : global::Xamarin.Forms.ContentPage {
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.ToolbarItem ServiseDetailsToolbar;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblCategories;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblDuration;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblServiceProvider;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblCost;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label AddDesc;
@@ -38,11 +23,6 @@ namespace Demo_App {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ServiceDetailsPage));
-            ServiseDetailsToolbar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "ServiseDetailsToolbar");
-            lblCategories = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblCategories");
-            lblDuration = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblDuration");
-            lblServiceProvider = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblServiceProvider");
-            lblCost = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblCost");
             AddDesc = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "AddDesc");
             lblPrivateService = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblPrivateService");
         }

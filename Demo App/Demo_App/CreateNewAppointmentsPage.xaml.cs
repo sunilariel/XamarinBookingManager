@@ -59,17 +59,19 @@ namespace Demo_App
             objAddAppointment.ServiceId = serviceID;
             objAddAppointment.ServiceName = ServiceName;
             objAddAppointment.Cost = Cost;
+
             schedulee = new SfSchedule();
             var CurrentDate = DateTime.Now;
             DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
             schedulee.NavigateTo(SpecificDate);
-
-            schedulee.VisibleDatesChangedEvent += Schedule_VisibleDatesChangedEvent;
-            schedulee.OnAppointmentLoadedEvent += Schedule_OnAppointmentLoadedEvent;
             schedule.CellTapped += GetAvailableTimeForAppointments;
 
+            //schedulee.VisibleDatesChangedEvent += Schedule_VisibleDatesChangedEvent;
+            //schedulee.OnAppointmentLoadedEvent += Schedule_OnAppointmentLoadedEvent;
+
+
             //schedulee.OnMonthCellLoadedEvent += Schedule_onMonthRenderedEvent;
-            
+
         }
 
         public static SfSchedule getScheduleObj()
@@ -128,21 +130,6 @@ namespace Demo_App
             {
 
             }
-
-        }
-
-        private void Schedule_onMonthRenderedEvent(object sender, MonthCellLoadedEventArgs args)
-        {
-
-        }
-
-        private void Schedule_OnAppointmentLoadedEvent(object sender, AppointmentLoadedEventArgs args)
-        {
-
-        }
-
-        private void Schedule_VisibleDatesChangedEvent(object sender, VisibleDatesChangedEventArgs args)
-        {
 
         }
 

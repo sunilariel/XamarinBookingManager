@@ -22,7 +22,8 @@ namespace Demo_App.iOS
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			global::Xamarin.Forms.Forms.Init ();
+            App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new Demo_App.App ());
 
 			return base.FinishedLaunching (app, options);

@@ -11,40 +11,20 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\Demo App\\Demo App\\Demo_App\\BusinessHoursPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\BusinessHoursPage.xaml")]
     public partial class BusinessHoursPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblMonday;
+        private global::Xamarin.Forms.ToolbarItem Savebutton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblTuesday;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblWednesday;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblThursday;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblFriday;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblSaturday;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label lblSunday;
+        private global::Xamarin.Forms.ListView BusinessHoursData;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(BusinessHoursPage));
-            lblMonday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblMonday");
-            lblTuesday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblTuesday");
-            lblWednesday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblWednesday");
-            lblThursday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblThursday");
-            lblFriday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblFriday");
-            lblSaturday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblSaturday");
-            lblSunday = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblSunday");
+            Savebutton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "Savebutton");
+            BusinessHoursData = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "BusinessHoursData");
         }
     }
 }

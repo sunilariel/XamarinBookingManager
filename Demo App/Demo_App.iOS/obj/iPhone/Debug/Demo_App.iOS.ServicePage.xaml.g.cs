@@ -11,12 +11,16 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\Demo App\\Demo App\\Demo_App\\ServicePage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\ServicePage.xaml")]
     public partial class ServicePage : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.ListView ListofAllServices;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ServicePage));
+            ListofAllServices = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "ListofAllServices");
         }
     }
 }

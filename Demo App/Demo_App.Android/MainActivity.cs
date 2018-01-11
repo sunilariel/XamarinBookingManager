@@ -16,12 +16,13 @@ namespace Demo_App.Droid
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar; 
-
+            
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new Demo_App.App ());
-		}
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+        }
 	}
 }
 

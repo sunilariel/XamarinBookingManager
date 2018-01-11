@@ -49,6 +49,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)BusinessHoursPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CalendarCreateAppointmentPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CalendarTimeSlotsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CalenderPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomerCommentsForAppointmentPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomerForCalendarAppointmentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CustomerPage.xaml.cs">
@@ -94,6 +103,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ForgotPasswordPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)GetAllocateServiceForEmployeePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ImportCustomerPage.xaml.cs">
@@ -500,6 +512,26 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)UpdateAppointmentDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)GetAllocateServiceForEmployeePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CalendarTimeSlotsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CustomerForCalendarAppointmentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CalendarCreateAppointmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

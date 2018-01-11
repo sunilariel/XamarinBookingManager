@@ -11,12 +11,20 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\mayank\\Demo App\\Demo App\\Demo_App\\CategoryDetailsPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\CategoryDetailsPage.xaml")]
     public partial class CategoryDetailsPage : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label CategoryName;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label CategoryServices;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(CategoryDetailsPage));
+            CategoryName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "CategoryName");
+            CategoryServices = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "CategoryServices");
         }
     }
 }

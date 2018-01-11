@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
-  <Jars>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\bin\Common.jar;D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\bin\Data.jar;D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\bin\Input.jar;D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\bin\List.jar;D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\bin\Primitives.jar</Jars>
+  <Jars>obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\bin\Common.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\bin\Data.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\bin\Input.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\bin\List.jar;D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\bin\Primitives.jar</Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\SkiaSharp\library_project_imports\assets</ResolvedAssetDirectory>
@@ -40,24 +40,24 @@
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Officials\Xamarin Booking Manager Clone\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

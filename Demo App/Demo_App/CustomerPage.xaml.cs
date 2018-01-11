@@ -20,24 +20,31 @@ namespace Demo_App
 	{
           
         public CustomerPage ()
-		{
-            NavigationPage.SetHasBackButton(this, false);
-            NavigationPage.SetBackButtonTitle(this, "Customer");           
-            InitializeComponent ();
-           var customerlist= GetAllCustomer();
-            if(customerlist.Count>5)
-            {
-                CustomerSearchBar.IsVisible = true;
-            }
+		{           
+                NavigationPage.SetHasBackButton(this, false);
+                NavigationPage.SetBackButtonTitle(this, "Customer");
+                InitializeComponent();
+                var customerlist = GetAllCustomer();
+                if (customerlist.Count > 5)
+                {
+                    CustomerSearchBar.IsVisible = true;
+                }           
           
         }
         public ObservableCollection<Customer> GetAllCustomer()
         {
-            string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
-            var result = PostData("GET", "", apiURL);
-            ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
-            CustomersList.ItemsSource = ListOfCustomer;
-            return ListOfCustomer;
+            try
+            {
+                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
+                var result = PostData("GET", "", apiURL);
+                ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
+                CustomersList.ItemsSource = ListOfCustomer;
+                return ListOfCustomer;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
        
         public void SearchCustomersByTerm()

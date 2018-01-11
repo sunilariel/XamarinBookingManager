@@ -90,14 +90,14 @@
       <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.55.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.Android, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.17\lib\MonoAndroid10\Syncfusion.SfPicker.Android.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfPicker.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.17\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms.Android, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.17\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.Android.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfSchedule.Android, Version=15.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

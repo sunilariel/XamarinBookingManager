@@ -17,12 +17,15 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectServiceCategory : ContentPage
 	{
+        #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
         public ServicesAllocatedToCategory serviceCount = null;
         public Customer objCust = null;
         string PageName = "";
+        #endregion
+
         public SelectServiceCategory (int CategoryId,Customer Cust,string pagename,Notes objNotes)
 		{
 			InitializeComponent ();

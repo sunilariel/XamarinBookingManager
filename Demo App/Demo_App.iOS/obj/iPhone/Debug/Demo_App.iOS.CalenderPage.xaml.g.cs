@@ -11,16 +11,16 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\Demo App\\Demo App\\Demo_App\\CalenderPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\CalenderPage.xaml")]
     public partial class CalenderPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Telerik.XamarinForms.Input.RadCalendar calendar;
+        private global::Syncfusion.SfSchedule.XForms.SfSchedule schedule;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(CalenderPage));
-            calendar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Telerik.XamarinForms.Input.RadCalendar>(this, "calendar");
+            schedule = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.SfSchedule.XForms.SfSchedule>(this, "schedule");
         }
     }
 }

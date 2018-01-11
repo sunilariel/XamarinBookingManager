@@ -7,13 +7,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Telerik.XamarinForms.Input;
 using Syncfusion.SfSchedule.XForms;
-using Xamarin.Forms;
 using Demo_App.Model;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 //using Com.Syncfusion.Schedule;
 
@@ -23,14 +23,17 @@ namespace Demo_App
 
     public partial class CalenderPage : ContentPage
     {
+        #region GloblesVaribles
+        string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         public static bool isCalenderPageOpen = false;
         public static SfSchedule schedulee;
         int i = 0;
+        #endregion
+
         public CalenderPage()
         {
 
-            isCalenderPageOpen = true;
-
+            isCalenderPageOpen = true;          
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             //var calendar = new RadCalendar();                      
@@ -41,12 +44,10 @@ namespace Demo_App
                     
             var CurrentDate = DateTime.Now;
             DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-            schedulee.NavigateTo(SpecificDate);
-       
+            schedulee.NavigateTo(SpecificDate);       
             schedulee.VisibleDatesChangedEvent += Schedule_VisibleDatesChangedEvent;
-            schedulee.OnAppointmentLoadedEvent += Schedule_OnAppointmentLoadedEvent;
-
             //schedulee.OnMonthCellLoadedEvent += Schedule_onMonthRenderedEvent;
+           // schedulee.ScheduleCellTapped += Schedulee_ScheduleCellTapped;
 
             ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
             //Creating new event   
@@ -62,43 +63,22 @@ namespace Demo_App
             schedulee.DataSource = appointmentCollection;
         }
 
+        //private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
+        //{
+        //    Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID))
+        //}
+
         public static SfSchedule getScheduleObj()
         {
             return schedulee;
         }
-       
-       
-       private void schedule_celltapped(object sender, CellTappedEventArgs e)
-        {
-            
-        }
-
-        private void Schedule_onMonthRenderedEvent(object sender, MonthCellLoadedEventArgs args)
-        {
-            
-        }
-
-        private void Schedule_OnAppointmentLoadedEvent(object sender, AppointmentLoadedEventArgs args)
-        {
-
-        }
+                           
 
         private void Schedule_VisibleDatesChangedEvent(object sender, VisibleDatesChangedEventArgs args)
         {
           
         }
-
-
-        private void MyButton_Click(object sender, EventArgs e)
-        {
-            // var result = DisplayAlert("click", "you click on me?", "Yes", "Cancel");
-
-        }
-
-        private void PivotItem_Tapped(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         public string GetBookingsForEmployeesByIdBetweenDates(string CompanyId, string commaSeperatedEmployeeIds, string StartDate, string EndDate)
         {               
@@ -123,8 +103,7 @@ namespace Demo_App
                 var result= PostData("POST", jsonString, apiURL);                   
                return result;         
         }
-
-
+             
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

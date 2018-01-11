@@ -11,7 +11,7 @@
 namespace Demo_App {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Xamarin_Mayank\\mayank\\Demo App\\Demo App\\Demo_App\\NewServicePage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\New Clone Xamarin App\\Demo App\\Demo_App\\NewServicePage.xaml")]
     public partial class NewServicePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -21,7 +21,16 @@ namespace Demo_App {
         private global::Xamarin.Forms.Entry ServiceName;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.TimePicker ServiceDuration;
+        private global::Xamarin.Forms.Label duration;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Demo_App.DurationTimePicker date;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label BufferTime;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Demo_App.BufferTimePicker buffer;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.TimePicker ServiceBufferTime;
@@ -34,7 +43,10 @@ namespace Demo_App {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(NewServicePage));
             NewServiceToolbar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ToolbarItem>(this, "NewServiceToolbar");
             ServiceName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "ServiceName");
-            ServiceDuration = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TimePicker>(this, "ServiceDuration");
+            duration = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "duration");
+            date = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Demo_App.DurationTimePicker>(this, "date");
+            BufferTime = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "BufferTime");
+            buffer = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Demo_App.BufferTimePicker>(this, "buffer");
             ServiceBufferTime = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TimePicker>(this, "ServiceBufferTime");
             ServiceCost = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "ServiceCost");
         }

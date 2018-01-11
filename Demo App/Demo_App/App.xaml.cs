@@ -7,9 +7,10 @@ using Xamarin.Forms;
 
 namespace Demo_App
 {
-	public partial class App : Application
+    public partial class App : Application
 	{
-		public App ()
+        static public int ScreenHeight;
+        public App ()
 		{          
             InitializeComponent();        
             SetMainPage();           
