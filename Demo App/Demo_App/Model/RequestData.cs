@@ -104,6 +104,7 @@ namespace Demo_App.Model
         public string StartTime { get; set; }
         public string EndTime { get; set; } 
         public string TimePeriod { get; set; }
+        public string DateOfBooking { get; set; }
     }
 
     public class UpdateAppointments

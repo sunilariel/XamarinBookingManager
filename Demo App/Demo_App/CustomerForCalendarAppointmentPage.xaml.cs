@@ -32,6 +32,7 @@ namespace Demo_App
             objaddAppointment.TimePeriod = obj.TimePeriod;
             objaddAppointment.DurationInHours = hrs;
             objaddAppointment.DurationInMinutes = min;
+            objaddAppointment.DateOfBooking = obj.DateOfBooking;
             var customerlist = GetAllCustomer();
             if (customerlist.Count > 5)
             {

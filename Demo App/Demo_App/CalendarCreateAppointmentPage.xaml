@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo_App.CalendarCreateAppointmentPage"
              Title="New Appointment">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Done" Order="Primary" Priority="1" Clicked="CreateAppointment"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
             <Grid RowSpacing="1">
@@ -31,15 +34,15 @@
                             <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label x:Name="AppointmentDatelbl" TextColor="Black"/>
+                            <Label x:Name="AppointmentDatelbl" Text="{Binding DateOfBooking}" TextColor="Black"/>
                             <Label x:Name="AppointmentTime" Text="{Binding TimePeriod}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
-                        <!--<StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="UpdateAppointmentbyBookingDateClick"/>
-                        </StackLayout.GestureRecognizers>-->
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditAppointmentByBookingDate"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -92,9 +95,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
-                        <!--<StackLayout.GestureRecognizers>
+                        <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="EditServiceForAppointmentClick"/>
-                        </StackLayout.GestureRecognizers>-->
+                        </StackLayout.GestureRecognizers>
                     </Grid>
 
                 </StackLayout>
@@ -103,7 +106,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" Padding="0,10,0,0">
                             <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
@@ -111,9 +113,6 @@
                         <StackLayout Grid.Column="1">
                             <Label Text="Cost"/>
                             <Label Text="{Binding Cost}" TextColor="Black"/>
-                        </StackLayout>
-                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
-                            <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                     </Grid>
 
@@ -135,9 +134,9 @@
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
-                        <!--<StackLayout.GestureRecognizers>
+                        <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="AddCommentClick"/>
-                        </StackLayout.GestureRecognizers>-->
+                        </StackLayout.GestureRecognizers>
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="7" BackgroundColor="White">

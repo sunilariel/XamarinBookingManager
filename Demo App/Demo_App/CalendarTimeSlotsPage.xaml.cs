@@ -64,6 +64,8 @@ namespace Demo_App
             var dateOfBooking = e.Datetime.Date;
             CurrentSelectedDay = currentDay.ToString();
             SelectedDateOfBooking = dateOfBooking;
+            var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
+            objAddAppointment.DateOfBooking = BookingDate;
             string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
             var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBooking.ToString("dd-MM-yyyy") + "&day=" + currentDay.ToString();
             var result = PostData("GET", "", apiUrl);
@@ -123,7 +125,7 @@ namespace Demo_App
             }
             else
             {
-                //Navigation.PushAsync(new NewAppointmentPage(objAddAppointment, objCust, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
+               
             }
         }
 

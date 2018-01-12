@@ -64,7 +64,8 @@ namespace Demo_App
                 shedulerStaff.Text = "All Scheduler";
             }
             
-            dropdownArrow.IsVisible = true;           
+            dropdownArrow.IsVisible = true;
+            CalendarIconButton.IsVisible = true;
         }
 
         void Icon2_Tapped(object sender, EventArgs args)
@@ -124,11 +125,12 @@ namespace Demo_App
                 if (sfSchedule != null)
                 {
                     var CurrentDate = DateTime.Now;
-                    DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
+                    DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);                   
                     sfSchedule.NavigateTo(SpecificDate);
-                    sfSchedule.ScheduleView = ScheduleView.WeekView;
-                    i = 1;
+                    sfSchedule.ScheduleView = ScheduleView.WeekView;                   
+                    i = 1;                    
                     sfSchedule.ScheduleCellTapped += Schedulee_ScheduleCellTapped;
+
                 }
             }
             else
@@ -138,6 +140,7 @@ namespace Demo_App
                 sfSchedule.NavigateTo(SpecificDate);
                 sfSchedule.ScheduleView = ScheduleView.MonthView;
                 i = 0;
+                sfSchedule.ScheduleCellTapped -= Schedulee_ScheduleCellTapped;
             }
   
         }
@@ -189,6 +192,8 @@ namespace Demo_App
 
         private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
         {
+            //sfSchedule.ScheduleView
+            //e.Schedule.ScheduleView.Equals(sh)
             Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID,EmpName));
         }
 

@@ -20,6 +20,8 @@ namespace Demo_App.Model
 
         public string Address { get; set; }
 
+        public string PostCode { get; set; }
+
         public string Email { get; set; }
 
         public string TelephoneNo { get; set; }

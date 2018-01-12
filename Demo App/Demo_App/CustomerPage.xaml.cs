@@ -106,7 +106,7 @@ namespace Demo_App
         private void CustomerProfileClick(object sender, SelectedItemChangedEventArgs e)
         {
             var Cust = e.SelectedItem as Customer;
-            //Navigation.PushAsync(new CutomerProfilePage(PhoneNumber));
+            Application.Current.Properties["SelectedCustomerId"] = Cust.Id;
             Notes obj =new Notes();
             Application.Current.MainPage.Navigation.PushAsync(new CutomerProfilePage(Cust, obj));
         }

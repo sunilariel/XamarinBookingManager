@@ -136,7 +136,7 @@
                     </Grid>
                 </StackLayout>
 
-            <StackLayout VerticalOptions="End" HeightRequest="120" BackgroundColor="Transparent">
+            <StackLayout VerticalOptions="End" HeightRequest="120" BackgroundColor="White">
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>

@@ -15,7 +15,6 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-//using Com.Syncfusion.Schedule;
 
 namespace Demo_App
 {
@@ -35,32 +34,27 @@ namespace Demo_App
 
             isCalenderPageOpen = true;          
             NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();
-            //var calendar = new RadCalendar();                      
+            InitializeComponent();                               
             schedulee = new SfSchedule();
             this.Content = schedulee;
-
-            schedulee.ScheduleView = ScheduleView.MonthView;
-                    
+            schedulee.ScheduleView = ScheduleView.MonthView;                    
             var CurrentDate = DateTime.Now;
             DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
             schedulee.NavigateTo(SpecificDate);       
             schedulee.VisibleDatesChangedEvent += Schedule_VisibleDatesChangedEvent;
             //schedulee.OnMonthCellLoadedEvent += Schedule_onMonthRenderedEvent;
            // schedulee.ScheduleCellTapped += Schedulee_ScheduleCellTapped;
-
-            ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
-            //Creating new event   
-            ScheduleAppointment clientMeeting = new ScheduleAppointment();
-            DateTime currentDate = DateTime.Now;
-            DateTime startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 10, 0, 0);
-            DateTime endTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 12, 0, 0);
-            clientMeeting.StartTime = startTime;
-            clientMeeting.EndTime = endTime;
-            clientMeeting.Color = Color.Blue;
-            clientMeeting.Subject = "ClientMeeting";
-            appointmentCollection.Add(clientMeeting);
-            schedulee.DataSource = appointmentCollection;
+            //ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();         
+            //ScheduleAppointment clientMeeting = new ScheduleAppointment();
+            //DateTime currentDate = DateTime.Now;
+            //DateTime startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 10, 0, 0);
+            //DateTime endTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 12, 0, 0);
+            //clientMeeting.StartTime = startTime;
+            //clientMeeting.EndTime = endTime;
+            //clientMeeting.Color = Color.Blue;
+            //clientMeeting.Subject = "ClientMeeting";
+            //appointmentCollection.Add(clientMeeting);
+            //schedulee.DataSource = appointmentCollection;
         }
 
         //private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
