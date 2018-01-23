@@ -19,10 +19,13 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddServiceToCategoryPage : ContentPage
 	{
+        #region GlobleFields
         ObservableCollection<AssignedServicetoStaff> ListofAllService = new ObservableCollection<AssignedServicetoStaff>();
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         string CategoryName = "";
+        #endregion
+
         public AddServiceToCategoryPage (ObservableCollection<AssignedServicetoStaff> ListofServices,int  CategoryId,string categoryName)
 		{
 			InitializeComponent();

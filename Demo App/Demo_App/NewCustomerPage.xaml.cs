@@ -39,7 +39,8 @@ namespace Demo_App
             obj.Password = "123456";
             obj.FirstName = CustomerName.Text;
             obj.LastName = "";
-            obj.Address = CustomerAddress.Text;
+            obj.Address = "";
+            obj.PostCode = "";
             obj.Email = CustomerEmail.Text;
             obj.TelephoneNo = CustomerPhoneNumber.Text;
             obj.CreationDate = Convert.ToString(DateTime.Now);

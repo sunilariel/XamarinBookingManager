@@ -1,12 +1,198 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"           
              Title="Calendar"
              x:Class="Demo_App.CalenderPage">
-    
+
     <ContentPage.Content>
-        <syncfusion:SfSchedule x:Name="schedule" />
+        <!--<syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView" ViewHeaderHeight="50"/>-->
+        <StackLayout>
+            <StackLayout VerticalOptions="Start" HeightRequest="30">
+                <Grid ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="currentMonth" Text="CurrentMonth" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
+                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                    Tapped="ChangeMonthView"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </StackLayout>
+            
+            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0">
+                <Grid ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0">
+                        <Label Text="M" TextColor="Black"/>
+                        <Label Text="1" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label Text="T" TextColor="Black"/>
+                        <Label Text="2" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2">
+                        <Label Text="W" TextColor="Black"/>
+                        <Label Text="3" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="3">
+                        <Label Text="Th" TextColor="Black"/>
+                        <Label Text="4" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="4">
+                        <Label Text="F" TextColor="Black"/>
+                        <Label Text="5" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="5">
+                        <Label Text="S" TextColor="Black"/>
+                        <Label Text="6" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="6">
+                        <Label Text="Su" TextColor="Black"/>
+                        <Label Text="7" TextColor="Black"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            
+            <StackLayout x:Name="schedulerFullMonthView" IsVisible="False" VerticalOptions="CenterAndExpand">
+                <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30" HeaderHeight="0"/>
+            </StackLayout>
+            
+            <StackLayout Padding="0,5,0,0">
+                <ScrollView>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Mon" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="Aqua" HorizontalOptions="EndAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AddNewAppointment" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout x:Name="MonAppointmentBox" Grid.Row="1">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Tue" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="4" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Wed" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="5">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="6" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Thu" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="7">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="8" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Fri" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="9">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="10" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Sat" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="11">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="12" Padding="10" BackgroundColor="LightGray">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Sun" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
+                                <!--<Label Text="No appointment booked"></Label>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="13">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

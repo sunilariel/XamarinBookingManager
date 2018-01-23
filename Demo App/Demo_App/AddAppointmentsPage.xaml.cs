@@ -27,17 +27,18 @@ namespace Demo_App
         ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
         #endregion
 
-        public AddAppointmentsPage(Customer Cust, BookAppointment objAppointment)
+        public AddAppointmentsPage(BookAppointment objAppointment)
         {
-            InitializeComponent();           
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
+            InitializeComponent();
+            GetSelectedCustomerById();
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
             BindingContext = objCust;
             this.Title = objCust.FirstName + "'s" + " appointments";
             if (objAppointment != null)
@@ -63,6 +64,23 @@ namespace Demo_App
             //var listofAppointment = GetAppointmentDetails();
            // CustomerAppoimentList.ItemsSource = listofAppointment;
         }
+
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
         private void AppointmentsdetailsClick(object sender, SelectedItemChangedEventArgs e)
         {
             var data=e.SelectedItem as AppointmentDetails;
@@ -91,13 +109,13 @@ namespace Demo_App
             obj.AppointmentDetail = data.AppointmentDetail;
             obj.CommentNotes = data.CommentNotes;
             obj.TimePeriod = timeperiod;
-            Navigation.PushAsync(new AppointmentDetailsPage(objCust, obj));
+            Navigation.PushAsync(new AppointmentDetailsPage(obj));
         }
 
 
         private void AddAppointmentsClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, PageName,objNotes));
+            Navigation.PushAsync(new SelectServiceCategory(PageName));
         }
 
         public ObservableCollection<AppointmentDetails> GetAppointmentDetails()

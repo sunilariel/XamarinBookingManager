@@ -99,17 +99,14 @@
     <Reference Include="Syncfusion.SfPicker.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfSchedule.Android, Version=15.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Syncfusion.SfSchedule.Android.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfSchedule.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms.Android, Version=15.3451.0.33, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -351,6 +348,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\DropDownArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\ArrowdropDown.png" />
   </ItemGroup>
   <Import Project="..\Demo_App\Demo_App.projitems" Label="Shared" Condition="Exists('..\Demo_App\Demo_App.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -43,7 +43,7 @@ namespace Demo_App
         public SetAppointmentPage()
         {
             
-            InitializeComponent();             
+            InitializeComponent();           
             GetStaff();
             var page = new CalenderPage();
             Placeholder.Content = page.Content;
@@ -120,10 +120,13 @@ namespace Demo_App
         void tbi_Clicked(object sender, EventArgs e)
         {                  
             SfSchedule sfSchedule = CalenderPage.getScheduleObj();
+
+            //SfSchedule sfSchedule = new SfSchedule();
             if (i == 0)
             {
                 if (sfSchedule != null)
                 {
+                    sfSchedule.IsVisible = true;
                     var CurrentDate = DateTime.Now;
                     DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);                   
                     sfSchedule.NavigateTo(SpecificDate);
@@ -192,8 +195,7 @@ namespace Demo_App
 
         private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
         {
-            //sfSchedule.ScheduleView
-            //e.Schedule.ScheduleView.Equals(sh)
+            
             Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID,EmpName));
         }
 

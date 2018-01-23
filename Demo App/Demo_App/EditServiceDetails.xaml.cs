@@ -69,8 +69,6 @@ namespace Demo_App
             Navigation.PushAsync(new ServiceDetailsPage(obj));
         }
 
-
-
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

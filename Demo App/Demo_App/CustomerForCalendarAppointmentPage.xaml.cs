@@ -43,7 +43,7 @@ namespace Demo_App
         private void selectedCustomerForAppointment(object sender,SelectedItemChangedEventArgs e)
         {
             var data = e.SelectedItem as Customer;
-            Navigation.PushAsync(new CalendarCreateAppointmentPage(data, objaddAppointment));
+            Navigation.PushAsync(new CalendarCreateAppointmentPage(objaddAppointment));
         }
 
         public ObservableCollection<Customer> GetAllCustomer()

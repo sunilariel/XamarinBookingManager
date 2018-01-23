@@ -37,18 +37,18 @@ namespace Demo_App
         public Notes objnotes = null;
         #endregion
 
-        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,Customer Cust,double Cost,string pagename,Notes objNotes)
+        public CreateNewAppointmentsPage(int ServiceID,string ServiceName, int EmpID,string empName,double Cost,string pagename)
         {
             InitializeComponent();
             PageName = pagename;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
             serviceID = ServiceID;
             EmployeeId = EmpID;
             EmployeeName = empName;
@@ -141,11 +141,11 @@ namespace Demo_App
 
             if (PageName == "EditAppointment")
             {
-                Navigation.PushAsync(new UpdateAppointmentDetailsPage(objCust, objAddAppointment, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
+                Navigation.PushAsync(new UpdateAppointmentDetailsPage(objAddAppointment, CurrentSelectedDay, SelectedDateOfBooking));
             }
             else
             {
-                Navigation.PushAsync(new NewAppointmentPage(objAddAppointment, objCust, CurrentSelectedDay, SelectedDateOfBooking, objnotes));
+                Navigation.PushAsync(new NewAppointmentPage(objAddAppointment,CurrentSelectedDay, SelectedDateOfBooking));
             }
         }
 

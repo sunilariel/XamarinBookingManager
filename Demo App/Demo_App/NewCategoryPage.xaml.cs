@@ -25,11 +25,7 @@ namespace Demo_App
 			InitializeComponent ();
           
         }
-        //private void AddServiceToCategory(object sender, EventArgs args)
-        //{
-        //    Navigation.PushAsync(new AddServiceToCategoryPage(ListofServices));
-        //}
-
+       
         public ObservableCollection<AssignedServicetoStaff> GetAllServices(string CompanyId)
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;

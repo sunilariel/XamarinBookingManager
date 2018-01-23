@@ -27,14 +27,14 @@ namespace Demo_App
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = bindingValue = new Login();
 
-            var DomainUrl = "http://bookingmanager24-001-site1.ftempurl.com/";
+            var DomainUrl = "http://bookingmanager25-001-site1.btempurl.com/";
             Application.Current.Properties["DomainUrl"] = DomainUrl;
         }
 
         public async void OnLoginClicked(object sender, EventArgs args)
         {
             var loginData = bindingValue;
-            string loginUrl = Application.Current.Properties["DomainUrl"] + "/api/Authenticate/login";
+            string loginUrl = Application.Current.Properties["DomainUrl"] + "api/Authenticate/login";
             var result = await logInMethod(loginUrl, loginData);          
         }
 

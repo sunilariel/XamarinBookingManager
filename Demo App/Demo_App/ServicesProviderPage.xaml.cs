@@ -19,10 +19,13 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ServicesProviderPage : ContentPage
 	{
+        #region GlobleFields
         string result = "";
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int EmployeeId;
         ObservableCollection<AssignedServicetoStaff> ListofServices = new ObservableCollection<AssignedServicetoStaff>();
+        #endregion
+
         public ServicesProviderPage (int StaffId,ObservableCollection<AssignedServicetoStaff> ListofAllocatedServices)
 		{
             EmployeeId = StaffId;

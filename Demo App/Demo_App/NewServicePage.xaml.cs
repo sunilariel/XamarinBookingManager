@@ -55,6 +55,7 @@ namespace Demo_App
                 BufferTime.Text = BufferTimeOfService;
             }
         }
+
         private void Button_Clicked(object sender, EventArgs e)
         {
             Application.Current.Properties["ServiceName"] = ServiceName.Text;          

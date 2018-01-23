@@ -16,11 +16,14 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ServiceDetailsPage : ContentPage
 	{
+        #region GlobleFields
         ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
         ObservableCollection<object> todaycollection = new ObservableCollection<object>();
         string CompanyId = Application.Current.Properties["CompanyId"].ToString();
         string ServiceId;
         public ServiceDetails service = null;
+        #endregion
+
         public ServiceDetailsPage (Service Servicedata)
 		{
 			InitializeComponent ();

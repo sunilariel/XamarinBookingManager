@@ -1,4 +1,5 @@
 ﻿using Demo_App.Model;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -35,12 +36,16 @@ namespace Demo_App
         int StatusId;
         #endregion
 
-        public AppointmentDetailsPage(Customer Cust, AppointmentDetails appointment)
+        public AppointmentDetailsPage(AppointmentDetails appointment)
         {
             InitializeComponent();
+            GetSelectedCustomerById();
             objNotes = new Notes();
             objNotes.CompanyId= Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            objNotes.CustomerId = Cust.Id;
+            if (objCust != null)
+            {
+                objNotes.CustomerId = objCust.Id;
+            }
             objNotes.Description = CommentNotes.Text;
             Application.Current.Properties["BookingID"] = appointment.BookingId;
 
@@ -70,17 +75,20 @@ namespace Demo_App
             service.Id = Convert.ToInt32(appointment.ServiceId);
             service.Name = appointment.ServiceName;
             service.Cost = appointment.Cost;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
-            AppointmentCustomerName.Text = objCust.FirstName;
-            AppointmentCustomerEmail.Text = objCust.Email;
-            AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
+            if (objCust != null)
+            {
+                AppointmentCustomerName.Text = objCust.FirstName;
+                AppointmentCustomerEmail.Text = objCust.Email;
+                AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+            }
             obj = new AppointmentDetails();
             obj.BookingId = appointment.BookingId;
             obj.EmployeeId = appointment.EmployeeId;
@@ -115,24 +123,41 @@ namespace Demo_App
             AppointmentsPicker.SelectedIndex = obj.status;
         }
 
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "EditAppointment", objNotes));
+            Navigation.PushAsync(new SelectServiceCategory("EditAppointment"));
         }
 
         private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, objCust, Cost, "EditAppointment",objNotes));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, Cost, "EditAppointment"));
         }
 
         private void UpdateAppointmentbyStaffClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, "EditAppointment", objNotes));
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment"));
         }
 
         private void EditCommentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, Day, DateOfBooking, "EditAppointment"));
+            //Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, Day, DateOfBooking, "EditAppointment"));
+            Navigation.PushAsync(new AddNotesPage());
         }
 
         public string DeleteAppointment()
@@ -183,7 +208,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != null)
+                if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);

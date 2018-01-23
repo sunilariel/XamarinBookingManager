@@ -18,7 +18,7 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UpdateAppointmentDetailsPage : ContentPage
 	{
-        #region globles
+        #region GloblesFields
         int EmpID;
         string empName = "";
         int ServiceID;
@@ -33,22 +33,25 @@ namespace Demo_App
         public UpdateAppointments obj = null;
         public AddAppointments addAppointments = null;
         public UpdateBookAppointment UpdatebookAppointment = null;
+        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();
         int CategoryId;
         int StatusId;
         Dictionary<string, int> Data = null;
 
         #endregion
 
-        public UpdateAppointmentDetailsPage (Customer Cust, AddAppointments appointment,string Day, DateTime DateOfBooking, Notes objNotes)
+        public UpdateAppointmentDetailsPage (AddAppointments appointment,string Day, DateTime DateOfBooking)
 		{
 
             InitializeComponent();
+            GetSelectedCustomerById();
+            var NotesList = GetAllCustomerNotes();
             day = Day;
             dateOfBooking = DateOfBooking;
             EmpID = appointment.EmployeeId;
             empName = appointment.EmployeeName;
             Cost = appointment.Cost;
-            CustID = Cust.Id;
+            CustID = objCust.Id;
             ServiceID = appointment.ServiceId;
             ServiceName = appointment.ServiceName;
             service = new Service();
@@ -65,17 +68,24 @@ namespace Demo_App
             addAppointments.StartTime = appointment.StartTime;
             addAppointments.EndTime = appointment.EndTime;
             addAppointments.TimePeriod = appointment.StartTime; ;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
-            AppointmentCustomerName.Text = objCust.FirstName;
-            AppointmentCustomerEmail.Text = objCust.Email;
-            AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
+            if (objCust != null)
+            {
+                AppointmentCustomerName.Text = objCust.FirstName;
+                AppointmentCustomerEmail.Text = objCust.Email;
+                AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+            }
+            foreach(var item in NotesList)
+            {
+                UpdateComment.Text = item.Description;
+            }
             string strttime = appointment.StartTime.Split('-')[0];
             string endtime = appointment.StartTime.Split('-')[1];
             obj = new UpdateAppointments();           
@@ -111,25 +121,42 @@ namespace Demo_App
             
         }
 
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(CategoryId, objCust, "EditAppointment",objNotes));
+            Navigation.PushAsync(new SelectServiceCategory( "EditAppointment"));
         }
 
 
         private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, objCust, Cost, "EditAppointment",objNotes));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName,Cost, "EditAppointment"));
         }
 
         private void EditCommentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, day, dateOfBooking, "EditAppointment"));
+            //Navigation.PushAsync(new CustomerCommentsForAppointmentPage(addAppointments, objCust, day, dateOfBooking, "EditAppointment"));
+            Navigation.PushAsync(new AddNotesPage());
         }
 
         private void UpdateAppointmentbyStaffClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, "EditAppointment",objNotes));
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment"));
         }
 
         public void UpdateAppointments()
@@ -196,7 +223,7 @@ namespace Demo_App
             var msg = Convert.ToString(data.Message);
             DisplayAlert("Success", msg, "ok");
 
-            Navigation.PushAsync(new AddAppointmentsPage(objCust, objBookappointments));
+            Navigation.PushAsync(new AddAppointmentsPage(objBookappointments));
         }
 
         public List<Customer> GetAllCustomer()
@@ -232,6 +259,25 @@ namespace Demo_App
             {
                 return e.ToString();
             }
+        }
+
+        public ObservableCollection<Notes> GetAllCustomerNotes()
+        {
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetAllCustomerNotes?companyId=" + CompanyId + "&customerId=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+
+                var result = PostData(Method, "", Url);
+                ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
+                return ListNotes;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
         }
 
         public string PostData(string Method, string SerializedData, string Url)

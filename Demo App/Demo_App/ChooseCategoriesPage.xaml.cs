@@ -18,10 +18,13 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ChooseCategoriesPage : ContentPage
 	{
+        #region GlobleFields
         public int ServiceId;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignCategory> ListofAllCategories = new ObservableCollection<AssignCategory>();
         public Service ServiceDetail;
+        #endregion
+
         public ChooseCategoriesPage (ObservableCollection<AssignCategory> ListofCategory,int serviceId)
 		{
                  

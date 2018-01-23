@@ -19,35 +19,51 @@ namespace Demo_App
 	{
         #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        int CategoryID;
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
         public ServicesAllocatedToCategory serviceCount = null;
         public Customer objCust = null;
         string PageName = "";
         #endregion
 
-        public SelectServiceCategory (int CategoryId,Customer Cust,string pagename,Notes objNotes)
+        public SelectServiceCategory (string pagename)
 		{
 			InitializeComponent ();
             PageName = pagename;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
-            CategoryID = CategoryId;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
+            //CategoryID = CategoryId;
             GetCategories(CompanyId);
             BindingContext = serviceCount;
+        }
+
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
         private void SelectServiceForCustomerClick(object sender,SelectedItemChangedEventArgs e)
         {
             
-                var Category = e.SelectedItem as ServicesAllocatedToCategory;           
-                Navigation.PushAsync(new SelectServicesForAppontment(Category.CategoryId, objCust, PageName));
+                var Category = e.SelectedItem as ServicesAllocatedToCategory;
+            Application.Current.Properties["CategoryID"] = Category.CategoryId;
+            Navigation.PushAsync(new SelectServicesForAppontment(PageName));
         }
 
         public void GetCategories(string Id)

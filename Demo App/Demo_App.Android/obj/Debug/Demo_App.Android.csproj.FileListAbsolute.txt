@@ -999,6 +999,9 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.Views.For
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfPicker.Android.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfPicker.XForms.Android.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfPicker.XForms.dll
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.Android.dll
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.Android.dll
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Common.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Data.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Telerik.Xamarin.Android.Input.dll
@@ -1035,6 +1038,7 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\FormsViewGroup.dll.
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Newtonsoft.Json.xml
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\SkiaSharp.xml
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfPicker.XForms.xml
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Syncfusion.SfSchedule.XForms.xml
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.xml
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
@@ -1104,6 +1108,10 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.NewA
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.AssignServiceToStaffPage.xaml.g.cs
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerCommentsForAppointmentPage.xaml.g.cs
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.UpdateAppointmentDetailsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.GetAllocateServiceForEmployeePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalendarTimeSlotsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerForCalendarAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalendarCreateAppointmentPage.xaml.g.cs
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.dll
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.pdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\bin\Demo_App.Android.apk
@@ -1140,16 +1148,13 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\mail.p
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\callingicon.png
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\appointment.png
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\dropdownarrow.png
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\arrowdropdown.png
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.GetAllocateServiceForEmployeePage.xaml.g.cs
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalendarTimeSlotsPage.xaml.g.cs
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CustomerForCalendarAppointmentPage.xaml.g.cs
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.CalendarCreateAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache

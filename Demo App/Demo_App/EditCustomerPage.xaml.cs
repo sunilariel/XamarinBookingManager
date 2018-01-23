@@ -18,12 +18,13 @@ namespace Demo_App
 	{
         int CustomerId;
         Notes objnotes = new Notes();
-        //public Customer CustObj = null;
-		public EditCustomerPage (Customer objCust)
+        public Customer objCust = null;
+		public EditCustomerPage ()
 		{
+            GetSelectedCustomerById();          
+            InitializeComponent ();
             CustomerId = objCust.Id;
             BindingContext = objCust;
-            InitializeComponent ();
 
             //CustObj = new Customer();
             //CustObj.Id = objCust.Id;
@@ -32,6 +33,22 @@ namespace Demo_App
             //CustObj.TelephoneNo = objCust.TelephoneNo;
             //CustObj.Address = objCust.Address;
             //BindingContext = CustObj;
+
+        }
+
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
 
         }
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
@@ -71,7 +88,7 @@ namespace Demo_App
 
             var result = PostData("POST", serailizeddata, apiUrl);
 
-            Navigation.PushAsync(new CutomerProfilePage(obj, objnotes));
+            Navigation.PushAsync(new CutomerProfilePage());
         }
 
 

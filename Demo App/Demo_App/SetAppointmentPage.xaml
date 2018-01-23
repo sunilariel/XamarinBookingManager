@@ -9,51 +9,50 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray" Spacing="0">
             <StackLayout VerticalOptions="Start" BackgroundColor="#25DBF1" HeightRequest="70">
-                    <Grid ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="70"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
+                <Grid ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Padding="10">
 
-                        </StackLayout>
-                        <StackLayout x:Name="headerTitle" Grid.Column="1" Padding="0,5,0,0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label x:Name="shedulerStaff" Text="All Scheduler" TextColor="White" HorizontalOptions="End" Grid.Column="0"/>
-                                <Image x:Name="dropdownArrow" Source="DropDownArrow.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                    Tapped="StaffDataPage"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Grid>
-                        </StackLayout>
-
-                        <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,5,10,0">
-                            <Image x:Name="CalendarIconButton" Source="calender.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="30" WidthRequest="30">
+                    </StackLayout>
+                    <StackLayout x:Name="headerTitle" Grid.Column="1" Padding="0,20,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="shedulerStaff" Text="All Scheduler" TextColor="White" FontSize="14" HorizontalOptions="End" Grid.Column="0"/>
+                            <Image x:Name="dropdownArrow" Source="DropDownArrow.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                    Tapped="tbi_Clicked"/>
+                                    Tapped="StaffDataPage"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
+                        </Grid>
+                    </StackLayout>
 
-                <StackLayout x:Name="middleF" VerticalOptions="Center" BackgroundColor="White" >
-                    <Grid ColumnSpacing="0" RowSpacing="0">
-                        <Grid.RowDefinitions>
+                    <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,20,10,0">
+                        <Image x:Name="CalendarIconButton" Source="calender.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="30" WidthRequest="30">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Tapped="tbi_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <StackLayout x:Name="middleF" VerticalOptions="Center" BackgroundColor="White" >
+                <Grid ColumnSpacing="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                        <ContentView x:Name="Placeholder" Grid.Row="0"/>
-                         <StackLayout x:Name="listData" Grid.Row="0" BackgroundColor="White" IsVisible="False">
-                            <ScrollView>
-                                <ListView x:Name="StaffList" ItemSelected="StaffSelectedForAppointment" RowHeight="70">
+                    <ContentView x:Name="Placeholder" Grid.Row="0"/>
+                    <StackLayout x:Name="listData" Grid.Row="0" BackgroundColor="White" IsVisible="False">
+                        <ScrollView>
+                            <ListView x:Name="StaffList" ItemSelected="StaffSelectedForAppointment" RowHeight="70">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -75,10 +74,10 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            </ScrollView>
-                        </StackLayout>
-                        
-                        <!--<StackLayout Grid.Row="2">
+                        </ScrollView>
+                    </StackLayout>
+
+                    <!--<StackLayout Grid.Row="2">
                             <Grid ColumnSpacing="0" RowSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -133,83 +132,74 @@
                                 </StackLayout>
                             </Grid>
                         </StackLayout>-->
+                    
+                </Grid>
+            </StackLayout>
+            <StackLayout HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Padding="0,10,20,0" BackgroundColor="Transparent">
+            <Image x:Name="floataction" Source="plus.png" HeightRequest="30" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnOpenPupup"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <StackLayout VerticalOptions="End" HeightRequest="70" BackgroundColor="White">
+                <StackLayout  VerticalOptions="EndAndExpand">
+                    <Grid ColumnSpacing="0" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="White">
+                            <Image HeightRequest="30" Source="calender.png"/>
+                            <Label Text="CALENDER" FontSize="10"
+                       HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Icon1_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="White">
+                            <Image HeightRequest="30" Source="Activity.png"/>
+                            <Label Text="ACTIVITY" FontSize="10"
+                       HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Icon3_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="1" BackgroundColor="White">
+                            <Image HeightRequest="30" Source="customer.png"/>
+                            <Label Text="CUSTOMER" FontSize="10"
+                       HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Icon2_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="White">
+                            <Image HeightRequest="30" Source="account.png"/>
+                            <Label Text="ACCOUNT" FontSize="10"
+                       HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Icon4_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" Grid.Column="4" BackgroundColor="White">
+                            <Image HeightRequest="30" Source="more.png"/>
+                            <Label Text="MORE" FontSize="10"
+                       HorizontalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Icon5_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
                     </Grid>
                 </StackLayout>
-
-            <StackLayout VerticalOptions="End" HeightRequest="120" BackgroundColor="White">
-                <Grid RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Padding="0,10,20,0">
-                        <Image x:Name="floataction" Source="plus.png" HeightRequest="30">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer 
-                        Tapped="OnOpenPupup"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    
-                    <StackLayout Grid.Row="1" VerticalOptions="EndAndExpand">
-                        <Grid ColumnSpacing="0" RowSpacing="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="White">
-                                <Image HeightRequest="30" Source="calender.png"/>
-                                <Label Text="CALENDER" FontSize="10"
-                       HorizontalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Icon1_Tapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="White">
-                                <Image HeightRequest="30" Source="Activity.png"/>
-                                <Label Text="ACTIVITY" FontSize="10"
-                       HorizontalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Icon3_Tapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <StackLayout Spacing="0" Grid.Column="1" BackgroundColor="White">
-                                <Image HeightRequest="30" Source="customer.png"/>
-                                <Label Text="CUSTOMER" FontSize="10"
-                       HorizontalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Icon2_Tapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="White">
-                                <Image HeightRequest="30" Source="account.png"/>
-                                <Label Text="ACCOUNT" FontSize="10"
-                       HorizontalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Icon4_Tapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <StackLayout Spacing="0" Grid.Column="4" BackgroundColor="White">
-                                <Image HeightRequest="30" Source="more.png"/>
-                                <Label Text="MORE" FontSize="10"
-                       HorizontalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Icon5_Tapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </Grid>
-                    </StackLayout>
-                </Grid>
-               
             </StackLayout>
-           
         </StackLayout>
     </ContentPage.Content>
 

@@ -18,18 +18,38 @@ namespace Demo_App
 	public partial class AddNotesPage : ContentPage
     {
         public Customer objCust = null;      
-        public AddNotesPage (Customer Cust)
+        public AddNotesPage ()
 		{
-			InitializeComponent ();           
-            objCust = new Customer();
-            objCust = Cust;
+			InitializeComponent ();
+            
+            //objCust = new Customer();
+            //objCust = Cust;
             //BindingContext = objCust;
         }
 
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
         public void SaveNotes(object sender, SelectedItemChangedEventArgs e)
         {
+            GetSelectedCustomerById();
             Notes obj = new Notes();
-            obj.CustomerId = objCust.Id;
+            if (objCust != null)
+            {
+                obj.CustomerId = objCust.Id;
+            }
             obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
             obj.Description = CustomerNote.Text;
             obj.WhoAddedThis = "";            
@@ -41,7 +61,7 @@ namespace Demo_App
 
             var result = PostData(ApiMethod, data, Url);
            
-                Navigation.PushAsync(new CutomerProfilePage(objCust, obj));
+                Navigation.PopAsync(true);
         }
 
         public string PostData(string Method, string SerializedData, string Url)
@@ -55,7 +75,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != null)
+                if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);

@@ -31,18 +31,18 @@ namespace Demo_App
         string PageName = "";
         #endregion
 
-        public SelectStaffForAppointmentPage (Service service,Customer Cust,string pagename,Notes objNotes)
+        public SelectStaffForAppointmentPage (Service service,string pagename)
 		{
 			InitializeComponent ();
             PageName = pagename;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
             Cost = service.Cost;
             ServiceId = service.Id;
             ServiceName = service.Name;
@@ -67,7 +67,7 @@ namespace Demo_App
         {
             AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
              EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name, objCust,Cost, PageName,objNotes));
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name,Cost, PageName));
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()

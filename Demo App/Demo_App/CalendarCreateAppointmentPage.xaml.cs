@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using Demo_App.Model;
+﻿using Demo_App.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -26,7 +25,8 @@ namespace Demo_App
         int CustID;
         double Cost;
         string day = "";
-        DateTime dateOfBooking;       
+        DateTime dateOfBooking;
+        public Customer objCust = null;
         public BookAppointment objbookAppointment = null;
         public AssignedServicetoStaff objdata = null;
         Dictionary<string, int> Data = null;
@@ -34,9 +34,10 @@ namespace Demo_App
         int CategoryId;
         #endregion
 
-        public CalendarCreateAppointmentPage (Customer objCust,AddAppointments objAddAppointment)
+        public CalendarCreateAppointmentPage (AddAppointments objAddAppointment)
 		{
 			InitializeComponent ();
+            GetSelectedCustomerById();
             objdata = new AssignedServicetoStaff();
             objdata.Id= objAddAppointment.ServiceId;
             objdata.Name= objAddAppointment.ServiceName;
@@ -48,10 +49,13 @@ namespace Demo_App
             empName = objAddAppointment.EmployeeName;
             ServiceID = objAddAppointment.ServiceId;
             ServiceName = objAddAppointment.ServiceName;
-            CustID = objCust.Id;
-            CustName.Text = objCust.FirstName;
-            CustEmail.Text = objCust.Email;
-            CustPhoneNo.Text = objCust.TelephoneNo;
+            if (objCust != null)
+            {
+                CustID = objCust.Id;
+                CustName.Text = objCust.FirstName;
+                CustEmail.Text = objCust.Email;
+                CustPhoneNo.Text = objCust.TelephoneNo;
+            }
             BindingContext = objAddAppointment;
             Data = new Dictionary<string, int>
             {
@@ -64,6 +68,22 @@ namespace Demo_App
                 newAppointmentsPicker.Items.Add(item);
             }
             newAppointmentsPicker.SelectedIndex = 0;
+        }
+
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
         public void CreateAppointment()

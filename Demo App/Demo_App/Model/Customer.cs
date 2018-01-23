@@ -18,7 +18,7 @@ namespace Demo_App.Model
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public string Address  { get; set; }
 
         public string PostCode { get; set; }
 

@@ -17,13 +17,16 @@ namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ServiceProviderPage : ContentPage
-	{      
+	{
+        #region GlobleFields
         string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         int ServiceId;
         string PreviousPageName = "";
-            
+
         ObservableCollection<AssignCategory> ListofAllCategories = new ObservableCollection<AssignCategory>();
-         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
+        ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
+
+        #endregion
 
         public ServiceProviderPage (ObservableCollection<AssignProvider> ListofProviders,int serviceId,string PageName)
 		{
@@ -34,7 +37,6 @@ namespace Demo_App
            
             AllocatedProviderCount.Text =  GetAllocatedServiceCount() + " " + "Staff selected" ;
             AllServiceProvider.ItemsSource = ListofServiceProviders;
-
         }
         
         public void AssignAllProvider(object Sender,EventArgs args)

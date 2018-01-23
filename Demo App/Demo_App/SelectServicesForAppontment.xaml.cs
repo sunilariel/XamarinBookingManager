@@ -28,19 +28,19 @@ namespace Demo_App
         string PageName = "";
         #endregion
 
-        public SelectServicesForAppontment (int CategoryId,Customer Cust,string pagename)
+        public SelectServicesForAppontment (string pagename)
 		{
 			InitializeComponent ();
             PageName = pagename;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
-            CategoryID = CategoryId;
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
+            //CategoryID = CategoryId;
             GetSelectedService();
         }
 
@@ -57,14 +57,14 @@ namespace Demo_App
             service.Name = servicedata.Name;
             service.Id = servicedata.Id;
             service.Cost = servicedata.Cost;
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, objCust, PageName,objNotes));
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName));
         }
 
        
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + Application.Current.Properties["CategoryID"];
             var result = PostData("GET", "", apiUrl);
 
             ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);

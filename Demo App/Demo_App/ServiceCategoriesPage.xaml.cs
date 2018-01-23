@@ -18,10 +18,13 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ServiceCategoriesPage : ContentPage
 	{
+        #region GlobleFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
         public ServicesAllocatedToCategory serviceCount = null;
+        #endregion
+
         public ServiceCategoriesPage (int CategoryId)
 		{
 			InitializeComponent ();

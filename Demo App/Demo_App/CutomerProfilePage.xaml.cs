@@ -1,12 +1,13 @@
 ﻿using Demo_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,40 +16,41 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CutomerProfilePage : ContentPage
 	{
+        #region GlobleFields
         //string phonNumber;
-        int CustomerId;      
+        int CustomerId;
         public Customer objCust = null;
+        public Notes obj = null;
         public BookAppointment objBookAppointment = null;
-        public CutomerProfilePage (Customer Cust,Notes obj)
-		{
-            //this.phonNumber = Cust.TelephoneNo;
-             BindingContext = Cust;
-            CustomerId = Cust.Id;
+        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();
+        #endregion
+       
+        public CutomerProfilePage ()
+		{                       
             InitializeComponent ();
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
+            GetSelectedCustomerById();
+            CustomerId = objCust.Id;
+            var notesList = GetAllCustomerNotes();
+            //objCust = new Customer();
+            //objCust.Id = Cust.Id;
+            //objCust.FirstName = Cust.FirstName;
+            //objCust.LastName = Cust.LastName;
+            //objCust.UserName = Cust.UserName;
+            //objCust.Email = Cust.Email;
+            //objCust.TelephoneNo = Cust.TelephoneNo;
+            //objCust.Address = Cust.Address;
             BindingContext = objCust;
-            Noteslbl.Text = obj.Description;
-
-            GetAllCustomerNotes();
+            foreach (var item in notesList)
+            {
+                Noteslbl.Text = item.Description;
+            }                      
 
         }
         private void CrossClick(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
         }
-        //private void OnOpenPupup(object sender,EventArgs e)
-        //{
-        //    deletelbl.IsVisible = true;
-        //    plusimsge.IsVisible = false;
-        //}
-
+        
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
             if (e.TotalY != 0 && CustomerProfile.HeightRequest > 30 && CustomerProfile.HeightRequest < 151)
@@ -64,15 +66,15 @@ namespace Demo_App
 
         private void AddNotesClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddNotesPage(objCust));
+            Navigation.PushAsync(new AddNotesPage());
         }
         private void AppointmentsClicks(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddAppointmentsPage(objCust, objBookAppointment));
+            Navigation.PushAsync(new AddAppointmentsPage(objBookAppointment));
         }
         private void EditCustomerClick(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new EditCustomerPage(objCust));
+            Navigation.PushAsync(new EditCustomerPage());
         }
 
         public void DeleteCustomer()
@@ -86,15 +88,39 @@ namespace Demo_App
             Navigation.PushAsync(new CustomerPage());
         }
 
-
-
-        public void GetAllCustomerNotes()
+        public void GetSelectedCustomerById()
         {
-            var CompanyId = Application.Current.Properties["CompanyId"];
-            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetAllCustomerNotes?companyId=" + CompanyId+ "&customerId=" + CustomerId;
-            var Method = "GET";
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objCust = JsonConvert.DeserializeObject<Customer>(result);               
+            }
+            catch (Exception e)
+            {
+               
+            }
 
-            var result = PostData(Method, "", Url);
+        }
+
+        public ObservableCollection<Notes> GetAllCustomerNotes()
+        {
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetAllCustomerNotes?companyId=" + CompanyId + "&customerId=" + CustomerId;
+                var Method = "GET";
+
+                var result = PostData(Method, "", Url);
+                ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
+                return ListNotes;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+
         }
 
         public string PostData(string Method, string SerializedData, string Url)

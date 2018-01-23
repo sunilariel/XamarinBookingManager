@@ -17,11 +17,13 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AssignServiceToStaffPage : ContentPage
 	{
+        #region GlobleFields
         string result = "";
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int EmployeeId;
         ObservableCollection<AssignedServicetoStaff> ListofServices = new ObservableCollection<AssignedServicetoStaff>();
-        public Staff obj = null;        
+        public Staff obj = null;
+        #endregion
         public AssignServiceToStaffPage (Staff ObjStaff)
 		{
 			InitializeComponent ();

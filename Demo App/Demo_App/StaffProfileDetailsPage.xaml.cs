@@ -17,12 +17,14 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StaffProfileDetailsPage : ContentPage
 	{
+        #region GlobleFields
         public Staff Objstaff = null;
         public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
         int ListofServicesCount = 0;
         int ListofAllocatedServicesCount = 0;
+        #endregion
 
         public StaffProfileDetailsPage (Staff staff)
 		{

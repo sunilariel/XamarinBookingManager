@@ -215,7 +215,6 @@ namespace Demo_App.Model
         public string CreationDate { get; set; }
     }
 
-
     public class AssignProvider :INotifyPropertyChanged
     {
         bool _confirmed;
@@ -281,15 +280,6 @@ namespace Demo_App.Model
         }
     }
 
-
-
-
-
-
-
-
-
-
     public class ReqWorkingHours
     {
         public int Id { get; set; }
@@ -300,7 +290,6 @@ namespace Demo_App.Model
         public bool IsOffAllDay { get; set; }
         public string CreationDate { get; set; }
     }
-
 
     public class Staff
     {

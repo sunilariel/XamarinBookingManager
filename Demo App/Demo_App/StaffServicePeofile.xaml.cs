@@ -16,12 +16,15 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StaffServicePeofile : ContentPage
 	{
-        public int StaffId;      
+        #region GlobleFields
+        public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
         int ListofServicesCount = 0;
         int ListofAllocatedServicesCount = 0;
         public Staff objStaff = null;
+        #endregion
+
         public StaffServicePeofile (int EmployeeId,Staff staffdata)
 		{
 			InitializeComponent ();

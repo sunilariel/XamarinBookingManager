@@ -67,11 +67,11 @@ namespace Demo_App
           
             if(PageName== "EditAppointment")
             {
-                Navigation.PushAsync(new UpdateAppointmentDetailsPage(objCust, obj , day, dateOfBooking, objNotes));
+                Navigation.PushAsync(new UpdateAppointmentDetailsPage(obj , day, dateOfBooking));
             }
             else
             {
-                Navigation.PushAsync(new NewAppointmentPage(obj, objCust, day, dateOfBooking, objNotes));
+                Navigation.PushAsync(new NewAppointmentPage(obj,day, dateOfBooking));
             }
             
             

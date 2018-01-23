@@ -17,19 +17,9 @@ namespace Demo_App
         }
 
         public static void SetMainPage()
-        {
-            //new NavigationPage(new RegPage());
-            //new NavigationPage(new LoginPage());
-            //new NavigationPage(new SetAppointmentPage());
-             Current.MainPage = new NavigationPage(new WelcomePage());
-
-            //Current.MainPage = new NavigationPage(new ServicesProviderPage(40));
-
-          // Current.MainPage = new NavigationPage(new BusinessHoursPage(21));
-
-             //Current.MainPage = new NavigationPage(new TestPage());
-
+        {                      
             //Current.MainPage = new NavigationPage(new SetAppointmentPage());
+            Current.MainPage = new NavigationPage(new WelcomePage());
 
             //Current.MainPage.On<Xamarin.Forms.PlatformConfiguration.Windows>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 

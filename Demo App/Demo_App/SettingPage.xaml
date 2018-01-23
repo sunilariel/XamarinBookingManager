@@ -4,15 +4,6 @@
              Title="Settings"
              x:Class="Demo_App.SettingPage">
     <ContentPage.Content>
-        <!--<StackLayout Padding="10">
-            --><!--<Label Text="Welcome to Xamarin Forms!" />--><!--
-            <Button Text="Business Hours" TextColor="Black" Image="Icon.png" BackgroundColor="White" Clicked="business_Hours"/>
-            <Button Text="Currency" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="TimeZone" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Off-Hours Booking" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Appoitment Slots" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Week Start Day" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-        </StackLayout>-->
         <TableView Intent="Settings" RowHeight="70">
             <TableRoot>
                 <TableSection>
