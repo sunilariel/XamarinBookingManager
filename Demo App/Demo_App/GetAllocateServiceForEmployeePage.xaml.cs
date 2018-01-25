@@ -18,17 +18,14 @@ namespace Demo_App
 	public partial class GetAllocateServiceForEmployeePage : ContentPage
 	{
         #region GloblesFields
-        int EmpID;
-        string EmpName = "";
+        int EmpID;        
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignedServicetoStaff> ListOfAllocatedServiceForEmployee = new ObservableCollection<AssignedServicetoStaff>();
         #endregion
 
-        public GetAllocateServiceForEmployeePage (int EmpId,string EmployeeName)
+        public GetAllocateServiceForEmployeePage ()
 		{
-			InitializeComponent ();
-            EmpID = EmpId;
-            EmpName = EmployeeName;
+			InitializeComponent ();            
             GetAllocatedServiceForEmployee();
 
         }
@@ -36,12 +33,12 @@ namespace Demo_App
         private void GetTimeforNewAppointmentClick(object sender,SelectedItemChangedEventArgs e)
         {
             var Data = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CalendarTimeSlotsPage(Data, EmpID, EmpName,"CalandarAppointment"));
+            Navigation.PushAsync(new CalendarTimeSlotsPage(Data,"CalandarAppointment"));
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllocatedServiceForEmployee()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + EmpID + "&compid=" + CompanyId;
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + Application.Current.Properties["SelectedEmpId"] + "&compid=" + CompanyId;
             var result = PostData("GET", "", apiUrl);
 
             ListOfAllocatedServiceForEmployee = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);

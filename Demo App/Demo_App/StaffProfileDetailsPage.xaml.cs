@@ -18,7 +18,7 @@ namespace Demo_App
 	public partial class StaffProfileDetailsPage : ContentPage
 	{
         #region GlobleFields
-        public Staff Objstaff = null;
+        public Staff objStaff = null;
         public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         ObservableCollection<AssignedServicetoStaff> ListOfServices = null;
@@ -26,23 +26,24 @@ namespace Demo_App
         int ListofAllocatedServicesCount = 0;
         #endregion
 
-        public StaffProfileDetailsPage (Staff staff)
+        public StaffProfileDetailsPage ()
 		{
-            BindingContext = staff;
-            StaffId = staff.Id;
+
+            StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
             InitializeComponent ();
+            GetEmployeeDetail();
             GetAllocatedServicetoStaff();
            GetAllTimeOffForEmployee();
             ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
 
-            Objstaff = new Staff();
-            Objstaff.Id = staff.Id;
-            Objstaff.FirstName = staff.FirstName;
-            Objstaff.LastName = staff.LastName;
-            Objstaff.Email = staff.Email;
-            Objstaff.TelephoneNo = staff.TelephoneNo;
-            Objstaff.Address = staff.Address;
-            BindingContext = Objstaff;
+            //Objstaff = new Staff();
+            //Objstaff.Id = staff.Id;
+            //Objstaff.FirstName = staff.FirstName;
+            //Objstaff.LastName = staff.LastName;
+            //Objstaff.Email = staff.Email;
+            //Objstaff.TelephoneNo = staff.TelephoneNo;
+            //Objstaff.Address = staff.Address;
+            BindingContext = objStaff;
         }
 
         private void CrossClick(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace Demo_App
         }
         private void WorkingDaysClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BusinessHoursPage(StaffId));
+            Navigation.PushAsync(new BusinessHoursPage(StaffId,"EditStaff"));
         }
         private void ServiceProvidedClick(object sender, EventArgs e)
         {
@@ -147,6 +148,22 @@ namespace Demo_App
             }
         }
 
+        public void GetEmployeeDetail()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + Application.Current.Properties["SelectedEmployeeID"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objStaff = JsonConvert.DeserializeObject<Staff>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
         public void GetAllocatedServicetoStaff()
         {
             var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
@@ -206,7 +223,7 @@ namespace Demo_App
         private void EditStaffDetails(object sender, EventArgs e)
         {
             //Staff staff = new Staff();
-            Navigation.PushAsync(new EditStaffPage(Objstaff));
+            Navigation.PushAsync(new EditStaffPage());
         }
         public string PostData(string Method, string SerializedData, string Url)
         {

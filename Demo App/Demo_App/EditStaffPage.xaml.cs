@@ -17,11 +17,13 @@ namespace Demo_App
     public partial class EditStaffPage : ContentPage
     {
         int StaffId;
-        public EditStaffPage(Staff Objstaff)
+        public Staff objStaff = null;
+        public EditStaffPage()
         {
-            StaffId = Objstaff.Id;
+            GetEmployeeDetail();
+            StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
             InitializeComponent();
-            BindingContext = Objstaff;
+            BindingContext = objStaff;
         }
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
@@ -60,9 +62,24 @@ namespace Demo_App
 
             var result = PostData("POST", serailizeddata, apiUrl);
 
-            Navigation.PushAsync(new StaffProfileDetailsPage(obj));
+            Navigation.PushAsync(new StaffProfileDetailsPage());
         }
 
+        public void GetEmployeeDetail()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + Application.Current.Properties["SelectedEmployeeID"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objStaff = JsonConvert.DeserializeObject<Staff>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
 
 
         public string PostData(string Method, string SerializedData, string Url)

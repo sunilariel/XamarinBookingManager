@@ -26,12 +26,13 @@
                             </Grid.ColumnDefinitions>
                             <Label x:Name="shedulerStaff" Text="All Scheduler" TextColor="White" FontSize="14" HorizontalOptions="End" Grid.Column="0"/>
                             <Image x:Name="dropdownArrow" Source="DropDownArrow.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                    Tapped="StaffDataPage"/>
-                                </Image.GestureRecognizers>
+                               
                             </Image>
                         </Grid>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                    Tapped="StaffDataPage"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="0,20,10,0">

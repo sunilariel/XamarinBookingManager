@@ -35,11 +35,11 @@ namespace Demo_App
         public AddAppointments objAddAppointment = null;
         public Customer objCust = null;      
         #endregion
-        public CalendarTimeSlotsPage (AssignedServicetoStaff obj,int EmpID,string EmpName, string pagename)
+        public CalendarTimeSlotsPage (AssignedServicetoStaff obj, string pagename)
 		{
 			InitializeComponent ();
-            EmployeeId = EmpID;
-            EmployeeName = EmpName;
+            EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
+            EmployeeName = Application.Current.Properties["LastSelectedStaff"].ToString();
             serviceID = obj.Id;
             PageName = pagename;
             objAddAppointment = new AddAppointments();

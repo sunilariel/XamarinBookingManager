@@ -56,8 +56,8 @@ namespace Demo_App
             y++;
             var page = new CalenderPage();
             Placeholder.Content = page.Content;
-            if (Application.Current.Properties.ContainsKey("LastSelectedfStaff")==true) {
-                shedulerStaff.Text = Application.Current.Properties["LastSelectedfStaff"].ToString();
+            if (Application.Current.Properties.ContainsKey("LastSelectedStaff")==true) {
+                shedulerStaff.Text = Application.Current.Properties["LastSelectedStaff"].ToString();
             }
             else
             {
@@ -187,6 +187,7 @@ namespace Demo_App
             EmpID = Convert.ToInt32(selectedStaff.Id);
             EmpName = selectedStaff.FirstName;
             shedulerStaff.Text = selectedStaff.FirstName;
+            Application.Current.Properties["SelectedEmpId"] = selectedStaff.Id;
             Application.Current.Properties["LastSelectedStaff"] = selectedStaff.FirstName;
             listData.IsVisible = false;
             Placeholder.IsVisible = true;
@@ -196,7 +197,7 @@ namespace Demo_App
         private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
         {
             
-            Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID,EmpName));
+            Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
         }
 
         public void GetStaff()

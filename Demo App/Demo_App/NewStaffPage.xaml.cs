@@ -49,23 +49,14 @@ namespace Demo_App
                 var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
                 var ApiMethod = "POST";
 
-                var result = PostData(ApiMethod, data, Url);
-
-                //var Requestresponse = JsonConvert.DeserializeObject(result);
-                //var jobject = (JObject)JsonConvert.DeserializeObject(result);
-                //var jvalue = (JValue)jobject["ReturnObject"]["EmloyeeId"];
-
+                var result = PostData(ApiMethod, data, Url);                
                 JObject responsedata = JObject.Parse(result);
                 dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
+                Application.Current.Properties["EmployeeID"] = Convert.ToInt32(ResponseValue.Value);
                 int EmployeeId = Convert.ToInt32(ResponseValue.Value);
 
-                SetBuisnessHours(EmployeeId);
-                // Navigation.PushAsync(new StaffPage());
-
-                //var staffdata =e.SelectedItem as Staff;
-                //Navigation.PushAsync(new StaffServicePeofile(EmployeeId, staffdata)); 
-
-                Navigation.PushAsync(new StaffServicePeofile(EmployeeId, obj));
+                SetBuisnessHours(EmployeeId);                
+                Navigation.PushAsync(new StaffServicePeofile());
             }
         }
 

@@ -82,7 +82,8 @@ namespace Demo_App
         private void ServiceprofileDetailClick(object sender, SelectedItemChangedEventArgs e)
         {
             var staff = e.SelectedItem as Staff;
-            Navigation.PushAsync(new StaffProfileDetailsPage(staff));
+            Application.Current.Properties["SelectedEmployeeID"] = staff.Id;
+            Navigation.PushAsync(new StaffProfileDetailsPage());
         }
     }
 }

@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <!--<syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView" ViewHeaderHeight="50"/>-->
         <StackLayout>
-            <StackLayout VerticalOptions="Start" HeightRequest="30">
+            <StackLayout VerticalOptions="Start" HeightRequest="50">
                 <Grid ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -24,7 +24,7 @@
                 </Grid>
             </StackLayout>
             
-            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0">
+            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0" HeightRequest="70">
                 <Grid ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -36,38 +36,38 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0">
-                        <Label Text="M" TextColor="Black"/>
-                        <Label Text="1" TextColor="Black"/>
+                        <Label Text="Mon" TextColor="Black"/>
+                        <Label x:Name="WeekMonlbl" Text="{Binding currentWeek[0]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1">
-                        <Label Text="T" TextColor="Black"/>
-                        <Label Text="2" TextColor="Black"/>
+                        <Label Text="Tue" TextColor="Black"/>
+                        <Label x:Name="WeekTuelbl" Text="{Binding currentWeek[1]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="2">
-                        <Label Text="W" TextColor="Black"/>
-                        <Label Text="3" TextColor="Black"/>
+                        <Label Text="Wed" TextColor="Black"/>
+                        <Label x:Name="WeekWedlbl" Text="{Binding currentWeek[2]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="3">
-                        <Label Text="Th" TextColor="Black"/>
-                        <Label Text="4" TextColor="Black"/>
+                        <Label Text="Thu" TextColor="Black"/>
+                        <Label x:Name="WeekThulbl" Text="{Binding currentWeek[3]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="4">
-                        <Label Text="F" TextColor="Black"/>
-                        <Label Text="5" TextColor="Black"/>
+                        <Label Text="Fri" TextColor="Black"/>
+                        <Label x:Name="WeekFrilbl" Text="{Binding currentWeek[4]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="5">
-                        <Label Text="S" TextColor="Black"/>
-                        <Label Text="6" TextColor="Black"/>
+                        <Label Text="Sat" TextColor="Black"/>
+                        <Label x:Name="WeekSatlbl" Text="{Binding currentWeek[5]}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Grid.Column="6">
-                        <Label Text="Su" TextColor="Black"/>
-                        <Label Text="7" TextColor="Black"/>
+                        <Label Text="Sun" TextColor="Black"/>
+                        <Label x:Name="WeekSunlbl" Text="{Binding currentWeek[6]}" TextColor="Black"/>
                     </StackLayout>
                 </Grid>
             </StackLayout>
             
             <StackLayout x:Name="schedulerFullMonthView" IsVisible="False" VerticalOptions="CenterAndExpand">
-                <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30" HeaderHeight="0"/>
+                <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30" HeaderHeight="0" HeightRequest="170"/>
             </StackLayout>
             
             <StackLayout Padding="0,5,0,0">
@@ -95,16 +95,39 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Mon" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="Aqua" HorizontalOptions="EndAndExpand">
+                                <Label Grid.Column="0" x:Name="Mondaylbl" Text="" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand">
                                     <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddNewAppointment" NumberOfTapsRequired="1" />
+                                        <TapGestureRecognizer Tapped="AddNewAppointment"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </Grid>
                         </StackLayout>
-                        <StackLayout x:Name="MonAppointmentBox" Grid.Row="1">
-                            <Label Text="No appointment booked"></Label>
+                        <StackLayout x:Name="MonAppointmentBox" Grid.Row="1" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <!--<ListView x:Name="CustomerAppoimentList" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1">
+                                                        <Label Text="{Binding BookingDate}" TextColor="Black"/>
+                                                        <Label Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>-->
                         </StackLayout>
                         <StackLayout Grid.Row="2" Padding="10" BackgroundColor="LightGray">
                             <Grid>
@@ -112,12 +135,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Tue" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Tuesdaylbl" Text="Tue" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="3">
+                        <StackLayout Grid.Row="3" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                         <StackLayout Grid.Row="4" Padding="10" BackgroundColor="LightGray">
@@ -126,12 +151,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Wed" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Wednesdaylbl" Text="Wed" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="5">
+                        <StackLayout Grid.Row="5" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                         <StackLayout Grid.Row="6" Padding="10" BackgroundColor="LightGray">
@@ -140,12 +167,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Thu" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Thursdaylbl" Text="Thu" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="7">
+                        <StackLayout Grid.Row="7" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                         <StackLayout Grid.Row="8" Padding="10" BackgroundColor="LightGray">
@@ -154,12 +183,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Fri" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Fridaylbl" Text="Fri" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="9">
+                        <StackLayout Grid.Row="9" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                         <StackLayout Grid.Row="10" Padding="10" BackgroundColor="LightGray">
@@ -168,12 +199,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Sat" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Saturdaylbl" Text="Sat" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="11">
+                        <StackLayout Grid.Row="11" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                         <StackLayout Grid.Row="12" Padding="10" BackgroundColor="LightGray">
@@ -182,12 +215,14 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="Sun" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#50aaa5" HorizontalOptions="EndAndExpand"></Label>
-                                <!--<Label Text="No appointment booked"></Label>-->
+                                <Label Grid.Column="0" x:Name="Sundaylbl" Text="Sun" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="13">
+                        <StackLayout Grid.Row="13" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                     </Grid>

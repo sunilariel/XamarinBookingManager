@@ -25,27 +25,27 @@ namespace Demo_App
         public Staff objStaff = null;
         #endregion
 
-        public StaffServicePeofile (int EmployeeId,Staff staffdata)
+        public StaffServicePeofile ()
 		{
 			InitializeComponent ();
-            objStaff = new Staff();
-            objStaff.Id = EmployeeId;
-            objStaff.FirstName = staffdata.FirstName;
-            objStaff.LastName = staffdata.LastName;
-            objStaff.Email = staffdata.Email;
-            objStaff.Address = staffdata.Address;
-            objStaff.TelephoneNo = staffdata.TelephoneNo;
-            StaffId = EmployeeId;
-            //StaffId = staff.Id;
+            GetEmployeeDetail();
+            //objStaff = new Staff();
+            //objStaff.Id = EmployeeId;
+            //objStaff.FirstName = staffdata.FirstName;
+            //objStaff.LastName = staffdata.LastName;
+            //objStaff.Email = staffdata.Email;
+            //objStaff.Address = staffdata.Address;
+            //objStaff.TelephoneNo = staffdata.TelephoneNo;
+            StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
             InitializeComponent();
             GetAllocatedServicetoStaff();
             GetAllTimeOffForEmployee();
            AllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
-            BindingContext = staffdata;
+            BindingContext = objStaff;
         }
         private void WorkingDays(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new BusinessHoursPage(StaffId));
+            Navigation.PushAsync(new BusinessHoursPage(StaffId, "CreatStaff"));
         }
         private void ServiceProvided(object sender, EventArgs args)
         {
@@ -58,6 +58,11 @@ namespace Demo_App
         private void DoneClick(object sender, EventArgs args)
         {
             Navigation.PushAsync(new StaffPage());
+        }
+
+        private void CrossClick(object sender,EventArgs e)
+        {
+            Navigation.PopAsync(true);
         }
 
         public void GetAllocatedServicetoStaff()
@@ -83,6 +88,22 @@ namespace Demo_App
                     }
                 }
             }
+        }
+
+        public void GetEmployeeDetail()
+        {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + Application.Current.Properties["EmployeeID"];
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                objStaff = JsonConvert.DeserializeObject<Staff>(result);
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
         public void GetAllTimeOffForEmployee()

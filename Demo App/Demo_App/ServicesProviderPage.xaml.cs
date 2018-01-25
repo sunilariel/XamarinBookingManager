@@ -65,7 +65,7 @@ namespace Demo_App
                     var result = PostData("POST", SerializedData, apiUrl);
                 }
             }
-            Navigation.PushAsync(new StaffProfileDetailsPage(GetSelectedStaff()));
+            Navigation.PushAsync(new StaffProfileDetailsPage());
         }
 
         public Staff GetSelectedStaff()

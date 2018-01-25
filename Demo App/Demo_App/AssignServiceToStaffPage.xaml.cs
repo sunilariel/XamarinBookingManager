@@ -69,7 +69,7 @@ namespace Demo_App
                 }
             }
            
-            Navigation.PushAsync(new StaffServicePeofile(EmployeeId, obj));
+            Navigation.PushAsync(new StaffServicePeofile());
         }
 
         public string PostData(string Method, string SerializedData, string Url)

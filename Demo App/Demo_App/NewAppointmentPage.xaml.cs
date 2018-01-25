@@ -50,7 +50,10 @@ namespace Demo_App
             empName = objAddAppointments.EmployeeName;
             ServiceID = objAddAppointments.ServiceId;
             ServiceName = objAddAppointments.ServiceName;
-            CustID = objCust.Id;
+            if (objCust != null)
+            {
+                CustID = objCust.Id;
+            }
             Cost = objAddAppointments.Cost;
             service = new Service();
             service.Id = Convert.ToInt32(objAddAppointments.ServiceId);

@@ -10,16 +10,16 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Padding="10" BackgroundColor="White">
+                <StackLayout Grid.Row="0" Padding="20" BackgroundColor="White">
                     <Label Text="All Services" TextColor="Black" HorizontalOptions="StartAndExpand"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick">
+                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick" HeightRequest="70">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <!--<TextCell Text="{Binding Name}" TextColor="Black" />-->
                                 <ViewCell Height="70">
-                                    <StackLayout Padding="10,0,0,0" BackgroundColor="White">
+                                    <StackLayout Padding="20,0,0,0" BackgroundColor="White" HeightRequest="70">
                                         <Label Text="{Binding CategoryName}" TextColor="Black"/>
                                         <Label Text="{Binding AllocatedServiceCount}" />
                                     </StackLayout>

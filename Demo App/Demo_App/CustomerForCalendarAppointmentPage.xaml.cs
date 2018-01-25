@@ -29,7 +29,7 @@ namespace Demo_App
             objaddAppointment.EmployeeId = obj.EmployeeId;
             objaddAppointment.EmployeeName = obj.EmployeeName;
             objaddAppointment.Cost = obj.Cost;
-            objaddAppointment.TimePeriod = obj.TimePeriod;
+            objaddAppointment.TimePeriod = obj.StartTime;
             objaddAppointment.DurationInHours = hrs;
             objaddAppointment.DurationInMinutes = min;
             objaddAppointment.DateOfBooking = obj.DateOfBooking;
@@ -43,6 +43,7 @@ namespace Demo_App
         private void selectedCustomerForAppointment(object sender,SelectedItemChangedEventArgs e)
         {
             var data = e.SelectedItem as Customer;
+            Application.Current.Properties["SelectedCustomerId"] = data.Id;
             Navigation.PushAsync(new CalendarCreateAppointmentPage(objaddAppointment));
         }
 

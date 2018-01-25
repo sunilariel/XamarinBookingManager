@@ -21,12 +21,17 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BusinessHoursPage : ContentPage
     {
+        #region GlobleFields
         int EmployeeId;
+        string PageName = "";
         ObservableCollection<ProviderWorkingHours> listofWorkingDays = new ObservableCollection<ProviderWorkingHours>();
-        public BusinessHoursPage(int StaffId)
+        #endregion
+
+        public BusinessHoursPage(int StaffId,string pagename)
         {            
             InitializeComponent();           
             EmployeeId = StaffId;
+            PageName = pagename;
             GetBuisnessHoursofStaff();                        
         }
 
@@ -74,7 +79,14 @@ namespace Demo_App
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
                 var result = PostData("POST", SerializedObj, apiUrl);               
             }
-            Navigation.PushAsync(new StaffProfileDetailsPage(GetSelectedStaff()));
+            if (PageName == "CreatStaff")
+            {
+                Navigation.PushAsync(new StaffServicePeofile());
+            }
+            else
+            {
+                Navigation.PushAsync(new StaffProfileDetailsPage());
+            }
         }
 
         public Staff GetSelectedStaff()

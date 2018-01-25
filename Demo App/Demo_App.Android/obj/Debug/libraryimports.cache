@@ -2,10 +2,15 @@
 <Paths>
   <ManifestDocuments>
     <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\manifest\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\manifest\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\manifest\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\manifest\AndroidManifest.xml</ManifestDocument>
     <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\AndroidManifest.xml</ManifestDocument>
+    <ManifestDocument>obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\manifest\AndroidManifest.xml</ManifestDocument>
   </ManifestDocuments>
   <NativeLibraries />
   <Jars>

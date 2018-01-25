@@ -136,9 +136,7 @@ namespace Demo_App
             
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count-1]);
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-            Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-            //Navigation.PopAsync(Navigation.NavigationStack.Count - 3, true);
-            //Navigation.
+            Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);           
             Navigation.PopAsync();
         }
 
@@ -151,17 +149,17 @@ namespace Demo_App
 
         private void EditServiceForAppointmentClick(object sender,EventArgs e)
         {
-            Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID,empName));
+            Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
         }
 
         private void EditAppointmentByBookingDate(object sender,EventArgs e)
         {
-            Navigation.PushAsync(new CalendarTimeSlotsPage(objdata, EmpID,empName, "CalandarAppointment"));
+            Navigation.PushAsync(new CalendarTimeSlotsPage(objdata, "CalandarAppointment"));
         }
 
         private void AddCommentClick(object sender,EventArgs e)
         {
-           // Navigation.PushAsync(new AddNotesPage());
+            Navigation.PushAsync(new AddNotesPage());
         }
 
         public string PostData(string Method, string SerializedData, string Url)
