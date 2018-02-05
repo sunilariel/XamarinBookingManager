@@ -25,55 +25,55 @@ namespace Demo_App
         public Service ServiceDetail;
         #endregion
 
-        public ChooseCategoriesPage (ObservableCollection<AssignCategory> ListofCategory,int serviceId)
+        public ChooseCategoriesPage (ObservableCollection<AssignCategory> ListofCategory)
 		{
-                 
-            InitializeComponent ();
-            ListofAllCategories = ListofCategory;
-            ServiceId = serviceId;
-            CategoriesData.ItemsSource = ListofAllCategories;
+            try
+            {
+                InitializeComponent();
+                ListofAllCategories = ListofCategory;
+                ServiceId = Convert.ToInt32(Application.Current.Properties["ServiceID"]);
+                CategoriesData.ItemsSource = ListofAllCategories;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
 
         }
-
         
         private void AssignCategorytoService(object sender, EventArgs args)
         {
-            foreach( var item in ListofAllCategories)
+            try
             {
-                if (item.Confirmed == true)
+                foreach (var item in ListofAllCategories)
                 {
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + item.Id + "&serviceId=" + ServiceId;
+                    if (item.Confirmed == true)
+                    {
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + item.Id + "&serviceId=" + ServiceId;
 
-                   var result= PostData("PUT", "", apiUrl);
+                        var result = PostData("PUT", "", apiUrl);
+                    }
+                    else
+                    {
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + item.Id + "&serviceId=" + ServiceId;
+
+                        var result = PostData("POST", "", apiUrl);
+                    }
                 }
-                else
-                {
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + item.Id + "&serviceId=" + ServiceId;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
 
-                    var result = PostData("POST", "", apiUrl);
-                }
-            }         
-           Navigation.PushAsync(new ServiceDetailsPage(GetSelectedService()));
+            }
+           Navigation.PushAsync(new ServiceDetailsPage());
         }
-
-        public Service GetSelectedService()
-        {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetServiceById?id=" + ServiceId;
-
-           var result= PostData("GET", "", apiUrl);
-
-            Service ServiceDetail = JsonConvert.DeserializeObject<Service>(result);
-
-            return ServiceDetail;
-        }
-
-
+       
         private void AddNewCategory(object sender, EventArgs args)
         {
             Navigation.PushAsync(new NewCategoryPage());
         }
-
-       
+      
         public string PostData(string Method, string SerializedData, string Url)
         {
             try
@@ -105,7 +105,6 @@ namespace Demo_App
                 return e.ToString();
             }
         }
-
 
     }
 }

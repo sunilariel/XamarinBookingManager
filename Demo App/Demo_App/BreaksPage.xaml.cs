@@ -28,8 +28,15 @@ namespace Demo_App
 
         public void SetBreakTime()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/AddBreak";
-            var result = PostData("POST", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/AddBreak";
+                var result = PostData("POST", "", apiUrl);
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
         public void EditBreakTime()
@@ -39,10 +46,17 @@ namespace Demo_App
 
         public void GetBreakTimeofEmployee()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllBreaksForEmployee?employeeId="+ StaffId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllBreaksForEmployee?employeeId=" + StaffId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<BreakTime> BreakTimeofEmployee = JsonConvert.DeserializeObject<ObservableCollection<BreakTime>>(result);
+                ObservableCollection<BreakTime> BreakTimeofEmployee = JsonConvert.DeserializeObject<ObservableCollection<BreakTime>>(result);
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

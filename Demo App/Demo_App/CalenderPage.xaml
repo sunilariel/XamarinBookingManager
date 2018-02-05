@@ -15,12 +15,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="currentMonth" Text="CurrentMonth" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
-                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
-                        <Image.GestureRecognizers>
+                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1"/>
+                    <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                     Tapped="ChangeMonthView"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                        </StackLayout.GestureRecognizers>
+                    
                 </Grid>
             </StackLayout>
             

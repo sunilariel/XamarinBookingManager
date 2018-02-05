@@ -5,7 +5,7 @@
              Title="Business Hours" NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Savebutton" Clicked="SaveStaffWorkingHours" Text="save" Order="Primary" Priority="0"/>
+        <ToolbarItem x:Name="Savebutton" Clicked="SaveStaffWorkingHours" Text="Save" Order="Primary" Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -27,7 +27,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TimePicker Time="{Binding Start,Mode=TwoWay}" x:Name="{Binding Start}" HorizontalOptions="Start" Grid.Column="0"></TimePicker>
+                                        <TimePicker Time="{Binding Start,Mode=TwoWay}" HorizontalOptions="Start" Grid.Column="0"></TimePicker>
                                         <TimePicker Time="{Binding End,Mode=TwoWay}" x:Name="{Binding End}"  HorizontalOptions="Center" Grid.Column="1"></TimePicker>
                                     </Grid>
                                 </StackLayout>

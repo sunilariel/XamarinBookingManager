@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -14,17 +15,34 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddNotesPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddNotesPage : ContentPage
     {
-        public Customer objCust = null;      
-        public AddNotesPage ()
-		{
-			InitializeComponent ();
-            
-            //objCust = new Customer();
-            //objCust = Cust;
-            //BindingContext = objCust;
+        #region GlobleFields
+        int CustomerId;
+        public Customer objCust = null;
+        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();
+        //ObservableCollection<Notes> notesList = new ObservableCollection<Notes>();
+        #endregion
+
+        public AddNotesPage()
+        {
+            try
+            {
+                InitializeComponent();
+                GetSelectedCustomerById();
+                CustomerId = objCust.Id;
+               var notesList = GetAllCustomerNotes();
+                notesList.OrderByDescending(x => x.CreationDate);
+                foreach (var item in notesList)
+                {
+                    CustomerNote.Text = item.Description;
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void GetSelectedCustomerById()
@@ -42,26 +60,54 @@ namespace Demo_App
             }
 
         }
+
+        public ObservableCollection<Notes> GetAllCustomerNotes()
+        {
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetAllCustomerNotes?companyId=" + CompanyId + "&customerId=" + CustomerId;
+                var Method = "GET";
+
+                var result = PostData(Method, "", Url);
+                ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
+                return ListNotes;
+            }
+            catch (Exception e)
+            {
+                ObservableCollection<Notes> objnotes = new ObservableCollection<Notes>();
+                return objnotes;
+            }
+
+        }
+
         public void SaveNotes(object sender, SelectedItemChangedEventArgs e)
         {
-            GetSelectedCustomerById();
-            Notes obj = new Notes();
-            if (objCust != null)
+            try
             {
-                obj.CustomerId = objCust.Id;
+                GetSelectedCustomerById();
+                Notes obj = new Notes();
+                if (objCust != null)
+                {
+                    obj.CustomerId = objCust.Id;
+                }
+                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                obj.Description = CustomerNote.Text;
+                obj.WhoAddedThis = "";
+                obj.CreationDate = (System.DateTime.Now).ToString();
+
+                var data = JsonConvert.SerializeObject(obj);
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
+                var ApiMethod = "POST";
+
+                var result = PostData(ApiMethod, data, Url);
             }
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.Description = CustomerNote.Text;
-            obj.WhoAddedThis = "";            
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
 
-            var data = JsonConvert.SerializeObject(obj);
-            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
-            var ApiMethod = "POST";
-
-            var result = PostData(ApiMethod, data, Url);
-           
-                Navigation.PopAsync(true);
+            Navigation.PopAsync(true);
         }
 
         public string PostData(string Method, string SerializedData, string Url)

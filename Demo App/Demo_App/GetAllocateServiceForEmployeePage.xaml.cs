@@ -38,18 +38,26 @@ namespace Demo_App
 
         public ObservableCollection<AssignedServicetoStaff> GetAllocatedServiceForEmployee()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + Application.Current.Properties["SelectedEmpId"] + "&compid=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
-
-            ListOfAllocatedServiceForEmployee = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-
-            foreach (var item in ListOfAllocatedServiceForEmployee)
+            try
             {
-                var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" + " " + item.Cost;
-                item.ServiceDetails = details;
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + Application.Current.Properties["SelectedEmpId"] + "&compid=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
+
+                ListOfAllocatedServiceForEmployee = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+                foreach (var item in ListOfAllocatedServiceForEmployee)
+                {
+                    var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" + " " + item.Cost;
+                    item.ServiceDetails = details;
+                }
+
+                ListofAllocatedServicesforEmployee.ItemsSource = ListOfAllocatedServiceForEmployee;
+                return ListOfAllocatedServiceForEmployee;
             }
-            ListofAllocatedServicesforEmployee.ItemsSource = ListOfAllocatedServiceForEmployee;
-            return ListOfAllocatedServiceForEmployee;
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
 

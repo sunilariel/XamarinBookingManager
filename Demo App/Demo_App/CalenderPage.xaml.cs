@@ -35,58 +35,58 @@ namespace Demo_App
 
         public CalenderPage()
         {
-            currentWeek = GetCurrentWeek();
-            BindingContext = currentWeek;
-            if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
+            try
             {
-                if (Application.Current.Properties.ContainsKey("SelectedEmpId") == true)
+                currentWeek = GetCurrentWeek();
+                BindingContext = currentWeek;
+                if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
                 {
-                    EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
+                    if (Application.Current.Properties.ContainsKey("SelectedEmpId") == true)
+                    {
+                        EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
+                    }
+                    var datalist = GetAppointmentBookingByEmployeeID();
+                    //foreach (var list in datalist)
+                    //{
+                    //    var firstLabel = new Label
+                    //    {                        
+                    //        HorizontalOptions = LayoutOptions.StartAndExpand,
+                    //        TextColor = Xamarin.Forms.Color.FromHex("#000000")
+                    //    };
+                    //    firstLabel.Text = list.AppointmentDetail;
+                    //    //MonAppointmentBox.Children.Add(firstLabel);
+                    //}
                 }
-              var datalist = GetAppointmentBookingByEmployeeID();
-                //foreach (var list in datalist)
-                //{
-                //    var firstLabel = new Label
-                //    {                        
-                //        HorizontalOptions = LayoutOptions.StartAndExpand,
-                //        TextColor = Xamarin.Forms.Color.FromHex("#000000")
-                //    };
-                //    firstLabel.Text = list.AppointmentDetail;
-                //    //MonAppointmentBox.Children.Add(firstLabel);
-                //}
-            }
-            isCalenderPageOpen = true;
-            NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();
-            
-            WeekMonlbl.Text = currentWeek[0];
-            WeekTuelbl.Text = currentWeek[1];
-            WeekWedlbl.Text = currentWeek[2];
-            WeekThulbl.Text = currentWeek[3];
-            WeekFrilbl.Text = currentWeek[4];
-            WeekSatlbl.Text = currentWeek[5];
-            WeekSunlbl.Text = currentWeek[6];
+                isCalenderPageOpen = true;
+                NavigationPage.SetHasNavigationBar(this, false);
+                InitializeComponent();
 
-            Mondaylbl.Text ="MON"+" "+ currentWeek[0];
-            Tuesdaylbl.Text ="TUE"+" "+ currentWeek[1];
-            Wednesdaylbl.Text ="WED"+" "+ currentWeek[2];
-            Thursdaylbl.Text ="THU"+" "+ currentWeek[3];
-            Fridaylbl.Text ="FRI"+" "+ currentWeek[4];
-            Saturdaylbl.Text ="SAT"+" "+ currentWeek[5];
-            Sundaylbl.Text = "SUN"+" "+ currentWeek[6];
-            schedulee = new SfSchedule();
-            ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
-            viewHeaderStyle.DayTextColor = Color.Black;
-            viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
-            schedulee.ViewHeaderStyle = viewHeaderStyle;
-            //MonthViewSettings month = new MonthViewSettings();
-            //month.MonthLabelSettings.DayFormat = "E";
-            //this.Content = schedulee;
-            //schedulee.ScheduleView = ScheduleView.MonthView;                    
-            //var CurrentDate = DateTime.Now;
-            //DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-            //schedulee.NavigateTo(SpecificDate);       
-            // schedulee.VisibleDatesChangedEvent += Schedule_VisibleDatesChangedEvent;            
+                WeekMonlbl.Text = currentWeek[0];
+                WeekTuelbl.Text = currentWeek[1];
+                WeekWedlbl.Text = currentWeek[2];
+                WeekThulbl.Text = currentWeek[3];
+                WeekFrilbl.Text = currentWeek[4];
+                WeekSatlbl.Text = currentWeek[5];
+                WeekSunlbl.Text = currentWeek[6];
+
+                Mondaylbl.Text = "MON" + " " + currentWeek[0];
+                Tuesdaylbl.Text = "TUE" + " " + currentWeek[1];
+                Wednesdaylbl.Text = "WED" + " " + currentWeek[2];
+                Thursdaylbl.Text = "THU" + " " + currentWeek[3];
+                Fridaylbl.Text = "FRI" + " " + currentWeek[4];
+                Saturdaylbl.Text = "SAT" + " " + currentWeek[5];
+                Sundaylbl.Text = "SUN" + " " + currentWeek[6];
+                schedulee = new SfSchedule();
+                ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
+                viewHeaderStyle.DayTextColor = Color.Black;
+                viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
+                schedulee.ViewHeaderStyle = viewHeaderStyle;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+                      
         }
 
         //private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
@@ -107,62 +107,82 @@ namespace Demo_App
 
         private void ChangeMonthView(object sender, EventArgs e)
         {
-            IsMonthView = !IsMonthView;
-            if (IsMonthView)
+            try
             {
-                dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
-                schedulerFullMonthView.IsVisible = true;
-                schedulerWeekView.IsVisible = false;
-                MonthViewSettings monthViewSettings = new MonthViewSettings();
-                monthViewSettings.MonthLabelSettings.DayFormat = "E";
+                IsMonthView = !IsMonthView;
+                if (IsMonthView)
+                {
+                    dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
+                    schedulerFullMonthView.IsVisible = true;
+                    schedulerWeekView.IsVisible = false;
+                    MonthViewSettings monthViewSettings = new MonthViewSettings();
+                    monthViewSettings.MonthLabelSettings.DayFormat = "E";
 
 
+                }
+                else
+                {
+
+                    dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
+                    schedulerFullMonthView.IsVisible = false;
+                    schedulerWeekView.IsVisible = true;
+                }
             }
-            else
+            catch(Exception ex)
             {
-
-                dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
-                schedulerFullMonthView.IsVisible = false;
-                schedulerWeekView.IsVisible = true;
+                ex.ToString();
             }
         }
 
         public string[] GetCurrentWeek()
         {
+            try
+            {
+                //CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+                CultureInfo _culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+                CultureInfo _uiculture = (CultureInfo)CultureInfo.CurrentUICulture.Clone();
 
-            //CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
-            CultureInfo _culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-            CultureInfo _uiculture = (CultureInfo)CultureInfo.CurrentUICulture.Clone();
+                _culture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+                _uiculture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
 
-            _culture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
-            _uiculture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+                System.Threading.Thread.CurrentThread.CurrentCulture = _culture;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = _uiculture;
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = _culture;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = _uiculture;
+                DateTime startOfWeek = DateTime.Today.AddDays(
+          (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
+          (int)DateTime.Today.DayOfWeek);
 
-            DateTime startOfWeek = DateTime.Today.AddDays(
-      (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
-      (int)DateTime.Today.DayOfWeek);
+                string result = string.Join(",", Enumerable
+                  .Range(0, 7)
+                  .Select(i => startOfWeek
+                     .AddDays(i)
+                     .ToString("dd")));
 
-            string result = string.Join(",", Enumerable
-              .Range(0, 7)
-              .Select(i => startOfWeek
-                 .AddDays(i)
-                 .ToString("dd")));
-
-            return result.Split(',');
+                return result.Split(',');
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
 
         private void AddNewAppointment(object sender, EventArgs e)
         {
-            if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
+            try
             {
-                Application.Current.MainPage.Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
+                if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
+                {
+                    Application.Current.MainPage.Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
+                }
+                else
+                {
+                    Application.Current.MainPage.Navigation.PushAsync(new SelectServiceCategory("NewCalAppointment"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Application.Current.MainPage.Navigation.PushAsync(new SelectServiceCategory("NewCalAppointment"));
+                ex.ToString();
             }
            
             // MonAppointmentBox.Children.Add(firstLabel);
@@ -215,15 +235,15 @@ namespace Demo_App
                     ListofAppointment.Add(obj);
 
                 }
-
+                return ListofAppointment;
             }
             catch (Exception e)
             {
-
+                return null;
             }
             
             //CustomerAppoimentList.ItemsSource = ListofAppointment;
-            return ListofAppointment;
+            
         }
 
       

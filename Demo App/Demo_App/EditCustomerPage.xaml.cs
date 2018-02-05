@@ -16,24 +16,18 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditCustomerPage : ContentPage
 	{
+        #region GlobleFields
         int CustomerId;
         Notes objnotes = new Notes();
         public Customer objCust = null;
-		public EditCustomerPage ()
+        #endregion
+
+        public EditCustomerPage ()
 		{
             GetSelectedCustomerById();          
             InitializeComponent ();
             CustomerId = objCust.Id;
             BindingContext = objCust;
-
-            //CustObj = new Customer();
-            //CustObj.Id = objCust.Id;
-            //CustObj.FirstName = objCust.FirstName;
-            //CustObj.LastName = objCust.LastName;
-            //CustObj.TelephoneNo = objCust.TelephoneNo;
-            //CustObj.Address = objCust.Address;
-            //BindingContext = CustObj;
-
         }
 
         public void GetSelectedCustomerById()
@@ -53,15 +47,22 @@ namespace Demo_App
         }
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            if (e.TotalY != 0 && EditCustomer.HeightRequest > 30 && EditCustomer.HeightRequest < 151)
+            try
             {
-                EditCustomer.HeightRequest = EditCustomer.HeightRequest + e.TotalY;
-                if (EditCustomer.HeightRequest < 31)
-                    EditCustomer.HeightRequest = 31;
-                if (EditCustomer.HeightRequest > 150)
-                    EditCustomer.HeightRequest = 150;
+                if (e.TotalY != 0 && EditCustomer.HeightRequest > 30 && EditCustomer.HeightRequest < 151)
+                {
+                    EditCustomer.HeightRequest = EditCustomer.HeightRequest + e.TotalY;
+                    if (EditCustomer.HeightRequest < 31)
+                        EditCustomer.HeightRequest = 31;
+                    if (EditCustomer.HeightRequest > 150)
+                        EditCustomer.HeightRequest = 150;
+                }
+                //stack.HeightRequest = 20;
             }
-            //stack.HeightRequest = 20;
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         private void AddressClick(object sender, EventArgs args)
@@ -71,24 +72,31 @@ namespace Demo_App
 
         public void EditCustomerInformation()
         {
-            Customer obj = new Customer();
-            obj.Id = CustomerId;
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.FirstName = EditCustomerName.Text;
-            obj.LastName = "";
+            try
+            {
+                Customer obj = new Customer();
+                obj.Id = CustomerId;
+                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                obj.FirstName = EditCustomerName.Text;
+                obj.LastName = "";
 
-            obj.UserName = "";
-            obj.Password = "";
-            obj.Email = EditCustomerEmail.Text;
-            obj.TelephoneNo = EditCustomerPhoneNo.Text;
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                obj.UserName = "";
+                obj.Password = "";
+                obj.Email = EditCustomerEmail.Text;
+                obj.TelephoneNo = EditCustomerPhoneNo.Text;
+                obj.CreationDate = "2017-11-08T12:19:27.628Z";
 
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/Update";
-            var serailizeddata = JsonConvert.SerializeObject(obj);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/Update";
+                var serailizeddata = JsonConvert.SerializeObject(obj);
 
-            var result = PostData("POST", serailizeddata, apiUrl);
+                var result = PostData("POST", serailizeddata, apiUrl);
 
-            Navigation.PushAsync(new CutomerProfilePage());
+                Navigation.PushAsync(new CutomerProfilePage());
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
 

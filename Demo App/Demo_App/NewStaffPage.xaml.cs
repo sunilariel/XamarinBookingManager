@@ -27,46 +27,60 @@ namespace Demo_App
 
         public void AddStaff(object sender, SelectedItemChangedEventArgs e)
         {
-            if (StaffFirstName.Text == null)
+            try
             {
-                return;
+                if (StaffFirstName.Text == null)
+                {
+                    return;
+                }
+                else
+                {
+                    Staff obj = new Staff();
+                    obj.Id = 0;
+                    obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                    obj.UserName = StaffEmail.Text;
+                    obj.Password = "";
+                    obj.FirstName = StaffFirstName.Text;
+                    obj.LastName = StaffLastName.Text;
+                    obj.Address = StaffAddress.Text;
+                    obj.Email = StaffEmail.Text;
+                    obj.TelephoneNo = StaffPhoneNumber.Text;
+                    obj.CreationDate = "2017-11-08T12:19:27.628Z";
+
+                    var data = JsonConvert.SerializeObject(obj);
+                    var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
+                    var ApiMethod = "POST";
+
+                    var result = PostData(ApiMethod, data, Url);
+                    JObject responsedata = JObject.Parse(result);
+                    dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
+                    Application.Current.Properties["EmployeeID"] = Convert.ToInt32(ResponseValue.Value);
+                    int EmployeeId = Convert.ToInt32(ResponseValue.Value);
+
+                    SetBuisnessHours(EmployeeId);
+                    Navigation.PushAsync(new StaffServicePeofile());
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Staff obj = new Staff();
-                obj.Id = 0;
-                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                obj.UserName = StaffEmail.Text;
-                obj.Password = "";
-                obj.FirstName = StaffFirstName.Text;
-                obj.LastName = StaffLastName.Text;
-                obj.Address = StaffAddress.Text;
-                obj.Email = StaffEmail.Text;
-                obj.TelephoneNo = StaffPhoneNumber.Text;
-                obj.CreationDate = "2017-11-08T12:19:27.628Z";
-
-                var data = JsonConvert.SerializeObject(obj);
-                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
-                var ApiMethod = "POST";
-
-                var result = PostData(ApiMethod, data, Url);                
-                JObject responsedata = JObject.Parse(result);
-                dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
-                Application.Current.Properties["EmployeeID"] = Convert.ToInt32(ResponseValue.Value);
-                int EmployeeId = Convert.ToInt32(ResponseValue.Value);
-
-                SetBuisnessHours(EmployeeId);                
-                Navigation.PushAsync(new StaffServicePeofile());
+                ex.ToString();
             }
         }
 
         public void GetStaff()
         {
-            var CompanyId = Application.Current.Properties["CompanyId"];
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-            var Method = "GET";
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Method = "GET";
 
-            var result = PostData(Method, null, Url);
+                var result = PostData(Method, null, Url);
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void DeleteStaff()
@@ -79,29 +93,7 @@ namespace Demo_App
 
 
         }
-
-        public string UpdateStaff()
-        {
-            Staff obj = new Staff();
-            obj.Id = 0;
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.UserName = "123@gmail.com";
-            obj.Password = "";
-            obj.FirstName = "123";
-            obj.LastName = "";
-            obj.Address = "";
-            obj.Email = "123@gmail.com";
-            obj.TelephoneNo = "";
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
-
-            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/Update";
-            var SerializedData = JsonConvert.SerializeObject(obj);
-            var Method = "POST";
-
-            var result = PostData(Method, SerializedData, apiUrl);
-            return result;
-        }
-
+       
         public void SetBuisnessHours(int Id)
         {
             StaffWorkingHours obj = new StaffWorkingHours();
@@ -295,24 +287,7 @@ namespace Demo_App
             var result = PostData("DELETE", "", apiUrl);
             return result;
         }
-
-        public string AllocateServicetoEmployee(AssignServiceToStaff dataObj)
-        {
-            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/AllocateService";
-            var jsonstring = JsonConvert.SerializeObject(dataObj);
-
-            var result = PostData("POST", jsonstring, apiUrl);
-            return result;
-        }
-
-        public string DeAllocateServicetoEmployee(string CompanyId, string EmployeeId, string ServiceId)
-        {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + EmployeeId + "&serviceId=" + ServiceId;
-
-            var result = PostData("POST", "", apiUrl);
-            return result;
-        }
-
+        
         public string GetAllServiceStatus(string CompanyId, string EmployeeId)
         {
             try
@@ -401,15 +376,22 @@ namespace Demo_App
 
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            if (e.TotalY != 0 && stack.HeightRequest > 30 && stack.HeightRequest < 151)
+            try
             {
-                stack.HeightRequest = stack.HeightRequest + e.TotalY;
-                if (stack.HeightRequest < 31)
-                    stack.HeightRequest = 31;
-                if (stack.HeightRequest > 150)
-                    stack.HeightRequest = 150;
+                if (e.TotalY != 0 && stack.HeightRequest > 30 && stack.HeightRequest < 151)
+                {
+                    stack.HeightRequest = stack.HeightRequest + e.TotalY;
+                    if (stack.HeightRequest < 31)
+                        stack.HeightRequest = 31;
+                    if (stack.HeightRequest > 150)
+                        stack.HeightRequest = 150;
+                }
+                //stack.HeightRequest = 20;
             }
-            //stack.HeightRequest = 20;
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         private void CrossClick(object sender,EventArgs e)

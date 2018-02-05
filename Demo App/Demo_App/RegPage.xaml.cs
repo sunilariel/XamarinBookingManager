@@ -37,7 +37,7 @@ namespace Demo_App
         {
             if (!IsValid()) return;
             var regdata = reg;
-            string RegisterUrl = "http://bookingmanager20-001-site1.btempurl.com/api/companyregistration/CreateAccount";
+            string RegisterUrl = "http://bookingmanager25-001-site1.btempurl.com/api/companyregistration/CreateAccount";
             var result = await RegisterMethod(RegisterUrl, regdata);
         }
 
@@ -71,17 +71,15 @@ namespace Demo_App
                 {
                     var response = await client.SendAsync(request);
 
-                    if (!response.IsSuccessStatusCode)
+                    if (response.IsSuccessStatusCode)
                     {
                         var strRes = await response.Content.ReadAsStringAsync();
 
                         var jsonObject = JObject.Parse(strRes);
-
+                        redirectToLoginPage();
                     }
 
-
                     // HttpResponseMessage response = await client.PostAsync(url, content);
-
                     //if (response.IsSuccessStatusCode)
                     //{
                     //    //result = await response.Content.ReadAsStringAsync();
@@ -110,7 +108,7 @@ namespace Demo_App
             {
                 try
                 {
-                    Navigation.PushAsync(new LoginPage());
+                    Navigation.PushAsync(new CreateAccountUser());
                 }
                 catch (Exception ex)
                 {

@@ -5,7 +5,7 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="Scheduler" android:icon="@drawable/facebook" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:label="Scheduler" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="Demo_App" android:theme="@style/MainTheme" android:name="md5f8429491b7e3ea04234a09d1b362bd10.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

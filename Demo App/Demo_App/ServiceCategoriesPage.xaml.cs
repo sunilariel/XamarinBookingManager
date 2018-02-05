@@ -29,7 +29,7 @@ namespace Demo_App
 		{
 			InitializeComponent ();
             CategoryID = CategoryId;
-            GetCategories(CompanyId);                                            
+            GetCategories();                                            
             BindingContext = serviceCount;
         }
 
@@ -38,25 +38,32 @@ namespace Demo_App
             Navigation.PushAsync(new NewCategoryPage());
         }
 
-        public void GetCategories(string Id)
+        public void GetCategories()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + Id;
-            var result = PostData("GET", "", apiUrl);
-            ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);          
-            foreach(var item in ListofAllCategories)
+            try
             {
-                var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
-                var resultData = PostData("GET", "", ApiUrl);
-                ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
+                ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
+                foreach (var item in ListofAllCategories)
+                {
+                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
+                    var resultData = PostData("GET", "", ApiUrl);
+                    ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
 
-                ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
-                AllocateServices.CategoryName = item.Name;
-                AllocateServices.CategoryId = item.Id;
-                AllocateServices.AllocatedServiceCount = ListOfAssignService.Count+"services";
+                    ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
+                    AllocateServices.CategoryName = item.Name;
+                    AllocateServices.CategoryId = item.Id;
+                    AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + "services";
 
-                ListOfAssignServiceCount.Add(AllocateServices);
+                    ListOfAssignServiceCount.Add(AllocateServices);
+                }
+                ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
             }
-            ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }       
         
 
@@ -93,8 +100,15 @@ namespace Demo_App
 
         private void EditCategory(object sender, SelectedItemChangedEventArgs e)
         {
-            var Category = e.SelectedItem as ServicesAllocatedToCategory;
-            Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName));
+            try
+            {
+                var Category = e.SelectedItem as ServicesAllocatedToCategory;
+                Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName));
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -37,95 +37,180 @@ namespace Demo_App
         #endregion
         public CalendarTimeSlotsPage (AssignedServicetoStaff obj, string pagename)
 		{
-			InitializeComponent ();
-            EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
-            EmployeeName = Application.Current.Properties["LastSelectedStaff"].ToString();
-            serviceID = obj.Id;
-            PageName = pagename;
-            objAddAppointment = new AddAppointments();
-            objAddAppointment.ServiceId = serviceID;
-            objAddAppointment.ServiceName = obj.Name;
-            objAddAppointment.EmployeeId = EmployeeId;
-            objAddAppointment.EmployeeName = EmployeeName;
-            objAddAppointment.Cost = obj.Cost;
-            objAddAppointment.DurationInHours = obj.DurationInHours;
-            objAddAppointment.DurationInMinutes = obj.DurationInMinutes;
-            schedulee = new SfSchedule();
-            var CurrentDate = DateTime.Now;
-            DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-            schedulee.NavigateTo(SpecificDate);
-            schedule.CellTapped += GetAvailableTimeForAppointments;
+            try
+            {
+                InitializeComponent();
+                EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
+                EmployeeName = Application.Current.Properties["LastSelectedStaff"].ToString();
+                serviceID = obj.Id;
+                PageName = pagename;
+                objAddAppointment = new AddAppointments();
+                objAddAppointment.ServiceId = serviceID;
+                objAddAppointment.ServiceName = obj.Name;
+                objAddAppointment.EmployeeId = EmployeeId;
+                objAddAppointment.EmployeeName = EmployeeName;
+                objAddAppointment.Cost = obj.Cost;
+                objAddAppointment.DurationInHours = obj.DurationInHours;
+                objAddAppointment.DurationInMinutes = obj.DurationInMinutes;
+                GetAvailableTime();
+                schedulee = new SfSchedule();
+                var CurrentDate = DateTime.Now;
+                DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
+                schedulee.NavigateTo(SpecificDate);
+                schedule.CellTapped += GetAvailableTimeForAppointments;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public void GetAvailableTime()
+        {
+            try
+            {
+                var currentDay = DateTime.Now.DayOfWeek;
+                var dateOfBooking = DateTime.Now;
+                CurrentSelectedDay = currentDay.ToString();
+                SelectedDateOfBooking = dateOfBooking;
+                var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
+                objAddAppointment.DateOfBooking = BookingDate;
+                string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
+                var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBooking.ToString("dd-MM-yyyy") + "&day=" + currentDay.ToString();
+                var result = PostData("GET", "", apiUrl);
+
+                bool hasValue = true;
+                if (result.Contains("Key\":null"))
+                {
+                    hasValue = false;
+                }
+                if (hasValue == true)
+                {
+                    JObject json = JObject.Parse(result);
+                    JArray Value = (JArray)json["Value"];
+                    List<string> timeSlots = new List<string>();
+                    foreach (var data in Value)
+                    {
+                        try
+                        {
+                            string Start = (string)data["Start"];
+                            DateTime StartTime = DateTime.ParseExact(Start, "HH:mm:ss",
+                                         CultureInfo.InvariantCulture);
+                            string StartTimeSlot = String.Format("{0:t}", StartTime);
+
+                            string End = (string)data["End"];
+
+                            DateTime EndTime = DateTime.ParseExact(End, "HH:mm:ss",
+                                         CultureInfo.InvariantCulture);
+                            string EndTimeSlot = String.Format("{0:t}", EndTime);
+                            string time = StartTimeSlot + "-" + EndTimeSlot;
+                            timeSlots.Add(time);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+
+                        //timeSlots.Add(EndTime);
+                    }
+                    ListofTimeSlots.ItemsSource = timeSlots;
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
         }
 
         private void GetAvailableTimeForAppointments(object sender, CellTappedEventArgs e)
         {
-            //DisplayAlert("CustomizeHeader", "888888888", "cancel");
-            var currentDay = e.Datetime.DayOfWeek;
-            var dateOfBooking = e.Datetime.Date;
-            CurrentSelectedDay = currentDay.ToString();
-            SelectedDateOfBooking = dateOfBooking;
-            var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
-            objAddAppointment.DateOfBooking = BookingDate;
-            string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
-            var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBooking.ToString("dd-MM-yyyy") + "&day=" + currentDay.ToString();
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                //DisplayAlert("CustomizeHeader", "888888888", "cancel");
+                var currentDay = e.Datetime.DayOfWeek;
+                var dateOfBooking = e.Datetime.Date;
+                CurrentSelectedDay = currentDay.ToString();
+                SelectedDateOfBooking = dateOfBooking;
+                var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
+                objAddAppointment.DateOfBooking = BookingDate;
+                string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
+                var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBooking.ToString("dd-MM-yyyy") + "&day=" + currentDay.ToString();
+                var result = PostData("GET", "", apiUrl);
 
-            bool hasValue = true;
-            if (result.Contains("Key\":null"))
-            {
-                hasValue = false;
-            }
-            if (hasValue == true)
-            {
-                JObject json = JObject.Parse(result);
-                JArray Value = (JArray)json["Value"];
-                List<string> timeSlots = new List<string>();
-                foreach (var data in Value)
+                bool hasValue = true;
+                if (result.Contains("Key\":null"))
                 {
-                    try
-                    {
-                        string Start = (string)data["Start"];
-                        DateTime StartTime = DateTime.ParseExact(Start, "HH:mm:ss",
-                                     CultureInfo.InvariantCulture);
-                        string StartTimeSlot = String.Format("{0:t}", StartTime);
-
-                        string End = (string)data["End"];
-
-                        DateTime EndTime = DateTime.ParseExact(End, "HH:mm:ss",
-                                     CultureInfo.InvariantCulture);
-                        string EndTimeSlot = String.Format("{0:t}", EndTime);
-                        string time = StartTimeSlot + "-" + EndTimeSlot;
-                        timeSlots.Add(time);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-
-
-                    //timeSlots.Add(EndTime);
+                    hasValue = false;
                 }
-                ListofTimeSlots.ItemsSource = timeSlots;
-            }
-            else
-            {
+                if (hasValue == true)
+                {
+                    JObject json = JObject.Parse(result);
+                    JArray Value = (JArray)json["Value"];
+                    List<string> timeSlots = new List<string>();
+                    foreach (var data in Value)
+                    {
+                        try
+                        {
+                            string Start = (string)data["Start"];
+                            DateTime StartTime = DateTime.ParseExact(Start, "HH:mm:ss",
+                                         CultureInfo.InvariantCulture);
+                            string StartTimeSlot = String.Format("{0:t}", StartTime);
 
+                            string End = (string)data["End"];
+
+                            DateTime EndTime = DateTime.ParseExact(End, "HH:mm:ss",
+                                         CultureInfo.InvariantCulture);
+                            string EndTimeSlot = String.Format("{0:t}", EndTime);
+                            string time = StartTimeSlot + "-" + EndTimeSlot;
+                            timeSlots.Add(time);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+
+                        //timeSlots.Add(EndTime);
+                    }
+                    ListofTimeSlots.ItemsSource = timeSlots;
+                }
+                else
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+                e.ToString();
             }
 
         }
 
         private void SelectCustomerForAppointmentClick(object sender, SelectedItemChangedEventArgs e)
         {
-            var data = e.SelectedItem;
-            objAddAppointment.TimePeriod = data.ToString();
-            //AppointmentDetails objAppointment = new AppointmentDetails();
-            if (PageName == "CalandarAppointment")
+            try
             {
-                Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objAddAppointment));
+                var data = e.SelectedItem;
+                objAddAppointment.TimePeriod = data.ToString();
+                //AppointmentDetails objAppointment = new AppointmentDetails();
+                if (PageName == "CalandarAppointment")
+                {
+                    Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objAddAppointment));
+                }
+                else
+                {
+
+                }
             }
-            else
+            catch(Exception ex)
             {
-               
+                e.ToString();
             }
         }
 

@@ -27,74 +27,109 @@ namespace Demo_App
         ObservableCollection<ProviderWorkingHours> listofWorkingDays = new ObservableCollection<ProviderWorkingHours>();
         #endregion
 
-        public BusinessHoursPage(int StaffId,string pagename)
-        {            
-            InitializeComponent();           
-            EmployeeId = StaffId;
-            PageName = pagename;
-            GetBuisnessHoursofStaff();                        
+        public BusinessHoursPage(string pagename)
+        {
+            try
+            {
+                InitializeComponent();
+                if (Application.Current.Properties.ContainsKey("EmployeeID") == true)
+                {
+                    EmployeeId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
+                }
+                else
+                {
+                    EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
+                }
+                PageName = pagename;
+                GetBuisnessHoursofStaff();
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void GetBuisnessHoursofStaff()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + EmployeeId;
-
-            var result = PostData("GET", "", apiUrl);
-
-            listofWorkingDays = JsonConvert.DeserializeObject<ObservableCollection<ProviderWorkingHours>>(result);
-
-            foreach(var day in listofWorkingDays)
+            try
             {
-                day.IsOffAllDay= day.IsOffAllDay==true?false:true;
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + EmployeeId;
+
+                var result = PostData("GET", "", apiUrl);
+
+                listofWorkingDays = JsonConvert.DeserializeObject<ObservableCollection<ProviderWorkingHours>>(result);
+
+                foreach (var day in listofWorkingDays)
+                {
+                    day.IsOffAllDay = day.IsOffAllDay == true ? false : true;
+                }
+
+                BusinessHoursData.ItemsSource = listofWorkingDays;
             }
-        
-            BusinessHoursData.ItemsSource = listofWorkingDays;
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
       
         public void SaveStaffWorkingHours(object sender,EventArgs e)
-        {           
-            foreach( var item in listofWorkingDays)
+        {
+            try
             {
-                ProviderWorkingHours obj = new ProviderWorkingHours();
-                obj.EmployeeId = EmployeeId;
-                obj.Id = item.Id;
-                obj.CompanyId = item.CompanyId;
-                obj.NameOfDay = item.NameOfDay;
-                obj.NameOfDayAsString = item.NameOfDayAsString;
-                if (item.IsOffAllDay == false)
+                foreach (var item in listofWorkingDays)
                 {
-                    obj.IsOffAllDay = true;
+                    ProviderWorkingHours obj = new ProviderWorkingHours();
+                    obj.EmployeeId = EmployeeId;
+                    obj.Id = item.Id;
+                    obj.CompanyId = item.CompanyId;
+                    obj.NameOfDay = item.NameOfDay;
+                    obj.NameOfDayAsString = item.NameOfDayAsString;
+                    if (item.IsOffAllDay == false)
+                    {
+                        obj.IsOffAllDay = true;
+                    }
+                    else
+                    {
+                        obj.IsOffAllDay = false;
+                    }
+                    obj.Start = item.Start;
+                    obj.End = item.End;
+                    obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
+                    obj.EntityStatus = "0";
+
+                    var SerializedObj = JsonConvert.SerializeObject(obj);
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
+                    var result = PostData("POST", SerializedObj, apiUrl);
+                }
+                if (PageName == "CreatStaff")
+                {
+                    Navigation.PushAsync(new StaffServicePeofile());
                 }
                 else
                 {
-                    obj.IsOffAllDay = false;
+                    Navigation.PushAsync(new StaffProfileDetailsPage());
                 }
-                obj.Start = item.Start;
-                obj.End = item.End;
-                obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
-                obj.EntityStatus = "0";
-
-                var SerializedObj = JsonConvert.SerializeObject(obj);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
-                var result = PostData("POST", SerializedObj, apiUrl);               
             }
-            if (PageName == "CreatStaff")
+            catch(Exception ex)
             {
-                Navigation.PushAsync(new StaffServicePeofile());
-            }
-            else
-            {
-                Navigation.PushAsync(new StaffProfileDetailsPage());
+                ex.ToString();
             }
         }
 
         public Staff GetSelectedStaff()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + EmployeeId;
-            var result = PostData("GET", "", apiUrl);
-            Staff obj = JsonConvert.DeserializeObject<Staff>(result);
-            return obj;
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetEmployeeById?id=" + EmployeeId;
+                var result = PostData("GET", "", apiUrl);
+                Staff obj = JsonConvert.DeserializeObject<Staff>(result);
+                return obj;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         private void MondayToggled(object sender, ToggledEventArgs e)

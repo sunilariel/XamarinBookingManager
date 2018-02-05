@@ -37,14 +37,21 @@ namespace Demo_App
 
         public void GetStaff()
         {
-            var CompanyId = Application.Current.Properties["CompanyId"];
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-            var Method = "GET";
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Method = "GET";
 
-            var result = PostData(Method, "", Url);
+                var result = PostData(Method, "", Url);
 
-            ObservableCollection<Staff> ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
-            ListofStaffData.ItemsSource = ListofAllStaff;
+                ObservableCollection<Staff> ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
+                ListofStaffData.ItemsSource = ListofAllStaff;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
 
         }
 
@@ -81,9 +88,16 @@ namespace Demo_App
 
         private void ServiceprofileDetailClick(object sender, SelectedItemChangedEventArgs e)
         {
-            var staff = e.SelectedItem as Staff;
-            Application.Current.Properties["SelectedEmployeeID"] = staff.Id;
-            Navigation.PushAsync(new StaffProfileDetailsPage());
+            try
+            {
+                var staff = e.SelectedItem as Staff;
+                Application.Current.Properties["SelectedEmployeeID"] = staff.Id;
+                Navigation.PushAsync(new StaffProfileDetailsPage());
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
     }
 }

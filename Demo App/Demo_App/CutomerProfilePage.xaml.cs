@@ -26,26 +26,36 @@ namespace Demo_App
         #endregion
        
         public CutomerProfilePage ()
-		{                       
-            InitializeComponent ();
-            GetSelectedCustomerById();
-            CustomerId = objCust.Id;
+		{
+            try
+            {
+                InitializeComponent();
+                GetSelectedCustomerById();
+                CustomerId = objCust.Id;
+                var notesList = GetAllCustomerNotes();
+               // var notesList1=   notesList.OrderByDescending(x => x.CreationDate);
+                BindingContext = objCust;
+                foreach (var item in notesList)
+                {
+                    Noteslbl.Text = item.Description;
+                }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             var notesList = GetAllCustomerNotes();
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
-            BindingContext = objCust;
             foreach (var item in notesList)
             {
                 Noteslbl.Text = item.Description;
-            }                      
-
+            }
         }
+
         private void CrossClick(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
@@ -53,15 +63,22 @@ namespace Demo_App
         
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            if (e.TotalY != 0 && CustomerProfile.HeightRequest > 30 && CustomerProfile.HeightRequest < 151)
+            try
             {
-                CustomerProfile.HeightRequest = CustomerProfile.HeightRequest + e.TotalY;
-                if (CustomerProfile.HeightRequest < 31)
-                    CustomerProfile.HeightRequest = 31;
-                if (CustomerProfile.HeightRequest > 150)
-                    CustomerProfile.HeightRequest = 150;
+                if (e.TotalY != 0 && CustomerProfile.HeightRequest > 30 && CustomerProfile.HeightRequest < 151)
+                {
+                    CustomerProfile.HeightRequest = CustomerProfile.HeightRequest + e.TotalY;
+                    if (CustomerProfile.HeightRequest < 31)
+                        CustomerProfile.HeightRequest = 31;
+                    if (CustomerProfile.HeightRequest > 150)
+                        CustomerProfile.HeightRequest = 150;
+                }
+                //stack.HeightRequest = 20;
             }
-            //stack.HeightRequest = 20;
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         private void AddNotesClick(object sender, EventArgs e)
@@ -76,16 +93,21 @@ namespace Demo_App
         {
             Navigation.PushAsync(new EditCustomerPage());
         }
-
         public void DeleteCustomer()
         {
+            try
+            {
+                var CompanyId = Application.Current.Properties["CompanyId"];
+                var Method = "DELETE";
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/DeleteCustomer?companyId=" + CompanyId + "&customerId=" + CustomerId;
+                PostData(Method, "", Url);
 
-            var CompanyId = Application.Current.Properties["CompanyId"];
-            var Method = "DELETE";
-            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/DeleteCustomer?companyId=" + CompanyId + "&customerId=" + CustomerId;
-            PostData(Method, "", Url);
-
-            Navigation.PushAsync(new CustomerPage());
+                Navigation.PushAsync(new CustomerPage());
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void GetSelectedCustomerById()
@@ -99,7 +121,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-               
+                e.ToString();
             }
 
         }
@@ -118,7 +140,8 @@ namespace Demo_App
             }
             catch(Exception e)
             {
-                return null;
+                ObservableCollection<Notes> objnotes = new ObservableCollection<Notes>();
+                return objnotes;
             }
 
         }

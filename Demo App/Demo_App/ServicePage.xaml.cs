@@ -41,22 +41,36 @@ namespace Demo_App
 
         public void AddServiceNavigation()
         {
-            Application.Current.Properties["ServiceName"] = null;
-            Application.Current.Properties["ServiceDurationTime"] = null;
-            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-            ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
-            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
+            try
+            {
+                Application.Current.Properties["ServiceName"] = null;
+                Application.Current.Properties["ServiceDurationTime"] = null;
+                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
            
         }
 
 
         public void GetService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
-            ListofAllServices.ItemsSource = ListofServices;
+                ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
+                ListofAllServices.ItemsSource = ListofServices;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)
@@ -92,8 +106,16 @@ namespace Demo_App
 
         private void EditServiceClick(object sender, SelectedItemChangedEventArgs e)
         {
-            var Servicedata = e.SelectedItem as Service;
-            Navigation.PushAsync(new ServiceDetailsPage(Servicedata));
+            try
+            {
+                var Servicedata = e.SelectedItem as Service;
+                Application.Current.Properties["ServiceID"] = Servicedata.Id;
+                Navigation.PushAsync(new ServiceDetailsPage());
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
     }
 }

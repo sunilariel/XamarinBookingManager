@@ -26,50 +26,71 @@ namespace Demo_App
         #endregion
         public AssignServiceToStaffPage (Staff ObjStaff)
 		{
-			InitializeComponent ();
-            obj = new Staff();
-            obj.Id = ObjStaff.Id;
-            obj.FirstName = ObjStaff.FirstName;
-            obj.LastName = ObjStaff.LastName;
-            obj.Email = ObjStaff.Email;
-            obj.Address = ObjStaff.Address;
-            obj.TelephoneNo = ObjStaff.TelephoneNo;
-            EmployeeId = ObjStaff.Id;
-            ListofServices = GetAllService();
-            ListofAllServices.ItemsSource = ListofServices;
+            try
+            {
+                InitializeComponent();
+                obj = new Staff();
+                obj.Id = ObjStaff.Id;
+                obj.FirstName = ObjStaff.FirstName;
+                obj.LastName = ObjStaff.LastName;
+                obj.Email = ObjStaff.Email;
+                obj.Address = ObjStaff.Address;
+                obj.TelephoneNo = ObjStaff.TelephoneNo;
+                EmployeeId = ObjStaff.Id;
+                ListofServices = GetAllService();
+                ListofAllServices.ItemsSource = ListofServices;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-            return ListofServices;
+                ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public void ServiceAssigntoStaff()
         {
-            var data = ListofServices;
-            foreach (var item in data)
+            try
             {
-                if (item.isAssigned == true)
+                var data = ListofServices;
+                foreach (var item in data)
                 {
-                    AssignServiceToStaff obj = new AssignServiceToStaff();
-                    obj.CompanyId = Convert.ToInt32(CompanyId);
-                    obj.EmployeeId = EmployeeId;
-                    obj.ServiceId = item.Id;
-                    obj.CreationDate = DateTime.Now.ToString();
+                    if (item.isAssigned == true)
+                    {
+                        AssignServiceToStaff obj = new AssignServiceToStaff();
+                        obj.CompanyId = Convert.ToInt32(CompanyId);
+                        obj.EmployeeId = EmployeeId;
+                        obj.ServiceId = item.Id;
+                        obj.CreationDate = DateTime.Now.ToString();
 
 
-                    var SerializedData = JsonConvert.SerializeObject(obj);
+                        var SerializedData = JsonConvert.SerializeObject(obj);
 
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
-                    var result = PostData("POST", SerializedData, apiUrl);
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
+                        var result = PostData("POST", SerializedData, apiUrl);
+                    }
                 }
+
+                Navigation.PushAsync(new StaffServicePeofile());
             }
-           
-            Navigation.PushAsync(new StaffServicePeofile());
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

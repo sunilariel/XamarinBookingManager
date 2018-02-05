@@ -328,4 +328,10 @@ namespace Demo_App.Model
         public string ReturnObject { get; set; }
     }
 
+    public class industry
+    {
+        public int Id { get; set; }
+        public string IndustryName { get; set; }
+    }
+
 }

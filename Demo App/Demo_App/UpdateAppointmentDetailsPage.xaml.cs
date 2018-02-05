@@ -42,82 +42,88 @@ namespace Demo_App
 
         public UpdateAppointmentDetailsPage (AddAppointments appointment,string Day, DateTime DateOfBooking)
 		{
-
-            InitializeComponent();
-            GetSelectedCustomerById();
-            var NotesList = GetAllCustomerNotes();
-            day = Day;
-            dateOfBooking = DateOfBooking;
-            EmpID = appointment.EmployeeId;
-            empName = appointment.EmployeeName;
-            Cost = appointment.Cost;
-            CustID = objCust.Id;
-            ServiceID = appointment.ServiceId;
-            ServiceName = appointment.ServiceName;
-            service = new Service();
-            service.Id = Convert.ToInt32(appointment.ServiceId);
-            service.Name = appointment.ServiceName;
-            service.Cost = appointment.Cost;
-            addAppointments = new AddAppointments();
-            addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            addAppointments.EmployeeId = EmpID;
-            addAppointments.EmployeeName = empName;
-            addAppointments.ServiceId = ServiceID;
-            addAppointments.ServiceName = ServiceName;
-            addAppointments.Cost = Cost;
-            addAppointments.StartTime = appointment.StartTime;
-            addAppointments.EndTime = appointment.EndTime;
-            addAppointments.TimePeriod = appointment.StartTime; ;
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
-            if (objCust != null)
+            try
             {
-                AppointmentCustomerName.Text = objCust.FirstName;
-                AppointmentCustomerEmail.Text = objCust.Email;
-                AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
-            }
-            foreach(var item in NotesList)
-            {
-                UpdateComment.Text = item.Description;
-            }
-            string strttime = appointment.StartTime.Split('-')[0];
-            string endtime = appointment.StartTime.Split('-')[1];
-            obj = new UpdateAppointments();           
-            obj.EmployeeId = appointment.EmployeeId;
-            obj.ServiceId = appointment.ServiceId;
-            obj.EmployeeName = appointment.EmployeeName;
-            obj.ServiceName = appointment.ServiceName;
-            obj.DurationInHours = appointment.DurationInHours;
-            obj.DurationInMinutes = appointment.DurationInMinutes;
-            obj.Cost = appointment.Cost;
-            obj.Currency = appointment.Currency;           
-            obj.StartTime = strttime;
-            obj.EndTime = endtime;
-            obj.BookingDate = day+","+ dateOfBooking.ToString("dd-MMM-yyyy");           
-            obj.CommentNotes = objNotes == null ? "": objNotes.Description; 
-            obj.TimePeriod = appointment.StartTime;
-            BindingContext = obj;
-            //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
+                InitializeComponent();
+                GetSelectedCustomerById();
+                var NotesList = GetAllCustomerNotes();
+                day = Day;
+                dateOfBooking = DateOfBooking;
+                EmpID = appointment.EmployeeId;
+                empName = appointment.EmployeeName;
+                Cost = appointment.Cost;
+                CustID = objCust.Id;
+                ServiceID = appointment.ServiceId;
+                ServiceName = appointment.ServiceName;
+                service = new Service();
+                service.Id = Convert.ToInt32(appointment.ServiceId);
+                service.Name = appointment.ServiceName;
+                service.Cost = appointment.Cost;
+                addAppointments = new AddAppointments();
+                addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                addAppointments.EmployeeId = EmpID;
+                addAppointments.EmployeeName = empName;
+                addAppointments.ServiceId = ServiceID;
+                addAppointments.ServiceName = ServiceName;
+                addAppointments.Cost = Cost;
+                addAppointments.StartTime = appointment.StartTime;
+                addAppointments.EndTime = appointment.EndTime;
+                addAppointments.TimePeriod = appointment.StartTime; ;
+                //objCust = new Customer();
+                //objCust.Id = Cust.Id;
+                //objCust.FirstName = Cust.FirstName;
+                //objCust.LastName = Cust.LastName;
+                //objCust.UserName = Cust.UserName;
+                //objCust.Email = Cust.Email;
+                //objCust.TelephoneNo = Cust.TelephoneNo;
+                //objCust.Address = Cust.Address;
+                if (objCust != null)
+                {
+                    AppointmentCustomerName.Text = objCust.FirstName;
+                    AppointmentCustomerEmail.Text = objCust.Email;
+                    AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+                }
+                foreach (var item in NotesList)
+                {
+                    UpdateComment.Text = item.Description;
+                }
+                string strttime = appointment.StartTime.Split('-')[0];
+                string endtime = appointment.StartTime.Split('-')[1];
+                obj = new UpdateAppointments();
+                obj.EmployeeId = appointment.EmployeeId;
+                obj.ServiceId = appointment.ServiceId;
+                obj.EmployeeName = appointment.EmployeeName;
+                obj.ServiceName = appointment.ServiceName;
+                obj.DurationInHours = appointment.DurationInHours;
+                obj.DurationInMinutes = appointment.DurationInMinutes;
+                obj.Cost = appointment.Cost;
+                obj.Currency = appointment.Currency;
+                obj.StartTime = strttime;
+                obj.EndTime = endtime;
+                obj.BookingDate = day + "," + dateOfBooking.ToString("dd-MMM-yyyy");
+                obj.CommentNotes = objNotes == null ? "" : objNotes.Description;
+                obj.TimePeriod = appointment.StartTime;
+                BindingContext = obj;
+                //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };
 
-            Data = new Dictionary<string, int>
+                Data = new Dictionary<string, int>
             {
                { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
                { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
             };
-           
-            foreach (var item in Data.Keys)
-            {
-                AppointmentsPicker.Items.Add(item);
-            }
 
-            
-           // var id = Data.TryGetValue("No Label", out StatusId);
+                foreach (var item in Data.Keys)
+                {
+                    AppointmentsPicker.Items.Add(item);
+                }
+
+
+                // var id = Data.TryGetValue("No Label", out StatusId);
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
             
         }
 
@@ -161,76 +167,90 @@ namespace Demo_App
 
         public void UpdateAppointments()
         {
-            string[] AppointmentDate = { };
-            string[] TimeAppointment = { };
-            string[] hours = { };
-            string[] Endmins = { };
-            string[] Endmin = { };           
-            string Time = UpdateAppointmentTime.Text;           
-            if (Time != null)
+            try
             {
-                TimeAppointment = Time.Split('-');
-                hours = TimeAppointment[0].Split(':');
-                Endmins = TimeAppointment[1].Split(':');
-                Endmin = Endmins[1].Split(' ');
-            }
-            if(AppointmentsPicker.SelectedItem!=null)
-            { 
-            string selectedValue = (AppointmentsPicker.SelectedItem).ToString();
-            Data.TryGetValue(selectedValue, out StatusId);
+                string[] AppointmentDate = { };
+                string[] TimeAppointment = { };
+                string[] hours = { };
+                string[] Endmins = { };
+                string[] Endmin = { };
+                string Time = UpdateAppointmentTime.Text;
+                if (Time != null)
+                {
+                    TimeAppointment = Time.Split('-');
+                    hours = TimeAppointment[0].Split(':');
+                    Endmins = TimeAppointment[1].Split(':');
+                    Endmin = Endmins[1].Split(' ');
                 }
-            var GetAllCustomerData = GetAllCustomer();
-            List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
-            UpdatebookAppointment = new UpdateBookAppointment();
-            UpdatebookAppointment.Id = Application.Current.Properties["BookingID"].ToString();
-            UpdatebookAppointment.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            UpdatebookAppointment.EmployeeId = EmpID;
-            UpdatebookAppointment.ServiceId = ServiceID;
-            UpdatebookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
-            UpdatebookAppointment.StartHour = Convert.ToInt32(hours[0]);
-            UpdatebookAppointment.StartMinute = 0;
-            UpdatebookAppointment.EndHour = 0;
-            UpdatebookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
-            UpdatebookAppointment.IsAdded = true;
-            UpdatebookAppointment.Message =UpdateComment.Text;
-            UpdatebookAppointment.Notes = UpdateComment.Text;
-            UpdatebookAppointment.CustomerIds = custIDs;
-            UpdatebookAppointment.Start = dateOfBooking;
-            UpdatebookAppointment.End = dateOfBooking;
-            UpdatebookAppointment.Status = StatusId;
+                if (AppointmentsPicker.SelectedItem != null)
+                {
+                    string selectedValue = (AppointmentsPicker.SelectedItem).ToString();
+                    Data.TryGetValue(selectedValue, out StatusId);
+                }
+                var GetAllCustomerData = GetAllCustomer();
+                List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
+                UpdatebookAppointment = new UpdateBookAppointment();
+                UpdatebookAppointment.Id = Application.Current.Properties["BookingID"].ToString();
+                UpdatebookAppointment.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                UpdatebookAppointment.EmployeeId = EmpID;
+                UpdatebookAppointment.ServiceId = ServiceID;
+                UpdatebookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
+                UpdatebookAppointment.StartHour = Convert.ToInt32(hours[0]);
+                UpdatebookAppointment.StartMinute = 0;
+                UpdatebookAppointment.EndHour = 0;
+                UpdatebookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
+                UpdatebookAppointment.IsAdded = true;
+                UpdatebookAppointment.Message = UpdateComment.Text;
+                UpdatebookAppointment.Notes = UpdateComment.Text;
+                UpdatebookAppointment.CustomerIds = custIDs;
+                UpdatebookAppointment.Start = dateOfBooking;
+                UpdatebookAppointment.End = dateOfBooking;
+                UpdatebookAppointment.Status = StatusId;
 
-            var SerializedData = JsonConvert.SerializeObject(UpdatebookAppointment);
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/UpdateBooking";
-            var result = PostData("POST", SerializedData, apiUrl);
-            BookAppointment objBookappointments = new BookAppointment();
-            objBookappointments.CompanyId = UpdatebookAppointment.CompanyId;
-            objBookappointments.CustomerIdsCommaSeperated = UpdatebookAppointment.CustomerIdsCommaSeperated;
-            objBookappointments.EmployeeId = UpdatebookAppointment.EmployeeId;
-            objBookappointments.ServiceId = UpdatebookAppointment.ServiceId;
-            objBookappointments.StartHour = UpdatebookAppointment.StartHour;
-            objBookappointments.StartMinute = UpdatebookAppointment.StartMinute;
-            objBookappointments.EndHour = UpdatebookAppointment.EndHour;
-            objBookappointments.EndMinute = UpdatebookAppointment.EndMinute;
-            objBookappointments.IsAdded = UpdatebookAppointment.IsAdded;
-            objBookappointments.Message = UpdatebookAppointment.Message;
-            objBookappointments.Notes = UpdatebookAppointment.Notes;
-            objBookappointments.CustomerIds = UpdatebookAppointment.CustomerIds;
-            objBookappointments.Start = UpdatebookAppointment.Start;
-            objBookappointments.End = UpdatebookAppointment.End;
-            objBookappointments.Status = UpdatebookAppointment.Status;
+                var SerializedData = JsonConvert.SerializeObject(UpdatebookAppointment);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/UpdateBooking";
+                var result = PostData("POST", SerializedData, apiUrl);
+                BookAppointment objBookappointments = new BookAppointment();
+                objBookappointments.CompanyId = UpdatebookAppointment.CompanyId;
+                objBookappointments.CustomerIdsCommaSeperated = UpdatebookAppointment.CustomerIdsCommaSeperated;
+                objBookappointments.EmployeeId = UpdatebookAppointment.EmployeeId;
+                objBookappointments.ServiceId = UpdatebookAppointment.ServiceId;
+                objBookappointments.StartHour = UpdatebookAppointment.StartHour;
+                objBookappointments.StartMinute = UpdatebookAppointment.StartMinute;
+                objBookappointments.EndHour = UpdatebookAppointment.EndHour;
+                objBookappointments.EndMinute = UpdatebookAppointment.EndMinute;
+                objBookappointments.IsAdded = UpdatebookAppointment.IsAdded;
+                objBookappointments.Message = UpdatebookAppointment.Message;
+                objBookappointments.Notes = UpdatebookAppointment.Notes;
+                objBookappointments.CustomerIds = UpdatebookAppointment.CustomerIds;
+                objBookappointments.Start = UpdatebookAppointment.Start;
+                objBookappointments.End = UpdatebookAppointment.End;
+                objBookappointments.Status = UpdatebookAppointment.Status;
 
-            dynamic data = JObject.Parse(result);
-            var msg = Convert.ToString(data.Message);
-            DisplayAlert("Success", msg, "ok");
+                dynamic data = JObject.Parse(result);
+                var msg = Convert.ToString(data.Message);
+                DisplayAlert("Success", msg, "ok");
 
-            Navigation.PushAsync(new AddAppointmentsPage(objBookappointments));
+                Navigation.PushAsync(new AddAppointmentsPage(objBookappointments));
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public List<Customer> GetAllCustomer()
         {
-            string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
-            var result = PostData("GET", "", apiURL);
-            List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
+            try
+            {
+                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
+                var result = PostData("GET", "", apiURL);
+                List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public string SetStatusOfAppointment()

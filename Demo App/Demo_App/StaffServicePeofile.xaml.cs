@@ -28,14 +28,7 @@ namespace Demo_App
         public StaffServicePeofile ()
 		{
 			InitializeComponent ();
-            GetEmployeeDetail();
-            //objStaff = new Staff();
-            //objStaff.Id = EmployeeId;
-            //objStaff.FirstName = staffdata.FirstName;
-            //objStaff.LastName = staffdata.LastName;
-            //objStaff.Email = staffdata.Email;
-            //objStaff.Address = staffdata.Address;
-            //objStaff.TelephoneNo = staffdata.TelephoneNo;
+            GetEmployeeDetail();            
             StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
             InitializeComponent();
             GetAllocatedServicetoStaff();
@@ -45,7 +38,7 @@ namespace Demo_App
         }
         private void WorkingDays(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new BusinessHoursPage(StaffId, "CreatStaff"));
+            Navigation.PushAsync(new BusinessHoursPage("CreatStaff"));
         }
         private void ServiceProvided(object sender, EventArgs args)
         {
@@ -67,26 +60,34 @@ namespace Demo_App
 
         public void GetAllocatedServicetoStaff()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
-
-            var result = PostData("GET", "", apiUrl);
-
-            ObservableCollection<AssignedServicetoStaff> ListofAllocatedService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-
-            ListOfServices = GetAllService();
-
-            ListofServicesCount = ListOfServices.Count;
-            ListofAllocatedServicesCount = ListofAllocatedService.Count;
-
-            foreach (var service in ListOfServices)
+            try
             {
-                foreach (var selectedservice in ListofAllocatedService)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
+
+                var result = PostData("GET", "", apiUrl);
+
+                ObservableCollection<AssignedServicetoStaff> ListofAllocatedService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+                ListOfServices = GetAllService();
+
+                ListofServicesCount = ListOfServices.Count;
+                ListofAllocatedServicesCount = ListofAllocatedService.Count;
+
+                foreach (var service in ListOfServices)
                 {
-                    if (service.Id == selectedservice.Id)
+                    foreach (var selectedservice in ListofAllocatedService)
                     {
-                        service.isAssigned = true;
+                        if (service.Id == selectedservice.Id)
+                        {
+                            service.isAssigned = true;
+                        }
                     }
                 }
+
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 
@@ -108,96 +109,110 @@ namespace Demo_App
 
         public void GetAllTimeOffForEmployee()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + StaffId;
-            var result = PostData("GET", "", apiUrl);
-
-            List<ProviderWorkingHours> WorkingHourStatus = JsonConvert.DeserializeObject<List<ProviderWorkingHours>>(result);
-
-            foreach (var item in WorkingHourStatus)
+            try
             {
-                switch (item.NameOfDayAsString)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + StaffId;
+                var result = PostData("GET", "", apiUrl);
+
+                List<ProviderWorkingHours> WorkingHourStatus = JsonConvert.DeserializeObject<List<ProviderWorkingHours>>(result);
+
+                foreach (var item in WorkingHourStatus)
                 {
-                    case "Sunday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Sunday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Sunday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Monday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Monday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Monday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Tuesday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Tuesday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Tuesday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Wednesday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Wednesday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Wednesday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Thursday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Thursday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Thursday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Friday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Friday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Friday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Saturday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Saturday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Saturday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
+                    switch (item.NameOfDayAsString)
+                    {
+                        case "Sunday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Sunday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Sunday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Monday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Monday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Monday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Tuesday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Tuesday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Tuesday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Wednesday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Wednesday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Wednesday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Thursday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Thursday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Thursday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Friday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Friday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Friday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Saturday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Saturday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Saturday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-            return ListofServices;
+                ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

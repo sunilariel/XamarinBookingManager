@@ -24,49 +24,57 @@ namespace Demo_App
         public ServiceDetails service = null;
         #endregion
 
-        public ServiceDetailsPage (Service Servicedata)
+        public ServiceDetailsPage ()
 		{
-			InitializeComponent ();
-            ServiceId = (Servicedata.Id).ToString();
-             service = new ServiceDetails();
-            service.Id = Servicedata.Id;
-            service.DurationInMinutes =  Servicedata.DurationInMinutes + " " + "min";
-            service.BufferTimeInMinutes = Servicedata.Buffer + " " + "min";
-            service.Cost = "$" + Servicedata.Cost;
-            service.Name = Servicedata.Name;
-            var category = GetCategoriesAssignedtoService();
-            var CategoryString = "";
-            foreach( var item in category)
+            try
             {
-                if (item.Confirmed == true)
+                InitializeComponent();
+                var Servicedata = GetSelectedService();
+                ServiceId = Application.Current.Properties["ServiceID"].ToString();
+                service = new ServiceDetails();
+                service.Id = Servicedata.Id;
+                service.DurationInMinutes = Servicedata.DurationInMinutes + " " + "min";
+                service.BufferTimeInMinutes = Servicedata.Buffer + " " + "min";
+                service.Cost = "$" + Servicedata.Cost;
+                service.Name = Servicedata.Name;
+                var category = GetCategoriesAssignedtoService();
+                var CategoryString = "";
+                foreach (var item in category)
                 {
-                    CategoryString = CategoryString + item.Name + ",";
+                    if (item.Confirmed == true)
+                    {
+                        CategoryString = CategoryString + item.Name + ",";
+                    }
                 }
-            }
-            if (CategoryString.Length > 0)
-            {
-                service.Categories = CategoryString.Substring(0, CategoryString.Length - 1);
-            }
-            else
-            {
-                service.Categories = "No Category";
-            }
+                if (CategoryString.Length > 0)
+                {
+                    service.Categories = CategoryString.Substring(0, CategoryString.Length - 1);
+                }
+                else
+                {
+                    service.Categories = "No Category";
+                }
 
-            var provider = GetServiceProvider();
-          
-            var ProviderString = "";
-            foreach( var item in provider)
-            {
-                if (item.confirmed == true)
+                var provider = GetServiceProvider();
+
+                var ProviderString = "";
+                foreach (var item in provider)
                 {
-                    ProviderString = ProviderString + item.FirstName + ",";
+                    if (item.confirmed == true)
+                    {
+                        ProviderString = ProviderString + item.FirstName + ",";
+                    }
                 }
+                if (ProviderString.Length > 0)
+                {
+                    service.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
+                }
+                BindingContext = service;
             }
-            if (ProviderString.Length > 0)
+            catch(Exception e)
             {
-                service.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
+                e.ToString();
             }
-            BindingContext = service;
         }
         private void PrivateServiceToggle(object sender, ToggledEventArgs e)
         {
@@ -84,72 +92,116 @@ namespace Demo_App
 
         public ObservableCollection<AssignCategory> GetCategoriesAssignedtoService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + ServiceId;
-            var result = PostData("GET", "", apiUrl);
-
-            ObservableCollection<AssignCategory> ListofAssignedCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
-
-            ObservableCollection<AssignCategory> ListofCategories = GetCategories();
-
-           foreach ( var category in ListofCategories)
+            try
             {
-                foreach( var assigncategory in ListofAssignedCategories)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + ServiceId;
+                var result = PostData("GET", "", apiUrl);
+
+                ObservableCollection<AssignCategory> ListofAssignedCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
+
+                ObservableCollection<AssignCategory> ListofCategories = GetCategories();
+
+                foreach (var category in ListofCategories)
                 {
-                    if(category.Id== assigncategory.Id)
+                    foreach (var assigncategory in ListofAssignedCategories)
                     {
-                        category.Confirmed = true;
+                        if (category.Id == assigncategory.Id)
+                        {
+                            category.Confirmed = true;
+                        }
                     }
                 }
+                return ListofCategories;
             }
-            return ListofCategories;           
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
+        public Service GetSelectedService()
+        {
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetServiceById?id=" + Application.Current.Properties["ServiceID"];
+
+                var result = PostData("GET", "", apiUrl);
+
+                Service ServiceDetail = JsonConvert.DeserializeObject<Service>(result);
+
+                return ServiceDetail;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
-
-            var result = PostData("GET", "", apiUrl);
-
-            ObservableCollection<AssignProvider> ListOfAssignProvider = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
-
-            ObservableCollection<AssignProvider> ListofProvider = GetStaff();
-
-            foreach(var provider in ListofProvider)
+            try
             {
-                foreach( var AssignProvider in ListOfAssignProvider)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
+
+                var result = PostData("GET", "", apiUrl);
+
+                ObservableCollection<AssignProvider> ListOfAssignProvider = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
+
+                ObservableCollection<AssignProvider> ListofProvider = GetStaff();
+
+                foreach (var provider in ListofProvider)
                 {
-                    if (provider.Id == AssignProvider.Id)
+                    foreach (var AssignProvider in ListOfAssignProvider)
                     {
-                        provider.confirmed = true;
+                        if (provider.Id == AssignProvider.Id)
+                        {
+                            provider.confirmed = true;
+                        }
                     }
                 }
-            }
 
-            return ListofProvider;
+                return ListofProvider;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public ObservableCollection<AssignCategory> GetCategories()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
-          ObservableCollection<AssignCategory>  ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
+                ObservableCollection<AssignCategory> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
 
-            return ListofAllCategories;
+                return ListofAllCategories;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public ObservableCollection<AssignProvider> GetStaff()
         {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Method = "GET";
 
-            var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-            var Method = "GET";
+                var result = PostData(Method, "", Url);
 
-            var result = PostData(Method, "", Url);
-
-            ObservableCollection<AssignProvider> ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
+                ObservableCollection<AssignProvider> ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
 
 
-            return ListofServiceProviders;
+                return ListofServiceProviders;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         private void EditServiceCost(object sender, EventArgs args)
@@ -164,7 +216,7 @@ namespace Demo_App
         private void EditCategories(object sender, EventArgs args)
         {
            // Service service = new Service();
-            Navigation.PushAsync(new ChooseCategoriesPage(GetCategoriesAssignedtoService(),Convert.ToInt32(ServiceId)));
+            Navigation.PushAsync(new ChooseCategoriesPage(GetCategoriesAssignedtoService()));
         }
         private void SetnewDuration(object sender, EventArgs args)
         {
@@ -173,7 +225,7 @@ namespace Demo_App
         }
         private void EditServiceProvider(object sender, EventArgs args)
         {           
-            Navigation.PushAsync(new ServiceProviderPage(GetServiceProvider(), Convert.ToInt32(ServiceId),"EditService"));
+            Navigation.PushAsync(new ServiceProviderPage(GetServiceProvider(), "EditService"));
         }
         private void AddNotes(object sender, EventArgs args)
         {
@@ -182,8 +234,15 @@ namespace Demo_App
 
         private void DeleteService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
-            var result = PostData("DELETE", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
+                var result = PostData("DELETE", "", apiUrl);
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
 
             Navigation.PushAsync(new ServicePage());
         }

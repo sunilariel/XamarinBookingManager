@@ -65,46 +65,66 @@ namespace Demo_App
 
         private void AddNewAppointmentForCustomerClick(object sender,SelectedItemChangedEventArgs e)
         {
-            AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
-             EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName,EmployeeData.Id,EmployeeData.Name,Cost, PageName));
+            try
+            {
+                AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
+                EmployeeData = e.SelectedItem as AssignedServicetoStaff;
+                Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName, EmployeeData.Id, EmployeeData.Name, Cost, PageName));
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         public ObservableCollection<AssignProvider> GetServiceProvider()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
-
-            var result = PostData("GET", "", apiUrl);
-
-            ObservableCollection<AssignProvider> ListOfAssignProvider = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
-
-            ObservableCollection<AssignProvider> ListofProvider = GetStaff();
-
-            foreach (var provider in ListofProvider)
+            try
             {
-                foreach (var AssignProvider in ListOfAssignProvider)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
+
+                var result = PostData("GET", "", apiUrl);
+
+                ObservableCollection<AssignProvider> ListOfAssignProvider = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
+
+                ObservableCollection<AssignProvider> ListofProvider = GetStaff();
+
+                foreach (var provider in ListofProvider)
                 {
-                    if (provider.Id == AssignProvider.Id)
+                    foreach (var AssignProvider in ListOfAssignProvider)
                     {
-                        provider.confirmed = true;
+                        if (provider.Id == AssignProvider.Id)
+                        {
+                            provider.confirmed = true;
+                        }
                     }
-                }              
-            }            
-            return ListofProvider;
+                }
+                return ListofProvider;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public ObservableCollection<AssignProvider> GetStaff()
         {
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Method = "GET";
 
-            var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-            var Method = "GET";
+                var result = PostData(Method, "", Url);
 
-            var result = PostData(Method, "", Url);
-
-            ObservableCollection<AssignProvider> ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
+                ObservableCollection<AssignProvider> ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
 
 
-            return ListofServiceProviders;
+                return ListofServiceProviders;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

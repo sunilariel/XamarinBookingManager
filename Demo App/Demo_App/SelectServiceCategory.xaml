@@ -14,7 +14,7 @@
                     <Label Text="All Services" TextColor="Black" HorizontalOptions="StartAndExpand"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick" HeightRequest="70">
+                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <!--<TextCell Text="{Binding Name}" TextColor="Black" />-->

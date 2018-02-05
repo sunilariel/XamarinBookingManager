@@ -19,40 +19,49 @@ namespace Demo_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewServicePage : ContentPage
 	{
-       
+        #region GlobleFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
         string name = "";
         string DurationOfService = "";
+        #endregion
+
         public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer)
 		{
-			InitializeComponent ();
+            try
+            {
+                InitializeComponent();
 
-            if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")                
-            {
-                ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
-            }
-            if (todaycollection.Count > 0)
-            {
-                //string TimeData = todaycollection[0] + ":" + todaycollection[1];
-                int Minutes = Convert.ToInt32(todaycollection[0]) * 60 + Convert.ToInt32(todaycollection[1]);
-                 DurationOfService = Minutes + " min";
-        
-                //ServiceName.Text = name;
-                duration.Text = DurationOfService;               
-                //BufferTime.Text = DurationOfService;
-            }
-
-            if(todaycollectionBuffer.Count>0)
-            {
-                int Min= Convert.ToInt32(todaycollectionBuffer[0]) * 60 + Convert.ToInt32(todaycollectionBuffer[1]);
-                string BufferTimeOfService = Min + " min";
-                // ServiceName.Text = name;
-                if (Application.Current.Properties["ServiceDurationTime"] != null)
+                if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")
                 {
-                    duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
+                    ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
                 }
-                BufferTime.Text = BufferTimeOfService;
+                if (todaycollection.Count > 0)
+                {
+                    //string TimeData = todaycollection[0] + ":" + todaycollection[1];
+                    int Minutes = Convert.ToInt32(todaycollection[0]) * 60 + Convert.ToInt32(todaycollection[1]);
+                    DurationOfService = Minutes + " min";
+
+                    //ServiceName.Text = name;
+                    duration.Text = DurationOfService;
+                    //BufferTime.Text = DurationOfService;
+                }
+
+                if (todaycollectionBuffer.Count > 0)
+                {
+                    int Min = Convert.ToInt32(todaycollectionBuffer[0]) * 60 + Convert.ToInt32(todaycollectionBuffer[1]);
+                    string BufferTimeOfService = Min + " min";
+                    // ServiceName.Text = name;
+                    if (Application.Current.Properties["ServiceDurationTime"] != null)
+                    {
+                        duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
+                    }
+                    BufferTime.Text = BufferTimeOfService;
+                }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 
@@ -75,70 +84,90 @@ namespace Demo_App
        
         public void AddService()
         {
-            if (ServiceName.Text == "")
-                return;
+            try
+            {
+                if (ServiceName.Text == "")
+                    return;
 
-            if (duration.Text != "" || BufferTime.Text != "" || ServiceCost.Text != "") {
-
-                string[] ServiceBufferTime = { };
-                string[] ServiceDuration = { };
-                string Duration = duration.Text;
-                string bufferTime = BufferTime.Text;
-                if (Duration != null)
+                if (duration.Text != "" || BufferTime.Text != "" || ServiceCost.Text != "")
                 {
-                    ServiceDuration = Duration.Split(' ');
-                }
-                if (bufferTime != null)
-                {
-                    ServiceBufferTime = bufferTime.Split(' ');
-                }
-                Service obj = new Service();
-                obj.Id = 0;
-                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                obj.Name = ServiceName.Text;
-                obj.CategoryName = "";
-                obj.CategoryId = 0;
-                obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
-                obj.DurationInHours = 0;
-                obj.Cost = Convert.ToDouble(ServiceCost.Text);
-                obj.Currency = "";
-                obj.Colour = "";
-                obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
-                obj.CreationDate = "2017-11-08T12:19:27.628Z";
-                obj.Description = "";
 
-                var SerializedData = JsonConvert.SerializeObject(obj);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddService";
-                var result = PostData("POST", SerializedData, apiUrl);
+                    string[] ServiceBufferTime = { };
+                    string[] ServiceDuration = { };
+                    string Duration = duration.Text;
+                    string bufferTime = BufferTime.Text;
+                    if (Duration != null)
+                    {
+                        ServiceDuration = Duration.Split(' ');
+                    }
+                    if (bufferTime != null)
+                    {
+                        ServiceBufferTime = bufferTime.Split(' ');
+                    }
+                    Service obj = new Service();
+                    obj.Id = 0;
+                    obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                    obj.Name = ServiceName.Text;
+                    obj.CategoryName = "";
+                    obj.CategoryId = 0;
+                    obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
+                    obj.DurationInHours = 0;
+                    obj.Cost = Convert.ToDouble(ServiceCost.Text);
+                    obj.Currency = "";
+                    obj.Colour = "";
+                    obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
+                    obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                    obj.Description = "";
 
-                JObject responsedata = JObject.Parse(result);
-                dynamic responseValue = responsedata["ReturnObject"]["ServiceId"];
-                int ServiceId = Convert.ToInt32(responseValue.Value);
-                if (ServiceId != null)
-                {
-                    // Navigation.PushAsync(new ServiceProviderPage(ServiceId));               
-                    Navigation.PushAsync(new ServiceProviderPage(GetStaff(), ServiceId, "AddService"));
-                }
+                    var SerializedData = JsonConvert.SerializeObject(obj);
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddService";
+                    var result = PostData("POST", SerializedData, apiUrl);
+
+                    JObject responsedata = JObject.Parse(result);
+                    dynamic responseValue = responsedata["ReturnObject"]["ServiceId"];
+                    int ServiceId = Convert.ToInt32(responseValue.Value);
+                    if (ServiceId != null)
+                    {
+                        Application.Current.Properties["ServiceID"] = ServiceId;
+                        Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AddService"));
+                    }
+                }               
             }
-                      
-            //Navigation.PushAsync(new ServicePage());
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public ObservableCollection<AssignProvider> GetStaff()
         {
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-            var Method = "GET";
-            var result = PostData(Method, "", Url);
-            ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
-            return ListofServiceProviders;
+            try
+            {
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Method = "GET";
+                var result = PostData(Method, "", Url);
+                ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
+                return ListofServiceProviders;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public ObservableCollection<Service> GetService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
-            ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
-            return ListofServices;
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
+                ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public void DeleteService()
@@ -219,17 +248,31 @@ namespace Demo_App
 
         public string GetAllServiceForCategory(string CategoryId, string CompanyId)
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryId;
-            var result = PostData("GET", "", apiUrl);
-            return result;
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryId;
+                var result = PostData("GET", "", apiUrl);
+                return result;
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
         }
 
         public string AssignStaffToService(AssignServiceToStaff AssignStaff)
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
-            var json = JsonConvert.SerializeObject(AssignStaff);
-            var result = PostData("POST", json, apiUrl);
-            return result;
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
+                var json = JsonConvert.SerializeObject(AssignStaff);
+                var result = PostData("POST", json, apiUrl);
+                return result;
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
         }
 
         public string DeAssignedStaffToService(string CompanyId, string EmployeeId, string ServiceId)

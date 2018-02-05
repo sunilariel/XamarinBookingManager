@@ -4,7 +4,7 @@
              x:Class="Demo_App.AddressPage"
              Title="Address">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Order="Primary" Priority="0"/>
+        <ToolbarItem Text="Save" Order="Primary" Priority="0" Clicked="SaveCustomerAddress"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">

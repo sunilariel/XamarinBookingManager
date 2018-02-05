@@ -45,9 +45,15 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3" HeightRequest="30">
                     <Label Text="+ Staff Member" TextColor="White" FontSize="14" HorizontalOptions="Center" ></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewStaff"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Grid.Row="4" HeightRequest="30">
                     <Label Text="+ Service" TextColor="White" FontSize="14" HorizontalOptions="Center" ></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewServices"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Grid.Row="5" HeightRequest="30">
                     <Label Text="+ Service Category" TextColor="White" FontSize="14" HorizontalOptions="Center" ></Label>

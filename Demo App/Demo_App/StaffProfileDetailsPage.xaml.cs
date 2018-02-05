@@ -56,7 +56,7 @@ namespace Demo_App
         }
         private void WorkingDaysClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BusinessHoursPage(StaffId,"EditStaff"));
+            Navigation.PushAsync(new BusinessHoursPage("EditStaff"));
         }
         private void ServiceProvidedClick(object sender, EventArgs e)
         {
@@ -65,86 +65,93 @@ namespace Demo_App
 
         public void GetAllTimeOffForEmployee()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + StaffId;
-            var result = PostData("GET", "", apiUrl);
-
-            List<ProviderWorkingHours> WorkingHourStatus = JsonConvert.DeserializeObject< List<ProviderWorkingHours>>(result);
-
-            foreach(var item in WorkingHourStatus)
+            try
             {
-                switch(item.NameOfDayAsString)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetWorkingHours?employeeId=" + StaffId;
+                var result = PostData("GET", "", apiUrl);
+
+                List<ProviderWorkingHours> WorkingHourStatus = JsonConvert.DeserializeObject<List<ProviderWorkingHours>>(result);
+
+                foreach (var item in WorkingHourStatus)
                 {
-                    case "Sunday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Sunday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Sunday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Monday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Monday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Monday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Tuesday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Tuesday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Tuesday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Wednesday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Wednesday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Wednesday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Thursday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Thursday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Thursday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Friday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Friday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Friday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;
-                    case "Saturday":
-                        if (item.IsOffAllDay == true)
-                        {
-                            Saturday.TextColor = Xamarin.Forms.Color.Gray;
-                        }
-                        else
-                        {
-                            Saturday.TextColor = Xamarin.Forms.Color.Black;
-                        }
-                        break;                   
-                }                  
+                    switch (item.NameOfDayAsString)
+                    {
+                        case "Sunday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Sunday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Sunday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Monday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Monday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Monday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Tuesday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Tuesday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Tuesday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Wednesday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Wednesday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Wednesday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Thursday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Thursday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Thursday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Friday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Friday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Friday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                        case "Saturday":
+                            if (item.IsOffAllDay == true)
+                            {
+                                Saturday.TextColor = Xamarin.Forms.Color.Gray;
+                            }
+                            else
+                            {
+                                Saturday.TextColor = Xamarin.Forms.Color.Black;
+                            }
+                            break;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 
@@ -159,65 +166,104 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
 
         public void GetAllocatedServicetoStaff()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
-
-            var result = PostData("GET", "", apiUrl);
-
-            ObservableCollection<AssignedServicetoStaff> ListofAllocatedService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-
-            ListOfServices = GetAllService();
-
-            ListofServicesCount = ListOfServices.Count;
-            ListofAllocatedServicesCount = ListofAllocatedService.Count;
-
-            foreach (var service in ListOfServices)
+            try
             {
-                foreach(var selectedservice in ListofAllocatedService)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/GetAllocateServiceForEmployee?empid=" + StaffId + "&compid=" + CompanyId;
+
+                var result = PostData("GET", "", apiUrl);
+
+                ObservableCollection<AssignedServicetoStaff> ListofAllocatedService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+                ListOfServices = GetAllService();
+
+                ListofServicesCount = ListOfServices.Count;
+                ListofAllocatedServicesCount = ListofAllocatedService.Count;
+
+                foreach (var service in ListOfServices)
                 {
-                    if(service.Id==selectedservice.Id)
+                    foreach (var selectedservice in ListofAllocatedService)
                     {
-                        service.isAssigned = true;
+                        if (service.Id == selectedservice.Id)
+                        {
+                            service.isAssigned = true;
+                        }
                     }
                 }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-            return ListofServices;
+                ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            if (e.TotalY != 0 && CustomerProfile.HeightRequest > 30 && CustomerProfile.HeightRequest < 151)
+            try
             {
-                CustomerProfile.HeightRequest = CustomerProfile.HeightRequest + e.TotalY;
-                if (CustomerProfile.HeightRequest < 31)
-                    CustomerProfile.HeightRequest = 31;
-                if (CustomerProfile.HeightRequest > 150)
-                    CustomerProfile.HeightRequest = 150;
+                if (e.TotalY != 0 && CustomerProfile.HeightRequest > 30 && CustomerProfile.HeightRequest < 151)
+                {
+                    CustomerProfile.HeightRequest = CustomerProfile.HeightRequest + e.TotalY;
+                    if (CustomerProfile.HeightRequest < 31)
+                        CustomerProfile.HeightRequest = 31;
+                    if (CustomerProfile.HeightRequest > 150)
+                        CustomerProfile.HeightRequest = 150;
+                }
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
             }
             //stack.HeightRequest = 20;
         }
 
-        public void DeleteStaff(int Id)
+        public async void DeleteStaff(int Id)
         {
-            var CompanyId = Application.Current.Properties["CompanyId"];
-            var Method = "DELETE";
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeleteStaff?id=" + StaffId;
-            var result= PostData(Method, null, Url);
-            Navigation.PushAsync(new StaffPage());
+            try
+            {
+
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Staff", "Yes", "No");
+                if (confirmed)
+                {
+                    var CompanyId = Application.Current.Properties["CompanyId"];
+                    var Method = "DELETE";
+                    var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeleteStaff?id=" + StaffId;
+                    var result = PostData(Method, null, Url);
+                    Navigation.PushAsync(new StaffPage());
+                }
+                else
+                {
+                    Navigation.PushAsync(new StaffProfileDetailsPage());
+                }
+
+                
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         private void EditStaffDetails(object sender, EventArgs e)

@@ -26,54 +26,67 @@ namespace Demo_App
 
         public CustomerCommentsForAppointmentPage (AddAppointments objAddAppointments, Customer Cust, string Day, DateTime DateOfBooking,string pagename)
 		{
-			InitializeComponent ();
-            PageName = pagename;
-            day = Day;
-            dateOfBooking = DateOfBooking;
-            obj = new AddAppointments();
-            obj.CompanyId = objAddAppointments.CompanyId;
-            obj.ServiceId = objAddAppointments.ServiceId;
-            obj.EmployeeId = objAddAppointments.EmployeeId;
-            obj.EmployeeName = objAddAppointments.EmployeeName;
-            obj.ServiceName = objAddAppointments.ServiceName;
-            obj.Cost = objAddAppointments.Cost;
-            obj.StartTime = objAddAppointments.StartTime;
-            obj.EndTime = objAddAppointments.EndTime;
-            obj.TimePeriod = objAddAppointments.TimePeriod;
-            objCust = new Customer();
-            objCust.Id = Cust.Id;
-            objCust.FirstName = Cust.FirstName;
-            objCust.LastName = Cust.LastName;
-            objCust.UserName = Cust.UserName;
-            objCust.Email = Cust.Email;
-            objCust.TelephoneNo = Cust.TelephoneNo;
-            objCust.Address = Cust.Address;
+            try
+            {
+                InitializeComponent();
+                PageName = pagename;
+                day = Day;
+                dateOfBooking = DateOfBooking;
+                obj = new AddAppointments();
+                obj.CompanyId = objAddAppointments.CompanyId;
+                obj.ServiceId = objAddAppointments.ServiceId;
+                obj.EmployeeId = objAddAppointments.EmployeeId;
+                obj.EmployeeName = objAddAppointments.EmployeeName;
+                obj.ServiceName = objAddAppointments.ServiceName;
+                obj.Cost = objAddAppointments.Cost;
+                obj.StartTime = objAddAppointments.StartTime;
+                obj.EndTime = objAddAppointments.EndTime;
+                obj.TimePeriod = objAddAppointments.TimePeriod;
+                objCust = new Customer();
+                objCust.Id = Cust.Id;
+                objCust.FirstName = Cust.FirstName;
+                objCust.LastName = Cust.LastName;
+                objCust.UserName = Cust.UserName;
+                objCust.Email = Cust.Email;
+                objCust.TelephoneNo = Cust.TelephoneNo;
+                objCust.Address = Cust.Address;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void CustomerSaveNotes(object sender, SelectedItemChangedEventArgs e)
         {
-            Notes objNotes = new Notes();
-            objNotes.CustomerId = objCust.Id;
-            objNotes.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            objNotes.Description = CustomerNote.Text;
-            objNotes.WhoAddedThis = "";
-            objNotes.CreationDate = "2017-11-08T12:19:27.628Z";
-
-            var data = JsonConvert.SerializeObject(objNotes);
-            var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
-            var ApiMethod = "POST";
-
-            var result = PostData(ApiMethod, data, Url);
-          
-            if(PageName== "EditAppointment")
+            try
             {
-                Navigation.PushAsync(new UpdateAppointmentDetailsPage(obj , day, dateOfBooking));
+                Notes objNotes = new Notes();
+                objNotes.CustomerId = objCust.Id;
+                objNotes.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                objNotes.Description = CustomerNote.Text;
+                objNotes.WhoAddedThis = "";
+                objNotes.CreationDate = "2017-11-08T12:19:27.628Z";
+
+                var data = JsonConvert.SerializeObject(objNotes);
+                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
+                var ApiMethod = "POST";
+
+                var result = PostData(ApiMethod, data, Url);
+
+                if (PageName == "EditAppointment")
+                {
+                    Navigation.PushAsync(new UpdateAppointmentDetailsPage(obj, day, dateOfBooking));
+                }
+                else
+                {
+                    Navigation.PushAsync(new NewAppointmentPage(obj, day, dateOfBooking));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Navigation.PushAsync(new NewAppointmentPage(obj,day, dateOfBooking));
+                ex.ToString();
             }
-            
             
         }
 

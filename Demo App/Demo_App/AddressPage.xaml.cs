@@ -23,7 +23,7 @@ namespace Demo_App
 		}
 
 
-        public void SaveCustomerAddress(object sender, SelectedItemChangedEventArgs e)
+        private async Task SaveCustomerAddress(object sender, SelectedItemChangedEventArgs e)
         {
             Address obj = new Address();
             obj.Id = 0;
@@ -33,45 +33,47 @@ namespace Demo_App
             obj.ZipCode = Convert.ToInt32(txtZipCode.Text);
             obj.CreationDate = "2017-11-08T12:19:27.628Z";
 
-            var data = JsonConvert.SerializeObject(obj);
-            var Url = Application.Current.Properties["DomainUrl"] + "/api/customer/Create";
-            var ApiMethod = "POST";
+            //var data = JsonConvert.SerializeObject(obj);
+            //var Url = Application.Current.Properties["DomainUrl"] + "/api/customer/Create";
+            //var ApiMethod = "POST";
 
-            var result = PostData(ApiMethod, data, Url);
+            //var result = PostData(ApiMethod, data, Url);
 
-            //Navigation.PushAsync(new EditCustomerPage(obj));
+            MessagingCenter.Send<AddressPage, Address>(this,
+         "address", obj);
+            await Navigation.PushAsync(new NewCustomerPage(obj));
 
         }
 
-        public string PostData(string Method, string SerializedData, string Url)
-        {
-            try
-            {
-                var result = "";
-                HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
-                httpRequest.Method = Method;
-                httpRequest.ContentType = "application/json";
-                httpRequest.ProtocolVersion = HttpVersion.Version10;
-                httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+        //public string PostData(string Method, string SerializedData, string Url)
+        //{
+        //    try
+        //    {
+        //        var result = "";
+        //        HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
+        //        httpRequest.Method = Method;
+        //        httpRequest.ContentType = "application/json";
+        //        httpRequest.ProtocolVersion = HttpVersion.Version10;
+        //        httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != null)
-                {
-                    var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
-                    streamWriter.Write(SerializedData);
-                    streamWriter.Close();
-                }
+        //        if (SerializedData != null)
+        //        {
+        //            var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
+        //            streamWriter.Write(SerializedData);
+        //            streamWriter.Close();
+        //        }
 
-                var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
+        //        var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
 
-                using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
-                {
-                    return result = StreamReader.ReadToEnd();
-                }
-            }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
-        }
+        //        using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+        //        {
+        //            return result = StreamReader.ReadToEnd();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return e.ToString();
+        //    }
+        //}
     }
 }

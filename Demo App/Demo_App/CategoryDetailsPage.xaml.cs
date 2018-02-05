@@ -22,43 +22,90 @@ namespace Demo_App
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);       
         int CategoryID;
         string NameofCategory;
-        ObservableCollection<AssignedServicetoStaff> ListOfAssignService = new ObservableCollection<AssignedServicetoStaff>();       
+        ObservableCollection<AssignedServicetoStaff> ListOfAssignService = new ObservableCollection<AssignedServicetoStaff>();
+        ObservableCollection<AssignServiceToCategory> ListofAllAssignedServices = new ObservableCollection<AssignServiceToCategory>();
         public CategoryDetailsPage(int categoryId,string categoryName)
 		{
-			InitializeComponent ();
-            CategoryID = categoryId;
-            NameofCategory = categoryName;
-            var provider = GetSelectedService();
-
-            var ServiceString = "";
-            foreach (var item in provider)
+            try
             {
-                if (item.isAssigned == false)
+                InitializeComponent();
+                CategoryID = categoryId;
+                NameofCategory = categoryName;
+                var provider = GetSelectedService();
+
+                var ServiceString = "";
+                foreach (var item in provider)
                 {
-                    ServiceString = ServiceString + item.Name + ",";
+                    if (item.isAssigned == true)
+                    {
+                        ServiceString = ServiceString + item.Name + ",";
+                    }
                 }
-            }
-            if (ServiceString.Length > 0)
-            {
-                CategoryServices.Text = ServiceString.Substring(0, ServiceString.Length - 1);
-            }
+                if (ServiceString.Length > 0)
+                {
+                    CategoryServices.Text = ServiceString.Substring(0, ServiceString.Length - 1);
+                }
 
-            CategoryName.Text = NameofCategory;
+                CategoryName.Text = NameofCategory;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
+                var result = PostData("GET", "", apiUrl);
 
-             ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-            return ListOfAssignService; 
+                ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                //ObservableCollection<AssignServiceToCategory> ListofAssignServicesCategories = GetAssignServices();
+                foreach(var item in ListOfAssignService)
+                {
+                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + item.Id;
+                    var resultData = PostData("GET", "", ApiUrl);
+                    ListofAllAssignedServices = JsonConvert.DeserializeObject<ObservableCollection<AssignServiceToCategory>>(resultData);
+                }
+
+                foreach (var service in ListofAllAssignedServices)
+                {
+                    foreach (var assignService in ListOfAssignService)
+                    {
+                        if (service.Id == assignService.Id)
+                        {
+                            assignService.isAssigned = true;
+                        }
+                    }
+                }
+                return ListOfAssignService;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public void  SaveCategoryDetails()
         {
             Navigation.PushAsync(new ServiceCategoriesPage(CategoryID));
         }
+        //public ObservableCollection<AssignServiceToCategory> GetAssignServices()
+        //{
+        //    try
+        //    {
+        //        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetCategoriesAssignedToService?companyId=" + CompanyId+ "&serviceId" + ;
+        //        var result = PostData("GET", "", apiUrl);
+        //        ListofAllAssignedServices = JsonConvert.DeserializeObject<ObservableCollection<AssignServiceToCategory>>(result);
+        //        return ListofAllAssignedServices;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
 
         public void EditCategoryService()
         {
@@ -80,12 +127,19 @@ namespace Demo_App
 
         public ObservableCollection<AssignedServicetoStaff>  GetService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
 
-            return ListofServices;
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public void EditCategory()

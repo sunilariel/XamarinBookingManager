@@ -38,89 +38,96 @@ namespace Demo_App
 
         public AppointmentDetailsPage(AppointmentDetails appointment)
         {
-            InitializeComponent();
-            GetSelectedCustomerById();
-            objNotes = new Notes();
-            objNotes.CompanyId= Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            if (objCust != null)
+            try
             {
-                objNotes.CustomerId = objCust.Id;
-            }
-            objNotes.Description = CommentNotes.Text;
-            Application.Current.Properties["BookingID"] = appointment.BookingId;
+                InitializeComponent();
+                GetSelectedCustomerById();
+                objNotes = new Notes();
+                objNotes.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                if (objCust != null)
+                {
+                    objNotes.CustomerId = objCust.Id;
+                }
+                objNotes.Description = CommentNotes.Text;
+                Application.Current.Properties["BookingID"] = appointment.BookingId;
 
-            DateOfBooking = Convert.ToDateTime(appointment.BookingDate);
-            Day = DateOfBooking.DayOfWeek.ToString();
-            ServiceID = Convert.ToInt32(appointment.ServiceId);
-            ServiceName = appointment.ServiceName;
-            EmpID = Convert.ToInt32(appointment.EmployeeId);
-            empName = appointment.EmployeeName;
-            Cost = appointment.Cost;
-            DateTime startTime = Convert.ToDateTime(appointment.StartTime);
-            string TimeStart = startTime.ToShortTimeString();
-            DateTime endTime = Convert.ToDateTime(appointment.EndTime);
-            string TimeEnd = endTime.ToShortTimeString();
-            string timeperiod = TimeStart + "-" + TimeEnd;
-            addAppointments = new AddAppointments();
-            addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            addAppointments.EmployeeId = EmpID;
-            addAppointments.EmployeeName = empName;
-            addAppointments.ServiceId = ServiceID;
-            addAppointments.ServiceName = ServiceName;
-            addAppointments.Cost = Cost;
-            addAppointments.StartTime = appointment.StartTime;
-            addAppointments.EndTime = appointment.EndTime;
-            addAppointments.TimePeriod = timeperiod;
-            service = new Service();
-            service.Id = Convert.ToInt32(appointment.ServiceId);
-            service.Name = appointment.ServiceName;
-            service.Cost = appointment.Cost;
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
-            if (objCust != null)
-            {
-                AppointmentCustomerName.Text = objCust.FirstName;
-                AppointmentCustomerEmail.Text = objCust.Email;
-                AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
-            }
-            obj = new AppointmentDetails();
-            obj.BookingId = appointment.BookingId;
-            obj.EmployeeId = appointment.EmployeeId;
-            obj.ServiceId = appointment.ServiceId;
-            obj.EmployeeName = appointment.EmployeeName;
-            obj.ServiceName = appointment.ServiceName;
-            obj.DurationInHours = appointment.DurationInHours;
-            obj.DurationInMinutes = appointment.DurationInMinutes;
-            obj.Cost = appointment.Cost;
-            obj.Currency = appointment.Currency;
-            obj.status = appointment.status;
-            obj.StartTime = appointment.StartTime;
-            obj.EndTime = appointment.EndTime;
-            obj.BookingDate = appointment.BookingDate;
-            obj.Colour = appointment.Colour;
-            obj.DurationHrsMin = appointment.DurationHrsMin;
-            obj.AppointmentDetail = appointment.AppointmentDetail;
-            obj.CommentNotes = appointment.CommentNotes;
-            obj.TimePeriod = appointment.TimePeriod;
-            BindingContext = obj;
+                DateOfBooking = Convert.ToDateTime(appointment.BookingDate);
+                Day = DateOfBooking.DayOfWeek.ToString();
+                ServiceID = Convert.ToInt32(appointment.ServiceId);
+                ServiceName = appointment.ServiceName;
+                EmpID = Convert.ToInt32(appointment.EmployeeId);
+                empName = appointment.EmployeeName;
+                Cost = appointment.Cost;
+                DateTime startTime = Convert.ToDateTime(appointment.StartTime);
+                string TimeStart = startTime.ToShortTimeString();
+                DateTime endTime = Convert.ToDateTime(appointment.EndTime);
+                string TimeEnd = endTime.ToShortTimeString();
+                string timeperiod = TimeStart + "-" + TimeEnd;
+                addAppointments = new AddAppointments();
+                addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                addAppointments.EmployeeId = EmpID;
+                addAppointments.EmployeeName = empName;
+                addAppointments.ServiceId = ServiceID;
+                addAppointments.ServiceName = ServiceName;
+                addAppointments.Cost = Cost;
+                addAppointments.StartTime = appointment.StartTime;
+                addAppointments.EndTime = appointment.EndTime;
+                addAppointments.TimePeriod = timeperiod;
+                service = new Service();
+                service.Id = Convert.ToInt32(appointment.ServiceId);
+                service.Name = appointment.ServiceName;
+                service.Cost = appointment.Cost;
+                //objCust = new Customer();
+                //objCust.Id = Cust.Id;
+                //objCust.FirstName = Cust.FirstName;
+                //objCust.LastName = Cust.LastName;
+                //objCust.UserName = Cust.UserName;
+                //objCust.Email = Cust.Email;
+                //objCust.TelephoneNo = Cust.TelephoneNo;
+                //objCust.Address = Cust.Address;
+                if (objCust != null)
+                {
+                    AppointmentCustomerName.Text = objCust.FirstName;
+                    AppointmentCustomerEmail.Text = objCust.Email;
+                    AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
+                }
+                obj = new AppointmentDetails();
+                obj.BookingId = appointment.BookingId;
+                obj.EmployeeId = appointment.EmployeeId;
+                obj.ServiceId = appointment.ServiceId;
+                obj.EmployeeName = appointment.EmployeeName;
+                obj.ServiceName = appointment.ServiceName;
+                obj.DurationInHours = appointment.DurationInHours;
+                obj.DurationInMinutes = appointment.DurationInMinutes;
+                obj.Cost = appointment.Cost;
+                obj.Currency = appointment.Currency;
+                obj.status = appointment.status;
+                obj.StartTime = appointment.StartTime;
+                obj.EndTime = appointment.EndTime;
+                obj.BookingDate = appointment.BookingDate;
+                obj.Colour = appointment.Colour;
+                obj.DurationHrsMin = appointment.DurationHrsMin;
+                obj.AppointmentDetail = appointment.AppointmentDetail;
+                obj.CommentNotes = appointment.CommentNotes;
+                obj.TimePeriod = appointment.TimePeriod;
+                BindingContext = obj;
 
-            Data = new Dictionary<string, int>
+                Data = new Dictionary<string, int>
             {
                { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
                { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
-            };           
-            foreach (var item in Data.Keys)
-            {
-                AppointmentsPicker.Items.Add(item);
-               
+            };
+                foreach (var item in Data.Keys)
+                {
+                    AppointmentsPicker.Items.Add(item);
+
+                }
+                AppointmentsPicker.SelectedIndex = obj.status;
             }
-            AppointmentsPicker.SelectedIndex = obj.status;
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void GetSelectedCustomerById()

@@ -61,5 +61,17 @@ namespace Demo_App
             this.IsVisible = false;
             OnDisappearing();
         }
+
+        private void AddNewServices()
+        {
+            //Navigation.PushAsync(new NewServicePage());
+        }
+
+        private void AddNewStaff(object sender,EventArgs e)
+        {
+            Navigation.PushAsync(new NewStaffPage());
+            this.IsVisible = false;
+            OnDisappearing();
+        }
     }
 }

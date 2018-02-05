@@ -51,31 +51,45 @@ namespace Demo_App
         //}
 
         private void SelectStaffForCustomer(object sender,SelectedItemChangedEventArgs e)
-        {           
-            var servicedata = e.SelectedItem as AssignedServicetoStaff;
-            Service service = new Service();
-            service.Name = servicedata.Name;
-            service.Id = servicedata.Id;
-            service.Cost = servicedata.Cost;
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName));
+        {
+            try
+            {
+                var servicedata = e.SelectedItem as AssignedServicetoStaff;
+                Service service = new Service();
+                service.Name = servicedata.Name;
+                service.Id = servicedata.Id;
+                service.Cost = servicedata.Cost;
+                Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName));
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
        
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + Application.Current.Properties["CategoryID"];
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + Application.Current.Properties["CategoryID"];
+                var result = PostData("GET", "", apiUrl);
 
-            ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
-            
-            foreach(var item in ListOfAssignServiceData)
-            {               
-                var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" +" "+item.Cost;
-                item.ServiceDetails = details;
+                ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+                foreach (var item in ListOfAssignServiceData)
+                {
+                    var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" + " " + item.Cost;
+                    item.ServiceDetails = details;
+                }
+                ListofAllServices.ItemsSource = ListOfAssignServiceData;
+                return ListOfAssignServiceData;
             }
-            ListofAllServices.ItemsSource = ListOfAssignServiceData;
-            return ListOfAssignServiceData;
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         

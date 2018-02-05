@@ -29,40 +29,38 @@ namespace Demo_App
 
         public AddAppointmentsPage(BookAppointment objAppointment)
         {
-            InitializeComponent();
-            GetSelectedCustomerById();
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
-            BindingContext = objCust;
-            this.Title = objCust.FirstName + "'s" + " appointments";
-            if (objAppointment != null)
+            try
             {
-                objBookAppointment = new BookAppointment();
-                objBookAppointment.CompanyId = objAppointment.CompanyId;
-                objBookAppointment.EmployeeId = objAppointment.EmployeeId;
-                objBookAppointment.ServiceId = objAppointment.ServiceId;
-                objBookAppointment.CustomerIdsCommaSeperated = objAppointment.CustomerIdsCommaSeperated.ToString();
-                objBookAppointment.StartHour = objAppointment.StartHour;
-                objBookAppointment.StartMinute = objAppointment.StartMinute;
-                objBookAppointment.EndHour = objAppointment.EndHour;
-                objBookAppointment.EndMinute = objAppointment.EndMinute;
-                objBookAppointment.IsAdded = objAppointment.IsAdded;
-                objBookAppointment.Message = objAppointment.Message;
-                objBookAppointment.Notes = objAppointment.Notes;
-                objBookAppointment.CustomerIds = objAppointment.CustomerIds;
-                objBookAppointment.Start = objAppointment.Start;
-                objBookAppointment.End = objAppointment.End;
-                objBookAppointment.Status = objAppointment.Status;
+                InitializeComponent();
+                GetSelectedCustomerById();
+                BindingContext = objCust;
+                this.Title = objCust.FirstName + "'s" + " appointments";
+                if (objAppointment != null)
+                {
+                    objBookAppointment = new BookAppointment();
+                    objBookAppointment.CompanyId = objAppointment.CompanyId;
+                    objBookAppointment.EmployeeId = objAppointment.EmployeeId;
+                    objBookAppointment.ServiceId = objAppointment.ServiceId;
+                    objBookAppointment.CustomerIdsCommaSeperated = objAppointment.CustomerIdsCommaSeperated.ToString();
+                    objBookAppointment.StartHour = objAppointment.StartHour;
+                    objBookAppointment.StartMinute = objAppointment.StartMinute;
+                    objBookAppointment.EndHour = objAppointment.EndHour;
+                    objBookAppointment.EndMinute = objAppointment.EndMinute;
+                    objBookAppointment.IsAdded = objAppointment.IsAdded;
+                    objBookAppointment.Message = objAppointment.Message;
+                    objBookAppointment.Notes = objAppointment.Notes;
+                    objBookAppointment.CustomerIds = objAppointment.CustomerIds;
+                    objBookAppointment.Start = objAppointment.Start;
+                    objBookAppointment.End = objAppointment.End;
+                    objBookAppointment.Status = objAppointment.Status;
+                }
+                GetAppointmentDetails();
             }
-            GetAppointmentDetails();
-            //var listofAppointment = GetAppointmentDetails();
-           // CustomerAppoimentList.ItemsSource = listofAppointment;
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+            
         }
 
         public void GetSelectedCustomerById()
@@ -76,40 +74,47 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
 
         private void AppointmentsdetailsClick(object sender, SelectedItemChangedEventArgs e)
         {
-            var data=e.SelectedItem as AppointmentDetails;
-            string bookingdate = data.BookingDate.Split(',')[0];
-            obj = new AppointmentDetails();
-            DateTime startTime = Convert.ToDateTime(data.StartTime);
-            string TimeStart = startTime.ToShortTimeString();
-            DateTime endTime = Convert.ToDateTime(data.EndTime);
-            string TimeEnd = endTime.ToShortTimeString();
-            string timeperiod = TimeStart + "-" + TimeEnd;
-            obj.BookingId = data.BookingId;
-            obj.EmployeeId = data.EmployeeId.ToString();
-            obj.ServiceId = data.ServiceId.ToString();
-            obj.EmployeeName = (data.EmployeeName) == null ? "" : data.EmployeeName;
-            obj.ServiceName = (data.ServiceName) == null ? "" : data.ServiceName;
-            obj.DurationInHours = (data.DurationInHours) == null ? 0 : data.DurationInHours;
-            obj.DurationInMinutes = (data.DurationInMinutes) == null ? 0 : data.DurationInMinutes;
-            obj.Cost = (data.Cost) == null ? 0 : data.Cost;
-            obj.Currency = (data.Currency) == null ? "" : data.Currency;
-            obj.status = data.status;
-            obj.StartTime = data.StartTime;
-            obj.EndTime = data.EndTime;
-            obj.BookingDate = bookingdate;
-            obj.Colour = (data.Colour) == null ? "" : data.Colour;
-            obj.DurationHrsMin = data.DurationHrsMin;
-            obj.AppointmentDetail = data.AppointmentDetail;
-            obj.CommentNotes = data.CommentNotes;
-            obj.TimePeriod = timeperiod;
-            Navigation.PushAsync(new AppointmentDetailsPage(obj));
+            try
+            {
+                var data = e.SelectedItem as AppointmentDetails;
+                string bookingdate = data.BookingDate.Split(',')[0];
+                obj = new AppointmentDetails();
+                DateTime startTime = Convert.ToDateTime(data.StartTime);
+                string TimeStart = startTime.ToShortTimeString();
+                DateTime endTime = Convert.ToDateTime(data.EndTime);
+                string TimeEnd = endTime.ToShortTimeString();
+                string timeperiod = TimeStart + "-" + TimeEnd;
+                obj.BookingId = data.BookingId;
+                obj.EmployeeId = data.EmployeeId.ToString();
+                obj.ServiceId = data.ServiceId.ToString();
+                obj.EmployeeName = (data.EmployeeName) == null ? "" : data.EmployeeName;
+                obj.ServiceName = (data.ServiceName) == null ? "" : data.ServiceName;
+                obj.DurationInHours = (data.DurationInHours) == null ? 0 : data.DurationInHours;
+                obj.DurationInMinutes = (data.DurationInMinutes) == null ? 0 : data.DurationInMinutes;
+                obj.Cost = (data.Cost) == null ? 0 : data.Cost;
+                obj.Currency = (data.Currency) == null ? "" : data.Currency;
+                obj.status = data.status;
+                obj.StartTime = data.StartTime;
+                obj.EndTime = data.EndTime;
+                obj.BookingDate = bookingdate;
+                obj.Colour = (data.Colour) == null ? "" : data.Colour;
+                obj.DurationHrsMin = data.DurationHrsMin;
+                obj.AppointmentDetail = data.AppointmentDetail;
+                obj.CommentNotes = data.CommentNotes;
+                obj.TimePeriod = timeperiod;
+                Navigation.PushAsync(new AppointmentDetailsPage(obj));
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
 

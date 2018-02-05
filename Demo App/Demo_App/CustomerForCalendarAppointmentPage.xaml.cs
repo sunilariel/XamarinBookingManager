@@ -20,23 +20,30 @@ namespace Demo_App
         public AddAppointments objaddAppointment = null;
 		public CustomerForCalendarAppointmentPage (AddAppointments obj)
 		{
-			InitializeComponent ();
-            var hrs = obj.DurationInMinutes / 60;
-            var min = obj.DurationInMinutes % 60;
-            objaddAppointment = new AddAppointments();
-            objaddAppointment.ServiceId = obj.ServiceId;
-            objaddAppointment.ServiceName = obj.ServiceName;
-            objaddAppointment.EmployeeId = obj.EmployeeId;
-            objaddAppointment.EmployeeName = obj.EmployeeName;
-            objaddAppointment.Cost = obj.Cost;
-            objaddAppointment.TimePeriod = obj.StartTime;
-            objaddAppointment.DurationInHours = hrs;
-            objaddAppointment.DurationInMinutes = min;
-            objaddAppointment.DateOfBooking = obj.DateOfBooking;
-            var customerlist = GetAllCustomer();
-            if (customerlist.Count > 5)
+            try
             {
-                CustomerSearchBar.IsVisible = true;
+                InitializeComponent();
+                var hrs = obj.DurationInMinutes / 60;
+                var min = obj.DurationInMinutes % 60;
+                objaddAppointment = new AddAppointments();
+                objaddAppointment.ServiceId = obj.ServiceId;
+                objaddAppointment.ServiceName = obj.ServiceName;
+                objaddAppointment.EmployeeId = obj.EmployeeId;
+                objaddAppointment.EmployeeName = obj.EmployeeName;
+                objaddAppointment.Cost = obj.Cost;
+                objaddAppointment.TimePeriod = obj.TimePeriod;
+                objaddAppointment.DurationInHours = hrs;
+                objaddAppointment.DurationInMinutes = min;
+                objaddAppointment.DateOfBooking = obj.DateOfBooking;
+                var customerlist = GetAllCustomer();
+                if (customerlist.Count > 5)
+                {
+                    CustomerSearchBar.IsVisible = true;
+                }
+            }
+            catch(Exception e)
+            {
+                e.ToString();
             }
         }
 

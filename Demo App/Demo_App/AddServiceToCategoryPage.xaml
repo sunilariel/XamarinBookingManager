@@ -46,7 +46,8 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="0">
-                                                <Label Text="**" YAlign="Center" FontSize="Medium"   />
+                                                <!--<Label Text="**" YAlign="Center" FontSize="Medium"   />-->
+                                                <Image  Source="user.png" HeightRequest="30" HorizontalOptions="EndAndExpand"/>
                                             </StackLayout>
                                             <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="1" >
                                                 <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"   />

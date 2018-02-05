@@ -28,35 +28,49 @@ namespace Demo_App
        
         public ObservableCollection<AssignedServicetoStaff> GetAllServices(string CompanyId)
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
 
-            ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
 
-            return ListofServices;
+                return ListofServices;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public void AddCategory()
         {
-            Category obj = new Category();
-            obj.Id = 0;
-            obj.CompanyId = CompanyId;
-            obj.Name = CategoryName.Text;
-            obj.CreationDate = "2017-11-08t12:19:27.628z";
-          
+            try
+            {
+                Category obj = new Category();
+                obj.Id = 0;
+                obj.CompanyId = CompanyId;
+                obj.Name = CategoryName.Text;
+                obj.CreationDate = "2017-11-08t12:19:27.628z";
 
-            var SerializedData = JsonConvert.SerializeObject(obj);
-            var apiurl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";
 
-            var result = PostData("POST", SerializedData, apiurl);
+                var SerializedData = JsonConvert.SerializeObject(obj);
+                var apiurl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";
 
-            JObject responsedata = JObject.Parse(result);
-            dynamic ResponseValue = responsedata["ReturnObject"]["CategoryId"];
-            int CategoryId = Convert.ToInt32(ResponseValue.Value);
-            string categoryName = obj.Name;
+                var result = PostData("POST", SerializedData, apiurl);
 
-            Navigation.PushAsync(new AddServiceToCategoryPage(GetAllServices(CompanyId), CategoryId, categoryName));
+                JObject responsedata = JObject.Parse(result);
+                dynamic ResponseValue = responsedata["ReturnObject"]["CategoryId"];
+                int CategoryId = Convert.ToInt32(ResponseValue.Value);
+                string categoryName = obj.Name;
+
+                Navigation.PushAsync(new AddServiceToCategoryPage(GetAllServices(CompanyId), CategoryId, categoryName));
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
 

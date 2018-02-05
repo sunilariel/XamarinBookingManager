@@ -29,18 +29,25 @@ namespace Demo_App
 
         public void UpdateCategories()
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/UpdateCategory";
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/UpdateCategory";
 
-            Category obj = new Category();
-            obj.Id = CategoryId;
-            obj.CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-            obj.Name = CategoryName.Text;
-            obj.CreationDate = "2017-12-14T13:11:52.8721492+01:00";           
-            var serializeddata = JsonConvert.SerializeObject(obj);
+                Category obj = new Category();
+                obj.Id = CategoryId;
+                obj.CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
+                obj.Name = CategoryName.Text;
+                obj.CreationDate = "2017-12-14T13:11:52.8721492+01:00";
+                var serializeddata = JsonConvert.SerializeObject(obj);
 
-            var result = PostData("POST", serializeddata, apiUrl);
+                var result = PostData("POST", serializeddata, apiUrl);
 
-            Navigation.PushAsync(new CategoryDetailsPage(CategoryId, CategoryName.Text));
+                Navigation.PushAsync(new CategoryDetailsPage(CategoryId, CategoryName.Text));
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

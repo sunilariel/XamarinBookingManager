@@ -21,44 +21,66 @@ namespace Demo_App
 	{
 		public NewCustomerPage ()
 		{
-			InitializeComponent ();
+			InitializeComponent ();            
 		}
+        public NewCustomerPage( Address obj)
+        {
+            InitializeComponent();
+            CustomerAddress.Text = obj.CityName;
+            //MessagingCenter.Subscribe<Address>(this, "address", (obj) => {
+            //    
+            //});
+        }
         private void AddressClick(object sender, EventArgs args)
         {
-            //Navigation.PushAsync(new AddressPage());
+            Navigation.PushAsync(new AddressPage());
         }
 
 
         public void AddCustomer()
-        {                    
-            var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            Customer obj = new Customer();
-            obj.Id = 0;
-            obj.CompanyId = CompanyId;
-            obj.UserName = CustomerEmail.Text;
-            obj.Password = "123456";
-            obj.FirstName = CustomerName.Text;
-            obj.LastName = "";
-            obj.Address = "";
-            obj.PostCode = "";
-            obj.Email = CustomerEmail.Text;
-            obj.TelephoneNo = CustomerPhoneNumber.Text;
-            obj.CreationDate = Convert.ToString(DateTime.Now);
-            var data = JsonConvert.SerializeObject(obj);
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
-           var result = PostData("POST", data, apiUrl);
+        {
+            try
+            {
+                var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                Customer obj = new Customer();
+                obj.Id = 0;
+                obj.CompanyId = CompanyId;
+                obj.UserName = CustomerEmail.Text;
+                obj.Password = "123456";
+                obj.FirstName = CustomerName.Text;
+                obj.LastName = "";
+                obj.Address = "";
+                obj.PostCode = "";
+                obj.Email = CustomerEmail.Text;
+                obj.TelephoneNo = CustomerPhoneNumber.Text;
+                obj.CreationDate = Convert.ToString(DateTime.Now);
+                var data = JsonConvert.SerializeObject(obj);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
+                var result = PostData("POST", data, apiUrl);
 
-            dynamic successData = JObject.Parse(result);
-            var msg = Convert.ToString(successData.Message);
-            DisplayAlert("Success", msg, "ok");
-            Navigation.PushAsync(new CustomerPage());
+                dynamic successData = JObject.Parse(result);
+                var msg = Convert.ToString(successData.Message);
+                DisplayAlert("Success", msg, "ok");
+                Navigation.PushAsync(new CustomerPage());
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public string DeleteCustomer(string CompanyId, string CustomerId)
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/DeleteCustomer?companyId=" + "CompanyId" + "&customerId=" + "CustomerId";
-            var result = PostData("DELETE", "", apiUrl);
-            return result;
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/DeleteCustomer?companyId=" + "CompanyId" + "&customerId=" + "CustomerId";
+                var result = PostData("DELETE", "", apiUrl);
+                return result;
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
         }
 
 

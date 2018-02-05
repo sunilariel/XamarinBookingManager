@@ -3,14 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Currency" NavigationPage.HasBackButton="True"
              x:Class="Demo_App.Currency">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Order="Primary" Priority="1" Clicked="SaveCurrency"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <!--<Label Text="Welcome to Xamarin Forms!" />-->
-            <StackLayout Margin="1,0,0,0">
-                <SearchBar Placeholder="Search"/>
-            </StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <SearchBar x:Name="SearchForCurrency" Placeholder="Search" TextChanged="SearchCurrencyByTerm"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="White">
+                    <ListView x:Name="ListofCurrency" ItemSelected="SelectedCurrency">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="70">
+                                    <StackLayout Padding="10,0,0,0" BackgroundColor="White">
+                                        <Label Text="{Binding currency}"></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
             
-            <TableView Intent="Settings">
+            <!--<TableView Intent="Settings">
                 <TableRoot>
                     <TableSection>
                         <ViewCell>
@@ -138,7 +159,7 @@
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
-            </TableView>
+            </TableView>-->
         </StackLayout>
        
     </ContentPage.Content>

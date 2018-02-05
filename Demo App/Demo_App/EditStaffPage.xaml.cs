@@ -16,8 +16,11 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditStaffPage : ContentPage
     {
+        #region GlobleFields
         int StaffId;
         public Staff objStaff = null;
+        #endregion
+
         public EditStaffPage()
         {
             GetEmployeeDetail();
@@ -27,44 +30,56 @@ namespace Demo_App
         }
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            if (e.TotalY != 0 && Staffstack.HeightRequest > 30 && Staffstack.HeightRequest < 151)
+            try
             {
-                Staffstack.HeightRequest = Staffstack.HeightRequest + e.TotalY;
-                if (Staffstack.HeightRequest < 31)
-                    Staffstack.HeightRequest = 31;
-                if (Staffstack.HeightRequest > 150)
-                    Staffstack.HeightRequest = 150;
+                if (e.TotalY != 0 && Staffstack.HeightRequest > 30 && Staffstack.HeightRequest < 151)
+                {
+                    Staffstack.HeightRequest = Staffstack.HeightRequest + e.TotalY;
+                    if (Staffstack.HeightRequest < 31)
+                        Staffstack.HeightRequest = 31;
+                    if (Staffstack.HeightRequest > 150)
+                        Staffstack.HeightRequest = 150;
+                }
+                //stack.HeightRequest = 20;
             }
-            //stack.HeightRequest = 20;
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
         private void CrossClick(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
         }
-
         public void EditStaffInformation()
         {
-            Staff obj = new Staff();
-            obj.Id = StaffId;
-            obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            obj.FirstName = EditStaffFirstName.Text;
-            obj.LastName = EditStaffLastName.Text;
-            
-            obj.UserName = "";
-            obj.Password = "";
-            obj.Email = EditStaffEmail.Text;
-            obj.TelephoneNo = EditStaffPhoneNumber.Text;
-            obj.Address = EditStaffAddress.Text;
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";           
+            try
+            {
+                Staff obj = new Staff();
+                obj.Id = StaffId;
+                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                obj.FirstName = EditStaffFirstName.Text;
+                obj.LastName = EditStaffLastName.Text;
 
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/Update";
-            var serailizeddata = JsonConvert.SerializeObject(obj);
+                obj.UserName = "";
+                obj.Password = "";
+                obj.Email = EditStaffEmail.Text;
+                obj.TelephoneNo = EditStaffPhoneNumber.Text;
+                obj.Address = EditStaffAddress.Text;
+                obj.CreationDate = "2017-11-08T12:19:27.628Z";
 
-            var result = PostData("POST", serailizeddata, apiUrl);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/Update";
+                var serailizeddata = JsonConvert.SerializeObject(obj);
 
-            Navigation.PushAsync(new StaffProfileDetailsPage());
+                var result = PostData("POST", serailizeddata, apiUrl);
+
+                Navigation.PushAsync(new StaffProfileDetailsPage());
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
-
         public void GetEmployeeDetail()
         {
             try
@@ -80,8 +95,6 @@ namespace Demo_App
             }
 
         }
-
-
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

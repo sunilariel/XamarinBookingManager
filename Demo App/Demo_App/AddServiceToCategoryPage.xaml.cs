@@ -37,37 +37,51 @@ namespace Demo_App
      
         public void AddServicestoCategory()
         {
-            foreach (var item in ListofAllService)
+            try
             {
-                if (item.isAssigned == true)
+                foreach (var item in ListofAllService)
                 {
-                    var Url = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" +item.Id;
-                    AssignServiceToCategory obj = new AssignServiceToCategory();
-                    obj.CompanyId = Convert.ToInt32(CompanyId);                   
-                    obj.Id = item.Id;
-                    obj.CreationDate = DateTime.Now.ToString(); 
-                     var SerializedData = JsonConvert.SerializeObject(obj);
-                    var result = PostData("PUT", SerializedData, Url);
+                    if (item.isAssigned == true)
+                    {
+                        var Url = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
+                        //AssignServiceToCategory obj = new AssignServiceToCategory();
+                        //obj.CompanyId = Convert.ToInt32(CompanyId);
+                        //obj.Id = item.Id;
+                        //obj.CreationDate = DateTime.Now.ToString();
+                        //var SerializedData = JsonConvert.SerializeObject(obj);
+                        var result = PostData("PUT", "", Url);
+                    }
+                    else
+                    {
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
+                        var result = PostData("POST", "", apiUrl);
+                    }
                 }
-                else
-                {
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
-                    var result = PostData("POST", "", apiUrl);
-                }
-            }
 
-            Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName));
+                Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName));
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public void GetService(string CompanyId)
         {
-            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
-            var result = PostData("GET", "", apiUrl);
+            try
+            {
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
 
-            List<Service> ListofServices = JsonConvert.DeserializeObject<List<Service>>(result);
-            ListofAllServiceData.ItemsSource = ListofServices;
+                List<Service> ListofServices = JsonConvert.DeserializeObject<List<Service>>(result);
+                ListofAllServiceData.ItemsSource = ListofServices;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
-       
+
         public string PostData(string Method, string SerializedData, string Url)
         {
             try
@@ -78,11 +92,7 @@ namespace Demo_App
                 httpRequest.ContentType = "application/json";
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
-
-                if(Url.Contains("http://bookingmanager24-001-site1.ftempurl.com/api/services/DeAllocateCategoryFromService"))
-                {
-                    httpRequest.ContentLength = 0;
-                }
+                httpRequest.ContentLength = 0;
 
                 if (SerializedData != "")
                 {
@@ -92,6 +102,7 @@ namespace Demo_App
                 }
 
                 var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
+
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
                     return result = StreamReader.ReadToEnd();
