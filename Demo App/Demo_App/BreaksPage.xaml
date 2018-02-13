@@ -1,120 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo_App"
              x:Class="Demo_App.BreaksPage"
              Title="Breaks">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightGray">
-            <Grid RowSpacing="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Monday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Tuesday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="2" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Wednesday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="3" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="thursday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="4" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Friday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="5" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Saturday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="6" BackgroundColor="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="10">
-                            <Label Text="Sunday"></Label>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" Padding="10">
-                            <Label Text="Breaks +"></Label>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
-            </Grid>
+        <StackLayout>
+            <local:CustomTimePicker x:Name="Timepicker" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" IsVisible="False"/>
+            <ListView x:Name="BreakTimeList" BackgroundColor="White" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Padding="20">
+                                    <Label Text="{Binding NameOfDay}" TextColor="Black"></Label>
+                                    <!--<Grid ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <TimePicker Time="{Binding Start,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1">
+                                            <TimePicker Time="{Binding End,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" ></TimePicker>
+                                        </StackLayout>
+                                    </Grid>-->
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Padding="0,20,10,0">
+                                    <Label Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="BreaksClick"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

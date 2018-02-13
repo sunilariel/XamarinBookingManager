@@ -27,7 +27,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)AddressPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AddServiceForCompnyRegistration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AddServiceToCategoryPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AddStaffForCompanyRegistration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -86,6 +92,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CutomerProfilePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -208,6 +215,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SupportPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)TimePickerViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Timezone.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -548,6 +556,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)IndustryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AddStaffForCompanyRegistration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AddServiceForCompnyRegistration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

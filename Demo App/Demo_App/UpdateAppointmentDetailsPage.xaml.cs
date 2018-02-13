@@ -33,7 +33,7 @@ namespace Demo_App
         public UpdateAppointments obj = null;
         public AddAppointments addAppointments = null;
         public UpdateBookAppointment UpdatebookAppointment = null;
-        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();
+        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();     
         int CategoryId;
         int StatusId;
         Dictionary<string, int> Data = null;
@@ -68,25 +68,30 @@ namespace Demo_App
                 addAppointments.Cost = Cost;
                 addAppointments.StartTime = appointment.StartTime;
                 addAppointments.EndTime = appointment.EndTime;
-                addAppointments.TimePeriod = appointment.StartTime; ;
-                //objCust = new Customer();
-                //objCust.Id = Cust.Id;
-                //objCust.FirstName = Cust.FirstName;
-                //objCust.LastName = Cust.LastName;
-                //objCust.UserName = Cust.UserName;
-                //objCust.Email = Cust.Email;
-                //objCust.TelephoneNo = Cust.TelephoneNo;
-                //objCust.Address = Cust.Address;
+                addAppointments.TimePeriod = appointment.StartTime;                
                 if (objCust != null)
                 {
                     AppointmentCustomerName.Text = objCust.FirstName;
                     AppointmentCustomerEmail.Text = objCust.Email;
                     AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
                 }
-                foreach (var item in NotesList)
+                ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
+                foreach (var data in NotesList)
                 {
-                    UpdateComment.Text = item.Description;
+                    Notes obj = new Notes();
+                    obj.CompanyId = data.CompanyId;
+                    obj.CreationDate = Convert.ToDateTime(data.CreationDate);
+                    obj.CustomerId = data.CustomerId;
+                    obj.Description = data.Description;
+                    obj.WhoAddedThis = data.WhoAddedThis;
+                    notesLst.Add(obj);
                 }
+                notesLst.OrderByDescending(x => x.CreationDate);
+                UpdateComment.Text = notesLst[0].Description;
+                //foreach (var item in NotesList)
+                //{
+                //    UpdateComment.Text = item.Description;
+                //}
                 string strttime = appointment.StartTime.Split('-')[0];
                 string endtime = appointment.StartTime.Split('-')[1];
                 obj = new UpdateAppointments();
@@ -108,8 +113,8 @@ namespace Demo_App
 
                 Data = new Dictionary<string, int>
             {
-               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
-               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
+                { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
             };
 
                 foreach (var item in Data.Keys)

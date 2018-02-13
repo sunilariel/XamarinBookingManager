@@ -81,7 +81,7 @@ namespace Demo_App
             Time = new ObservableCollection<object>();
 
             //Populate Hour
-            for (int i = 1; i <= 23; i++)
+            for (int i = 0; i <= 23; i++)
             {
                 Hour.Add(i.ToString());
             }
@@ -108,7 +108,7 @@ namespace Demo_App
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
             todaycollection = (ObservableCollection<Object>)e.NewValue;
-            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
+            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
             throw new NotImplementedException();
         }
     }

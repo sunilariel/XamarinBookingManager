@@ -44,13 +44,13 @@ namespace Demo_App
 
         private void business_Hours(object sender, EventArgs args)
         {
-           // Application.Current.MainPage.Navigation.PushAsync(new BusinessHoursPage());
+            Application.Current.MainPage.Navigation.PushAsync(new BusinessHoursPage("SettingsCompanyHours"));
         }
 
-        private void appointment_slot(object sender, EventArgs args)
-        {
-            Navigation.PushAsync(new AppointmentSlotPage());
-        }
+        //private void appointment_slot(object sender, EventArgs args)
+        //{
+        //    Navigation.PushAsync(new AppointmentSlotPage());
+        //}
 
         private void Currency_Tapped(object sender, EventArgs args)
         {

@@ -4,7 +4,7 @@
              x:Class="Demo_App.IndustryPage"
              Title="Welcome to Booking Manager">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Order="Primary" Priority="1"/>
+        <ToolbarItem Text="Save" Order="Primary" Priority="1" Clicked="SaveSelectedIndustry"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -13,7 +13,7 @@
                     <DataTemplate>
                         <ViewCell Height="70">
                             <StackLayout Padding="10,0,0,0" BackgroundColor="White">
-                                <Label Text="{Binding Key}"></Label>
+                                <Label Text="{Binding .}"></Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

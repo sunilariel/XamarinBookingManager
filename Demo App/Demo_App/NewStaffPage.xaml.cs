@@ -20,8 +20,10 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewStaffPage : ContentPage
     {
-        public NewStaffPage()
+        string PageName = "";
+        public NewStaffPage(string pagename)
         {
+            PageName = pagename;
             InitializeComponent();
         }
 
@@ -58,7 +60,14 @@ namespace Demo_App
                     int EmployeeId = Convert.ToInt32(ResponseValue.Value);
 
                     SetBuisnessHours(EmployeeId);
-                    Navigation.PushAsync(new StaffServicePeofile());
+                    if (PageName == "StaffCreateAfterLogin")
+                    {
+                        Navigation.PushAsync(new StaffServicePeofile());
+                    }
+                    else if(PageName== "StaffCreateAfterRegistration")
+                    {
+                        Navigation.PushAsync(new AddStaffForCompanyRegistration());
+                    }
                 }
             }
             catch(Exception ex)
@@ -163,11 +172,11 @@ namespace Demo_App
 
         }
 
-        public string SetEmployeeBreakTime()
+        public string SetEmployeeBreakTime(int Id)
         {
             BreakTime dataObj = new BreakTime();
             dataObj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-            dataObj.EmployeeId = 3;
+            dataObj.EmployeeId = Id;
             dataObj.DayOfWeek = 5;
             dataObj.Start = "";
             dataObj.End = "";

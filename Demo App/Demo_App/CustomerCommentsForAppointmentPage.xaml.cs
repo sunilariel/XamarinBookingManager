@@ -66,7 +66,7 @@ namespace Demo_App
                 objNotes.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 objNotes.Description = CustomerNote.Text;
                 objNotes.WhoAddedThis = "";
-                objNotes.CreationDate = "2017-11-08T12:19:27.628Z";
+                objNotes.CreationDate = DateTime.Now;
 
                 var data = JsonConvert.SerializeObject(objNotes);
                 var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";

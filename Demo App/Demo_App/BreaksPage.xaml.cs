@@ -18,12 +18,44 @@ namespace Demo_App
 	public partial class BreaksPage : ContentPage
 	{
         string StaffId;
-		public BreaksPage (int EmployeeId)
+        public StaffBreakTime BHours = null;
+        ObservableCollection<StaffBreakTime> BussinessDaysLst = new ObservableCollection<StaffBreakTime>(); 
+        public BreaksPage (int EmployeeId)
 		{
 			InitializeComponent ();
             StaffId = (EmployeeId).ToString();
             GetBreakTimeofEmployee();
 
+            DateTime today = DateTime.Today;
+            int currentDayOfWeek = (int)today.DayOfWeek;
+            DateTime sunday = today.AddDays(-currentDayOfWeek);
+            DateTime monday = sunday.AddDays(1);
+            // If we started on Sunday, we should actually have gone *back*
+            // 6 days instead of forward 1...
+            if (currentDayOfWeek == 0)
+            {
+                monday = monday.AddDays(-7);
+            }
+            var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+
+
+
+            TimeSpan tsStart = new TimeSpan(0, 12, 00, 00);
+            TimeSpan tsEnd = new TimeSpan(0, 01, 00, 00);          
+            foreach (var date in dates)
+            {
+                BHours = new StaffBreakTime();
+                BHours.NameOfDay = Convert.ToString(date.DayOfWeek);
+                BHours.Start = tsStart;
+                BHours.End = tsEnd;                
+                BussinessDaysLst.Add(BHours);             
+            }
+            BreakTimeList.ItemsSource = BussinessDaysLst;
+        }
+
+        private void BreaksClick(object sender,EventArgs e)
+        {          
+            Timepicker.IsOpen = !Timepicker.IsOpen;
         }
 
         public void SetBreakTime()

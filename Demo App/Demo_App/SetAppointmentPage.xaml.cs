@@ -9,7 +9,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Telerik.XamarinForms.Input;
 using Syncfusion.SfSchedule.XForms;
-using Xamarin.Forms;
 using Demo_App;
 using Rg.Plugins.Popup.Services;
 using System.Net;
@@ -101,16 +100,16 @@ namespace Demo_App
             //this.ToolbarItems.Remove(CalendarIconButton);
         }
 
-        void Icon5_Tapped(object sender, EventArgs args)
-        {
-            var page = new MorePage();
-            Placeholder.Content = page.Content;
-            //this.Title = "More";
-            shedulerStaff.Text = "More";
-            dropdownArrow.IsVisible = false;
-            CalendarIconButton.IsVisible = false;
-            // this.ToolbarItems.Remove(CalendarIconButton);
-        }
+        //void Icon5_Tapped(object sender, EventArgs args)
+        //{
+        //    var page = new MorePage();
+        //    Placeholder.Content = page.Content;
+        //    //this.Title = "More";
+        //    shedulerStaff.Text = "More";
+        //    dropdownArrow.IsVisible = false;
+        //    CalendarIconButton.IsVisible = false;
+        //    // this.ToolbarItems.Remove(CalendarIconButton);
+        //}
 
         void Icon6_Tapped(object sender, EventArgs args)
         {          

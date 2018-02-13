@@ -48,7 +48,7 @@
                         </StackLayout>
                     </ViewCell>
                 </TableSection>
-                <TableSection>
+                <!--<TableSection>
                     <ViewCell>
                         <StackLayout Padding="10" Orientation="Horizontal">
                             <Image  Source="setting.png" />
@@ -127,7 +127,7 @@
                               HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </ViewCell>
-                </TableSection>
+                </TableSection>-->
                 <TableSection>
                     <ViewCell>
                         <StackLayout Padding="10" Orientation="Horizontal">

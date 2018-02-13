@@ -23,15 +23,15 @@ namespace Demo_App
             Application.Current.MainPage.Navigation.PushAsync(new SettingPage());
         }
 
-        private void PasscodeLock_Tapped(object sender, EventArgs args)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new PasscodeLockPage());
-        }
+        //private void PasscodeLock_Tapped(object sender, EventArgs args)
+        //{
+        //    Application.Current.MainPage.Navigation.PushAsync(new PasscodeLockPage());
+        //}
 
-        private void Notification_Tapped(object sender, EventArgs args)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new NotificationPage());
-        }
+        //private void Notification_Tapped(object sender, EventArgs args)
+        //{
+        //    Application.Current.MainPage.Navigation.PushAsync(new NotificationPage());
+        //}
 
         private void ServiceCategories_Tapped(object sender, EventArgs args)
         {

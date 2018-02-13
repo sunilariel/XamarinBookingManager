@@ -41,7 +41,7 @@ namespace Demo_App
 
             MessagingCenter.Send<AddressPage, Address>(this,
          "address", obj);
-            await Navigation.PushAsync(new NewCustomerPage(obj));
+           // await Navigation.PushAsync(new NewCustomerPage(obj));
 
         }
 

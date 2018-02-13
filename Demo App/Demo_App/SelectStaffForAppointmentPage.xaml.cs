@@ -34,15 +34,7 @@ namespace Demo_App
         public SelectStaffForAppointmentPage (Service service,string pagename)
 		{
 			InitializeComponent ();
-            PageName = pagename;
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
+            PageName = pagename;            
             Cost = service.Cost;
             ServiceId = service.Id;
             ServiceName = service.Name;

@@ -26,19 +26,25 @@ namespace Demo_App
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = reg = new RequestData();
         }
-
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    this.Animate("", s => Layout(new Rectangle(((-1 + s) * Width), Y, Width, Height)), 16, 250, Easing.Linear, null, null);
-        //}
-
+        
         public async void OnRegClicked(object sender, EventArgs args)
         {
             if (!IsValid()) return;
+            var DomainUrl = "http://bookingmanager25-001-site1.btempurl.com/";
+            Application.Current.Properties["DomainUrl"] = DomainUrl;
             var regdata = reg;
-            string RegisterUrl = "http://bookingmanager25-001-site1.btempurl.com/api/companyregistration/CreateAccount";
-            var result = await RegisterMethod(RegisterUrl, regdata);
+            string email = reg.Email;
+           var response= UserExist(email);
+            if (response == "true")
+            {
+                var confirmed = DisplayAlert("Confirm", "User is already exist", "ok");
+
+            }
+            else
+            {
+                string RegisterUrl = Application.Current.Properties["DomainUrl"] + "api/companyregistration/CreateAccount";
+                var result = await RegisterMethod(RegisterUrl, regdata);
+            }
         }
 
         private async Task<string> RegisterMethod(string url, RequestData item)
@@ -60,7 +66,7 @@ namespace Demo_App
                 objRequestData.Town = "aaaaa";
                 objRequestData.Description = "aa";
                 objRequestData.Password = item.Password;
-                objRequestData.CreationDate = "2017-05-22T05:55:21.9148617+00:00";
+                objRequestData.CreationDate = System.DateTime.Now.ToString();
 
                 var data = JsonConvert.SerializeObject(objRequestData);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -72,21 +78,16 @@ namespace Demo_App
                     var response = await client.SendAsync(request);
 
                     if (response.IsSuccessStatusCode)
-                    {
+                    {                      
                         var strRes = await response.Content.ReadAsStringAsync();
-
                         var jsonObject = JObject.Parse(strRes);
-                        redirectToLoginPage();
+                        dynamic ResponseValue = jsonObject["ReturnObject"]["CompanyId"];
+                        dynamic ResponseToken = jsonObject["ReturnObject"]["AuthToken"];
+                        Application.Current.Properties["Token"] = ResponseToken.Value;
+                        Application.Current.Properties["CompanyId"] = ResponseValue.Value;
+                        Navigation.PushAsync(new CreateAccountUser(objRequestData));
                     }
 
-                    // HttpResponseMessage response = await client.PostAsync(url, content);
-                    //if (response.IsSuccessStatusCode)
-                    //{
-                    //    //result = await response.Content.ReadAsStringAsync();
-                    //    //var product = JsonConvert.DeserializeObject<Register>(result);
-                    //    //successfulRegisterMsg();                    
-                    //    redirectToLoginPage();
-                    //}
                 }
             }
             catch (Exception ex)
@@ -97,13 +98,32 @@ namespace Demo_App
             return result;
         }
 
-        //private void successfulRegisterMsg()
-        //{
-        //   var answer = DisplayAlert(null, "Congratulation ! You are successfully register.", null, "ok");
-        //    Debug.WriteLine("Answer: " + answer);
-        //}
+        public string UserExist(string email)
+        {
+            try
+            {
+                string apiUrl = Application.Current.Properties["DomainUrl"] + "api/companyregistration/AlreadyExistsCompany?email=" + email;
+                string result = "";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "GET";
 
-        private void redirectToLoginPage()
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();
+                }
+
+                return result;
+            }
+            catch (Exception exception)
+            {
+                return exception.ToString();
+            }
+        }
+
+        private void redirectToPage()
         {
             {
                 try

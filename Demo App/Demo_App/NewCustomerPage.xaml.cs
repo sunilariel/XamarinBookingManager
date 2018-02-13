@@ -23,18 +23,11 @@ namespace Demo_App
 		{
 			InitializeComponent ();            
 		}
-        public NewCustomerPage( Address obj)
-        {
-            InitializeComponent();
-            CustomerAddress.Text = obj.CityName;
-            //MessagingCenter.Subscribe<Address>(this, "address", (obj) => {
-            //    
-            //});
-        }
-        private void AddressClick(object sender, EventArgs args)
-        {
-            Navigation.PushAsync(new AddressPage());
-        }
+        
+       //private void AddressClick(object sender, EventArgs args)
+        //{
+        //    Navigation.PushAsync(new AddressPage());
+        //}
 
 
         public void AddCustomer()
@@ -49,7 +42,7 @@ namespace Demo_App
                 obj.Password = "123456";
                 obj.FirstName = CustomerName.Text;
                 obj.LastName = "";
-                obj.Address = "";
+                obj.Address = CustomerAddress.Text;
                 obj.PostCode = "";
                 obj.Email = CustomerEmail.Text;
                 obj.TelephoneNo = CustomerPhoneNumber.Text;

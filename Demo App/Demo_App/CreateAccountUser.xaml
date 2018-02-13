@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo_App.CreateAccountUser"
              Title="Welcome to Booking Manager" NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Next" Order="Primary" Priority="1" Clicked="NextClick"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -14,29 +17,29 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" BackgroundColor="White">
+                <StackLayout Grid.Row="0" BackgroundColor="White" Padding="20,0,0,0">
                     <Label Text="Business Name" TextColor="Black"/>
-                    <Entry Placeholder="Business Name"/>
+                    <Entry x:Name="BussinessNametxt" Placeholder="Business Name"/>
                 </StackLayout>
-                <StackLayout Grid.Row="1" BackgroundColor="White">
+                <StackLayout Grid.Row="1" BackgroundColor="White" Padding="20,0,0,0">
                     <Label Text="Business Phone" TextColor="Black"/>
-                    <Entry Placeholder="+91"/>
+                    <Entry x:Name="bussinessNotxt" Placeholder="+91"/>
                 </StackLayout>
-                <StackLayout Grid.Row="2" BackgroundColor="White">
+                <StackLayout Grid.Row="2" BackgroundColor="White" Padding="20,0,0,0">
                     <Label Text="Industry" TextColor="Black"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Industry Name" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Column="0" x:Name="IndustryNameLabel" Text="Industry Name" HorizontalOptions="StartAndExpand"/>
                         <Image Grid.Column="1" Source="left_arrow.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand"/>
                     </Grid>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="GetIndustoryClick"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Row="3" BackgroundColor="White">
+                <!--<StackLayout Grid.Row="3" BackgroundColor="White" Padding="20,0,0,0">
                     <Label Text="Time Zone" TextColor="Black"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -50,7 +53,7 @@
                         <TapGestureRecognizer Tapped="GetTimeZoneClick"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <StackLayout Grid.Row="4" BackgroundColor="White">
+                <StackLayout Grid.Row="4" BackgroundColor="White" Padding="20,0,0,0">
                     <Label Text="Currency" TextColor="Black"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -66,7 +69,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="5" BackgroundColor="White">
 
-                </StackLayout>
+                </StackLayout>-->
                 
                 
             </Grid>

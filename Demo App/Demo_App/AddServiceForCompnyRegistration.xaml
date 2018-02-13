@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo_App.AddServiceForCompnyRegistration"
+             Title="Add the Service you offer">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Next" Order="Primary" Priority="1" Clicked="NextClick"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="White" HeightRequest="50">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="0,20,0,0">
+                            <Image  Source="plus2.png" WidthRequest="40" HeightRequest="40" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,20,0,0">
+                            <Label Text="New Service" HorizontalOptions="StartAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddNewService"/>
+                        </StackLayout.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="White">
+                    <ListView x:Name="ListofAllServices" ItemSelected="EditServiceClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Grid ColumnSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <!--<ColumnDefinition Width="40"/>-->
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0">
+                                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                            </StackLayout>
+                                            <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="1">
+                                                <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"/>
+                                            </StackLayout>
+                                            <!--<StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
+                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>-->
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

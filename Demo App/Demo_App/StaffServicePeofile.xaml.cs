@@ -27,14 +27,21 @@ namespace Demo_App
 
         public StaffServicePeofile ()
 		{
-			InitializeComponent ();
-            GetEmployeeDetail();            
-            StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
-            InitializeComponent();
-            GetAllocatedServicetoStaff();
-            GetAllTimeOffForEmployee();
-           AllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
-            BindingContext = objStaff;
+            try
+            {
+                InitializeComponent();
+                GetEmployeeDetail();
+                StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
+                InitializeComponent();
+                GetAllocatedServicetoStaff();
+                GetAllTimeOffForEmployee();
+                AllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
+                BindingContext = objStaff;
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
         }
         private void WorkingDays(object sender, EventArgs args)
         {

@@ -34,10 +34,10 @@
                     </StackLayout>
                     <StackLayout Grid.Row="3" Padding="10,10,0,0" BackgroundColor="White">
                         <Label Text="Address" HorizontalOptions="Start"></Label>
-                        <Entry x:Name="CustomerAddress"  Placeholder="Address" FontSize="Small" IsEnabled="False"/>
-                        <StackLayout.GestureRecognizers>
+                        <Entry x:Name="CustomerAddress"  Placeholder="Address" FontSize="Small"/>
+                        <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="AddressClick"/>
-                        </StackLayout.GestureRecognizers>
+                        </StackLayout.GestureRecognizers>-->
                     </StackLayout>
                     <StackLayout Grid.Row="4"></StackLayout>
                 </Grid>

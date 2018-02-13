@@ -24,14 +24,15 @@ namespace Demo_App
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
         string name = "";
         string DurationOfService = "";
+        string PageName = "";
         #endregion
 
-        public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer)
+        public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer,string pagename)
 		{
             try
             {
                 InitializeComponent();
-
+                PageName = pagename;
                 if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")
                 {
                     ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
@@ -70,6 +71,7 @@ namespace Demo_App
             Application.Current.Properties["ServiceName"] = ServiceName.Text;          
             //open picker dialog
             date.IsOpen = !date.IsOpen;
+            
                      
         }
         private void BufferButton_Clicked(object sender, EventArgs e)
@@ -91,7 +93,6 @@ namespace Demo_App
 
                 if (duration.Text != "" || BufferTime.Text != "" || ServiceCost.Text != "")
                 {
-
                     string[] ServiceBufferTime = { };
                     string[] ServiceDuration = { };
                     string Duration = duration.Text;
@@ -129,7 +130,14 @@ namespace Demo_App
                     if (ServiceId != null)
                     {
                         Application.Current.Properties["ServiceID"] = ServiceId;
-                        Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AddService"));
+                        if (PageName == "ServiceCreateAfterRegistration")
+                        {
+                            Navigation.PushAsync(new AddServiceForCompnyRegistration());
+                        }
+                        else if(PageName == "ServiceCreateAfterLogin")
+                        {
+                            Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AddService"));
+                        }                      
                     }
                 }               
             }

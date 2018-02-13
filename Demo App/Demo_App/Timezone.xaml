@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              Title="Timezone" NavigationPage.HasBackButton="True"
              x:Class="Demo_App.Timezone">
     <ContentPage.ToolbarItems>
@@ -22,7 +23,16 @@
                             <DataTemplate>
                                 <ViewCell Height="70">
                                     <StackLayout Padding="10,0,0,0" BackgroundColor="White">
-                                        <Label Text="{Binding DisplayName}"></Label>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding DisplayName}" Grid.Column="0"/>
+                                            <StackLayout x:Name="checkbox" Grid.Column="1">
+                                                
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
@@ -30,135 +40,6 @@
                     </ListView>
                 </StackLayout>
             </Grid>
-            <!--<TableView Intent="Settings">
-                <TableRoot>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Arce Time Rio Branco ACT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" >
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Afganistan Time Kabul,AFT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Alaska Time Anchorage,AKDT"
-                              TextColor="Gray" />
-
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Alma-Ata Time Almaty,ALMT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Amazone Time Boa Vista,AMT"
-                              TextColor="Gray" />
-
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Amazone Time Campo Grande,AMST"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Amazon Time Cuiaba,AMST"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Amazone Time Manaus,AMT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Amazone Time Porto Velho,AMT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Aqtau Time Aqtau,AQTT"
-                              TextColor="Gray" />
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Aqtobe Time Aqtobe,AQTT" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Arabia Time Baghdad,AST" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Arabia Time Qatar,AST" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Arabia Time Riyadh,AST" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Argentine Time Argentina,ART" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Margin="10,10,0,0" HorizontalOptions="Center" Text="Armenia Time Yerevan,AMT" TextColor="Gray"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </TableSection>
-                </TableRoot>
-            </TableView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

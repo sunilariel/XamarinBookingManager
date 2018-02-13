@@ -89,11 +89,12 @@ namespace Demo_App
       
         private void SelectedCurrency(object sender,SelectedItemChangedEventArgs e)
         {
-            CurrencySelected = e.SelectedItem.ToString();            
+            CurrencySelected = e.SelectedItem.ToString();
+            //Application.Current.Properties["Currency"] = CurrencySelected;
         }
         private void SaveCurrency(object sender,EventArgs e)
         {
-            Navigation.PushAsync(new CreateAccountUser(CurrencySelected));
+            Navigation.PushAsync(new CreateAccountUser());
         }
         private void SearchCurrencyByTerm(object sender, TextChangedEventArgs e)
         {

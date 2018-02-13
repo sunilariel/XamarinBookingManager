@@ -24,26 +24,66 @@ namespace Demo_App
         #region GlobleFields
         int EmployeeId;
         string PageName = "";
+        public BussinessHours BHours = null;
+        ObservableCollection<BussinessHours> BussinessDaysLst = new ObservableCollection<BussinessHours>();
         ObservableCollection<ProviderWorkingHours> listofWorkingDays = new ObservableCollection<ProviderWorkingHours>();
         #endregion
 
         public BusinessHoursPage(string pagename)
         {
             try
-            {
+            {               
+               
                 InitializeComponent();
                 if (Application.Current.Properties.ContainsKey("EmployeeID") == true)
                 {
                     EmployeeId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
                 }
-                else
+                else if(Application.Current.Properties.ContainsKey("SelectedEmployeeID") == true)
                 {
                     EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
                 }
                 PageName = pagename;
                 GetBuisnessHoursofStaff();
+
+                DateTime today = DateTime.Today;
+                int currentDayOfWeek = (int)today.DayOfWeek;
+                DateTime sunday = today.AddDays(-currentDayOfWeek);
+                DateTime monday = sunday.AddDays(1);
+                // If we started on Sunday, we should actually have gone *back*
+                // 6 days instead of forward 1...
+                if (currentDayOfWeek == 0)
+                {
+                    monday = monday.AddDays(-7);
+                }
+                var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+
+
+
+                TimeSpan tsStart = new TimeSpan(0, 08, 00, 00);
+                TimeSpan tsEnd = new TimeSpan(0, 05, 00, 00);
+                int count = 0;
+                foreach (var date in dates)
+                {
+                    BHours = new BussinessHours();
+                    BHours.NameOfDay = Convert.ToString(date.DayOfWeek);
+                    BHours.Start = tsStart;
+                    BHours.End = tsEnd;
+                    if (count == 5 || count == 6)
+                    {
+                        BHours.IsOffAllDay = false;
+                    }
+                    else
+                    {
+                        BHours.IsOffAllDay = true;
+                    }
+                    BussinessDaysLst.Add(BHours);
+                    count++;
+                }
+
+                BusinessHoursData.ItemsSource = BussinessDaysLst;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -64,54 +104,97 @@ namespace Demo_App
                     day.IsOffAllDay = day.IsOffAllDay == true ? false : true;
                 }
 
-                BusinessHoursData.ItemsSource = listofWorkingDays;
+                //BusinessHoursData.ItemsSource = listofWorkingDays;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
         }
 
-      
-        public void SaveStaffWorkingHours(object sender,EventArgs e)
+
+        public void SaveWorkingHours(object sender, EventArgs e)
         {
             try
             {
-                foreach (var item in listofWorkingDays)
+                if (PageName == "CompanyHours")
                 {
-                    ProviderWorkingHours obj = new ProviderWorkingHours();
-                    obj.EmployeeId = EmployeeId;
-                    obj.Id = item.Id;
-                    obj.CompanyId = item.CompanyId;
-                    obj.NameOfDay = item.NameOfDay;
-                    obj.NameOfDayAsString = item.NameOfDayAsString;
-                    if (item.IsOffAllDay == false)
+                    foreach( var data in BussinessDaysLst)
                     {
-                        obj.IsOffAllDay = true;
-                    }
-                    else
-                    {
-                        obj.IsOffAllDay = false;
-                    }
-                    obj.Start = item.Start;
-                    obj.End = item.End;
-                    obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
-                    obj.EntityStatus = "0";
+                        CompanyWorkingHours objhurs = new CompanyWorkingHours();
+                        objhurs.Id = 0;
+                        objhurs.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                        objhurs.CreationDate = "2018-2-10T10:57:47.1870909+01:00";
+                        objhurs.NameOfDay = data.NameOfDay;
+                        objhurs.Start = data.Start.ToString();
+                        objhurs.End = data.End.ToString();
+                        objhurs.IsOffAllDay = data.IsOffAllDay;
+                        objhurs.EntityStatus = "0";
+                        var SerializedObj = JsonConvert.SerializeObject(objhurs);
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/SetWorkingHours";
+                        var result = PostData("POST", SerializedObj, apiUrl);
 
-                    var SerializedObj = JsonConvert.SerializeObject(obj);
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
-                    var result = PostData("POST", SerializedObj, apiUrl);
+                    }
+                    Navigation.PushAsync(new AddStaffForCompanyRegistration());
                 }
-                if (PageName == "CreatStaff")
+                else if(PageName == "SettingsCompanyHours")
                 {
-                    Navigation.PushAsync(new StaffServicePeofile());
+                    foreach (var data in BussinessDaysLst)
+                    {
+                        CompanyWorkingHours objhurs = new CompanyWorkingHours();
+                        objhurs.Id = 0;
+                        objhurs.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                        objhurs.CreationDate = Convert.ToString(DateTime.Now);
+                        objhurs.NameOfDay = data.NameOfDay;
+                        objhurs.Start = data.Start.ToString();
+                        objhurs.End = data.End.ToString();
+                        objhurs.IsOffAllDay = data.IsOffAllDay;
+                        objhurs.EntityStatus = "0";
+                        var SerializedObj = JsonConvert.SerializeObject(objhurs);
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/SetWorkingHours";
+                        var result = PostData("POST", SerializedObj, apiUrl);
+
+                    }
+                    Navigation.PopAsync(true);
                 }
                 else
                 {
-                    Navigation.PushAsync(new StaffProfileDetailsPage());
+                    foreach (var item in listofWorkingDays)
+                    {
+                        ProviderWorkingHours obj = new ProviderWorkingHours();
+                        obj.EmployeeId = EmployeeId;
+                        obj.Id = item.Id;
+                        obj.CompanyId = item.CompanyId;
+                        obj.NameOfDay = item.NameOfDay;
+                        obj.NameOfDayAsString = item.NameOfDayAsString;
+                        if (item.IsOffAllDay == false)
+                        {
+                            obj.IsOffAllDay = true;
+                        }
+                        else
+                        {
+                            obj.IsOffAllDay = false;
+                        }
+                        obj.Start = item.Start;
+                        obj.End = item.End;
+                        obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
+                        obj.EntityStatus = "0";
+
+                        var SerializedObj = JsonConvert.SerializeObject(obj);
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
+                        var result = PostData("POST", SerializedObj, apiUrl);
+                    }
+                    if (PageName == "CreatStaff")
+                    {
+                        Navigation.PushAsync(new StaffServicePeofile());
+                    }
+                    else
+                    {
+                        Navigation.PushAsync(new StaffProfileDetailsPage());
+                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
@@ -126,7 +209,7 @@ namespace Demo_App
                 Staff obj = JsonConvert.DeserializeObject<Staff>(result);
                 return obj;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -134,7 +217,7 @@ namespace Demo_App
 
         private void MondayToggled(object sender, ToggledEventArgs e)
         {
-            var data = listofWorkingDays;        
+            var data = BussinessDaysLst;
         }
 
         public string PostData(string Method, string SerializedData, string Url)

@@ -156,7 +156,7 @@ namespace Demo_App.Model
         public int CompanyId { get; set; }
         public string Description { get; set; }
         public string WhoAddedThis { get; set; }
-        public string CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 
     public class WorkingHoursofEmployee
@@ -332,6 +332,20 @@ namespace Demo_App.Model
     {
         public int Id { get; set; }
         public string IndustryName { get; set; }
+    }
+
+    public class WorkingHours
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
+        public int NameOfDay { get; set; }
+        public string NameOfDayAsString { get; set; }
+        public bool IsOffAllDay { get; set; }
+        public string CreationDate { get; set; }
+        public int EntityStatus { get; set; }
     }
 
 }

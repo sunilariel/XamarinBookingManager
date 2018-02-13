@@ -21,21 +21,28 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StaffPage : ContentPage
     {
-
+        #region GlobleFields
+        ObservableCollection<Staff> ListofAllStaff = new ObservableCollection<Staff>();
+        #endregion
         public StaffPage()
         {
             InitializeComponent();
-            GetStaff();                   
+           
+            var Stafflist = GetStaff();
+            if (Stafflist.Count > 5)
+            {
+                StaffSearchBar.IsVisible = true;
+            }
         }
 
         private void NewStaffClick(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new NewStaffPage());
+            Navigation.PushAsync(new NewStaffPage("StaffCreateAfterLogin"));
            // Navigation.PushAsync(new BusinessHoursPage()); 
 
         }
 
-        public void GetStaff()
+        public ObservableCollection<Staff> GetStaff()
         {
             try
             {
@@ -45,14 +52,40 @@ namespace Demo_App
 
                 var result = PostData(Method, "", Url);
 
-                ObservableCollection<Staff> ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
+                ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
                 ListofStaffData.ItemsSource = ListofAllStaff;
+                return ListofAllStaff;
             }
             catch(Exception e)
             {
-                e.ToString();
+                return null;
             }
 
+        }
+
+        private void SearchStaffByTerm(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                //thats all you need to make a search                 
+                if (string.IsNullOrEmpty(e.NewTextValue))
+                {
+                    ListofStaffData.ItemsSource = ListofAllStaff;
+                }
+
+                else
+                {
+                    var listfilter = ListofAllStaff.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue)).ToList();
+
+                    ListofStaffData.ItemsSource = listfilter;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         public string PostData(string Method, string SerializedData, string Url)

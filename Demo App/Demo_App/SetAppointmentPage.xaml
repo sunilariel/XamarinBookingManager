@@ -152,7 +152,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <!--<ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
                         <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="White">
                             <Image HeightRequest="30" Source="calender.png"/>
@@ -190,14 +190,14 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                        <StackLayout Spacing="0" Grid.Column="4" BackgroundColor="White">
+                        <!--<StackLayout Spacing="0" Grid.Column="4" BackgroundColor="White">
                             <Image HeightRequest="30" Source="more.png"/>
                             <Label Text="MORE" FontSize="10"
                        HorizontalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Icon5_Tapped"/>
                             </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                        </StackLayout>-->
                     </Grid>
                 </StackLayout>
             </StackLayout>

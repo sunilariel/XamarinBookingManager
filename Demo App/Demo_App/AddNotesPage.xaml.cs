@@ -33,11 +33,22 @@ namespace Demo_App
                 GetSelectedCustomerById();
                 CustomerId = objCust.Id;
                var notesList = GetAllCustomerNotes();
-                notesList.OrderByDescending(x => x.CreationDate);
-                foreach (var item in notesList)
+                
+                ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
+                foreach (var data in notesList)
                 {
-                    CustomerNote.Text = item.Description;
+                    Notes obj = new Notes();
+                    obj.CompanyId = data.CompanyId;
+                    obj.CreationDate = Convert.ToDateTime(data.CreationDate);
+                    obj.CustomerId = data.CustomerId;
+                    obj.Description = data.Description;
+                    obj.WhoAddedThis = data.WhoAddedThis;
+                    notesLst.Add(obj);
                 }
+                notesLst.OrderByDescending(x => x.CreationDate);
+               
+                    CustomerNote.Text = notesLst[0].Description;
+
             }
             catch (Exception e)
             {
@@ -94,7 +105,7 @@ namespace Demo_App
                 obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 obj.Description = CustomerNote.Text;
                 obj.WhoAddedThis = "";
-                obj.CreationDate = (System.DateTime.Now).ToString();
+                obj.CreationDate = DateTime.Now;
 
                 var data = JsonConvert.SerializeObject(obj);
                 var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";

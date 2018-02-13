@@ -95,8 +95,8 @@ namespace Demo_App
                 //string[] Data = { "No Label", "Pending", "Confirmed", "Done", "No-Show", "Paid", "Running Late", "Custom Label" };          
                 Data = new Dictionary<string, int>
             {
-               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
-               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
+               { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
             };
 
                 foreach (var item in Data.Keys)

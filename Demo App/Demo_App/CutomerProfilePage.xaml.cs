@@ -48,12 +48,33 @@ namespace Demo_App
         }
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            var notesList = GetAllCustomerNotes();
-            foreach (var item in notesList)
+            try
             {
-                Noteslbl.Text = item.Description;
+                base.OnAppearing();
+                var notesList = GetAllCustomerNotes();
+                ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
+                foreach (var data in notesList)
+                {
+                    Notes obj = new Notes();
+                    obj.CompanyId = data.CompanyId;
+                    obj.CreationDate = Convert.ToDateTime(data.CreationDate);
+                    obj.CustomerId = data.CustomerId;
+                    obj.Description = data.Description;
+                    obj.WhoAddedThis = data.WhoAddedThis;
+                    notesLst.Add(obj);
+                }
+                notesLst.OrderByDescending(x => x.CreationDate);
+
+                if (notesLst != null)
+                {
+                    Noteslbl.Text = notesLst[0].Description;
+                }
             }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+          
         }
 
         private void CrossClick(object sender, EventArgs e)

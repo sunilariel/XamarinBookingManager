@@ -76,15 +76,7 @@ namespace Demo_App
                 service = new Service();
                 service.Id = Convert.ToInt32(appointment.ServiceId);
                 service.Name = appointment.ServiceName;
-                service.Cost = appointment.Cost;
-                //objCust = new Customer();
-                //objCust.Id = Cust.Id;
-                //objCust.FirstName = Cust.FirstName;
-                //objCust.LastName = Cust.LastName;
-                //objCust.UserName = Cust.UserName;
-                //objCust.Email = Cust.Email;
-                //objCust.TelephoneNo = Cust.TelephoneNo;
-                //objCust.Address = Cust.Address;
+                service.Cost = appointment.Cost;               
                 if (objCust != null)
                 {
                     AppointmentCustomerName.Text = objCust.FirstName;
@@ -114,14 +106,15 @@ namespace Demo_App
 
                 Data = new Dictionary<string, int>
             {
-               { "No Label", 0 }, { "Pending", 1 }, { "Confirmed", 2 }, { "Done", 3 },
-               { "No-Show", 4}, { "Paid", 5 },{ "Running Late", 6 }, { "Custom Label", 7 },
+               { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
             };
                 foreach (var item in Data.Keys)
                 {
                     AppointmentsPicker.Items.Add(item);
 
                 }
+                obj.status = Convert.ToInt32(obj.status) - 1;
                 AppointmentsPicker.SelectedIndex = obj.status;
             }
             catch(Exception e)

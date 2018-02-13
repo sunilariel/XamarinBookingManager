@@ -24,11 +24,12 @@ namespace Demo_App
         private void SelectTimeZone(object sender,SelectedItemChangedEventArgs e)
         {
             SelectedTimeZone = e.SelectedItem.ToString();
+            //Application.Current.Properties["TimeZone"] = SelectedTimeZone;           
         }
 
         private void SaveTimeZone(object sender,EventArgs e)
         {
-            Navigation.PushAsync(new CreateAccountUser(SelectedTimeZone));
+            Navigation.PushAsync(new CreateAccountUser());
         }
         private void SearchTimeZoneByText(object sender, TextChangedEventArgs e)
         {

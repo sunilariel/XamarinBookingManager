@@ -89,7 +89,7 @@
                 <StackLayout Grid.Row="1">
                     <Grid RowSpacing="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="110"/>
                             <RowDefinition Height="70"/>
                             <RowDefinition Height="70"/>
                             <RowDefinition Height="Auto"/>
@@ -104,8 +104,10 @@
 
                                 <Image Grid.Column="0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
                                 <StackLayout Grid.Column="1" Padding="0,10,0,0">
-                                    <Label Text="{Binding FirstName }"></Label>
-                                    <Label x:Name="phnNo" Text="{Binding TelephoneNo}" TextColor="Black"></Label>
+                                    <Label Text="{Binding FirstName }" TextColor="Black"></Label>
+                                    <Label x:Name="Emaillbl" Text="{Binding Email}" ></Label>
+                                    <Label x:Name="phnNo" Text="{Binding TelephoneNo}" ></Label>
+                                    <Label x:Name="Addresslbl" Text="{Binding Address}" ></Label>
                                 </StackLayout>
                             </Grid>
                             <StackLayout.GestureRecognizers>

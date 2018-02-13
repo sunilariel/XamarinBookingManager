@@ -31,16 +31,7 @@ namespace Demo_App
         public SelectServicesForAppontment (string pagename)
 		{
 			InitializeComponent ();
-            PageName = pagename;
-            //objCust = new Customer();
-            //objCust.Id = Cust.Id;
-            //objCust.FirstName = Cust.FirstName;
-            //objCust.LastName = Cust.LastName;
-            //objCust.UserName = Cust.UserName;
-            //objCust.Email = Cust.Email;
-            //objCust.TelephoneNo = Cust.TelephoneNo;
-            //objCust.Address = Cust.Address;
-            //CategoryID = CategoryId;
+            PageName = pagename;           
             GetSelectedService();
         }
 

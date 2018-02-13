@@ -65,10 +65,10 @@ namespace Demo_App
             }
         }
 
-        private void AddressClick(object sender, EventArgs args)
-        {
-            Navigation.PushAsync(new AddressPage());
-        }
+        //private void AddressClick(object sender, EventArgs args)
+        //{
+        //    Navigation.PushAsync(new AddressPage());
+        //}
 
         public void EditCustomerInformation()
         {

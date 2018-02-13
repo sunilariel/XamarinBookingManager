@@ -4,7 +4,9 @@
              Title="Staff"
              x:Class="Demo_App.StaffPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LightGray">
+        <StackLayout>
+            <SearchBar x:Name="StaffSearchBar" HorizontalOptions="FillAndExpand"
+                       Placeholder="Search Staff" FontSize="14" TextChanged="SearchStaffByTerm" IsVisible="False"/>
             <Grid RowSpacing="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>

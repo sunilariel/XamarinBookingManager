@@ -47,7 +47,7 @@ namespace Demo_App
                 Application.Current.Properties["ServiceDurationTime"] = null;
                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
                 ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
-                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
             }
             catch(Exception e)
             {

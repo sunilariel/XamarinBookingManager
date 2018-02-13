@@ -221,7 +221,7 @@ namespace Demo_App
         private void SetnewDuration(object sender, EventArgs args)
         {
             
-            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer));
+            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, ""));
         }
         private void EditServiceProvider(object sender, EventArgs args)
         {           

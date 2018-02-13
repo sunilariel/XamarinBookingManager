@@ -69,7 +69,7 @@ namespace Demo_App
 
         private void AddNewStaff(object sender,EventArgs e)
         {
-            Navigation.PushAsync(new NewStaffPage());
+            Navigation.PushAsync(new NewStaffPage("StaffCreateAfterLogin"));
             this.IsVisible = false;
             OnDisappearing();
         }

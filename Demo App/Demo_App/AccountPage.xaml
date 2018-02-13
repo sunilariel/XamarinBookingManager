@@ -4,14 +4,7 @@
              Title="Account"
              x:Class="Demo_App.AccountPage">
     <ContentPage.Content>
-        <!--<StackLayout Padding="10">
-            <Button Text="Setting" TextColor="Black" Image="Icon.png" BackgroundColor="White" Clicked="setting_Page"/>
-            <Button Text="Staff" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Service" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Service Categories" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Notification" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-            <Button Text="Passcode Lock" TextColor="Black" Image="Icon.png" Margin="0,5,0,0" BackgroundColor="White"/>
-        </StackLayout>-->
+       
         <TableView Intent="Settings" RowHeight="70">
             <TableRoot>
                 <TableSection>
@@ -70,7 +63,7 @@
                         </StackLayout>
                     </ViewCell>
                 </TableSection>
-                <TableSection>
+                <!--<TableSection>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Image  Source="setting.png" WidthRequest="50" HeightRequest="50" />
@@ -97,7 +90,7 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </ViewCell>
-                </TableSection>
+                </TableSection>-->
             </TableRoot>
         </TableView>
     </ContentPage.Content>
