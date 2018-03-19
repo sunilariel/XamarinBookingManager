@@ -14,9 +14,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectServiceCategory : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SelectServiceCategory : ContentPage
+    {
         #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<ServicesAllocatedToCategory> ListOfAssignServiceCount = new ObservableCollection<ServicesAllocatedToCategory>();
@@ -25,10 +25,10 @@ namespace Demo_App
         string PageName = "";
         #endregion
 
-        public SelectServiceCategory (string pagename)
-		{
-			InitializeComponent ();
-            PageName = pagename;           
+        public SelectServiceCategory(string pagename)
+        {
+            InitializeComponent();
+            PageName = pagename;
             GetCategories(CompanyId);
             BindingContext = serviceCount;
         }
@@ -49,10 +49,10 @@ namespace Demo_App
 
         }
 
-        private void SelectServiceForCustomerClick(object sender,SelectedItemChangedEventArgs e)
+        private void SelectServiceForCustomerClick(object sender, SelectedItemChangedEventArgs e)
         {
-            
-                var Category = e.SelectedItem as ServicesAllocatedToCategory;
+
+            var Category = e.SelectedItem as ServicesAllocatedToCategory;
             Application.Current.Properties["CategoryID"] = Category.CategoryId;
             Navigation.PushAsync(new SelectServicesForAppontment(PageName));
         }
@@ -80,7 +80,7 @@ namespace Demo_App
 
                 ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }

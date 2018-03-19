@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Demo_App.CalendarCreateAppointmentPage"
              Title="New Appointment">
+   
+      
+   
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Done" Order="Primary" Priority="1" Clicked="CreateAppointment"/>
+        <ToolbarItem Text="Done_c" Order="Primary" Priority="0" Clicked="CreateAppointment"></ToolbarItem>
+        
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
+        
         <StackLayout BackgroundColor="LightGray">
             <Grid RowSpacing="1">
                 <Grid.RowDefinitions>

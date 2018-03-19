@@ -90,7 +90,7 @@ namespace Demo_App
                 string TimeStart = startTime.ToShortTimeString();
                 DateTime endTime = Convert.ToDateTime(data.EndTime);
                 string TimeEnd = endTime.ToShortTimeString();
-                string timeperiod = TimeStart + "-" + TimeEnd;
+                string TimePeriod = TimeStart + "-" + TimeEnd;
                 obj.BookingId = data.BookingId;
                 obj.EmployeeId = data.EmployeeId.ToString();
                 obj.ServiceId = data.ServiceId.ToString();
@@ -108,7 +108,7 @@ namespace Demo_App
                 obj.DurationHrsMin = data.DurationHrsMin;
                 obj.AppointmentDetail = data.AppointmentDetail;
                 obj.CommentNotes = data.CommentNotes;
-                obj.TimePeriod = timeperiod;
+                obj.TimePeriod = TimePeriod;
                 Navigation.PushAsync(new AppointmentDetailsPage(obj));
             }
             catch(Exception ex)

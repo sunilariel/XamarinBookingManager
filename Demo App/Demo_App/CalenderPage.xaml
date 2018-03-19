@@ -104,8 +104,8 @@
                             </Grid>
                         </StackLayout>
                         <StackLayout x:Name="MonAppointmentBox" Grid.Row="1" Padding="10">
-                            <!--<Label Text="No appointment booked"></Label>-->
-                            <!--<ListView x:Name="CustomerAppoimentList" RowHeight="70">
+                            <!--<Label Text="No appointment booked"></Label>
+                            <ListView x:Name="CustomerAppoimentList" RowHeight="70">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>

@@ -59,6 +59,8 @@
                             <Label x:Name="CustName" Text="{Binding FirstName}" TextColor="Black"/>
                             <Label x:Name="CustEmail" Text="{Binding Email}" TextColor="Black"/>
                             <Label x:Name="CustPhoneNo" Text="{Binding TelephoneNo}" TextColor="Black"/>
+
+                        
                         </StackLayout>
                     </Grid>
                 </StackLayout>

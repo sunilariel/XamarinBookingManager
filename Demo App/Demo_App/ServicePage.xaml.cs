@@ -23,8 +23,12 @@ namespace Demo_App
 
         public ServicePage ()
 		{
+            
 			InitializeComponent ();
+           
             GetService();
+           
+
         }
 
         //Get Token//
@@ -66,6 +70,8 @@ namespace Demo_App
 
                 ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
                 ListofAllServices.ItemsSource = ListofServices;
+                BindingContext = ListofServices;
+               
             }
             catch(Exception e)
             {

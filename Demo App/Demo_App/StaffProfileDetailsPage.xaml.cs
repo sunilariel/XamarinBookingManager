@@ -48,7 +48,16 @@ namespace Demo_App
 
         private void CrossClick(object sender, EventArgs e)
         {
+
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
             Navigation.PopAsync(true);
+
+            Navigation.PushAsync(new StaffPage());
+            
         }
         private void BreaksClick(object sender, EventArgs e)
         {

@@ -90,6 +90,14 @@ namespace Demo_App
 
         public void  SaveCategoryDetails()
         {
+
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
+            Navigation.PopAsync(true);           
+
             Navigation.PushAsync(new ServiceCategoriesPage(CategoryID));
         }
         //public ObservableCollection<AssignServiceToCategory> GetAssignServices()

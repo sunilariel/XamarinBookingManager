@@ -26,6 +26,7 @@ namespace Demo_App
         double Cost;
         string day = "";
         DateTime dateOfBooking;
+        DateTime TimePeriods;
         public Customer objCust = null;
         public BookAppointment objbookAppointment = null;
         public AssignedServicetoStaff objdata = null;
@@ -36,9 +37,10 @@ namespace Demo_App
 
         public CalendarCreateAppointmentPage (AddAppointments objAddAppointment)
 		{
+            InitializeComponent();
             try
             {
-                InitializeComponent();
+               
                 GetSelectedCustomerById();
                 objdata = new AssignedServicetoStaff();
                 objdata.Id = objAddAppointment.ServiceId;
@@ -51,6 +53,20 @@ namespace Demo_App
                 empName = objAddAppointment.EmployeeName;
                 ServiceID = objAddAppointment.ServiceId;
                 ServiceName = objAddAppointment.ServiceName;
+
+                //var starttime = Convert.ToDateTime(objAddAppointment.StartTime);
+                //var timestart = starttime.ToShortTimeString();
+                //var endtime = Convert.ToDateTime(objAddAppointment.EndTime);
+                //var timeend = endtime.ToShortTimeString();
+                //var TimePeriod = timestart + "-" + timeend;
+
+                //TimePeriods = DateTime.Parse(TimePeriod);
+
+              
+
+                
+
+
                 if (objCust != null)
                 {
                     CustID = objCust.Id;
@@ -94,11 +110,13 @@ namespace Demo_App
             }
 
         }
-
+      
         public void CreateAppointment()
         {
+            ////InitializeComponent();
             try
             {
+
                 string[] TimeAppointment = { };
                 string[] hours = { };
                 string[] Endmins = { };
@@ -123,10 +141,10 @@ namespace Demo_App
                 objbookAppointment.EmployeeId = EmpID;
                 objbookAppointment.ServiceId = ServiceID;
                 objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
-                objbookAppointment.StartHour = Convert.ToInt32(hours[0]);
+                //objbookAppointment.StartHour = Convert.ToInt32(hours[0]);
                 objbookAppointment.StartMinute = 0;
                 objbookAppointment.EndHour = 0;
-                objbookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
+                //objbookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
                 objbookAppointment.IsAdded = true;
                 objbookAppointment.Message = AddComment.Text;
                 objbookAppointment.Notes = AddComment.Text;
@@ -150,9 +168,9 @@ namespace Demo_App
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
                 Navigation.PopAsync();
             }
-            catch(Exception e)
+            catch (Exception ex)
             {
-                e.ToString();
+                ex.ToString();
             }
         }
 

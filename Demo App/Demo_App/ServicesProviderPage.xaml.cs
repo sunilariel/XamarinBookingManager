@@ -58,13 +58,13 @@ namespace Demo_App
                     obj.ServiceId = item.Id;
                     obj.CreationDate = DateTime.Now.ToString();
 
-
                     var SerializedData = JsonConvert.SerializeObject(obj);
-
                     var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
                     var result = PostData("POST", SerializedData, apiUrl);
                 }
-            }
+               
+            }            
+            
             Navigation.PushAsync(new StaffProfileDetailsPage());
         }
 

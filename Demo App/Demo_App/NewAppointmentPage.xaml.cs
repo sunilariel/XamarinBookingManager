@@ -36,7 +36,7 @@ namespace Demo_App
         Dictionary<string, int> Data = null;
         int StatusId;
         int CategoryId;
-        
+
         #endregion
 
         public NewAppointmentPage(AddAppointments objAddAppointments, string Day, DateTime DateOfBooking)
@@ -105,7 +105,7 @@ namespace Demo_App
                 }
                 newAppointmentsPicker.SelectedIndex = 0;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -204,7 +204,7 @@ namespace Demo_App
 
                 Navigation.PushAsync(new AddAppointmentsPage(objbookAppointment));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -218,7 +218,7 @@ namespace Demo_App
                 var result = PostData("GET", "", apiURL);
                 List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -242,7 +242,7 @@ namespace Demo_App
                 }
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.ToString();
             }
@@ -259,7 +259,7 @@ namespace Demo_App
                 ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
                 return ListNotes;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -289,7 +289,7 @@ namespace Demo_App
 
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
-                    return result = StreamReader.ReadToEnd(); 
+                    return result = StreamReader.ReadToEnd();
                     //var SuccessMsz=StreamReader.
                 }
 

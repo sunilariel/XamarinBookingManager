@@ -57,12 +57,32 @@ namespace Demo_App
         }
         private void DoneClick(object sender, EventArgs args)
         {
+            //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);                  
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
+            Navigation.PopAsync(true);           
+
             Navigation.PushAsync(new StaffPage());
+           
         }
 
         private void CrossClick(object sender,EventArgs e)
         {
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
             Navigation.PopAsync(true);
+
+            Navigation.PushAsync(new StaffPage());
         }
 
         public void GetAllocatedServicetoStaff()

@@ -31,7 +31,11 @@ namespace Demo_App
                 objaddAppointment.EmployeeId = obj.EmployeeId;
                 objaddAppointment.EmployeeName = obj.EmployeeName;
                 objaddAppointment.Cost = obj.Cost;
-                objaddAppointment.TimePeriod = obj.TimePeriod;
+                objaddAppointment.StartTime = obj.StartTime;
+                
+                
+
+                objaddAppointment.StartTime = obj.TimePeriod;
                 objaddAppointment.DurationInHours = hrs;
                 objaddAppointment.DurationInMinutes = min;
                 objaddAppointment.DateOfBooking = obj.DateOfBooking;

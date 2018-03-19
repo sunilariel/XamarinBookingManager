@@ -62,7 +62,7 @@ namespace Demo_App
                 string TimeStart = startTime.ToShortTimeString();
                 DateTime endTime = Convert.ToDateTime(appointment.EndTime);
                 string TimeEnd = endTime.ToShortTimeString();
-                string timeperiod = TimeStart + "-" + TimeEnd;
+                string TimePeriod = TimeStart + "-" + TimeEnd;
                 addAppointments = new AddAppointments();
                 addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 addAppointments.EmployeeId = EmpID;
@@ -72,7 +72,7 @@ namespace Demo_App
                 addAppointments.Cost = Cost;
                 addAppointments.StartTime = appointment.StartTime;
                 addAppointments.EndTime = appointment.EndTime;
-                addAppointments.TimePeriod = timeperiod;
+                addAppointments.TimePeriod = TimePeriod;
                 service = new Service();
                 service.Id = Convert.ToInt32(appointment.ServiceId);
                 service.Name = appointment.ServiceName;

@@ -1047,6 +1047,7 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Platf
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
@@ -1155,7 +1156,6 @@ D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\dropdo
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\res\drawable\arrowdropdown.png
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\R.cs.flag
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\uploadflags.txt
-D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\bin\Debug\Demo_App.Android.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\Demo_App.Android.dll.mdb
 D:\New Clone Xamarin App\Demo App\Demo_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb

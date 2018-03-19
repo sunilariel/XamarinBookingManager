@@ -29,6 +29,7 @@ namespace Demo_App.Model
         public string CreationDate { get; set; }
 
         public int EntityStatus { get; set; }
+       
     }
 
     public class Address

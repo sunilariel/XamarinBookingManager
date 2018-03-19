@@ -13,9 +13,9 @@ using Newtonsoft.Json;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ServiceDetailsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ServiceDetailsPage : ContentPage
+    {
         #region GlobleFields
         ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
         ObservableCollection<object> todaycollection = new ObservableCollection<object>();
@@ -24,8 +24,8 @@ namespace Demo_App
         public ServiceDetails service = null;
         #endregion
 
-        public ServiceDetailsPage ()
-		{
+        public ServiceDetailsPage()
+        {
             try
             {
                 InitializeComponent();
@@ -70,8 +70,9 @@ namespace Demo_App
                     service.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
                 }
                 BindingContext = service;
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -113,7 +114,7 @@ namespace Demo_App
                 }
                 return ListofCategories;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -162,7 +163,7 @@ namespace Demo_App
 
                 return ListofProvider;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -178,7 +179,7 @@ namespace Demo_App
 
                 return ListofAllCategories;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -198,7 +199,7 @@ namespace Demo_App
 
                 return ListofServiceProviders;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -215,16 +216,16 @@ namespace Demo_App
         }
         private void EditCategories(object sender, EventArgs args)
         {
-           // Service service = new Service();
+            // Service service = new Service();
             Navigation.PushAsync(new ChooseCategoriesPage(GetCategoriesAssignedtoService()));
         }
         private void SetnewDuration(object sender, EventArgs args)
         {
-            
+
             Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, ""));
         }
         private void EditServiceProvider(object sender, EventArgs args)
-        {           
+        {
             Navigation.PushAsync(new ServiceProviderPage(GetServiceProvider(), "EditService"));
         }
         private void AddNotes(object sender, EventArgs args)
@@ -239,14 +240,14 @@ namespace Demo_App
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
                 var result = PostData("DELETE", "", apiUrl);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
 
             Navigation.PushAsync(new ServicePage());
         }
-       
+
 
         public string PostData(string Method, string SerializedData, string Url)
         {
@@ -280,9 +281,32 @@ namespace Demo_App
             }
         }
 
-        private void CrossClick(object sender, EventArgs e)
+
+
+        private void CrossClick()
         {
+
+            //var pFirst = Navigation.NavigationStack.Count();
+
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+            }
+
             Navigation.PopAsync(true);
+
+            Navigation.PushAsync(new ServicePage());
+
+
+            //var pLast = Navigation.NavigationStack.Count();
+
+            //for (int PageipIndex = pLast; PageipIndex <= pLast; PageipIndex += 5)
+            //{
+            //    Navigation.RemovePage(Navigation.NavigationStack[pLast]);
+            //}
+
+
         }
     }
 }

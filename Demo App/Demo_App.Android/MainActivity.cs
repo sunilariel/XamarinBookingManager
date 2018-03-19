@@ -23,6 +23,8 @@ namespace Demo_App.Droid
 			LoadApplication (new Demo_App.App ());
             App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
         }
-	}
+
+        
+    }
 }
 

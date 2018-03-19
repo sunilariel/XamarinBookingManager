@@ -28,6 +28,7 @@ namespace Demo_App.Droid
                 Control.SetPadding(10, 10, 10, 3);
                 //Control.Gravity = GravityFlags.CenterHorizontal;
             }
-        }
+        }        
+
     }
 }

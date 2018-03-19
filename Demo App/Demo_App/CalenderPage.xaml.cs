@@ -117,12 +117,9 @@ namespace Demo_App
                     schedulerWeekView.IsVisible = false;
                     MonthViewSettings monthViewSettings = new MonthViewSettings();
                     monthViewSettings.MonthLabelSettings.DayFormat = "E";
-
-
                 }
                 else
                 {
-
                     dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
                     schedulerFullMonthView.IsVisible = false;
                     schedulerWeekView.IsVisible = true;
@@ -166,8 +163,9 @@ namespace Demo_App
             }
         }
 
+      
 
-        private void AddNewAppointment(object sender, EventArgs e)
+            private void AddNewAppointment(object sender, EventArgs e)
         {
             try
             {
