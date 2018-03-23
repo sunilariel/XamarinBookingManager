@@ -21,7 +21,6 @@ namespace Demo_App
 		{
             try
             {
-
                 InitializeComponent();
                 ServiceId = service.Id.ToString();
                 EditserviceProfileTitle.Text = service.Name;

@@ -194,7 +194,6 @@ namespace Demo_App
                 var startDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(-1)).ToString("dd-MM-yyyy");
                 var endDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(1)).ToString("dd-MM-yyyy");
                 string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForEmployeesByIdBetweenDates?companyId=" + CompanyId + "&commaSeperatedEmployeeIds=" + EmployeeId + "&startDate=" + startDate + "&endDate=" + endDate;
-
                 var result = PostData("GET", "", apiURL);
 
                 ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);

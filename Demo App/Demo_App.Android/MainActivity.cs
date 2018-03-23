@@ -12,7 +12,13 @@ namespace Demo_App.Droid
 	[Activity (Label = "Demo_App", Icon = "@drawable/icon", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
-		protected override void OnCreate (Bundle bundle)
+
+        //public override void OnBackPressed()
+        //{
+        //    Toast.MakeText(this, "Back Button Pressed Detected", ToastLength.Short).Show();
+        //}
+
+        protected override void OnCreate (Bundle bundle)
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar; 
@@ -23,8 +29,8 @@ namespace Demo_App.Droid
 			LoadApplication (new Demo_App.App ());
             App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
         }
+       
 
-        
     }
 }
 

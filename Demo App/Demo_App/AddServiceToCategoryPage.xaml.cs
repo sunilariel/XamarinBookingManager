@@ -12,13 +12,13 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Collections.ObjectModel;
-
+using Android.Widget;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddServiceToCategoryPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddServiceToCategoryPage : ContentPage
+    {
         #region GlobleFields
         ObservableCollection<AssignedServicetoStaff> ListofAllService = new ObservableCollection<AssignedServicetoStaff>();
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
@@ -26,15 +26,16 @@ namespace Demo_App
         string CategoryName = "";
         #endregion
 
-        public AddServiceToCategoryPage (ObservableCollection<AssignedServicetoStaff> ListofServices,int  CategoryId,string categoryName)
-		{
-			InitializeComponent();
+        public AddServiceToCategoryPage(ObservableCollection<AssignedServicetoStaff> ListofServices, int CategoryId, string categoryName)
+        {
+            InitializeComponent();
             ListofAllService = ListofServices;
             CategoryID = CategoryId;
             CategoryName = categoryName.ToString();
+            AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + " selected";
             ListofAllServiceData.ItemsSource = ListofAllService;
         }
-     
+
         public void AddServicestoCategory()
         {
             try
@@ -44,15 +45,20 @@ namespace Demo_App
                     if (item.isAssigned == true)
                     {
                         var Url = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
-                        //AssignServiceToCategory obj = new AssignServiceToCategory();
-                        //obj.CompanyId = Convert.ToInt32(CompanyId);
-                        //obj.Id = item.Id;
-                        //obj.CreationDate = DateTime.Now.ToString();
-                        //var SerializedData = JsonConvert.SerializeObject(obj);
-                        var result = PostData("PUT", "", Url);
+                        AssignServiceToCategory obj = new AssignServiceToCategory();
+                        obj.CategoryName = CategoryName;
+                        obj.CompanyId = Convert.ToInt32(CompanyId);
+                        obj.CategoryID = Convert.ToInt32(CategoryID);
+                        obj.CreationDate = DateTime.Now.ToString();
+                        obj.ServiceId = item.Id;
+                        //obj.isAssigned = true;
+
+                        var SerializedData = JsonConvert.SerializeObject(obj);
+                        var result = PostData("PUT", SerializedData, Url);
+
                     }
                     else
-                    {
+                    {                      
                         var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
                         var result = PostData("POST", "", apiUrl);
                     }
@@ -60,10 +66,92 @@ namespace Demo_App
 
                 Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
+        }
+
+        public void AssignAllProvider(object Sender, EventArgs args)
+        {
+            try
+            {
+
+                CheckBox AllProvider = (CheckBox)Sender;
+                if (AllProvider.Checked == true)
+                {
+                    foreach (var item in ListofAllService)
+                    {
+                        //  AllStaffChecked.Checked = true;    
+                        item.AllAssigned = true;
+                        item.isAssigned = true;
+                    }
+                }
+                else
+                {
+                    foreach (var item in ListofAllService)
+                    {
+                        //  AllStaffChecked.Checked = false;
+                        item.AllAssigned = true;
+                        item.isAssigned = false;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + " selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public int GetAllocatedServiceCount()
+        {
+            try
+            {
+                int count = 0;
+                foreach (var item in ListofAllService)
+                {
+                    if (item.isAssigned == true)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        public void AssignServiceToCategory(object Sender, EventArgs args)
+        {
+            try
+            {
+                for (int i = 0; i < ListofAllService.Count; i++)
+                {
+                    if (ListofAllService[i].isAssigned == false)
+                    {
+                        foreach (var item in ListofAllService)
+                        {
+                            item.AllAssigned = false;
+                        }
+                        break;
+                    }
+                    else
+                    {
+
+                        ListofAllService[i].AllAssigned = true;
+                        // AllStaffChecked.Checked = true;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
         }
 
         public void GetService(string CompanyId)
@@ -76,7 +164,7 @@ namespace Demo_App
                 List<Service> ListofServices = JsonConvert.DeserializeObject<List<Service>>(result);
                 ListofAllServiceData.ItemsSource = ListofServices;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -92,6 +180,7 @@ namespace Demo_App
                 httpRequest.ContentType = "application/json";
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
                 httpRequest.ContentLength = 0;
 
                 if (SerializedData != "")
@@ -112,6 +201,37 @@ namespace Demo_App
             {
                 return e.ToString();
             }
+
+
+            //try
+            //{
+            //    var result = "";
+            //    HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
+            //    httpRequest.Method = Method;
+            //    httpRequest.ContentType = "application/json";
+            //    httpRequest.ProtocolVersion = HttpVersion.Version10;
+            //    httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+            //    httpRequest.ContentLength = 0;
+
+            //    if (SerializedData != "")
+            //    {
+            //        var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
+            //        streamWriter.Write(SerializedData);
+            //        streamWriter.Close();
+            //    }
+
+            //    var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+            //    using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
+            //    {
+            //        return result = StreamReader.ReadToEnd();
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    return e.ToString();
+            //}
         }
     }
 }

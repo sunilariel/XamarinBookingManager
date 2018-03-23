@@ -7,7 +7,7 @@
       
    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Done_c" Order="Primary" Priority="0" Clicked="CreateAppointment"></ToolbarItem>
+        <ToolbarItem Text="Done" Order="Primary" Priority="0" Clicked="CreateAppointment"></ToolbarItem>
         
     </ContentPage.ToolbarItems>
     

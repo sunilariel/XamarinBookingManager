@@ -14,9 +14,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CalendarCreateAppointmentPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CalendarCreateAppointmentPage : ContentPage
+    {
         #region GloblesFields  
         int EmpID;
         string empName = "";
@@ -35,12 +35,12 @@ namespace Demo_App
         int CategoryId;
         #endregion
 
-        public CalendarCreateAppointmentPage (AddAppointments objAddAppointment)
-		{
+        public CalendarCreateAppointmentPage(AddAppointments objAddAppointment)
+        {
             InitializeComponent();
             try
             {
-               
+
                 GetSelectedCustomerById();
                 objdata = new AssignedServicetoStaff();
                 objdata.Id = objAddAppointment.ServiceId;
@@ -62,9 +62,9 @@ namespace Demo_App
 
                 //TimePeriods = DateTime.Parse(TimePeriod);
 
-              
 
-                
+
+
 
 
                 if (objCust != null)
@@ -87,7 +87,7 @@ namespace Demo_App
                 }
                 newAppointmentsPicker.SelectedIndex = 0;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -108,15 +108,12 @@ namespace Demo_App
             {
 
             }
-
         }
-      
         public void CreateAppointment()
         {
             ////InitializeComponent();
             try
             {
-
                 string[] TimeAppointment = { };
                 string[] hours = { };
                 string[] Endmins = { };
@@ -182,23 +179,23 @@ namespace Demo_App
                 var result = PostData("GET", "", apiURL);
                 List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        private void EditServiceForAppointmentClick(object sender,EventArgs e)
+        private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
         }
 
-        private void EditAppointmentByBookingDate(object sender,EventArgs e)
+        private void EditAppointmentByBookingDate(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CalendarTimeSlotsPage(objdata, "CalandarAppointment"));
         }
 
-        private void AddCommentClick(object sender,EventArgs e)
+        private void AddCommentClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AddNotesPage());
         }

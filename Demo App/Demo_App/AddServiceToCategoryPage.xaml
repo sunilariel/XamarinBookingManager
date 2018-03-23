@@ -22,13 +22,13 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="10,15,0,0">
-                          
+                            <Label x:Name="AllocatedProviderCount" HorizontalOptions="StartAndExpand"></Label>
                         </StackLayout>
                         <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,15,0,0">
                             <Label Text="Select All" HorizontalOptions="End"></Label>
                         </StackLayout>
                         <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,10,0,0">
-                            <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  CheckedChanged="AssignAllProvider"/>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -53,7 +53,7 @@
                                                 <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"   />
                                             </StackLayout>
                                             <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
-                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding isAssigned,Mode=TwoWay}"/>
+                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding isAssigned,Mode=TwoWay}"  CheckedChanged="AssignServiceToCategory"/>
                                             </StackLayout>
                                         </Grid>
                                     </StackLayout>

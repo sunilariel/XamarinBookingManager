@@ -95,7 +95,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" x:Name="Mondaylbl" Text="" TextColor="Black"/>
+                                <Label Grid.Column="0" x:Name="Mondaylbl" Text="Mon" TextColor="Black"/>
                                 <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AddNewAppointment"/>

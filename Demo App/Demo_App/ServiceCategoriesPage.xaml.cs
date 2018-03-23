@@ -59,6 +59,7 @@ namespace Demo_App
                     ListOfAssignServiceCount.Add(AllocateServices);
                 }
                 ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
+                BindingContext = ListOfAssignServiceCount;
             }
             catch(Exception e)
             {

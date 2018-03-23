@@ -13,13 +13,25 @@ using Newtonsoft.Json;
 namespace Demo_App
 {
     public partial class MainPage : TabbedPage
-    {
+    {        
         Login bindingValue;
         public MainPage()
         {
             InitializeComponent();
             BindingContext = bindingValue = new Login();
         }
+
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    Device.BeginInvokeOnMainThread(async () =>
+        //    {
+        //        var result = await this.DisplayAlert("Alert", "Do you realy want to exit", "yes", "no");
+        //        if (result) await this.Navigation.PopAsync();
+        //    });
+        //    return true;
+        //}
+
+
 
         async void OnLoginClicked(object sender, EventArgs args)
         {
@@ -46,7 +58,7 @@ namespace Demo_App
 
                 var response = await client.GetAsync(url);
                 result = JsonConvert.DeserializeObject<int>(response.Content.ReadAsStringAsync().Result);
-             }
+            }
             catch (Exception ex)
             {
                 var a = ex;

@@ -26,7 +26,8 @@ namespace Demo_App.Model
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }
-        public string Name { get; set; }
+        public int CategoryID { get; set; }
+        //public string Name { get; set; }
         public string CategoryName { get; set; }
         public int ServiceId { get; set; }
         public string CreationDate { get; set; }

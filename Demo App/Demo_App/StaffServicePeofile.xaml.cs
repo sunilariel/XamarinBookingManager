@@ -67,10 +67,21 @@ namespace Demo_App
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
 
-            Navigation.PopAsync(true);           
+            //Navigation.PopAsync(true);           
 
-            Navigation.PushAsync(new StaffPage());
-           
+            Navigation.PushAsync(new StaffPage());                    
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+
+
         }
 
         private void CrossClick(object sender,EventArgs e)
@@ -80,9 +91,42 @@ namespace Demo_App
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
 
-            Navigation.PopAsync(true);
+            //Navigation.PopAsync(true);
 
             Navigation.PushAsync(new StaffPage());
+           
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
+            //Navigation.PopAsync(true);
+
+            Navigation.PushAsync(new StaffPage());
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+            return true;
         }
 
         public void GetAllocatedServicetoStaff()

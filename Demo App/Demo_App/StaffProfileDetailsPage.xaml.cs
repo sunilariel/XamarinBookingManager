@@ -54,11 +54,45 @@ namespace Demo_App
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
 
-            Navigation.PopAsync(true);
+           // Navigation.PopAsync(true);
 
             Navigation.PushAsync(new StaffPage());
-            
+           
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
+            // Navigation.PopAsync(true);
+
+            Navigation.PushAsync(new StaffPage());
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+            return true;
+        }
+
         private void BreaksClick(object sender, EventArgs e)
         {
             Navigation.PushAsync(new BreaksPage(StaffId));
@@ -259,8 +293,29 @@ namespace Demo_App
                     var CompanyId = Application.Current.Properties["CompanyId"];
                     var Method = "DELETE";
                     var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeleteStaff?id=" + StaffId;
-                    var result = PostData(Method, null, Url);
+                    var result = PostData(Method, null, Url);                   
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
                     Navigation.PushAsync(new StaffPage());
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 3)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+
+
+
                 }
                 else
                 {

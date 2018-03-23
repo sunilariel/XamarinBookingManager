@@ -16,23 +16,22 @@ using System.Collections.ObjectModel;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CategoryDetailsPage : ContentPage
-	{
-        string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);       
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CategoryDetailsPage : ContentPage
+    {
+        string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         string NameofCategory;
         ObservableCollection<AssignedServicetoStaff> ListOfAssignService = new ObservableCollection<AssignedServicetoStaff>();
         ObservableCollection<AssignServiceToCategory> ListofAllAssignedServices = new ObservableCollection<AssignServiceToCategory>();
-        public CategoryDetailsPage(int categoryId,string categoryName)
-		{
+        public CategoryDetailsPage(int categoryId, string categoryName)
+        {
             try
             {
                 InitializeComponent();
                 CategoryID = categoryId;
                 NameofCategory = categoryName;
                 var provider = GetSelectedService();
-
                 var ServiceString = "";
                 foreach (var item in provider)
                 {
@@ -45,10 +44,10 @@ namespace Demo_App
                 {
                     CategoryServices.Text = ServiceString.Substring(0, ServiceString.Length - 1);
                 }
-
                 CategoryName.Text = NameofCategory;
-            }
-            catch(Exception e)
+            }           
+
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -60,10 +59,9 @@ namespace Demo_App
             {
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
                 var result = PostData("GET", "", apiUrl);
-
                 ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
                 //ObservableCollection<AssignServiceToCategory> ListofAssignServicesCategories = GetAssignServices();
-                foreach(var item in ListOfAssignService)
+                foreach (var item in ListOfAssignService)
                 {
                     var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + item.Id;
                     var resultData = PostData("GET", "", ApiUrl);
@@ -81,14 +79,38 @@ namespace Demo_App
                     }
                 }
                 return ListOfAssignService;
+
+
+
+                //var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
+                //var result = PostData("GET", "", apiUrl);
+                //ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
+                //foreach (var item in ListofAllCategories)
+                //{
+                //    var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
+                //    var resultData = PostData("GET", "", ApiUrl);
+                //    ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
+
+                //    ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
+                //    AllocateServices.CategoryName = item.Name;
+                //    AllocateServices.CategoryId = item.Id;
+                //    AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + "services";
+
+                //    ListOfAssignServiceCount.Add(AllocateServices);
+                //}
+                //ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
+                //BindingContext = ListOfAssignServiceCount;
+
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
         }
 
-        public void  SaveCategoryDetails()
+        public void SaveCategoryDetails()
         {
 
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
@@ -96,9 +118,22 @@ namespace Demo_App
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
 
-            Navigation.PopAsync(true);           
+            //Navigation.PopAsync(true);           
 
             Navigation.PushAsync(new ServiceCategoriesPage(CategoryID));
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+
+
+
         }
         //public ObservableCollection<AssignServiceToCategory> GetAssignServices()
         //{
@@ -116,24 +151,24 @@ namespace Demo_App
         //}
 
         public void EditCategoryService()
-        {
+        {                   
             var AllServices = GetService();
-            foreach( var item in ListOfAssignService)
+            foreach (var item in ListOfAssignService)
             {
-                foreach(var service in AllServices)
+                foreach (var service in AllServices)
                 {
                     if (item.Id == service.Id)
                     {
                         service.isAssigned = true;
                         break;
                     }
-                   
+
                 }
             }
             Navigation.PushAsync(new AddServiceToCategoryPage(AllServices, CategoryID, NameofCategory));
         }
 
-        public ObservableCollection<AssignedServicetoStaff>  GetService()
+        public ObservableCollection<AssignedServicetoStaff> GetService()
         {
             try
             {
@@ -144,7 +179,7 @@ namespace Demo_App
 
                 return ListofServices;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -152,7 +187,7 @@ namespace Demo_App
 
         public void EditCategory()
         {
-            Navigation.PushAsync(new UpdateCategory(CategoryID,NameofCategory));
+            Navigation.PushAsync(new UpdateCategory(CategoryID, NameofCategory));
         }
 
         public string PostData(string Method, string SerializedData, string Url)

@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 
+
 namespace Demo_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,6 +24,8 @@ namespace Demo_App
         string ServiceId;
         public ServiceDetails service = null;
         #endregion
+
+
 
         public ServiceDetailsPage()
         {
@@ -69,8 +72,11 @@ namespace Demo_App
                 {
                     service.ServiceProviders = ProviderString.Substring(0, ProviderString.Length - 1);
                 }
+                else
+                {
+                    service.Categories = "No Service";
+                }
                 BindingContext = service;
-
             }
             catch (Exception e)
             {
@@ -245,7 +251,26 @@ namespace Demo_App
                 e.ToString();
             }
 
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+            }
+
+            //Navigation.PopAsync(true);
+
             Navigation.PushAsync(new ServicePage());
+
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
         }
 
 
@@ -285,28 +310,58 @@ namespace Demo_App
 
         private void CrossClick()
         {
-
-            //var pFirst = Navigation.NavigationStack.Count();
-
-            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
-            {
-                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
-
-            }
-
-            Navigation.PopAsync(true);
-
-            Navigation.PushAsync(new ServicePage());
-
-
-            //var pLast = Navigation.NavigationStack.Count();
-
-            //for (int PageipIndex = pLast; PageipIndex <= pLast; PageipIndex += 5)
+            //Device.BeginInvokeOnMainThread(async () =>
             //{
-            //    Navigation.RemovePage(Navigation.NavigationStack[pLast]);
-            //}
+            //    var result = await this.DisplayAlert("Alert", "Do you realy want to exit", "Yes", "No");
+            //    if (result)
+            //    {
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+                    }
+                    Navigation.PushAsync(new ServicePage());
+                    int pCount = Navigation.NavigationStack.Count();
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 3)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+            //    }
+
+            //});
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            //Device.BeginInvokeOnMainThread(async () =>
+            //{
+            //    var result = await this.DisplayAlert("Alert", "Do you realy want to exit", "Yes", "No");
+            //    if (result)
+            //    {
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+                    Navigation.PushAsync(new ServicePage());
+                    int pCount = Navigation.NavigationStack.Count();
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 3)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+            //    }
+
+            //});
+            return true;
+
 
 
         }
+
+
     }
 }
