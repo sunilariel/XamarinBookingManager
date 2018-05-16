@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Demo_App.Model;
 
 using Xamarin.Forms;
 
@@ -12,7 +13,9 @@ namespace Demo_App
         static public int ScreenHeight;
         public App ()
 		{          
-            InitializeComponent();        
+            InitializeComponent();
+            DependencyService.Register<IProgressInterface>();
+            
             SetMainPage();           
         }
 

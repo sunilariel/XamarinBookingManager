@@ -32,6 +32,9 @@
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0" HeightRequest="30">
                     <Label Text="+ Appointment" TextColor="White" FontSize="14" HorizontalOptions="Center" ></Label>
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewCustomer"/>
+                    </StackLayout.GestureRecognizers>-->
                 </StackLayout>
 
                 <!--<StackLayout Grid.Row="1" HeightRequest="30">
@@ -57,6 +60,9 @@
                 </StackLayout>
                 <StackLayout Grid.Row="4" HeightRequest="30">
                     <Label Text="+ Service Category" TextColor="White" FontSize="14" HorizontalOptions="Center" ></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddServiceCategory"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Grid>
         </StackLayout>

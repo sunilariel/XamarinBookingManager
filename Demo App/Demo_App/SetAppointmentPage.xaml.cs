@@ -24,62 +24,135 @@ namespace Demo_App
         public string pageTitle { get; set; }
         public string titleCust { get; set; }
     }
-    
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SetAppointmentPage : ContentPage
-	{
+    public partial class SetAppointmentPage : ContentPage
+    {
         #region GlobalFields
         public int i = 0;
-        public int y = 0;
+        //public int y = 0;
         public bool IsStaffListVisible = false;
         public bool IsFloatActionRotated = false;
         public int centerHeight = 0;
         public int EmpID;
         string EmpName = "";
+        string selectesPageN;
+        string PageName;
         ObservableCollection<Staff> AllStaffList = new ObservableCollection<Staff>();
         #endregion
 
-        public SetAppointmentPage()
+        public SetAppointmentPage(string selectedName)
         {
-            
-            InitializeComponent();           
+            selectesPageN = selectedName;
+            InitializeComponent();
             GetStaff();
-            var page = new CalenderPage();
-            Placeholder.Content = page.Content;
-            this.Title = "Calender";
-            middleF.HeightRequest = App.ScreenHeight-180;            
-        }
+            if (selectedName == "selectedPageCustomer")
+            {
+                var pages = new CustomerPage();
+                Placeholder.Content = pages.Content;
+                //this.Title = "Customer";
+                shedulerStaff.Text = "Customer";
+                dropdownArrow.IsVisible = false;
+                CalendarIconButton.IsVisible = false;
+                // this.ToolbarItems.Remove(CalendarIconButton);
+            }
+            else if (selectedName == "CustomerPage")
+            {
+                var page = new CustomerPage();
+                Placeholder.Content = page.Content;
+                //this.Title = "Customer";
+                shedulerStaff.Text = "Customer";
+                dropdownArrow.IsVisible = false;
+                CalendarIconButton.IsVisible = false;
+            }
+            else if (selectedName == "ActivityPage")
+            {
+                var page = new ActivityPage();
+                Placeholder.Content = page.Content;
+                //this.Title = "Activity";
+                shedulerStaff.Text = "Activity";
+                dropdownArrow.IsVisible = false;
+                CalendarIconButton.IsVisible = false;
+            }
+            else if (selectedName == "AccountPage")
+            {
+                //Application.Current.Properties["FloatingAccountPageName"] = "AccountPage";
+                var page = new AccountPage();
+                Placeholder.Content = page.Content;
+                //this.Title = "Account";
+                shedulerStaff.Text = "Account";
+                dropdownArrow.IsVisible = false;
+                CalendarIconButton.IsVisible = false;
+            }
+            else
+            {
+                Application.Current.Properties["FloatingCalenderPageName"] = "CalenderPage";
+                var page = new CalenderPage();
+                Placeholder.Content = page.Content;
+                this.Title = "Calender";
+                middleF.HeightRequest = App.ScreenHeight - 180;
+            }
 
+
+        }
+        private void StaffSelectedForAppointment(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedStaff = e.SelectedItem as Staff;
+            EmpID = Convert.ToInt32(selectedStaff.Id);
+            EmpName = selectedStaff.FirstName;
+            shedulerStaff.Text = "All Scheduler";
+            shedulerStaff.Text = selectedStaff.FirstName;
+            Application.Current.Properties["SelectedEmpId"] = selectedStaff.Id;
+            Application.Current.Properties["LastSelectedStaff"] = selectedStaff.FirstName;
+            dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
+            listData.IsVisible = false;
+            Placeholder.IsVisible = true;
+            Navigation.PushAsync(new SetAppointmentPage(""));
+        }
         void Icon1_Tapped(object sender, EventArgs args)
         {
-            y++;
+            //y++;
+            Application.Current.Properties.Remove("FloatingCustomerPageName");
+            Application.Current.Properties.Remove("FloatingActivityPageName");
+            Application.Current.Properties.Remove("FloatingAccountPageName");
+
+            Application.Current.Properties["FloatingCalenderPageName"] = "CalenderPage";
             var page = new CalenderPage();
             Placeholder.Content = page.Content;
-            if (Application.Current.Properties.ContainsKey("LastSelectedStaff")==true) {
+            if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
+            {
                 shedulerStaff.Text = Application.Current.Properties["LastSelectedStaff"].ToString();
             }
             else
             {
                 shedulerStaff.Text = "All Scheduler";
             }
-            
+
             dropdownArrow.IsVisible = true;
             CalendarIconButton.IsVisible = true;
         }
 
         void Icon2_Tapped(object sender, EventArgs args)
         {
+            Application.Current.Properties.Remove("FloatingCalenderPageName");
+            Application.Current.Properties.Remove("FloatingActivityPageName");
+            Application.Current.Properties.Remove("FloatingAccountPageName");
+            Application.Current.Properties["FloatingCustomerPageName"] = "CustomerPage";
             var page = new CustomerPage();
             Placeholder.Content = page.Content;
             //this.Title = "Customer";
             shedulerStaff.Text = "Customer";
             dropdownArrow.IsVisible = false;
             CalendarIconButton.IsVisible = false;
-           // this.ToolbarItems.Remove(CalendarIconButton);
+            // this.ToolbarItems.Remove(CalendarIconButton);
         }
 
         void Icon3_Tapped(object sender, EventArgs args)
         {
+            Application.Current.Properties.Remove("FloatingCalenderPageName");
+            Application.Current.Properties.Remove("FloatingCustomerPageName");
+            Application.Current.Properties.Remove("FloatingAccountPageName");
+            Application.Current.Properties["FloatingActivityPageName"] = "ActivityPage";
             var page = new ActivityPage();
             Placeholder.Content = page.Content;
             //this.Title = "Activity";
@@ -91,6 +164,10 @@ namespace Demo_App
 
         void Icon4_Tapped(object sender, EventArgs args)
         {
+            Application.Current.Properties.Remove("FloatingCalenderPageName");
+            Application.Current.Properties.Remove("FloatingCustomerPageName");
+            Application.Current.Properties.Remove("FloatingActivityPageName");
+            Application.Current.Properties["FloatingAccountPageName"] = "AccountPage";
             var page = new AccountPage();
             Placeholder.Content = page.Content;
             //this.Title = "Account";
@@ -112,12 +189,12 @@ namespace Demo_App
         //}
 
         void Icon6_Tapped(object sender, EventArgs args)
-        {          
+        {
             Navigation.PushAsync(new CustomerPage());
         }
 
         void tbi_Clicked(object sender, EventArgs e)
-        {                  
+        {
             SfSchedule sfSchedule = CalenderPage.getScheduleObj();
 
             //SfSchedule sfSchedule = new SfSchedule();
@@ -127,10 +204,10 @@ namespace Demo_App
                 {
                     sfSchedule.IsVisible = true;
                     var CurrentDate = DateTime.Now;
-                    DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);                   
+                    DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
                     sfSchedule.NavigateTo(SpecificDate);
-                    sfSchedule.ScheduleView = ScheduleView.WeekView;                   
-                    i = 1;                    
+                    sfSchedule.ScheduleView = ScheduleView.WeekView;
+                    i = 1;
                     sfSchedule.ScheduleCellTapped += Schedulee_ScheduleCellTapped;
 
                 }
@@ -144,7 +221,7 @@ namespace Demo_App
                 i = 0;
                 sfSchedule.ScheduleCellTapped -= Schedulee_ScheduleCellTapped;
             }
-  
+
         }
         private async void OnOpenPupup(object sender, EventArgs e)
         {
@@ -154,16 +231,18 @@ namespace Demo_App
             if (IsFloatActionRotated)
             {
                 await PopupNavigation.PushAsync(page);
-                floataction.RotateTo(45, 200, Easing.SinInOut);
+                await floataction.RotateTo(45, 200, Easing.SinInOut);
+                await floataction.RotateTo(0, 200, Easing.SinInOut);
             }
-            else {
-                await PopupNavigation.PopAsync(true);
-                floataction.RotateTo(0, 200, Easing.SinInOut);
+            else
+            {
+                //await PopupNavigation.PopAsync(true);
+                await floataction.RotateTo(0, 200, Easing.SinInOut);
             }
-            
+
         }
 
-        private void StaffDataPage(object sender,EventArgs e)
+        private void StaffDataPage(object sender, EventArgs e)
         {
             IsStaffListVisible = !IsStaffListVisible;
             if (IsStaffListVisible)
@@ -172,30 +251,20 @@ namespace Demo_App
                 listData.IsVisible = true;
                 Placeholder.IsVisible = false;
             }
-            else {
+            else
+            {
                 dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
                 listData.IsVisible = false;
                 Placeholder.IsVisible = true;
             }
-            
+
         }
 
-        private void StaffSelectedForAppointment(object sender,SelectedItemChangedEventArgs e)
-        {
-            var selectedStaff = e.SelectedItem as Staff;
-            EmpID = Convert.ToInt32(selectedStaff.Id);
-            EmpName = selectedStaff.FirstName;
-            shedulerStaff.Text = selectedStaff.FirstName;
-            Application.Current.Properties["SelectedEmpId"] = selectedStaff.Id;
-            Application.Current.Properties["LastSelectedStaff"] = selectedStaff.FirstName;
-            listData.IsVisible = false;
-            Placeholder.IsVisible = true;
-            dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
-        }
+
 
         private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
         {
-            
+
             Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
         }
 
@@ -211,7 +280,7 @@ namespace Demo_App
                 AllStaffList = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
                 StaffList.ItemsSource = AllStaffList;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -246,6 +315,19 @@ namespace Demo_App
             {
                 return e.ToString();
             }
+        }
+       
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var LogOut = await DisplayAlert("Log Out", "Are you sure you want to Log Out", "Log Out", "No");
+                if (LogOut)
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(new WelcomePage());
+                }
+            });
+            return true;
         }
     }
 }

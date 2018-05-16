@@ -18,14 +18,14 @@
                     <StackLayout Grid.Row="1" BackgroundColor="White">
                         <Label Text="Set Available Time"/>
                         <Frame x:Name="TimeSlotFrame" IsVisible="False">
-                        <Label x:Name="TimeSlotlbel"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label x:Name="TimeSlotlbel" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Frame>
                         <ListView x:Name="ListofTimeSlots" ItemSelected="CreateAppointmentClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell Height="70">
                                         <StackLayout BackgroundColor="White">
-                                            <Label Text="{Binding }"/>
+                                            <Label Text="{Binding .}"/>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

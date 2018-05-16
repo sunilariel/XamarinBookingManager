@@ -27,7 +27,7 @@
                                     <ColumnDefinition Width="70"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Padding="10,5,0,0">
-                                    <Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20"/>
+                                    <Image Source="back2.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20"/>
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer 
                                     Tapped="CrossClick"/>
@@ -43,6 +43,13 @@
                                         <TapGestureRecognizer Tapped="DeleteService"/>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
+                                <StackLayout IsVisible="False" Grid.Column="2" HorizontalOptions="End" Padding="20,5,10,0">
+                                    <Label Text="Create" TextColor="White"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CreateService"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
                             </Grid>
                         </StackLayout>
                         <StackLayout Grid.Row="1">

@@ -13,19 +13,26 @@ using Newtonsoft.Json.Linq;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CreateAccountUser : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CreateAccountUser : ContentPage
+    {
+        string businessName;
         RequestData objRequestData = new RequestData();
         public CreateAccountUser()
         {
             try
             {
                 InitializeComponent();
+
+
+                
+
+                BussinessNametxt.Text = Application.Current.Properties["BussinessNameName"].ToString();
+                bussinessNotxt.Text= Application.Current.Properties["BussinessNo"].ToString();
                 if (Application.Current.Properties.ContainsKey("IndustryName") == true)
                 {
                     IndustryNameLabel.Text = Application.Current.Properties["IndustryName"].ToString();
-                }               
+                }
             }
             catch (Exception e)
             {
@@ -33,12 +40,13 @@ namespace Demo_App
             }
         }
 
-        public CreateAccountUser (RequestData req)
-		{
+        public CreateAccountUser(RequestData req)
+        {
             try
             {
                 objRequestData = req;
                 InitializeComponent();
+
                 if (Application.Current.Properties.ContainsKey("IndustryName") == true)
                 {
                     IndustryNameLabel.Text = Application.Current.Properties["IndustryName"].ToString();
@@ -52,11 +60,11 @@ namespace Demo_App
                 //    TimeZoneLabel.Text = Application.Current.Properties["TimeZone"].ToString();
                 //}
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
-        }       
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -69,18 +77,24 @@ namespace Demo_App
         //{
         //    Navigation.PushAsync(new Currency());
         //}
-        private void GetIndustoryClick(object sender,EventArgs e)
+        private void GetIndustoryClick(object sender, EventArgs e)
         {
+            Application.Current.Properties["BussinessNameName"] = BussinessNametxt.Text;
+            Application.Current.Properties["BussinessNo"] = bussinessNotxt.Text;
             Navigation.PushAsync(new IndustryPage());
         }
 
-        private async void NextClick(object sender,EventArgs e)
+        private async void NextClick(object sender, EventArgs e)
         {
-            string RegisterUrl = "http://bookingmanager25-001-site1.btempurl.com/api/companyregistration/CreateAccount";
+
+
+
+            string RegisterUrl = "http://bookingmanager27-001-site1.itempurl.com/api/companyregistration/CreateAccount";
+
             var req = objRequestData;
             var result = await RegisterMethod(RegisterUrl, req);
         }
-       
+
         private async Task<string> RegisterMethod(string url, RequestData item)
         {
             string result = "";
@@ -90,9 +104,10 @@ namespace Demo_App
 
                 objRequestData = new RequestData();
                 objRequestData.Id = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                objRequestData.Name = item.Name;
+                objRequestData.Name = BussinessNametxt.Text;
                 objRequestData.Address = "aa";
                 objRequestData.Email = item.Email;
+                objRequestData.IndustryName = IndustryNameLabel.Text;
                 objRequestData.Telephone = bussinessNotxt.Text;
                 objRequestData.PostCode = "a";
                 objRequestData.Website = "a";
@@ -100,7 +115,7 @@ namespace Demo_App
                 objRequestData.Town = "aaaaa";
                 objRequestData.Description = "aa";
                 objRequestData.Password = item.Password;
-                objRequestData.CreationDate = System.DateTime.Now.ToString();
+                objRequestData.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                 var data = JsonConvert.SerializeObject(objRequestData);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -116,14 +131,14 @@ namespace Demo_App
                         var strRes = await response.Content.ReadAsStringAsync();
 
                         var jsonObject = JObject.Parse(strRes);
-                        Navigation.PushAsync(new BusinessHoursPage("CompanyHours"));
+                        await Navigation.PushAsync(new BusinessHoursPage("CompanyHours"));
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
-                var a = ex;
+                ex.ToString();
 
             }
             return result;

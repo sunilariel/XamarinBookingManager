@@ -24,7 +24,7 @@
                                     <ColumnDefinition Width="70"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Padding="10">
-                                    <Image Source="Cross.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20">
+                                    <Image Source="back2.png" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="20" WidthRequest="20">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer 
                                     Tapped="CrossClick"/>

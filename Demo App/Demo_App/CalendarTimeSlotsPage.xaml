@@ -17,6 +17,9 @@
                     </StackLayout>
                     <StackLayout Grid.Row="1">
                         <Label Text="Set Available Time"/>
+                        <Frame x:Name="TimeSlotFrame" IsVisible="False">
+                            <Label x:Name="TimeSlotlbel" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
                         <ListView x:Name="ListofTimeSlots" ItemSelected="SelectCustomerForAppointmentClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -29,6 +32,13 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
+
+
+                   
+
+
+
+
 
                 </Grid>
             </ScrollView>

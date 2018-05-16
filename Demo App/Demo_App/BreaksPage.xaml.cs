@@ -54,7 +54,8 @@ namespace Demo_App
         }
 
         private void BreaksClick(object sender,EventArgs e)
-        {          
+        {
+            
             Timepicker.IsOpen = !Timepicker.IsOpen;
         }
 

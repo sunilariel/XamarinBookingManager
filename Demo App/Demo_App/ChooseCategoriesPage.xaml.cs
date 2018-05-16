@@ -20,17 +20,19 @@ namespace Demo_App
 	{
         #region GlobleFields
         public int ServiceId;
+        string PAgeName;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignCategory> ListofAllCategories = new ObservableCollection<AssignCategory>();
         public Service ServiceDetail;
         #endregion
 
-        public ChooseCategoriesPage (ObservableCollection<AssignCategory> ListofCategory)
+        public ChooseCategoriesPage (string pageName,ObservableCollection<AssignCategory> ListofCategory)
 		{
             try
             {
                 InitializeComponent();
                 ListofAllCategories = ListofCategory;
+                PAgeName = pageName;
                 ServiceId = Convert.ToInt32(Application.Current.Properties["ServiceID"]);
                 CategoriesData.ItemsSource = ListofAllCategories;
             }
@@ -49,6 +51,7 @@ namespace Demo_App
                 {
                     if (item.Confirmed == true)
                     {
+                       
                         var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + item.Id + "&serviceId=" + ServiceId;
 
                         var result = PostData("PUT", "", apiUrl);
@@ -66,7 +69,33 @@ namespace Demo_App
                 e.ToString();
 
             }
-           Navigation.PushAsync(new ServiceDetailsPage());
+            if (PAgeName== "CalenderPage" || PAgeName== "CustomerPage" || PAgeName== "ActivityPage" || PAgeName== "AccountPage")
+            {
+                Application.Current.Properties.Remove("ServiceName");
+                Navigation.PushAsync(new SetAppointmentPage(PAgeName));
+            }
+            else
+            {
+                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+                }
+                Navigation.PushAsync(new ServicePage());
+
+
+                int pCount = Navigation.NavigationStack.Count();
+
+                for (int i = 0; i < pCount; i++)
+                {
+                    if (i == 3)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    }
+                }
+            }
+
+            
         }
        
         private void AddNewCategory(object sender, EventArgs args)

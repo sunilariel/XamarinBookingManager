@@ -25,6 +25,12 @@ namespace Demo_App
         string ServiceName = "";
         int CustID;
         double Cost;
+        string StartHour;
+        string StartMinutes;
+        int EndHour;
+        int EndMinute;
+        int DurationInHours;
+        int DurationInMinutes;
         string day = "";
         DateTime dateOfBooking;
         public Customer objCust = null;
@@ -36,18 +42,25 @@ namespace Demo_App
         Dictionary<string, int> Data = null;
         int StatusId;
         int CategoryId;
+        int CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
 
         #endregion
 
         public NewAppointmentPage(AddAppointments objAddAppointments, string Day, DateTime DateOfBooking)
         {
+            InitializeComponent();
             try
             {
                 var notesList = GetAllCustomerNotes();
-                InitializeComponent();
+
                 GetSelectedCustomerById();
                 day = Day;
-                dateOfBooking = DateOfBooking;
+                StartHour = objAddAppointments.StartTime;
+                StartMinutes = objAddAppointments.EndTime;
+                EndHour = objAddAppointments.DurationInHours;
+                EndMinute = objAddAppointments.DurationInMinutes;
+
+                //dateOfBooking = DateOfBooking;
                 EmpID = objAddAppointments.EmployeeId;
                 empName = objAddAppointments.EmployeeName;
                 ServiceID = objAddAppointments.ServiceId;
@@ -57,10 +70,14 @@ namespace Demo_App
                     CustID = objCust.Id;
                 }
                 Cost = objAddAppointments.Cost;
+                DurationInHours = objAddAppointments.DurationInHours;
+                DurationInMinutes = objAddAppointments.DurationInMinutes;
                 service = new Service();
                 service.Id = Convert.ToInt32(objAddAppointments.ServiceId);
                 service.Name = objAddAppointments.ServiceName;
                 service.Cost = objAddAppointments.Cost;
+                service.DurationInHours = objAddAppointments.DurationInHours;
+                service.DurationInMinutes = objAddAppointments.DurationInMinutes;
                 obj = new AddAppointments();
                 obj.CompanyId = objAddAppointments.CompanyId;
                 obj.ServiceId = objAddAppointments.ServiceId;
@@ -68,8 +85,13 @@ namespace Demo_App
                 obj.EmployeeName = objAddAppointments.EmployeeName;
                 obj.ServiceName = objAddAppointments.ServiceName;
                 obj.Cost = objAddAppointments.Cost;
+                obj.DurationInHours = objAddAppointments.DurationInHours;
+                obj.DurationInMinutes = objAddAppointments.DurationInMinutes;
                 obj.StartTime = objAddAppointments.StartTime;
                 obj.EndTime = objAddAppointments.EndTime;
+                obj.TimePeriod = objAddAppointments.TimePeriod;
+                obj.Status = objAddAppointments.Status;
+                AppointmentDatelbl.Text = objAddAppointments.StartTime;
 
                 //objCust = new Customer();
                 //objCust.Id = Cust.Id;
@@ -79,6 +101,7 @@ namespace Demo_App
                 //objCust.Email = Cust.Email;
                 //objCust.TelephoneNo = Cust.TelephoneNo;
                 //objCust.Address = Cust.Address;
+                dateOfBooking = Convert.ToDateTime(objAddAppointments.DateOfBooking.Split(',')[1]);
                 AppointmentDatelbl.Text = Day + ", " + DateOfBooking.ToString("dd-MMM-yyyy");
                 if (objCust != null)
                 {
@@ -99,17 +122,40 @@ namespace Demo_App
                { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
             };
 
-                foreach (var item in Data.Keys)
+                if(objAddAppointments.Status != 0)
                 {
-                    newAppointmentsPicker.Items.Add(item);
+                    foreach (var item in Data.Keys)
+                    {
+                        newAppointmentsPicker.Items.Add(item);
+                    }
+                    obj.Status = objAddAppointments.Status - 1;
+                    newAppointmentsPicker.SelectedIndex = obj.Status;
                 }
-                newAppointmentsPicker.SelectedIndex = 0;
+                else
+                {
+                    foreach (var item in Data.Keys)
+                    {
+                        newAppointmentsPicker.Items.Add(item);
+                    }
+
+                    newAppointmentsPicker.SelectedIndex = 0;
+                }
+                
             }
             catch (Exception e)
             {
                 e.ToString();
             }
         }
+
+        public string AddStatusOfNewAppointment()
+        {
+            string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
+            Data.TryGetValue(selectedValue, out StatusId);
+            var id = StatusId;
+            return id.ToString();
+        }
+
 
         public void GetSelectedCustomerById()
         {
@@ -122,23 +168,41 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
 
         private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, Cost, "NewAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(dateOfBooking).ToString();
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, Cost, DurationInHours, DurationInMinutes, "NewAppointment", DateofBooking, StatusId));
         }
 
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory("NewAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(dateOfBooking).ToString();
+            Navigation.PushAsync(new SelectServiceCategory("NewAppointment", DateofBooking, StatusId));
         }
         private void EditAppointmentbyStaffClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "NewAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(dateOfBooking).ToString();
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "NewAppointment", DateofBooking, StatusId));
         }
         private void AddCommentClick(object sender, EventArgs e)
         {
@@ -150,59 +214,51 @@ namespace Demo_App
         {
             try
             {
-                string[] AppointmentDate = { };
-                string[] TimeAppointment = { };
-                string[] hours = { };
-                string[] Endmins = { };
-                string[] Endmin = { };
-                //string date = AppointmentDatelbl.Text;
-                string Time = AppointmentTime.Text;
-                //if (date != null)
-                //{
-                //   AppointmentDate = date.Split(',');                
-                //}
-                if (Time != null)
-                {
-                    TimeAppointment = Time.Split('-');
-                    hours = TimeAppointment[0].Split(':');
-                    Endmins = TimeAppointment[1].Split(':');
-                    Endmin = Endmins[1].Split(' ');
-                }
+                BookAppointment objbookAppointment = new BookAppointment();
+                objbookAppointment.CompanyId = CompanyId;
+                objbookAppointment.ServiceId = ServiceID;
+                objbookAppointment.EmployeeId = EmpID;
+                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
+                objbookAppointment.StartHour = StartHour;
+                objbookAppointment.StartMinute = StartMinutes;
+                objbookAppointment.EndHour = EndHour;
+                objbookAppointment.EndMinute = EndMinute;
+                objbookAppointment.IsAdded = true;
+                objbookAppointment.Message = "";
+
+                var GetAllCustomerData = GetAllCustomer();
+                List<int> custIDs = GetAllCustomerData.Select(x => x.Id).ToList();
+                custIDs = custIDs.Where(x => x == CustID).ToList();
+                objbookAppointment.CustomerIds = custIDs;
+                var sDate = dateOfBooking.ToString("yyyy-MM-dd T HH:mm:ss");
+                objbookAppointment.Start = sDate;
+                var eeDate = dateOfBooking.ToString("yyyy-MM-dd T HH:mm:ss");
+                objbookAppointment.End = eeDate;
                 if (newAppointmentsPicker.SelectedItem != null)
                 {
                     string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
                     Data.TryGetValue(selectedValue, out StatusId);
                 }
-                var GetAllCustomerData = GetAllCustomer();
-                List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
-                objbookAppointment = new BookAppointment();
-                objbookAppointment.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                objbookAppointment.EmployeeId = EmpID;
-                objbookAppointment.ServiceId = ServiceID;
-                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
-                objbookAppointment.StartHour = Convert.ToInt32(hours[0]);
-                objbookAppointment.StartMinute = 0;
-                objbookAppointment.EndHour = 0;
-                objbookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
-                objbookAppointment.IsAdded = true;
-                objbookAppointment.Message = AddComment.Text;
-                objbookAppointment.Notes = AddComment.Text;
-                objbookAppointment.CustomerIds = custIDs;
-                objbookAppointment.Start = dateOfBooking;
-                objbookAppointment.End = dateOfBooking;
                 objbookAppointment.Status = StatusId;
+                objbookAppointment.Notes = "";
 
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/booking/BookAppointment";
                 var SerializedData = JsonConvert.SerializeObject(objbookAppointment);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/BookAppointment";
-                var result = PostData("POST", SerializedData, apiUrl);
+                var result = PostData("POST", SerializedData, Url);
 
                 dynamic data = JObject.Parse(result);
                 var msg = Convert.ToString(data.Message);
                 DisplayAlert("Success", msg, "ok");
-                //Context context = getApplicationContext();  
-                //Toast.MakeText(this.Content, msg, ToastLength.Short).Show();
+
+                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                }
+
+                // Navigation.PopAsync(true);
 
                 Navigation.PushAsync(new AddAppointmentsPage(objbookAppointment));
+
             }
             catch (Exception e)
             {
@@ -220,6 +276,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -261,6 +318,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

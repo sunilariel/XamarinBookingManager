@@ -14,13 +14,17 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectStaffForAppointmentPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SelectStaffForAppointmentPage : ContentPage
+    {
         #region globles
         ObservableCollection<AssignProvider> ListofProvider = new ObservableCollection<AssignProvider>();
         //int EmployeeId;
         int ServiceId;
+        int DurationInMinutes;
+        int DurationInHours;
+
+        int statusID;
         string ServiceName = "";
         double Cost;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
@@ -29,41 +33,54 @@ namespace Demo_App
         public Customer objCust = null;
         public Notes objNotes = null;
         string PageName = "";
+        string selectedDateofBooking;
+        int TotalDurationHoursAndDurationMinutes;
         #endregion
 
-        public SelectStaffForAppointmentPage (Service service,string pagename)
-		{
-			InitializeComponent ();
-            PageName = pagename;            
+        public SelectStaffForAppointmentPage(Service service, string pagename, string DateofBooking,int statusId)
+        {
+            InitializeComponent();
+            PageName = pagename;
             Cost = service.Cost;
             ServiceId = service.Id;
+            DurationInHours = service.DurationInHours;
+            DurationInMinutes = service.DurationInMinutes;
+            statusID = statusId;
+
+
+            selectedDateofBooking = DateofBooking;
             ServiceName = service.Name;
-                  var staffData=GetServiceProvider();           
+            var staffData = GetServiceProvider();
             //GetSelectedStaff();
-            foreach(var item in staffData)
+
+            foreach (var item in staffData)
             {
                 serviceobj = new AssignedServicetoStaff();
                 serviceobj.Id = item.Id;
                 if (item.confirmed == true)
-                {                   
+                {
                     serviceobj.Name = item.FirstName;
                     ListofData.Add(serviceobj);
                 }
                 //var result = serviceobj;
-               
+
             }
             ListofSelectedStaff.ItemsSource = ListofData;
         }
 
-        private void AddNewAppointmentForCustomerClick(object sender,SelectedItemChangedEventArgs e)
+        private void AddNewAppointmentForCustomerClick(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+                
                 AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
                 EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-                Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName, EmployeeData.Id, EmployeeData.Name, Cost, PageName));
+                Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName, EmployeeData.Id, EmployeeData.Name, Cost, DurationInHours, DurationInMinutes, PageName, selectedDateofBooking,statusID));
+                ((ListView)sender).SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
@@ -73,7 +90,7 @@ namespace Demo_App
         {
             try
             {
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/GetEmployeeAllocatedToService?serviceId=" + ServiceId;
 
                 var result = PostData("GET", "", apiUrl);
 
@@ -93,8 +110,9 @@ namespace Demo_App
                 }
                 return ListofProvider;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -103,7 +121,7 @@ namespace Demo_App
         {
             try
             {
-                var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
                 var Method = "GET";
 
                 var result = PostData(Method, "", Url);
@@ -113,8 +131,9 @@ namespace Demo_App
 
                 return ListofServiceProviders;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

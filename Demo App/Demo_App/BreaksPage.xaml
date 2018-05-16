@@ -6,7 +6,7 @@
              Title="Breaks">
     <ContentPage.Content>
         <StackLayout>
-            <local:CustomTimePicker x:Name="Timepicker" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" IsVisible="False"/>
+            <local:CustomTimePicker x:Name="Timepicker" ColumnHeaderHeight="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" IsVisible="False"/>
             <ListView x:Name="BreakTimeList" BackgroundColor="White" RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>

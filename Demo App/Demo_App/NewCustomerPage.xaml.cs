@@ -16,15 +16,36 @@ using Newtonsoft.Json.Linq;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewCustomerPage : ContentPage
-	{
-		public NewCustomerPage ()
-		{
-			InitializeComponent ();            
-		}
-        
-       //private void AddressClick(object sender, EventArgs args)
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewCustomerPage : ContentPage
+    {
+        string pageN;
+        public AddAppointments objaddAppointment = null;
+        public NewCustomerPage(AddAppointments obj, string page)
+        {
+            pageN = page;
+            InitializeComponent();
+            if (obj != null)
+            {
+                objaddAppointment = new AddAppointments();
+                objaddAppointment.ServiceId = obj.ServiceId;
+                objaddAppointment.ServiceName = obj.ServiceName;
+                objaddAppointment.EmployeeId = obj.EmployeeId;
+                objaddAppointment.EmployeeName = obj.EmployeeName;
+                objaddAppointment.Cost = obj.Cost;
+                objaddAppointment.StartTime = obj.StartTime;
+                objaddAppointment.CompanyId = obj.CompanyId;
+
+                objaddAppointment.EndTime = obj.EndTime;
+                objaddAppointment.TimePeriod = obj.TimePeriod;
+                objaddAppointment.DurationInHours = obj.DurationInHours;
+                objaddAppointment.DurationInMinutes = obj.DurationInMinutes;
+                objaddAppointment.DateOfBooking = obj.DateOfBooking;
+            }
+            
+        }
+
+        //private void AddressClick(object sender, EventArgs args)
         //{
         //    Navigation.PushAsync(new AddressPage());
         //}
@@ -46,7 +67,8 @@ namespace Demo_App
                 obj.PostCode = "";
                 obj.Email = CustomerEmail.Text;
                 obj.TelephoneNo = CustomerPhoneNumber.Text;
-                obj.CreationDate = Convert.ToString(DateTime.Now);
+                obj.CreationDate = Convert.ToString(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"));
+
                 var data = JsonConvert.SerializeObject(obj);
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
                 var result = PostData("POST", data, apiUrl);
@@ -54,9 +76,35 @@ namespace Demo_App
                 dynamic successData = JObject.Parse(result);
                 var msg = Convert.ToString(successData.Message);
                 DisplayAlert("Success", msg, "ok");
-                Navigation.PushAsync(new CustomerPage());
+
+                //selectedPageCustomer
+                //AddCustomerBookingTime
+                if (pageN == "AddCustomerBookingTime")
+                {
+                    Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objaddAppointment, pageN));
+                }
+                else if (pageN == "selectedPageCustomer")
+                {
+                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                }
+                else if(pageN == "CalenderPage")
+                {
+                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                }
+                else if(pageN== "CustomerPage")
+                {
+                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                }
+                else if (pageN == "ActivityPage")
+                {
+                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                }
+                else if (pageN == "AccountPage")
+                {
+                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -70,7 +118,7 @@ namespace Demo_App
                 var result = PostData("DELETE", "", apiUrl);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.ToString();
             }
@@ -83,13 +131,13 @@ namespace Demo_App
             var result = PostData("GET", "", apiURL);
             return result;
         }
-      
-              
+
+
         public string GetSelectedService(string ServiceId)
         {
-          
+
             string apiURL = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceById?id=" + ServiceId;
-            var result = PostData("GET", "", apiURL);            
+            var result = PostData("GET", "", apiURL);
             return result;
         }
 
@@ -97,57 +145,57 @@ namespace Demo_App
         {
             // int Id = Convert.ToInt32(CompanyId);
             string apiURL = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyDetails?companyId=" + companyId;
-            var result = PostData("GET", "", apiURL);           
+            var result = PostData("GET", "", apiURL);
             return result;
         }
-       
+
         public string SetStatusOfAppointment(string status, string BookingId)
-        {         
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/SetStatus?status=" + status + "&bookingId=" + BookingId;
-                var result = PostData("POST", "", apiUrl);               
-                return result;     
+        {
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/SetStatus?status=" + status + "&bookingId=" + BookingId;
+            var result = PostData("POST", "", apiUrl);
+            return result;
         }
 
         public string UpdateBooking(BookAppointment appointment)
-        {            
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/UpdateBooking";
-                var JsonString = JsonConvert.SerializeObject(appointment);
+        {
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/UpdateBooking";
+            var JsonString = JsonConvert.SerializeObject(appointment);
 
-                var result = PostData("POST", JsonString, apiUrl);                          
-                return result;                  
+            var result = PostData("POST", JsonString, apiUrl);
+            return result;
         }
-      
+
         public string GetCustomerStats(string CompanyId, string CustomerId, string Year, string Month)
         {
-                   
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/GetCustomerStats?companyId=" + CompanyId + "&customerId=" + CustomerId + "&year=" + Year + "&month=" + Month;
-                var result = PostData("GET", "", apiUrl);               
-                return result;
-           
+
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/booking/GetCustomerStats?companyId=" + CompanyId + "&customerId=" + CustomerId + "&year=" + Year + "&month=" + Month;
+            var result = PostData("GET", "", apiUrl);
+            return result;
+
         }
 
         public string AddCustomerNote(Notes notesdetail)
         {
-         
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/AddNote";
-                var JsonString = JsonConvert.SerializeObject(notesdetail);
-                var result = PostData("POST", JsonString, apiUrl);             
-                return result;
-            
+
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/AddNote";
+            var JsonString = JsonConvert.SerializeObject(notesdetail);
+            var result = PostData("POST", JsonString, apiUrl);
+            return result;
+
         }
 
         public string DeleteCustomerNote(string CompanyId, string CustomerNoteId)
-        {           
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/DeleteCustomerNote?companyId=" + CompanyId + "&customerNoteId=" + CustomerNoteId;
-                var result = PostData("DELETE", "", apiUrl);             
-                return result;           
+        {
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/DeleteCustomerNote?companyId=" + CompanyId + "&customerNoteId=" + CustomerNoteId;
+            var result = PostData("DELETE", "", apiUrl);
+            return result;
         }
 
         public string GetCustomerNotes(string CompanyId, string CustomerId)
-        {           
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomerNotes?companyId=" + CompanyId + "&customerId=" + CustomerId;
-                var result = PostData("GET","", apiUrl);              
-                return result;           
+        {
+            string apiUrl = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomerNotes?companyId=" + CompanyId + "&customerId=" + CustomerId;
+            var result = PostData("GET", "", apiUrl);
+            return result;
         }
 
 
@@ -183,7 +231,7 @@ namespace Demo_App
             }
         }
 
-      
+
 
     }
 }

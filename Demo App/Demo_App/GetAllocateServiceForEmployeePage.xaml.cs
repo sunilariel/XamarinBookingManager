@@ -14,26 +14,32 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GetAllocateServiceForEmployeePage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class GetAllocateServiceForEmployeePage : ContentPage
+    {
         #region GloblesFields
-        int EmpID;        
+        int EmpID;
+        string EmpName;
+        string TimePeriods;
+        DateTime dateofBooking;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignedServicetoStaff> ListOfAllocatedServiceForEmployee = new ObservableCollection<AssignedServicetoStaff>();
         #endregion
 
-        public GetAllocateServiceForEmployeePage ()
-		{
-			InitializeComponent ();            
+        public GetAllocateServiceForEmployeePage()
+        {
+            InitializeComponent();
             GetAllocatedServiceForEmployee();
 
         }
 
-        private void GetTimeforNewAppointmentClick(object sender,SelectedItemChangedEventArgs e)
+        private void GetTimeforNewAppointmentClick(object sender, SelectedItemChangedEventArgs e)
         {
-            var Data = e.SelectedItem as AssignedServicetoStaff;
-            Navigation.PushAsync(new CalendarTimeSlotsPage(Data,"CalandarAppointment"));
+            if (e.SelectedItem == null)
+                return;            
+            var Data = e.SelectedItem as AddAppointments;
+            Navigation.PushAsync(new CalendarTimeSlotsPage(Data, "CalandarAppointment"));
+            ((ListView)sender).SelectedItem = null;
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetAllocatedServiceForEmployee()
@@ -54,9 +60,11 @@ namespace Demo_App
                 ListofAllocatedServicesforEmployee.ItemsSource = ListOfAllocatedServiceForEmployee;
                 return ListOfAllocatedServiceForEmployee;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
+
             }
         }
 

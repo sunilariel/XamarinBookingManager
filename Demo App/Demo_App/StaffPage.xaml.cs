@@ -27,18 +27,23 @@ namespace Demo_App
         public StaffPage()
         {
             InitializeComponent();
-           
+            StaffSearchBar.IsVisible = false;
             var Stafflist = GetStaff();
-            if (Stafflist.Count > 5)
+            StaffSearchBar.IsVisible = false;
+            if (Stafflist.Count !=0 )
             {
-                StaffSearchBar.IsVisible = true;
+                if (Stafflist.Count > 5)
+                {
+                    StaffSearchBar.IsVisible = true;
+                }
             }
+
         }
 
         private void NewStaffClick(object sender, EventArgs args)
         {
             Navigation.PushAsync(new NewStaffPage("StaffCreateAfterLogin"));
-           // Navigation.PushAsync(new BusinessHoursPage()); 
+            // Navigation.PushAsync(new BusinessHoursPage()); 
 
         }
 
@@ -47,17 +52,16 @@ namespace Demo_App
             try
             {
                 var CompanyId = Application.Current.Properties["CompanyId"];
-                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
-                var Method = "GET";
+                string Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/GetCompanyEmployees?companyId=" + CompanyId;
+                var result = PostData("GET", "", Url);
+                ObservableCollection<Staff> ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
 
-                var result = PostData(Method, "", Url);
-
-                ListofAllStaff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
                 ListofStaffData.ItemsSource = ListofAllStaff;
                 return ListofAllStaff;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
 
@@ -67,20 +71,29 @@ namespace Demo_App
         {
             try
             {
-                //thats all you need to make a search                 
-                if (string.IsNullOrEmpty(e.NewTextValue))
+                var Stafflist = GetStaff();
+                if (StaffSearchBar.Text == "")
                 {
-                    ListofStaffData.ItemsSource = ListofAllStaff;
+                    ListofStaffData.ItemsSource = Stafflist;
                 }
-
                 else
                 {
-                    var listfilter = ListofAllStaff.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue)).ToList();
-
-                    ListofStaffData.ItemsSource = listfilter;
-
-
+                    var keyword = StaffSearchBar.Text;
+                    ListofStaffData.ItemsSource = Stafflist.Where(x => x.FirstName.ToLower().Contains(keyword.ToLower()));
                 }
+                
+                ////thats all you need to make a search                 
+                //if (string.IsNullOrEmpty(e.NewTextValue))
+                //{
+                //    ListofStaffData.ItemsSource = ListofAllStaff;
+                //}
+
+                //else
+                //{
+                //    var listfilter = ListofAllStaff.Where(x => x.FirstName.ToLower().StartsWith(e.NewTextValue)).ToList();
+
+                //    ListofStaffData.ItemsSource = listfilter;
+                //}
             }
             catch (Exception ex)
             {
@@ -123,11 +136,15 @@ namespace Demo_App
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+
                 var staff = e.SelectedItem as Staff;
                 Application.Current.Properties["SelectedEmployeeID"] = staff.Id;
                 Navigation.PushAsync(new StaffProfileDetailsPage());
+                ((ListView)sender).SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }

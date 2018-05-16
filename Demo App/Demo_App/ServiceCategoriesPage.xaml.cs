@@ -103,12 +103,16 @@ namespace Demo_App
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+                
                 var Category = e.SelectedItem as ServicesAllocatedToCategory;
                 Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName));
+                ((ListView)sender).SelectedItem = null;
             }
             catch(Exception ex)
             {
-
+                ex.ToString();
             }
         }
     }

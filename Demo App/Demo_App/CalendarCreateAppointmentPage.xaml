@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="Demo_App.CalendarCreateAppointmentPage"
              Title="New Appointment">
-   
-      
-   
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Done" Order="Primary" Priority="0" Clicked="CreateAppointment"></ToolbarItem>
-        
+        <ToolbarItem Text="Done" Order="Primary" Priority="0" Clicked="CreateAppointment"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         
         <StackLayout BackgroundColor="LightGray">

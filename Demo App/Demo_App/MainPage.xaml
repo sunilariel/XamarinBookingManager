@@ -11,6 +11,8 @@
         </ContentPage>-->
 
         <ContentPage Title="Profile" Icon="Icon.png" xmlns:local="clr-namespace:Demo_App">
+           
+            
             <StackLayout Spacing="20" Padding="20"
                          VerticalOptions="Center">
                 <Entry Placeholder="Username"

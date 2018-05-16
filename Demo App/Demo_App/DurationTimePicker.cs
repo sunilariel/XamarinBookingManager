@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 using Syncfusion.SfPicker.XForms;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using static Demo_App.NewServicePage;
+
 
 namespace Demo_App
 {
     class DurationTimePicker : SfPicker
     {
-
         // Time api is used to modify the Hour collection as per change in Time
         /// <summary>
         /// Time is the acutal DataSource for SfPicker control which will holds the collection of Hour ,Minute and Format
         /// </summary>
+        /// 
+        
+
+        //public ObservableCollection<object> pName { get; set; }
         public ObservableCollection<object> Time { get; set; }
 
         //Minute is the collection of minute numbers
@@ -40,6 +45,10 @@ namespace Demo_App
             Minute = new ObservableCollection<object>();
             Headers = new ObservableCollection<string>();
             SetTime = new ObservableCollection<object>();
+
+            //pName = new ObservableCollection<object>();
+
+            
 
             if (Device.OS == TargetPlatform.Android)
             {
@@ -71,14 +80,17 @@ namespace Demo_App
             //this.ColumnHeaderText = Headers;           
         }
 
-
+        
 
         private void PopulateTimeCollection()
         {
+            
 
             Hour = new ObservableCollection<object>();
             Minute = new ObservableCollection<object>();
             Time = new ObservableCollection<object>();
+
+            //pName = new ObservableCollection<object>();
 
             //Populate Hour
             for (int i = 0; i <= 23; i++)
@@ -108,7 +120,35 @@ namespace Demo_App
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
             todaycollection = (ObservableCollection<Object>)e.NewValue;
+            string PageName;
+            PageName = Convert.ToString(Application.Current.Properties["selectPage"]);
+
+            if (PageName == "ServiceCreateAfterRegistration")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterRegistration"));
+            }
+            else if (PageName == "CalenderPage")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "CalenderPage"));
+            }
+            else if (PageName == "CustomerPage")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "CustomerPage"));
+            }
+            else if (PageName == "ActivityPage")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ActivityPage"));
+            }
+            else if (PageName == "AccountPage")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "AccountPage"));
+            }
+            else 
+            {
             Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
+            }
+            
+            
             throw new NotImplementedException();
         }
     }

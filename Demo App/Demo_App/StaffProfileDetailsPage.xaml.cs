@@ -28,11 +28,12 @@ namespace Demo_App
 
         public StaffProfileDetailsPage ()
 		{
-
+            //StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
             StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
             InitializeComponent ();
-            GetEmployeeDetail();
             GetAllocatedServicetoStaff();
+            GetEmployeeDetail();
+            
            GetAllTimeOffForEmployee();
             ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
 
@@ -189,6 +190,7 @@ namespace Demo_App
                                 Saturday.TextColor = Xamarin.Forms.Color.Black;
                             }
                             break;
+                        
                     }
                 }
             }
@@ -302,7 +304,7 @@ namespace Demo_App
 
                     // Navigation.PopAsync(true);
 
-                    Navigation.PushAsync(new StaffPage());
+                     Navigation.PushAsync(new StaffPage());
 
                     int pCount = Navigation.NavigationStack.Count();
 
@@ -319,7 +321,7 @@ namespace Demo_App
                 }
                 else
                 {
-                    Navigation.PushAsync(new StaffProfileDetailsPage());
+                    await Navigation.PushAsync(new StaffProfileDetailsPage());
                 }
 
                 

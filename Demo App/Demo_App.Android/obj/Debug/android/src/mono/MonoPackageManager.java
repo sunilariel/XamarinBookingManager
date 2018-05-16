@@ -107,9 +107,11 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "Demo_App.Android.dll" comes first in this list. */
 		"Demo_App.Android.dll",
+		"AndHUD.dll",
 		"ExifLib.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.CurrentActivity.dll",
 		"Rg.Plugins.Popup.dll",
 		"Rg.Plugins.Popup.Droid.dll",
 		"Rg.Plugins.Popup.Platform.dll",

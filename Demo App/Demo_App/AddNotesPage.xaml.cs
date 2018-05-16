@@ -39,7 +39,9 @@ namespace Demo_App
                 {
                     Notes obj = new Notes();
                     obj.CompanyId = data.CompanyId;
-                    obj.CreationDate = Convert.ToDateTime(data.CreationDate);
+                    obj.CreationDate = data.CreationDate;
+
+                    //DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
                     obj.CustomerId = data.CustomerId;
                     obj.Description = data.Description;
                     obj.WhoAddedThis = data.WhoAddedThis;
@@ -64,10 +66,11 @@ namespace Demo_App
                 var Method = "GET";
                 var result = PostData(Method, "", Url);
                 objCust = JsonConvert.DeserializeObject<Customer>(result);
+                
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
@@ -86,8 +89,10 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 ObservableCollection<Notes> objnotes = new ObservableCollection<Notes>();
                 return objnotes;
+                
             }
 
         }
@@ -96,22 +101,28 @@ namespace Demo_App
         {
             try
             {
-                GetSelectedCustomerById();
+                GetSelectedCustomerById();               
                 Notes obj = new Notes();
+                obj.Id = -1;
                 if (objCust != null)
                 {
                     obj.CustomerId = objCust.Id;
                 }
                 obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 obj.Description = CustomerNote.Text;
-                obj.WhoAddedThis = "";
-                obj.CreationDate = DateTime.Now;
+                obj.WhoAddedThis = objCust.FirstName;
+                obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
-                var data = JsonConvert.SerializeObject(obj);
-                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
-                var ApiMethod = "POST";
+                var SerializedData = JsonConvert.SerializeObject(obj);
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
+                var result = PostData("POST", SerializedData, apiUrl);
 
-                var result = PostData(ApiMethod, data, Url);
+
+                //var data = JsonConvert.SerializeObject(obj);
+                //var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
+                //var ApiMethod = "POST";
+
+                //var result = PostData(ApiMethod, data, Url);
             }
             catch (Exception ex)
             {

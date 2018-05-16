@@ -37,7 +37,7 @@ namespace Demo_App
                 {
                     if (item.isAssigned == true)
                     {
-                        ServiceString = ServiceString + item.Name + ",";
+                        ServiceString = ServiceString + item.Name +  " , ";
                     }
                 }
                 if (ServiceString.Length > 0)
@@ -54,61 +54,40 @@ namespace Demo_App
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
-        {
+        {           
             try
             {
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
                 var result = PostData("GET", "", apiUrl);
                 ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
                 //ObservableCollection<AssignServiceToCategory> ListofAssignServicesCategories = GetAssignServices();
-                foreach (var item in ListOfAssignService)
-                {
-                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + item.Id;
-                    var resultData = PostData("GET", "", ApiUrl);
-                    ListofAllAssignedServices = JsonConvert.DeserializeObject<ObservableCollection<AssignServiceToCategory>>(resultData);
-                }
+                //foreach (var item in ListOfAssignService)
+                //{
+                //    var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetCategoriesAssignedToService?companyId=" + CompanyId + "&serviceId=" + item.Id;
+                //    var resultData = PostData("GET", "", ApiUrl);
+                //    ListofAllAssignedServices = JsonConvert.DeserializeObject<ObservableCollection<AssignServiceToCategory>>(resultData);
+                //}
 
-                foreach (var service in ListofAllAssignedServices)
-                {
+                //foreach (var service in ListofAllAssignedServices)
+                //{
                     foreach (var assignService in ListOfAssignService)
                     {
-                        if (service.Id == assignService.Id)
-                        {
+                        //if (service.Id == assignService.Id)
+                        //{
                             assignService.isAssigned = true;
-                        }
+                        //}
                     }
-                }
-                return ListOfAssignService;
-
-
-
-                //var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + CompanyId;
-                //var result = PostData("GET", "", apiUrl);
-                //ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
-                //foreach (var item in ListofAllCategories)
-                //{
-                //    var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
-                //    var resultData = PostData("GET", "", ApiUrl);
-                //    ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
-
-                //    ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
-                //    AllocateServices.CategoryName = item.Name;
-                //    AllocateServices.CategoryId = item.Id;
-                //    AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + "services";
-
-                //    ListOfAssignServiceCount.Add(AllocateServices);
                 //}
-                //ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
-                //BindingContext = ListOfAssignServiceCount;
-
-
-
+                return ListOfAssignService;
             }
             catch (Exception ex)
             {
+                ex.ToString();
                 return null;
             }
         }
+
+
 
         public void SaveCategoryDetails()
         {
@@ -181,6 +160,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

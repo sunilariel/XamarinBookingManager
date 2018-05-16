@@ -17,8 +17,9 @@ namespace Demo_App
 	public partial class AddServiceForCompnyRegistration : ContentPage
 	{
         string result = "";
+        string pagename;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        public AddServiceForCompnyRegistration ()
+        public AddServiceForCompnyRegistration (string pagename)
 		{
 			InitializeComponent ();
             GetService();
@@ -31,6 +32,7 @@ namespace Demo_App
                 Application.Current.Properties["ServiceDurationTime"] = null;
                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
                 ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+                
                 Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterRegistration"));
             }
             catch (Exception e)
@@ -42,7 +44,11 @@ namespace Demo_App
 
         private void NextClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SetAppointmentPage());
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 1; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+            Navigation.PushAsync(new SetAppointmentPage(""));
         }
 
         public void GetService()

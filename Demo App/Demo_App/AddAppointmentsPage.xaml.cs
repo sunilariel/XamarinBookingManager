@@ -19,6 +19,7 @@ namespace Demo_App
     {
         #region GloblesVariables
         int CategoryId;
+        int statusId;
         string PageName = "";
         public Customer objCust = null;
         public AppointmentDetails obj = null;
@@ -48,11 +49,11 @@ namespace Demo_App
                     objBookAppointment.EndMinute = objAppointment.EndMinute;
                     objBookAppointment.IsAdded = objAppointment.IsAdded;
                     objBookAppointment.Message = objAppointment.Message;
-                    objBookAppointment.Notes = objAppointment.Notes;
+                    //objBookAppointment.Notes = objAppointment.Notes;
                     objBookAppointment.CustomerIds = objAppointment.CustomerIds;
                     objBookAppointment.Start = objAppointment.Start;
                     objBookAppointment.End = objAppointment.End;
-                    objBookAppointment.Status = objAppointment.Status;
+                    //objBookAppointment.Status = objAppointment.Status;
                 }
                 GetAppointmentDetails();
             }
@@ -83,6 +84,9 @@ namespace Demo_App
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+                
                 var data = e.SelectedItem as AppointmentDetails;
                 string bookingdate = data.BookingDate.Split(',')[0];
                 obj = new AppointmentDetails();
@@ -109,7 +113,7 @@ namespace Demo_App
                 obj.AppointmentDetail = data.AppointmentDetail;
                 obj.CommentNotes = data.CommentNotes;
                 obj.TimePeriod = TimePeriod;
-                Navigation.PushAsync(new AppointmentDetailsPage(obj));
+                Navigation.PushAsync(new AppointmentDetailsPage(obj));((ListView)sender).SelectedItem = null;
             }
             catch(Exception ex)
             {
@@ -120,7 +124,13 @@ namespace Demo_App
 
         private void AddAppointmentsClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory(PageName));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(DateTime.Now).ToString();
+            Navigation.PushAsync(new SelectServiceCategory("NewAppointment", DateofBooking,statusId));
         }
 
         public ObservableCollection<AppointmentDetails> GetAppointmentDetails()
@@ -143,9 +153,9 @@ namespace Demo_App
                 {
                     //string DurationHours = "0";
                     //if(appointment.Service.DurationInMinutes != null && appointment.Service.DurationInMinutes != 0)
-                    string DurationHours = Convert.ToString(appointment.Service.DurationInMinutes == null ? 0 : appointment.Service.DurationInMinutes / 60);
+                    string DurationHours = Convert.ToString(appointment.Service.DurationInMinutes / 60);
 
-                    string durmin = Convert.ToString(appointment.Service.DurationInMinutes == null ? 0 : appointment.Service.DurationInMinutes % 60); ;
+                    string durmin = Convert.ToString(appointment.Service.DurationInMinutes % 60); ;
                     string durhrs = DurationHours + "hrs";
                     string durationMins = durmin + "mins";
                     string Duration = durhrs + " " + durationMins;
@@ -181,7 +191,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
             CustomerAppoimentList.ItemsSource = ListofAppointment;

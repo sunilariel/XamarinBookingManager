@@ -33,6 +33,8 @@ namespace Demo_App
             obj.ZipCode = Convert.ToInt32(txtZipCode.Text);
             obj.CreationDate = "2017-11-08T12:19:27.628Z";
 
+            //DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+
             //var data = JsonConvert.SerializeObject(obj);
             //var Url = Application.Current.Properties["DomainUrl"] + "/api/customer/Create";
             //var ApiMethod = "POST";

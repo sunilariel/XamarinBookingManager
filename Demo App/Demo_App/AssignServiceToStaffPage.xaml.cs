@@ -75,7 +75,7 @@ namespace Demo_App
                         obj.CompanyId = Convert.ToInt32(CompanyId);
                         obj.EmployeeId = EmployeeId;
                         obj.ServiceId = item.Id;
-                        obj.CreationDate = DateTime.Now.ToString();
+                        obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
 
                         var SerializedData = JsonConvert.SerializeObject(obj);

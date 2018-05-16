@@ -17,7 +17,7 @@
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
+                        <!--<RowDefinition Height="70"/>-->
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0" Padding="10,10,0,0" BackgroundColor="White">
@@ -33,22 +33,27 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Button_Clicked"/>
                         </StackLayout.GestureRecognizers>
+                        <TimePicker x:Name="ServiceDurationTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
+                    
+                    
+                    <!--<StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
                         <Label Text="Buffer Time (optional)" HorizontalOptions="Start"></Label>
                         <Label x:Name="BufferTime" HorizontalOptions="Start"></Label>
                         <local:BufferTimePicker x:Name="buffer" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="BufferButton_Clicked"/>
                         </StackLayout.GestureRecognizers>
-                        <!--<Entry  Placeholder="0 min" FontSize="Small"/>-->
+                        --><!--<Entry  Placeholder="0 min" FontSize="Small"/>--><!--
                         <TimePicker x:Name="ServiceBufferTime" HorizontalOptions="FillAndExpand" TextColor="Gray"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="3" Padding="10,10,0,0" BackgroundColor="White">
+                    </StackLayout>-->
+                    
+                    
+                    <StackLayout Grid.Row="2" Padding="10,10,0,0" BackgroundColor="White">
                         <Label Text="Cost" HorizontalOptions="Start"></Label>
                         <Entry x:Name="ServiceCost"  Placeholder="0" FontSize="Small"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="4"></StackLayout>
+                    <StackLayout Grid.Row="3"></StackLayout>
                 </Grid>
             </ScrollView>
         </StackLayout>

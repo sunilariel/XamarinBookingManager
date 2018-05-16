@@ -28,7 +28,7 @@
                             <Label Text="Select All" HorizontalOptions="End"></Label>
                         </StackLayout>
                         <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,10,0,0">
-                            <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  CheckedChanged="AssignAllProvider"/>
+                            <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding AllAssigned,Mode=TwoWay}" CheckedChanged="AssignAllProviders"/>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -53,7 +53,7 @@
                                                 <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"   />
                                             </StackLayout>
                                             <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
-                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding isAssigned,Mode=TwoWay}"  CheckedChanged="AssignServiceToCategory"/>
+                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{x:Binding isAssigned,Mode=TwoWay}"  CheckedChanged="AssignServiceToCategory"/>
                                             </StackLayout>
                                         </Grid>
                                     </StackLayout>

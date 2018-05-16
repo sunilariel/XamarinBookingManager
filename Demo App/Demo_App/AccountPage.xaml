@@ -63,6 +63,22 @@
                         </StackLayout>
                     </ViewCell>
                 </TableSection>
+
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  Source="logout.png" WidthRequest="50" HeightRequest="50"/>
+                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="Log Out"
+                              TextColor="Black" />
+                            <Image HeightRequest="20" WidthRequest="20" Source="left_arrow.png"
+                              HorizontalOptions="EndAndExpand"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LogOut_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+
                 <!--<TableSection>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">

@@ -21,7 +21,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0" HeightRequest="50" BackgroundColor="White" Padding="0,0,10,0">
-                    <Picker x:Name="newAppointmentsPicker" HorizontalOptions="EndAndExpand" WidthRequest="100"/>
+                    <Picker x:Name="newAppointmentsPicker" HorizontalOptions="EndAndExpand" WidthRequest="100" SelectedIndexChanged="AddStatusOfNewAppointment"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">
                     <Grid>
@@ -35,7 +35,7 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label x:Name="AppointmentDatelbl" TextColor="Black"/>
-                            <Label x:Name="AppointmentTime" Text="{Binding StartTime}"/>
+                            <Label x:Name="AppointmentTime" Text="{Binding TimePeriod}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />

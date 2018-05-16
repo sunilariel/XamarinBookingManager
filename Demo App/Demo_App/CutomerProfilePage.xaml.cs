@@ -57,7 +57,7 @@ namespace Demo_App
                 {
                     Notes obj = new Notes();
                     obj.CompanyId = data.CompanyId;
-                    obj.CreationDate = Convert.ToDateTime(data.CreationDate);
+                    obj.CreationDate = data.CreationDate;
                     obj.CustomerId = data.CustomerId;
                     obj.Description = data.Description;
                     obj.WhoAddedThis = data.WhoAddedThis;
@@ -65,7 +65,7 @@ namespace Demo_App
                 }
                 notesLst.OrderByDescending(x => x.CreationDate);
 
-                if (notesLst != null)
+                if (notesLst == null)
                 {
                     Noteslbl.Text = notesLst[0].Description;
                 }
@@ -122,8 +122,25 @@ namespace Demo_App
                 var Method = "DELETE";
                 var Url = Application.Current.Properties["DomainUrl"] + "api/customer/DeleteCustomer?companyId=" + CompanyId + "&customerId=" + CustomerId;
                 PostData(Method, "", Url);
+                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 3; PageIndex--)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
 
-                Navigation.PushAsync(new CustomerPage());
+                }
+                
+                var page = Convert.ToString(Application.Current.Properties["FloatingCustomerPageName"]);
+
+                Navigation.PushAsync(new SetAppointmentPage(page));
+
+                int pCount = Navigation.NavigationStack.Count();
+
+                for (int i = 0; i < pCount; i++)
+                {
+                    if (i == 2)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    }
+                }
             }
             catch(Exception e)
             {

@@ -15,19 +15,19 @@ using System.Collections.ObjectModel;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ServicePage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ServicePage : ContentPage
+    {
         string result = "";
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
 
-        public ServicePage ()
-		{
-            
-			InitializeComponent ();
-           
+        public ServicePage()
+        {
+
+            InitializeComponent();
+
             GetService();
-           
+
 
         }
 
@@ -49,15 +49,26 @@ namespace Demo_App
             {
                 Application.Current.Properties["ServiceName"] = null;
                 Application.Current.Properties["ServiceDurationTime"] = null;
+
+                Application.Current.Properties["ServiceCost"] = null;
+
+                Application.Current.Properties["ServiceBufferTime"] = null;
+
                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
                 ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+
+                if (true)
+                {
+
+                }
+
                 Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
-           
+
         }
 
 
@@ -71,9 +82,9 @@ namespace Demo_App
                 ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
                 ListofAllServices.ItemsSource = ListofServices;
                 BindingContext = ListofServices;
-               
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -118,7 +129,7 @@ namespace Demo_App
                 Application.Current.Properties["ServiceID"] = Servicedata.Id;
                 Navigation.PushAsync(new ServiceDetailsPage());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }

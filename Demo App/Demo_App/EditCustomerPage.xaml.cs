@@ -41,7 +41,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
@@ -84,7 +84,7 @@ namespace Demo_App
                 obj.Password = "";
                 obj.Email = EditCustomerEmail.Text;
                 obj.TelephoneNo = EditCustomerPhoneNo.Text;
-                obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/Update";
                 var serailizeddata = JsonConvert.SerializeObject(obj);

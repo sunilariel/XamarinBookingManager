@@ -44,11 +44,40 @@ namespace Demo_App
         //    ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
         //    ListofAllServices.ItemsSource = ListofServices;
         //}
+        //public void AssignProvider(object Sender, EventArgs args)
+        //{
+        //    try
+        //    {
+        //        for (int i = 0; i < ListofServices.Count; i++)
+        //        {
+        //            if (ListofServices[i].isAssigned == false)
+        //            {
+        //                foreach (var item in ListofServices)
+        //                {
+        //                    item.isAssigned = false;
+        //                }
+        //                break;
+        //            }
+        //            else
+        //            {
 
+        //                ListofServices[i].isAssigned = true;
+        //                // AllStaffChecked.Checked = true;
+        //            }
+        //        }
+        //        //AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Staff selected";
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        e.ToString();
+        //    }
+
+        //}
         public void AssignServicetoStaff()
         {
             var data = ListofServices;
-            foreach (var item in data)
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/AllocateService";
+            foreach (var item in ListofServices)
             {
                 if (item.isAssigned == true)
                 {
@@ -56,13 +85,19 @@ namespace Demo_App
                     obj.CompanyId = Convert.ToInt32(CompanyId);
                     obj.EmployeeId = EmployeeId;
                     obj.ServiceId = item.Id;
-                    obj.CreationDate = DateTime.Now.ToString();
+                    obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                     var SerializedData = JsonConvert.SerializeObject(obj);
-                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
+                   
                     var result = PostData("POST", SerializedData, apiUrl);
                 }
-               
+               else
+                {
+                    AssignServiceToStaff obj = new AssignServiceToStaff();
+                    var SerializedData = JsonConvert.SerializeObject(obj);
+                    var Url = Application.Current.Properties["DomainUrl"] + "/api/staff/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + EmployeeId + "&serviceId=" + item.Id;
+                    var result = PostData("POST", SerializedData, Url);
+                }
             }            
             
             Navigation.PushAsync(new StaffProfileDetailsPage());

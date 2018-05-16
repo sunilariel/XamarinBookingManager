@@ -14,76 +14,94 @@ using System.Net.Http;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json.Linq;
 
+
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewServicePage : ContentPage
-	{
+
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewServicePage : ContentPage
+    {
         #region GlobleFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
-        string name = "";
+        //string name = "";
         string DurationOfService = "";
-        string PageName = "";
+        string PageName;
+        //string PageNames = Convert.ToString(Application.Current.Properties["selectedPage"]);
         #endregion
-
-        public NewServicePage (ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer,string pagename)
-		{
+        string test = "test";
+        public NewServicePage(ObservableCollection<object> todaycollection, ObservableCollection<object> todaycollectionBuffer, string pagename)
+        {
             try
             {
-                InitializeComponent();
+                test = pagename;
+
                 PageName = pagename;
-                if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "")
+
+                Application.Current.Properties["selectPage"] = pagename;
+
+                InitializeComponent();
+
+                if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "" || Application.Current.Properties["ServiceCost"] != null || Application.Current.Properties["ServiceCost"] != ""|| Application.Current.Properties["ServiceDurationTime"] != null || Application.Current.Properties["ServiceDurationTime"] != ""|| Application.Current.Properties["ServiceBufferTime"] != null || Application.Current.Properties["ServiceBufferTime"] != "")
                 {
                     ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
+                    ServiceCost.Text = Convert.ToString(Application.Current.Properties["ServiceCost"]);
+                    duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
+                    //BufferTime.Text = Convert.ToString(Application.Current.Properties["ServiceBufferTime"]);
                 }
+
+
+
+
                 if (todaycollection.Count > 0)
                 {
-                    //string TimeData = todaycollection[0] + ":" + todaycollection[1];
                     int Minutes = Convert.ToInt32(todaycollection[0]) * 60 + Convert.ToInt32(todaycollection[1]);
-                    DurationOfService = Minutes + " min";
-
-                    //ServiceName.Text = name;
-                    duration.Text = DurationOfService;
-                    //BufferTime.Text = DurationOfService;
+                    DurationOfService = Minutes + " min";                    
+                    duration.Text = DurationOfService;                    
                 }
 
                 if (todaycollectionBuffer.Count > 0)
                 {
                     int Min = Convert.ToInt32(todaycollectionBuffer[0]) * 60 + Convert.ToInt32(todaycollectionBuffer[1]);
-                    string BufferTimeOfService = Min + " min";
-                    // ServiceName.Text = name;
+                    string BufferTimeOfService = Min + " min";                    
                     if (Application.Current.Properties["ServiceDurationTime"] != null)
                     {
                         duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
                     }
-                    BufferTime.Text = BufferTimeOfService;
+                    //BufferTime.Text = BufferTimeOfService;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
+            
         }
+       
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.Properties["ServiceName"] = ServiceName.Text;          
-            //open picker dialog
+            Application.Current.Properties["ServiceName"] = ServiceName.Text;
+            Application.Current.Properties["serviceProfileTitle"] = ServiceName.Text;
+            Application.Current.Properties["ServiceCost"] = ServiceCost.Text;
+           
+            //Application.Current.Properties["ServiceBufferTime"] = BufferTime.Text;
+           
             date.IsOpen = !date.IsOpen;
-            
-                     
+
         }
         private void BufferButton_Clicked(object sender, EventArgs e)
         {
             Application.Current.Properties["ServiceName"] = ServiceName.Text;
+            Application.Current.Properties["serviceProfileTitle"] = ServiceName.Text;
+            Application.Current.Properties["ServiceCost"] = ServiceCost.Text;
             Application.Current.Properties["ServiceDurationTime"] = duration.Text;
-            //open picker dialog
-            buffer.IsOpen = !buffer.IsOpen;
-            //((Demo_App)App.Current).DurationTimePicker();
-
+           
+            //buffer.IsOpen = !buffer.IsOpen;
+           
         }
-       
+
         public void AddService()
         {
             try
@@ -91,33 +109,46 @@ namespace Demo_App
                 if (ServiceName.Text == "")
                     return;
 
-                if (duration.Text != "" || BufferTime.Text != "" || ServiceCost.Text != "")
+                if (duration.Text != "" || ServiceCost.Text != "")
                 {
                     string[] ServiceBufferTime = { };
                     string[] ServiceDuration = { };
                     string Duration = duration.Text;
-                    string bufferTime = BufferTime.Text;
+                    //string bufferTime = BufferTime.Text;
                     if (Duration != null)
                     {
                         ServiceDuration = Duration.Split(' ');
                     }
-                    if (bufferTime != null)
-                    {
-                        ServiceBufferTime = bufferTime.Split(' ');
-                    }
+                    //if (bufferTime != null)
+                    //{
+                    //    ServiceBufferTime = bufferTime.Split(' ');
+                    //}
+
+                    var minutes = ServiceDuration[0];
+                    var totalMinutes = Convert.ToInt32(minutes);
+                    var time = TimeSpan.FromMinutes(totalMinutes);
+
+                    var durationHours = string.Format("{0:00}", (int)time.Hours);
+                    var durationMinutes = string.Format("{0:00}", (int)time.Minutes);
+
                     Service obj = new Service();
-                    obj.Id = 0;
+                    //obj.Id = 0;
                     obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                     obj.Name = ServiceName.Text;
                     obj.CategoryName = "";
                     obj.CategoryId = 0;
-                    obj.DurationInMinutes = Convert.ToInt32(ServiceDuration[0]);
+                    //obj.DurationInMinutes = Convert.ToInt32(durationMinutes);
+                    obj.DurationInMinutes = Convert.ToInt32(totalMinutes);
+
                     obj.DurationInHours = 0;
+                    //obj.DurationInHours = Convert.ToInt32(durationHours); 
+
                     obj.Cost = Convert.ToDouble(ServiceCost.Text);
                     obj.Currency = "";
                     obj.Colour = "";
-                    obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
-                    obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                    //obj.Buffer = Convert.ToInt32(ServiceBufferTime[0]);
+                    obj.Buffer = 0;
+                    obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
                     obj.Description = "";
 
                     var SerializedData = JsonConvert.SerializeObject(obj);
@@ -132,16 +163,32 @@ namespace Demo_App
                         Application.Current.Properties["ServiceID"] = ServiceId;
                         if (PageName == "ServiceCreateAfterRegistration")
                         {
-                            Navigation.PushAsync(new AddServiceForCompnyRegistration());
+                            Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "ServiceCreateAfterRegistration"));
                         }
-                        else if(PageName == "ServiceCreateAfterLogin")
+                        else if (PageName == "ServiceCreateAfterLogin")
                         {
                             Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AddService"));
-                        }                      
+                        }
+                        else if (PageName == "CalenderPage"|| PageName == "CustomerPage"|| PageName == "ActivityPage"|| PageName == "AccountPage")
+                        {
+                            Navigation.PushAsync(new ServiceProviderPage(GetStaff(), PageName));
+                        }
+                        //else if (PageName == "CustomerPage")
+                        //{
+                        //    Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "CustomerPage"));
+                        //}
+                        //else if (PageName == "ActivityPage")
+                        //{
+                        //    Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "ActivityPage"));
+                        //}
+                        //else if (PageName == "AccountPage")
+                        //{
+                        //    Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AccountPage"));
+                        //}
                     }
-                }               
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -157,8 +204,9 @@ namespace Demo_App
                 ListofServiceProviders = JsonConvert.DeserializeObject<ObservableCollection<AssignProvider>>(result);
                 return ListofServiceProviders;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -172,8 +220,9 @@ namespace Demo_App
                 ObservableCollection<Service> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<Service>>(result);
                 return ListofServices;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -190,7 +239,7 @@ namespace Demo_App
             obj.Id = 0;
             obj.CompanyId = CompanyId;
             obj.Name = "c2";
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";           
+            obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
             var SerializedData = JsonConvert.SerializeObject(obj);
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/CreateCategory";
@@ -217,7 +266,7 @@ namespace Demo_App
             obj.Currency = "";
             obj.Colour = "";
             obj.Buffer = 10;
-            obj.CreationDate = "2017-11-08T12:19:27.628Z";
+            obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
             obj.Description = "";
 
             var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/UpdateService";
@@ -262,7 +311,7 @@ namespace Demo_App
                 var result = PostData("GET", "", apiUrl);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.ToString();
             }
@@ -277,7 +326,7 @@ namespace Demo_App
                 var result = PostData("POST", json, apiUrl);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.ToString();
             }

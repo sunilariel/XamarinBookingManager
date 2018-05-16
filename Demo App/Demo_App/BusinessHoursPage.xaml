@@ -29,10 +29,10 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Column="0">
-                                            <TimePicker Time="{Binding Start,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <TimePicker Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                         </StackLayout>
                                         <StackLayout Grid.Column="1">
-                                            <TimePicker Time="{Binding End,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" ></TimePicker>
+                                            <TimePicker Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" ></TimePicker>
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>

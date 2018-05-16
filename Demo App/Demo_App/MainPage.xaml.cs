@@ -18,6 +18,7 @@ namespace Demo_App
         public MainPage()
         {
             InitializeComponent();
+            
             BindingContext = bindingValue = new Login();
         }
 
@@ -36,7 +37,7 @@ namespace Demo_App
         async void OnLoginClicked(object sender, EventArgs args)
         {
 
-
+            
             //await Navigation.PushAsync(new TabbedPage());
             var test = bindingValue;
             //var masterPage = this.Parent as TabbedPage;
@@ -61,7 +62,7 @@ namespace Demo_App
             }
             catch (Exception ex)
             {
-                var a = ex;
+                ex.ToString();
             }
             return result;
         }

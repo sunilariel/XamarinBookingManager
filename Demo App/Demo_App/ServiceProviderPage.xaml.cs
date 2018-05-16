@@ -21,7 +21,7 @@ namespace Demo_App
         #region GlobleFields
         string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
         int ServiceId;
-        string PreviousPageName = "";
+        string PreviousPageName;
 
         ObservableCollection<AssignCategory> ListofAllCategories = new ObservableCollection<AssignCategory>();
         ObservableCollection<AssignProvider> ListofServiceProviders = new ObservableCollection<AssignProvider>();
@@ -43,7 +43,7 @@ namespace Demo_App
         {
             try
             {
-
+                
                 CheckBox AllProvider = (CheckBox)Sender;
                 if (AllProvider.Checked == true)
                 {
@@ -117,6 +117,7 @@ namespace Demo_App
             }
             catch(Exception e)
             {
+                e.ToString();
                 return 0;
             }
         }
@@ -125,7 +126,7 @@ namespace Demo_App
         {
             try
             {
-                var Url = Application.Current.Properties["DomainUrl"] + "api/companyregistration/AssignServiceToStaff";
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
 
                 foreach (var item in ListofServiceProviders)
                 {
@@ -135,14 +136,15 @@ namespace Demo_App
                         obj.CompanyId = Convert.ToInt32(CompanyId);
                         obj.ServiceId = ServiceId;
                         obj.EmployeeId = item.Id;
-                        obj.CreationDate = DateTime.Now.ToString();
+                        obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                        //System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                         var SerializedData = JsonConvert.SerializeObject(obj);
                         var result = PostData("POST", SerializedData, Url);
                     }
                     else
                     {
-                        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/companyregistration/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + item.Id + "&serviceId=" + ServiceId;
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + item.Id + "&serviceId=" + ServiceId;
                         var result = PostData("POST", "", apiUrl);
                     }
 
@@ -154,8 +156,29 @@ namespace Demo_App
                 }
                 else if (PreviousPageName == "AddService")
                 {
-                    Navigation.PushAsync(new ChooseCategoriesPage(GetCategories()));
+                    Navigation.PushAsync(new ChooseCategoriesPage("",GetCategories()));
                 }
+                else if (PreviousPageName == "ServiceCreateAfterRegistration")
+                {
+                    Navigation.PushAsync(new AddServiceForCompnyRegistration(PreviousPageName));
+                }
+                else if (PreviousPageName == "CalenderPage"|| PreviousPageName == "CustomerPage"|| PreviousPageName == "ActivityPage"|| PreviousPageName == "AccountPage")
+                {
+                    Navigation.PushAsync(new ChooseCategoriesPage(PreviousPageName, GetCategories()));
+                }
+                //else if (PreviousPageName == "CustomerPage")
+                //{
+                //    Navigation.PushAsync(new ChooseCategoriesPage("CustomerPage", GetCategories()));
+                //}
+                //else if (PreviousPageName == "ActivityPage")
+                //{
+                //    Navigation.PushAsync(new ChooseCategoriesPage("ActivityPage",GetCategories()));
+                //}
+                //else if (PreviousPageName == "AccountPage")
+                //{
+                //    Navigation.PushAsync(new ChooseCategoriesPage("AccountPage",GetCategories()));
+                //}
+
             }
             catch(Exception e)
             {
@@ -165,7 +188,9 @@ namespace Demo_App
 
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem == null) return;
+
+            if (e.SelectedItem == null)
+                return;
             // add the checkmark in the event because the item was clicked
             // be able to check the item here
             DisplayAlert("Tapped", e.SelectedItem + " row was tapped", "OK");
@@ -191,7 +216,7 @@ namespace Demo_App
         {
             try
             {
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/clientreservation/GetServiceById?id=" + ServiceId;
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/GetServiceById?id=" + ServiceId;
                 var result = PostData("GET", "", apiUrl);
                 Service ServiceDetail = JsonConvert.DeserializeObject<Service>(result);
                 return ServiceDetail;
@@ -212,7 +237,7 @@ namespace Demo_App
                 httpRequest.ContentType = "application/json";
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
-                if (Url != Application.Current.Properties["DomainUrl"] +"api/companyregistration/AssignServiceToStaff")
+                if (Url != Application.Current.Properties["DomainUrl"] +"/api/companyregistration/AssignServiceToStaff")
                 {
                     httpRequest.ContentLength = 0;
                 }

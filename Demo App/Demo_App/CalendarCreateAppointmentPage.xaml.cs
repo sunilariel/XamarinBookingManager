@@ -18,21 +18,32 @@ namespace Demo_App
     public partial class CalendarCreateAppointmentPage : ContentPage
     {
         #region GloblesFields  
+
+        public static bool isCalenderPageOpen = false;
         int EmpID;
-        string empName = "";
+        string EmpName;
         int ServiceID;
+        int EndHour;
+        int EndMinute;
+        string StartHour;
+        string StartMinutes;
         string ServiceName = "";
         int CustID;
-        double Cost;
-        string day = "";
+        //double Cost;
+        //string day = "";
         DateTime dateOfBooking;
-        DateTime TimePeriods;
+        string book;
+        //string Booking;
+        //string TimePeriods;
         public Customer objCust = null;
+        int CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+        public Customer aaa = null;
         public BookAppointment objbookAppointment = null;
-        public AssignedServicetoStaff objdata = null;
+        public AddAppointments objdata = null;
         Dictionary<string, int> Data = null;
         int StatusId;
-        int CategoryId;
+        int CategoryId = Convert.ToInt32(Application.Current.Properties["SelectedCustomerId"]);
+        string CategoryName;
         #endregion
 
         public CalendarCreateAppointmentPage(AddAppointments objAddAppointment)
@@ -42,31 +53,39 @@ namespace Demo_App
             {
 
                 GetSelectedCustomerById();
-                objdata = new AssignedServicetoStaff();
-                objdata.Id = objAddAppointment.ServiceId;
-                objdata.Name = objAddAppointment.ServiceName;
+
+                StartHour = objAddAppointment.StartTime;
+                StartMinutes = objAddAppointment.EndTime;
+                //TimePeriods = objAddAppointment.TimePeriod;
+                EmpID = objAddAppointment.EmployeeId;
+                //EmpName = objAddAppointment.EmployeeName;
+                ServiceID = objAddAppointment.ServiceId;
+                EndHour = objAddAppointment.DurationInHours;
+                EndMinute = objAddAppointment.DurationInMinutes;
+                //ServiceName = objAddAppointment.ServiceName;
+                 
+
+
+                objdata = new AddAppointments();
+                objdata.CompanyId = objAddAppointment.CompanyId;
                 objdata.Cost = objAddAppointment.Cost;
+                objdata.Currency = objAddAppointment.Currency;
+                objdata.DateOfBooking = objAddAppointment.DateOfBooking;
                 objdata.DurationInHours = objAddAppointment.DurationInHours;
                 objdata.DurationInMinutes = objAddAppointment.DurationInMinutes;
+                objdata.EmployeeId = objAddAppointment.EmployeeId;
+                objdata.EmployeeName = objAddAppointment.EmployeeName;
+                objdata.EndTime = objAddAppointment.EndTime;
+                objdata.ServiceId = objAddAppointment.ServiceId;                
+                objdata.ServiceName = objAddAppointment.ServiceName;
+                objdata.StartTime = objAddAppointment.StartTime;
+                objdata.TimePeriod = objAddAppointment.TimePeriod;
+                
                 dateOfBooking = Convert.ToDateTime(objAddAppointment.DateOfBooking.Split(',')[1]);
-                EmpID = objAddAppointment.EmployeeId;
-                empName = objAddAppointment.EmployeeName;
-                ServiceID = objAddAppointment.ServiceId;
-                ServiceName = objAddAppointment.ServiceName;
-
-                //var starttime = Convert.ToDateTime(objAddAppointment.StartTime);
-                //var timestart = starttime.ToShortTimeString();
-                //var endtime = Convert.ToDateTime(objAddAppointment.EndTime);
-                //var timeend = endtime.ToShortTimeString();
-                //var TimePeriod = timestart + "-" + timeend;
-
-                //TimePeriods = DateTime.Parse(TimePeriod);
-
-
-
-
-
-
+                book = objAddAppointment.DateOfBooking;
+                
+                AppointmentTime.Text = objAddAppointment.TimePeriod;
+                
                 if (objCust != null)
                 {
                     CustID = objCust.Id;
@@ -99,74 +118,68 @@ namespace Demo_App
         {
             try
             {
-                var Url = Application.Current.Properties["DomainUrl"] + "api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/customer/GetCustomerById?id=" + Application.Current.Properties["SelectedCustomerId"];
                 var Method = "GET";
                 var result = PostData(Method, "", Url);
                 objCust = JsonConvert.DeserializeObject<Customer>(result);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                ex.ToString();
             }
         }
+    
         public void CreateAppointment()
         {
-            ////InitializeComponent();
             try
             {
-                string[] TimeAppointment = { };
-                string[] hours = { };
-                string[] Endmins = { };
-                string[] Endmin = { };
-                string Time = AppointmentTime.Text;
-                if (Time != null)
-                {
-                    TimeAppointment = Time.Split('-');
-                    hours = TimeAppointment[0].Split(':');
-                    Endmins = TimeAppointment[1].Split(':');
-                    Endmin = Endmins[1].Split(' ');
-                }
+                
+                DependencyService.Get<IProgressInterface>().Show();
+                
+                //InitializeComponent();
+                BookAppointment objbookAppointment = new BookAppointment();
+                objbookAppointment.CompanyId = CompanyId;                
+                objbookAppointment.ServiceId = ServiceID;                
+                objbookAppointment.EmployeeId = EmpID;
+                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();           
+                objbookAppointment.StartHour = StartHour;                
+                objbookAppointment.StartMinute = StartMinutes;                          
+                objbookAppointment.EndHour = EndHour;                
+                objbookAppointment.EndMinute = EndMinute;    
+                
+                objbookAppointment.IsAdded = true;                
+                objbookAppointment.Message = "";
+                var GetAllCustomerData = GetAllCustomer();
+                List<int> custIDs = GetAllCustomerData.Select(x => x.Id).ToList();
+                custIDs = custIDs.Where(x => x == CustID).ToList();
+                objbookAppointment.CustomerIds = custIDs;
+                var sDate = dateOfBooking.ToString("yyyy-MM-dd T HH:mm:ss");
+                objbookAppointment.Start = sDate;
+                var eeDate = dateOfBooking.ToString("yyyy-MM-dd T HH:mm:ss");
+                objbookAppointment.End = eeDate;
                 if (newAppointmentsPicker.SelectedItem != null)
                 {
                     string selectedValue = (newAppointmentsPicker.SelectedItem).ToString();
                     Data.TryGetValue(selectedValue, out StatusId);
                 }
-                var GetAllCustomerData = GetAllCustomer();
-                List<int> custIDs = GetAllCustomerData.Select(z => z.Id).ToList();
-                objbookAppointment = new BookAppointment();
-                objbookAppointment.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                objbookAppointment.EmployeeId = EmpID;
-                objbookAppointment.ServiceId = ServiceID;
-                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
-                //objbookAppointment.StartHour = Convert.ToInt32(hours[0]);
-                objbookAppointment.StartMinute = 0;
-                objbookAppointment.EndHour = 0;
-                //objbookAppointment.EndMinute = Convert.ToInt32(Endmin[0]);
-                objbookAppointment.IsAdded = true;
-                objbookAppointment.Message = AddComment.Text;
-                objbookAppointment.Notes = AddComment.Text;
-                objbookAppointment.CustomerIds = custIDs;
-                objbookAppointment.Start = dateOfBooking;
-                objbookAppointment.End = dateOfBooking;
                 objbookAppointment.Status = StatusId;
-
+                objbookAppointment.Notes = "";
+                var Url = Application.Current.Properties["DomainUrl"] + "/api/booking/BookAppointment";
                 var SerializedData = JsonConvert.SerializeObject(objbookAppointment);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/BookAppointment";
-                var result = PostData("POST", SerializedData, apiUrl);
+                var result = PostData("POST", SerializedData, Url);
+
+
+                
 
                 dynamic data = JObject.Parse(result);
                 var msg = Convert.ToString(data.Message);
-                DisplayAlert("Success", msg, "ok");
-                //Context context = getApplicationContext();  
-                // Toast.MakeText(getApplicationContext(), msg, ToastLength.Short).Show();
-
-                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-                Navigation.PopAsync();
+                DisplayAlert("Success", msg, "ok");               
+                Navigation.PushAsync(new SetAppointmentPage(""));
             }
             catch (Exception ex)
             {
+                var msgs = ex.Message;
+                DisplayAlert("success", msgs, "ok");
                 ex.ToString();
             }
         }
@@ -175,24 +188,32 @@ namespace Demo_App
         {
             try
             {
-                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
-                var result = PostData("GET", "", apiURL);
-                List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result); return ListOfCustomer;
+                string apiURLs = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
+                var result = PostData("GET", "", apiURLs);
+                List<Customer> ListOfCustomer = JsonConvert.DeserializeObject<List<Customer>>(result);
+
+                return ListOfCustomer;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                var ms = "alert getAllC";
+                DisplayAlert("success", ms, "ok");
+                ex.ToString();
                 return null;
             }
+
+
         }
+
 
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
+            Navigation.PushAsync(new SelectServicesForAppontment("ECalandarAppointment", CategoryId, CategoryName, book,StatusId));
         }
 
         private void EditAppointmentByBookingDate(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CalendarTimeSlotsPage(objdata, "CalandarAppointment"));
+            Navigation.PushAsync(new CalendarTimeSlotsPage(objdata, "ECalandarAppointment"));
         }
 
         private void AddCommentClick(object sender, EventArgs e)
@@ -211,8 +232,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData !=
-                    "")
+                if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
                     streamWriter.Write(SerializedData);
@@ -224,9 +244,7 @@ namespace Demo_App
                 using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
                     return result = StreamReader.ReadToEnd();
-                    //var SuccessMsz=StreamReader.
                 }
-
             }
             catch (Exception e)
             {

@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="StaffSearchBar" HorizontalOptions="FillAndExpand"
-                       Placeholder="Search Staff" FontSize="14" TextChanged="SearchStaffByTerm" IsVisible="False"/>
+                       Placeholder="Search Staff" FontSize="14" TextChanged="SearchStaffByTerm" IsVisible="False"></SearchBar>
             <Grid RowSpacing="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>

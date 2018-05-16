@@ -14,22 +14,24 @@ using System.Net.Http;
 using System.Collections.ObjectModel;
 namespace Demo_App
 {
-    
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CustomerPage : ContentPage
-	{
-          
-        public CustomerPage ()
-		{           
-                NavigationPage.SetHasBackButton(this, false);
-                NavigationPage.SetBackButtonTitle(this, "Customer");
-                InitializeComponent();
-                var customerlist = GetAllCustomer();
-                if (customerlist.Count > 5)
-                {
-                    CustomerSearchBar.IsVisible = true;
-                }           
-          
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    public partial class CustomerPage : ContentPage
+    {
+        public AddAppointments objaddAppointment = null;
+        //string aa;
+        public CustomerPage()
+        {
+            NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetBackButtonTitle(this, "Customer");
+            InitializeComponent();
+            var customerlist = GetAllCustomer();
+            if (customerlist.Count > 5)
+            {
+                CustomerSearchBar.IsVisible = true;
+            }
+
         }
         public ObservableCollection<Customer> GetAllCustomer()
         {
@@ -41,34 +43,54 @@ namespace Demo_App
                 CustomersList.ItemsSource = ListOfCustomer;
                 return ListOfCustomer;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
-       
+        private void AddNewCustomer(object sender, EventArgs args)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new NewCustomerPage(objaddAppointment, "selectedPageCustomer"));
+
+        }
+
         public void SearchCustomersByTerm()
         {
             try
             {
-                var result = "";
-                string apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/SearchCustomersByTerm?companyId=" + Application.Current.Properties["CompanyId"] + "&searchTerm=" + CustomerSearchBar.Text;
-                var httpWebRequest = HttpWebRequest.Create(apiUrl);
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "GET";
-                httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
-
-                var httpResponse = httpWebRequest.GetResponse();
-                using (var StreamReader = new StreamReader(httpResponse.GetResponseStream()))
+                if (CustomerSearchBar.Text == "")
                 {
-                    result = StreamReader.ReadToEnd();
+                    string apiURL = Application.Current.Properties["DomainUrl"] + "/api/customer/GetAllCustomers?companyId=" + Application.Current.Properties["CompanyId"];
+                    var result = PostData("GET", "", apiURL);
+                    ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
+                    CustomersList.ItemsSource = ListOfCustomer;
                 }
-                ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
-                CustomersList.ItemsSource = ListOfCustomer;
+                else
+                {
+                    string apiURL = Application.Current.Properties["DomainUrl"] + "api/customer/SearchCustomersByTerm?companyId=" + Application.Current.Properties["CompanyId"] + "&searchTerm=" + CustomerSearchBar.Text;
+
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiURL);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "GET";
+                    httpWebRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
+
+
+                    string result = "";
+
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        result = streamReader.ReadToEnd();
+                    }
+                    ObservableCollection<Customer> ListOfCustomer = JsonConvert.DeserializeObject<ObservableCollection<Customer>>(result);
+                    CustomersList.ItemsSource = ListOfCustomer;
+                }
+
             }
             catch (Exception e)
             {
-               e.ToString();
+                e.ToString();
             }
         }
 
@@ -105,9 +127,12 @@ namespace Demo_App
 
         private void CustomerProfileClick(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem==null)           
+                return;            
             var Cust = e.SelectedItem as Customer;
-            Application.Current.Properties["SelectedCustomerId"] = Cust.Id;         
+            Application.Current.Properties["SelectedCustomerId"] = Cust.Id;
             Application.Current.MainPage.Navigation.PushAsync(new CutomerProfilePage());
+            ((ListView)sender).SelectedItem=null;
         }
     }
 }

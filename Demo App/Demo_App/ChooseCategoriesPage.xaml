@@ -5,7 +5,7 @@
              x:Class="Demo_App.ChooseCategoriesPage"
              Title="Choose a categories">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ChooseCategoriesToolbar" Text="Next" Order="Primary" Priority="0" Clicked="AssignCategorytoService"/>
+        <ToolbarItem x:Name="ChooseCategoriesToolbar" Text="Save" Order="Primary" Priority="0" Clicked="AssignCategorytoService"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">

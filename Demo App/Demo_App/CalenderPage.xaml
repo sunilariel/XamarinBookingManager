@@ -5,26 +5,29 @@
              Title="Calendar"
              x:Class="Demo_App.CalenderPage">
 
+
+
+
     <ContentPage.Content>
         <!--<syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView" ViewHeaderHeight="50"/>-->
         <StackLayout>
-            <StackLayout VerticalOptions="Start" HeightRequest="50">
+            <StackLayout VerticalOptions="Start" HeightRequest="100">
                 <Grid ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="currentMonth" Text="CurrentMonth" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
-                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1"/>
+                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="35" WidthRequest="35" Grid.Column="1"/>
                     <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
+                        <TapGestureRecognizer 
                                     Tapped="ChangeMonthView"/>
-                        </StackLayout.GestureRecognizers>
-                    
+                    </StackLayout.GestureRecognizers>
+
                 </Grid>
             </StackLayout>
-            
-            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0" HeightRequest="70">
+
+            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0" HeightRequest="140">
                 <Grid ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -65,15 +68,20 @@
                     </StackLayout>
                 </Grid>
             </StackLayout>
-            
-            <StackLayout x:Name="schedulerFullMonthView" IsVisible="False" VerticalOptions="CenterAndExpand">
+
+            <StackLayout Padding="0,5,0,0" x:Name="schedulerFullMonthView" IsVisible="False" VerticalOptions="CenterAndExpand">
                 <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30" HeaderHeight="0" HeightRequest="170"/>
             </StackLayout>
-            
             <StackLayout Padding="0,5,0,0">
                 <ScrollView>
                     <Grid RowSpacing="0">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -95,41 +103,45 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" x:Name="Mondaylbl" Text="Mon" TextColor="Black"/>
-                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddNewAppointment"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                <Label Grid.Column="0" x:Name="Mondaylbl" Text="Tue" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="Add New +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddNewAppointment"/>
+                                </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout x:Name="MonAppointmentBox" Grid.Row="1" Padding="10">
-                            <!--<Label Text="No appointment booked"></Label>
-                            <ListView x:Name="CustomerAppoimentList" RowHeight="70">
+                        <StackLayout x:Name="listViewMON" Grid.Row="1" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListMON" RowHeight="70">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <StackLayout HorizontalOptions="StartAndExpand">
                                                 <Grid ColumnSpacing="0">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="*"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
                                                     <StackLayout Grid.Column="0" Padding="10">
-                                                        <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Column="1">
-                                                        <Label Text="{Binding BookingDate}" TextColor="Black"/>
-                                                        <Label Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                            </ListView>-->
+                            </ListView>
                         </StackLayout>
-                        <StackLayout Grid.Row="2" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout x:Name="listEmptyMON" Grid.Row="2" Padding="10">
+                            <Label Text="No appointment booked"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -142,10 +154,38 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="3" Padding="10">
+                        <StackLayout x:Name="listViewTUE" Grid.Row="4" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListTUE" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptyTUE" Grid.Row="5" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Row="4" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout Grid.Row="6" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -158,10 +198,38 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="5" Padding="10">
+                        <StackLayout x:Name="listViewWED" Grid.Row="7" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListWED" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptyWED" Grid.Row="8" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Row="6" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout Grid.Row="9" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -174,10 +242,38 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="7" Padding="10">
+                        <StackLayout x:Name="listViewTHU" Grid.Row="10" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListTHU" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptyTHU" Grid.Row="11" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Row="8" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout Grid.Row="12" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -190,10 +286,38 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="9" Padding="10">
+                        <StackLayout x:Name="listViewFRI" Grid.Row="13" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListFRI" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptyFRI" Grid.Row="14" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Row="10" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout Grid.Row="15" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -206,10 +330,38 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="11" Padding="10">
+                        <StackLayout x:Name="listViewSAT" Grid.Row="16" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListSAT" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptySAT" Grid.Row="17" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Row="12" Padding="10" BackgroundColor="LightGray">
+                        <StackLayout Grid.Row="18" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -222,7 +374,35 @@
                                 </Label.GestureRecognizers>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Grid.Row="13" Padding="10">
+                        <StackLayout x:Name="listViewSUN" Grid.Row="19" Padding="10">
+                            <!--<Label Text="No appointment booked"></Label>-->
+                            <ListView x:Name="CustomerAppoimentListSUN" RowHeight="70">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Grid ColumnSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Padding="10">
+                                                        <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                                        <Label Grid.Column="0" Text="{Binding StartTime}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding DurationHrsMin}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Padding="10">
+                                                        <Label Grid.Column="0" Text="{Binding CustomerName}" TextColor="Black"/>
+                                                        <Label Grid.Column="1" Text="{Binding AppointmentDetail}" TextColor="Black"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout x:Name="listEmptySUN" Grid.Row="20" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
                     </Grid>

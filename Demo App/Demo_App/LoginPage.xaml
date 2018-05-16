@@ -4,6 +4,14 @@
              Title="Login"
              x:Class="Demo_App.LoginPage">
     <ContentPage.Content>
+
+        <!--<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <AbsoluteLayout>
+                <ActivityIndicator x:Name="indigator" IsRunning="False" IsEnabled="False" IsVisible="False" Color="Green" BackgroundColor="Transparent">
+                </ActivityIndicator>
+            </AbsoluteLayout>
+        </StackLayout>-->
+        
         <StackLayout Padding="10,130,10,0" VerticalOptions="Center">
             <Image Source="Icon.png" Margin="10,20,10,10"></Image>
             <Entry Placeholder="Username"
@@ -28,5 +36,6 @@
                 </StackLayout.GestureRecognizers>
             </StackLayout>
         </StackLayout>
+      
     </ContentPage.Content>
 </ContentPage>

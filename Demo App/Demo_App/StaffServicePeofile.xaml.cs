@@ -32,7 +32,7 @@ namespace Demo_App
                 InitializeComponent();
                 GetEmployeeDetail();
                 StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
-                InitializeComponent();
+                //InitializeComponent();
                 GetAllocatedServicetoStaff();
                 GetAllTimeOffForEmployee();
                 AllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
@@ -173,7 +173,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }

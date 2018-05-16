@@ -17,41 +17,50 @@ using System.Globalization;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CalendarTimeSlotsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CalendarTimeSlotsPage : ContentPage
+    {
         #region GloblesFields
 
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         public static SfSchedule schedulee;
         int serviceID;
+        
+        string CurrentSelectedDay;
         int EmployeeId;
-        string EmployeeName = "";
-        string CurrentSelectedDay = "";
         string PageName = "";
-        DateTime SelectedDateOfBooking;        
+        
+        DateTime SelectedDateOfBooking;
         ObservableCollection<StaffWorkingHours> ListofFreetimeSlots = new ObservableCollection<StaffWorkingHours>();
         ObservableCollection<AddAppointments> listofnewAppointmentDetail = new ObservableCollection<AddAppointments>();
         public AddAppointments objAddAppointment = null;
-        public Customer objCust = null;      
+        public Customer objCust = null;
         #endregion
-        public CalendarTimeSlotsPage (AssignedServicetoStaff obj, string pagename)
-		{
+        public CalendarTimeSlotsPage(AddAppointments obj, string pagename)
+        {
             try
             {
                 InitializeComponent();
-                EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
-                EmployeeName = Application.Current.Properties["LastSelectedStaff"].ToString();
-                serviceID = obj.Id;
+                EmployeeId = obj.EmployeeId; 
+                //EmployeeName = EmpName;
+                serviceID = obj.ServiceId;
                 PageName = pagename;
+                //TimePeriods=tPeriod;
+                CurrentSelectedDay = obj.DateOfBooking;
                 objAddAppointment = new AddAppointments();
-                objAddAppointment.ServiceId = serviceID;
-                objAddAppointment.ServiceName = obj.Name;
-                objAddAppointment.EmployeeId = EmployeeId;
-                objAddAppointment.EmployeeName = EmployeeName;
+                objAddAppointment.CompanyId = obj.CompanyId;
                 objAddAppointment.Cost = obj.Cost;
+                objAddAppointment.Currency = obj.Currency;
+                objAddAppointment.DateOfBooking = obj.DateOfBooking;
                 objAddAppointment.DurationInHours = obj.DurationInHours;
                 objAddAppointment.DurationInMinutes = obj.DurationInMinutes;
+                objAddAppointment.EmployeeId = obj.EmployeeId;
+                objAddAppointment.EmployeeName = obj.EmployeeName;
+                objAddAppointment.EndTime = obj.EndTime;
+                objAddAppointment.ServiceId = obj.ServiceId;
+                objAddAppointment.ServiceName = obj.ServiceName;
+                objAddAppointment.StartTime = obj.StartTime;
+                objAddAppointment.TimePeriod = obj.TimePeriod;                                                                       
                 GetAvailableTime();
                 schedulee = new SfSchedule();
                 var CurrentDate = DateTime.Now;
@@ -59,7 +68,7 @@ namespace Demo_App
                 schedulee.NavigateTo(SpecificDate);
                 schedule.CellTapped += GetAvailableTimeForAppointments;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -69,14 +78,23 @@ namespace Demo_App
         {
             try
             {
-                var currentDay = DateTime.Now.DayOfWeek;
-                var dateOfBooking = DateTime.Now;
+                //var currentDay = DateTime.Now.DayOfWeek;
+                //var dateOfBooking = DateTime.Now;
+                //CurrentSelectedDay = currentDay.ToString();
+                //SelectedDateOfBooking = dateOfBooking;
+                //var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
+                //objAddAppointment.DateOfBooking = BookingDate;
+
+
+                var selectDate = Convert.ToDateTime(CurrentSelectedDay);
+                var dateOfBookings = selectDate.ToString("dd-MM-yyyy");
+                var currentDay = selectDate.DayOfWeek;
                 CurrentSelectedDay = currentDay.ToString();
-                SelectedDateOfBooking = dateOfBooking;
-                var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
-                objAddAppointment.DateOfBooking = BookingDate;
+                SelectedDateOfBooking = selectDate;
+
+
                 string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
-                var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBooking.ToString("dd-MM-yyyy") + "&day=" + currentDay.ToString();
+                var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBookings + "&day=" + CurrentSelectedDay;
                 var result = PostData("GET", "", apiUrl);
 
                 bool hasValue = true;
@@ -94,21 +112,29 @@ namespace Demo_App
                         try
                         {
                             string Start = (string)data["Start"];
-                            DateTime StartTime = DateTime.ParseExact(Start, "HH:mm:ss",
-                                         CultureInfo.InvariantCulture);
-                            string StartTimeSlot = String.Format("{0:t}", StartTime);
+                            DateTime StartTime = Convert.ToDateTime(Start);
+                            string StartTimeSlot = StartTime.ToString("hh:mm tt");
+                            StartTimeSlot = StartTimeSlot.ToUpper();
+
+                            //System.DateTime StartTime =System.DateTime.ParseExact(Start, "HH:mm:ss",
+                            //             CultureInfo.InvariantCulture);
+                            //string StartTimeSlot = String.Format("{0:t}", StartTime);
 
                             string End = (string)data["End"];
+                            DateTime EndTime = Convert.ToDateTime(End);
+                            string EndTimeSlot = EndTime.ToString("hh:mm tt");
+                            EndTimeSlot = EndTimeSlot.ToUpper();
 
-                            DateTime EndTime = DateTime.ParseExact(End, "HH:mm:ss",
-                                         CultureInfo.InvariantCulture);
-                            string EndTimeSlot = String.Format("{0:t}", EndTime);
+                            //System.DateTime EndTime =System.DateTime.ParseExact(End, "HH:mm:ss",
+                            //             CultureInfo.InvariantCulture);
+                            //string EndTimeSlot = String.Format("{0:t}", EndTime);
                             string time = StartTimeSlot + "-" + EndTimeSlot;
                             timeSlots.Add(time);
+
                         }
                         catch (Exception ex)
                         {
-
+                            ex.ToString();
                         }
 
 
@@ -146,6 +172,10 @@ namespace Demo_App
                 bool hasValue = true;
                 if (result.Contains("Key\":null"))
                 {
+                    ListofTimeSlots.IsVisible = false;
+                    TimeSlotFrame.IsVisible = true;
+                    TimeSlotlbel.Text = "No Slots available for" + dateOfBooking.ToString("dd-MMM-yyyy");
+
                     hasValue = false;
                 }
                 if (hasValue == true)
@@ -158,21 +188,28 @@ namespace Demo_App
                         try
                         {
                             string Start = (string)data["Start"];
-                            DateTime StartTime = DateTime.ParseExact(Start, "HH:mm:ss",
-                                         CultureInfo.InvariantCulture);
-                            string StartTimeSlot = String.Format("{0:t}", StartTime);
+                            DateTime StartTime = Convert.ToDateTime(Start);
+                            string StartTimeSlot = StartTime.ToString("hh:mm tt");
+                            StartTimeSlot = StartTimeSlot.ToUpper();
+
+                            //System.DateTime StartTime =System.DateTime.ParseExact(Start, "HH:mm:ss",
+                            //             CultureInfo.InvariantCulture);
+                            //string StartTimeSlot = String.Format("{0:t}", StartTime);
 
                             string End = (string)data["End"];
+                            DateTime EndTime = Convert.ToDateTime(End);
+                            string EndTimeSlot = EndTime.ToString("hh:mm tt");
+                            EndTimeSlot = EndTimeSlot.ToUpper();
 
-                            DateTime EndTime = DateTime.ParseExact(End, "HH:mm:ss",
-                                         CultureInfo.InvariantCulture);
-                            string EndTimeSlot = String.Format("{0:t}", EndTime);
+                            //System.DateTime EndTime =System.DateTime.ParseExact(End, "HH:mm:ss",
+                            //             CultureInfo.InvariantCulture);
+                            //string EndTimeSlot = String.Format("{0:t}", EndTime);
                             string time = StartTimeSlot + "-" + EndTimeSlot;
                             timeSlots.Add(time);
                         }
                         catch (Exception ex)
                         {
-
+                            ex.ToString();
                         }
 
 
@@ -185,7 +222,7 @@ namespace Demo_App
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 e.ToString();
             }
@@ -196,21 +233,25 @@ namespace Demo_App
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+                
                 var data = e.SelectedItem;
                 objAddAppointment.TimePeriod = data.ToString();
                 //AppointmentDetails objAppointment = new AppointmentDetails();
                 if (PageName == "CalandarAppointment")
                 {
-                    Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objAddAppointment));
+                    Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objAddAppointment, ""));
                 }
-                else
+                else if (PageName == "ECalandarAppointment")
                 {
-
+                    Navigation.PushAsync(new CalendarCreateAppointmentPage(objAddAppointment));
                 }
+                ((ListView)sender).SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                e.ToString();
+                ex.ToString();
             }
         }
 

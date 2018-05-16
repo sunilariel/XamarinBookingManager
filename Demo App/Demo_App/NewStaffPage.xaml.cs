@@ -20,7 +20,10 @@ namespace Demo_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewStaffPage : ContentPage
     {
+        
         string PageName = "";
+
+        
         public NewStaffPage(string pagename)
         {
             PageName = pagename;
@@ -47,30 +50,33 @@ namespace Demo_App
                     obj.Address = StaffAddress.Text;
                     obj.Email = StaffEmail.Text;
                     obj.TelephoneNo = StaffPhoneNumber.Text;
-                    obj.CreationDate = "2017-11-08T12:19:27.628Z";
+                    obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                     var data = JsonConvert.SerializeObject(obj);
                     var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AddStaff";
                     var ApiMethod = "POST";
 
                     var result = PostData(ApiMethod, data, Url);
+
                     JObject responsedata = JObject.Parse(result);
+
                     dynamic ResponseValue = responsedata["ReturnObject"]["EmloyeeId"];
                     Application.Current.Properties["EmployeeID"] = Convert.ToInt32(ResponseValue.Value);
                     int EmployeeId = Convert.ToInt32(ResponseValue.Value);
 
                     SetBuisnessHours(EmployeeId);
+
                     if (PageName == "StaffCreateAfterLogin")
                     {
                         Navigation.PushAsync(new StaffServicePeofile());
                     }
-                    else if(PageName== "StaffCreateAfterRegistration")
+                    else if (PageName == "StaffCreateAfterRegistration")
                     {
                         Navigation.PushAsync(new AddStaffForCompanyRegistration());
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
@@ -86,7 +92,7 @@ namespace Demo_App
 
                 var result = PostData(Method, null, Url);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -102,73 +108,151 @@ namespace Demo_App
 
 
         }
-       
+
         public void SetBuisnessHours(int Id)
         {
-            StaffWorkingHours obj = new StaffWorkingHours();
-            for (var i = 0; i <= 6; i++)
+            if (PageName== "StaffCreateAfterLogin")
             {
-                obj.Id = 0;
-                obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                obj.EmployeeId = Id;
-                obj.Start = "08:00";
-                obj.End = "17:00";
+                StaffWorkingHours obj = new StaffWorkingHours();               
 
-                if (i == 0)
+                for (var i = 0; i <= 6; i++)
                 {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Sunday";
-                    obj.IsOffAllDay = true;
-                }
+                    obj.Id = 0;
+                    obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                    obj.EmployeeId = Id;
+                    obj.Start = "08:00";
+                    obj.End = "17:00";
 
-                else if (i == 1)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Monday";
-                    obj.IsOffAllDay = false;
-                }
-                else if (i == 2)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Tuesday";
-                    obj.IsOffAllDay = false;
-                }
-                else if (i == 3)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Wednesday";
-                    obj.IsOffAllDay = false;
-                }
-                else if (i == 4)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Thursday";
-                    obj.IsOffAllDay = false;
-                }
-                else if (i == 5)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Friday";
-                    obj.IsOffAllDay = false;
-                }
-                else if (i == 6)
-                {
-                    obj.NameOfDay = i;
-                    obj.NameOfDayAsString = "Saturday";
-                    obj.IsOffAllDay = true;
-                }
+                    if (i == 0)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Sunday";
+                        obj.IsOffAllDay = true;
+                    }
+
+                    else if (i == 1)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Monday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 2)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Tuesday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 3)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Wednesday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 4)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Thursday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 5)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Friday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 6)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Saturday";
+                        obj.IsOffAllDay = true;
+                    }
 
 
-                obj.CreationDate = "2017-11-10T10:57:47.1870909+01:00";
-                obj.EntityStatus = "0";
+                    obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                    obj.EntityStatus = "0";
 
 
 
-                var SerializedObj = JsonConvert.SerializeObject(obj);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
-                var result = PostData("POST", SerializedObj, apiUrl);
+                    var SerializedObj = JsonConvert.SerializeObject(obj);
 
+                    //var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/SetWorkingHours";
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/SetWorkingHours";
+                    var result = PostData("POST", SerializedObj, apiUrl);
+
+                }
             }
+            else if (PageName== "StaffCreateAfterRegistration")
+            {
+                StaffWorkingHours obj = new StaffWorkingHours();
+                for (var i = 0; i <= 6; i++)
+                {
+                    obj.Id = 0;
+                    obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                    obj.EmployeeId = Id;
+                    obj.Start = "08:00";
+                    obj.End = "17:00";
+
+                    if (i == 0)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Sunday";
+                        obj.IsOffAllDay = true;
+                    }
+
+                    else if (i == 1)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Monday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 2)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Tuesday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 3)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Wednesday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 4)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Thursday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 5)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Friday";
+                        obj.IsOffAllDay = false;
+                    }
+                    else if (i == 6)
+                    {
+                        obj.NameOfDay = i;
+                        obj.NameOfDayAsString = "Saturday";
+                        obj.IsOffAllDay = true;
+                    }
+
+
+                    obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                    obj.EntityStatus = "0";
+
+
+
+                    var SerializedObj = JsonConvert.SerializeObject(obj);
+
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/SetWorkingHours";
+
+                    //var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/SetWorkingHours";
+                    var result = PostData("POST", SerializedObj, apiUrl);
+
+                }
+            }
+
+            
 
         }
 
@@ -296,7 +380,7 @@ namespace Demo_App
             var result = PostData("DELETE", "", apiUrl);
             return result;
         }
-        
+
         public string GetAllServiceStatus(string CompanyId, string EmployeeId)
         {
             try
@@ -397,13 +481,13 @@ namespace Demo_App
                 }
                 //stack.HeightRequest = 20;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
         }
 
-        private void CrossClick(object sender,EventArgs e)
+        private void CrossClick(object sender, EventArgs e)
         {
             Navigation.PopAsync(true);
         }

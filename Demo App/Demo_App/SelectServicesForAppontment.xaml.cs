@@ -20,18 +20,28 @@ namespace Demo_App
 	{
         #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
+        //string CategoryID = Convert.ToString(Application.Current.Properties["CategoryID"]);
+
+
+        int StatusId;
         int CategoryID;
+        string CategoryName;
         int ServiceID;
         ObservableCollection<AssignedServicetoStaff> ListOfAssignServiceData = new ObservableCollection<AssignedServicetoStaff>();
         public Customer objCust = null;
         public Notes objNotes = null;
         string PageName = "";
+        string selectedDateofBooking;
         #endregion
 
-        public SelectServicesForAppontment (string pagename)
+        public SelectServicesForAppontment (string pagename,int categoryID,string categoryName,string DateofBooking,int statusid)
 		{
 			InitializeComponent ();
-            PageName = pagename;           
+            PageName = pagename;
+            CategoryID = categoryID;
+            CategoryName = categoryName;
+            StatusId = statusid;
+            selectedDateofBooking = DateofBooking;
             GetSelectedService();
         }
 
@@ -50,7 +60,29 @@ namespace Demo_App
                 service.Name = servicedata.Name;
                 service.Id = servicedata.Id;
                 service.Cost = servicedata.Cost;
-                Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName));
+
+                service.CategoryId = CategoryID;
+                service.CategoryName = CategoryName;
+
+                //service.CategoryId = Convert.ToInt32(Application.Current.Properties["CategoryID"]);
+                
+                //service.CategoryName = servicedata.CategoryName;
+                service.Buffer = servicedata.Buffer;
+                service.CompanyId = servicedata.CompanyId;
+                service.CreationDate = servicedata.CreationDate;
+                service.Currency = servicedata.Currency;
+
+                //var totalHours = Convert.ToInt32(servicedata.DurationInHours);
+                var totalMinutes = Convert.ToInt32(servicedata.DurationInMinutes);
+                //var hour = TimeSpan.FromHours(totalHours);
+                //var time = TimeSpan.FromMinutes(totalMinutes);
+                //var durationHours = string.Format("{0:00}", (int)hour.Hours);
+                //var durationMinutes = string.Format("{0:00}", (int)time.Minutes);
+
+                service.DurationInHours = 0;
+                service.DurationInMinutes = Convert.ToInt32(totalMinutes);
+                
+                Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName,selectedDateofBooking, StatusId));
             }
             catch(Exception ex)
             {
@@ -71,7 +103,14 @@ namespace Demo_App
 
                 foreach (var item in ListOfAssignServiceData)
                 {
-                    var details = item.DurationInMinutes / 60 + "hrs " + item.DurationInMinutes % 60 + "mins" + " " + item.Cost;
+                    //var totalHours = Convert.ToInt32(item.DurationInHours);
+                    var totalMinutes = Convert.ToInt32(item.DurationInMinutes);
+                    //var hour = TimeSpan.FromHours(totalHours);
+                    var time = TimeSpan.FromMinutes(totalMinutes);
+                    var durationHours = string.Format("{0:00}", (int)time.Hours);
+                    var durationMinutes = string.Format("{0:00}", (int)time.Minutes);
+
+                    var details = durationHours + "hrs " + durationMinutes + "mins" + " " + " $ " + item.Cost;
                     item.ServiceDetails = details;
                 }
                 ListofAllServices.ItemsSource = ListOfAssignServiceData;

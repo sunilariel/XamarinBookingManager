@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Demo_App.UpdateAppointmentDetailsPage"
-             Title="Appointments Details">
+             x:Class="Demo_App.UpdateAppointmentDetailsPage" 
+             Title="Appointments Details" >
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update" Order="Primary" Priority="1" Clicked="UpdateAppointments"/>
     </ContentPage.ToolbarItems>
@@ -12,7 +12,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
@@ -34,7 +34,7 @@
                             <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                         <StackLayout Grid.Column="1">
-                            <Label Text="{Binding BookingDate}" TextColor="Black"/>
+                            <Label Text="{Binding DateOfBooking}" TextColor="Black"/>
                             <Label x:Name="UpdateAppointmentTime" Text="{Binding TimePeriod}"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Padding="0,10,10,0">
@@ -120,11 +120,11 @@
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Cost"/>
-                            <Entry Text="{Binding Cost}"/>
+                            <Label x:Name="EditCost" Text="{Binding Cost}"/>
                         </StackLayout>
-                        <StackLayout Grid.Column="2" Padding="0,10,10,0">
+                        <!--<StackLayout Grid.Column="2" Padding="0,10,10,0">
                             <Image  Source="left_arrow.png" WidthRequest="30" HeightRequest="30" />
-                        </StackLayout>
+                        </StackLayout>-->
                     </Grid>
 
                 </StackLayout>

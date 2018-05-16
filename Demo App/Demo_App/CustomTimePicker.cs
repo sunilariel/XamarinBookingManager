@@ -80,7 +80,7 @@ namespace Demo_App
             {
                 Text = "From",
                 TextColor = Color.Black,
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.Aqua,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
 
@@ -102,7 +102,7 @@ namespace Demo_App
             {
                 Text = "From",
                 TextColor = Color.White,
-                BackgroundColor = Color.Red,
+                BackgroundColor = Color.Aqua,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
 
@@ -112,7 +112,7 @@ namespace Demo_App
             {
                 Text = "To",
                 TextColor = Color.White,
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.Aqua,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
 
@@ -146,7 +146,7 @@ namespace Demo_App
             var Fromlabel_Tap = new TapGestureRecognizer();
             Fromlabel_Tap.Tapped += (s, e) =>
             {
-                fromlbl.BackgroundColor = Color.Blue;
+                fromlbl.BackgroundColor = Color.Aqua;
                 TOlbl.BackgroundColor = Color.White;
                 PopulateTimeCollection();
                 
@@ -157,7 +157,7 @@ namespace Demo_App
             var Tolabel_Tap = new TapGestureRecognizer();
             Tolabel_Tap.Tapped += (s, e) =>
             {
-                TOlbl.BackgroundColor = Color.Blue;
+                TOlbl.BackgroundColor = Color.Aqua;
                 fromlbl.BackgroundColor = Color.White;
                 PopulateTimeCollection();
             };
@@ -179,8 +179,7 @@ namespace Demo_App
         //}
 
         private void PopulateTimeCollection()
-        {
-
+        {           
             Hour = new ObservableCollection<object>();
             Minute = new ObservableCollection<object>();
             Format = new ObservableCollection<object>();

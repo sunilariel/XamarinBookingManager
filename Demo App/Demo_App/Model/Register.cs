@@ -24,6 +24,7 @@ namespace Demo_App.Model
         public string Description { get; set; }
         public string Password { get; set; }
         public string CreationDate { get; set; }
+        public string IndustryName { get; set; }
     }
     public class CreateAccount
     {

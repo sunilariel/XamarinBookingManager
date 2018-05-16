@@ -26,8 +26,11 @@ namespace Demo_App
         public Notes objNotes = null;
         int CategoryId;
         int ServiceID;
+        //int Status;
         string ServiceName = "";
         int EmpID;
+        int DurationInMinutes;
+        int DurationInHours;
         string empName = "";
         double Cost;
         string Day = "";
@@ -58,25 +61,35 @@ namespace Demo_App
                 EmpID = Convert.ToInt32(appointment.EmployeeId);
                 empName = appointment.EmployeeName;
                 Cost = appointment.Cost;
+                DurationInHours = appointment.DurationInHours;
+                DurationInMinutes = appointment.DurationInMinutes;
                 DateTime startTime = Convert.ToDateTime(appointment.StartTime);
                 string TimeStart = startTime.ToShortTimeString();
                 DateTime endTime = Convert.ToDateTime(appointment.EndTime);
                 string TimeEnd = endTime.ToShortTimeString();
                 string TimePeriod = TimeStart + "-" + TimeEnd;
+                StatusId = appointment.status;
                 addAppointments = new AddAppointments();
                 addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                addAppointments.BookingId = appointment.BookingId;
                 addAppointments.EmployeeId = EmpID;
                 addAppointments.EmployeeName = empName;
                 addAppointments.ServiceId = ServiceID;
                 addAppointments.ServiceName = ServiceName;
                 addAppointments.Cost = Cost;
+                addAppointments.DurationInHours = DurationInHours;
+                addAppointments.DurationInMinutes = DurationInMinutes;
                 addAppointments.StartTime = appointment.StartTime;
                 addAppointments.EndTime = appointment.EndTime;
                 addAppointments.TimePeriod = TimePeriod;
+                addAppointments.DateOfBooking = appointment.BookingDate;
+
                 service = new Service();
                 service.Id = Convert.ToInt32(appointment.ServiceId);
                 service.Name = appointment.ServiceName;
-                service.Cost = appointment.Cost;               
+                service.Cost = appointment.Cost;
+                service.DurationInHours = appointment.DurationInHours;
+                service.DurationInMinutes = appointment.DurationInMinutes;
                 if (objCust != null)
                 {
                     AppointmentCustomerName.Text = objCust.FirstName;
@@ -84,6 +97,8 @@ namespace Demo_App
                     AppointmentCustomerMobNo.Text = objCust.TelephoneNo;
                 }
                 obj = new AppointmentDetails();
+                obj.CustomerName = objCust.FirstName;
+                obj.CustomerId = objCust.Id;
                 obj.BookingId = appointment.BookingId;
                 obj.EmployeeId = appointment.EmployeeId;
                 obj.ServiceId = appointment.ServiceId;
@@ -117,7 +132,7 @@ namespace Demo_App
                 obj.status = Convert.ToInt32(obj.status) - 1;
                 AppointmentsPicker.SelectedIndex = obj.status;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -134,24 +149,43 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
 
         private void EditServiceForAppointmentClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectServiceCategory("EditAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(DateOfBooking).ToString();
+            Navigation.PushAsync(new SelectServiceCategory("EditAppointment", DateofBooking,StatusId));
         }
 
         private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, Cost, "EditAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(DateOfBooking).ToString();
+            //var DateofBooking = Convert.ToDateTime(selectedD).ToString();
+            Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceID, ServiceName, EmpID, empName, Cost, DurationInHours, DurationInMinutes, "EditAppointment", DateofBooking, StatusId));
         }
 
         private void UpdateAppointmentbyStaffClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment"));
+            //Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+            //string ssss = string.Empty;
+            //var s = grid.Children[0];
+            //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+            //var selectedD = label.Text;
+            var DateofBooking = Convert.ToDateTime(DateOfBooking).ToString();
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment", DateofBooking,StatusId));
         }
 
         private void EditCommentClick(object sender, EventArgs e)
@@ -186,8 +220,11 @@ namespace Demo_App
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    result = streamReader.ReadToEnd();                   
+                    result = streamReader.ReadToEnd();
                 }
+
+                //var DateofBooking = Convert.ToDateTime(DateOfBooking);
+                //Navigation.PushAsync(new UpdateAppointmentDetailsPage(addAppointments,Day, DateofBooking));
                 return result;
             }
             catch (Exception e)

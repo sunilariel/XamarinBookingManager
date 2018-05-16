@@ -36,7 +36,11 @@ namespace Demo_App
                 ServiceId = Application.Current.Properties["ServiceID"].ToString();
                 service = new ServiceDetails();
                 service.Id = Servicedata.Id;
-                service.DurationInMinutes = Servicedata.DurationInMinutes + " " + "min";
+                var dHour = Servicedata.DurationInHours * 60;
+                var dMinute = Servicedata.DurationInMinutes + dHour;
+                service.DurationInMinutes = dMinute + " " + "min";
+
+                //service.DurationInMinutes = Servicedata.DurationInHours + " " + "hrs" + " " + Servicedata.DurationInMinutes + " " + "min";
                 service.BufferTimeInMinutes = Servicedata.Buffer + " " + "min";
                 service.Cost = "$" + Servicedata.Cost;
                 service.Name = Servicedata.Name;
@@ -122,6 +126,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -140,6 +145,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -171,6 +177,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -187,6 +194,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -207,6 +215,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -214,16 +223,17 @@ namespace Demo_App
         private void EditServiceCost(object sender, EventArgs args)
         {
             // Navigation.PushAsync(new NewServicePage());
-            Navigation.PushAsync(new EditServiceDetails(service));
+            Navigation.PushAsync(new EditServiceDetails(service, todaycollection, todaycollectionBuffer));
         }
         private void EditService(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new EditServiceDetails(service));
+            Navigation.PushAsync(new EditServiceDetails(service, todaycollection, todaycollectionBuffer));
+            
         }
         private void EditCategories(object sender, EventArgs args)
         {
             // Service service = new Service();
-            Navigation.PushAsync(new ChooseCategoriesPage(GetCategoriesAssignedtoService()));
+            Navigation.PushAsync(new ChooseCategoriesPage("",GetCategoriesAssignedtoService()));
         }
         private void SetnewDuration(object sender, EventArgs args)
         {
@@ -239,18 +249,8 @@ namespace Demo_App
             //Navigation.PushAsync(new AddNotesPage());
         }
 
-        private void DeleteService()
+        private void CreateService()
         {
-            try
-            {
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
-                var result = PostData("DELETE", "", apiUrl);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
-
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
@@ -271,6 +271,89 @@ namespace Demo_App
                     Navigation.RemovePage(Navigation.NavigationStack[i]);
                 }
             }
+        }
+
+        //CreateService
+        public async void DeleteService()
+        {
+
+            try
+            {
+
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Service", "Yes", "No");
+                if (confirmed)
+                {
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
+                    var result = PostData("DELETE", "", apiUrl);
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+                    }
+
+                    //Navigation.PopAsync(true);
+
+                    Navigation.PushAsync(new ServicePage());
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 3)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+
+                }
+                else
+                {
+                    await Navigation.PushAsync(new ServiceDetailsPage());
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+
+
+
+            //try
+            //{                
+
+            //        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
+            //    var result = PostData("DELETE", "", apiUrl);
+            //}
+            //catch (Exception e)
+            //{
+            //    e.ToString();
+            //}
+
+            //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            //{
+            //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+
+            //}
+
+            ////Navigation.PopAsync(true);
+
+            //Navigation.PushAsync(new ServicePage());
+
+
+            //int pCount = Navigation.NavigationStack.Count();
+
+            //for (int i = 0; i < pCount; i++)
+            //{
+            //    if (i == 3)
+            //    {
+            //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+            //    }
+            //}
         }
 
 

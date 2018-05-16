@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Pages;
+using Demo_App.Model;
+using System.Collections.ObjectModel;
+
 namespace Demo_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FloatingButtonPopup : PopupPage
+    
+    public partial class FloatingButtonPopup : PopupPage
     {
+        
+        public AddAppointments objAddAppointment = null;
+
         public FloatingButtonPopup()
         {
             InitializeComponent();
@@ -51,20 +58,82 @@ namespace Demo_App
         protected override bool OnBackgroundClicked()
         {
             // Return default value - CloseWhenBackgroundIsClicked
+            
             return base.OnBackgroundClicked();
         }
 
         private void AddNewCustomer(object sender, EventArgs args)
         {
-            var NewService = new NewCustomerPage();
-            Navigation.PushAsync(new NewCustomerPage());
-            this.IsVisible = false;
-            OnDisappearing();
+            if (Application.Current.Properties.ContainsKey("FloatingCalenderPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingCalenderPageName"]);
+                Navigation.PushAsync(new NewCustomerPage(objAddAppointment, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingCustomerPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingCustomerPageName"]);
+                Navigation.PushAsync(new NewCustomerPage(objAddAppointment, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingActivityPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingActivityPageName"]);
+                Navigation.PushAsync(new NewCustomerPage(objAddAppointment, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingAccountPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingAccountPageName"]);
+                Navigation.PushAsync(new NewCustomerPage(objAddAppointment, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+
+            //var NewService = new NewCustomerPage(objAddAppointment,"");
+
         }
 
         private void AddNewServices()
         {
-            //Navigation.PushAsync(new NewServicePage());
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
+            //Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
+            //this.IsVisible = false;
+            //OnDisappearing();
+
+
+            if (Application.Current.Properties.ContainsKey("FloatingCalenderPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingCalenderPageName"]);
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingCustomerPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingCustomerPageName"]);
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingActivityPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingActivityPageName"]);
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
+            else if (Application.Current.Properties.ContainsKey("FloatingAccountPageName") == true)
+            {
+                var pageName = Convert.ToString(Application.Current.Properties["FloatingAccountPageName"]);
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, pageName));
+                this.IsVisible = false;
+                OnDisappearing();
+            }
         }
 
         private void AddNewStaff(object sender,EventArgs e)
@@ -73,5 +142,14 @@ namespace Demo_App
             this.IsVisible = false;
             OnDisappearing();
         }
+
+
+        private void AddServiceCategory(object sender,EventArgs e)
+        {
+            Navigation.PushAsync(new NewCategoryPage());
+            this.IsVisible = false;
+            OnDisappearing();
+        }
+
     }
 }

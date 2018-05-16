@@ -52,7 +52,7 @@ namespace Demo_App
                 obj.Id = 0;
                 obj.CompanyId = CompanyId;
                 obj.Name = CategoryName.Text;
-                obj.CreationDate = "2017-11-08t12:19:27.628z";
+                obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
 
                 var SerializedData = JsonConvert.SerializeObject(obj);

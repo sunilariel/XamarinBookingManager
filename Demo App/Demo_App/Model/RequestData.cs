@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Demo_App.Model
 {
+    
+
     public class AssignServiceToStaff
     {
         public int Id { get; set; }
@@ -13,6 +15,8 @@ namespace Demo_App.Model
         public int EmployeeId { get; set; }
         public string CreationDate { get; set; }
     }
+
+   
 
     public class TimeSchedule
     {
@@ -57,16 +61,16 @@ namespace Demo_App.Model
         public int ServiceId { get; set; }
         public int EmployeeId { get; set; }
         public string CustomerIdsCommaSeperated { get; set; }
-        public int StartHour { get; set; }
-        public int StartMinute { get; set; }
+        public string StartHour { get; set; }
+        public string StartMinute { get; set; }
         public int EndHour { get; set; }
         public int EndMinute { get; set; }
         public bool IsAdded { get; set; }
         public string Message { get; set; }
         public string Notes { get; set; }
         public List<int> CustomerIds { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
         public int Status { get; set; }
     }
 
@@ -77,21 +81,22 @@ namespace Demo_App.Model
         public int ServiceId { get; set; }
         public int EmployeeId { get; set; }
         public string CustomerIdsCommaSeperated { get; set; }
-        public int StartHour { get; set; }
-        public int StartMinute { get; set; }
+        public string StartHour { get; set; }
+        public string StartMinute { get; set; }
         public int EndHour { get; set; }
         public int EndMinute { get; set; }
         public bool IsAdded { get; set; }
         public string Message { get; set; }
         public string Notes { get; set; }
         public List<int> CustomerIds { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
         public int Status { get; set; }
     }
 
     public class AddAppointments
     {
+        public string BookingId { get; set; }
         public int CompanyId { get; set; }
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
@@ -105,10 +110,12 @@ namespace Demo_App.Model
         public string EndTime { get; set; } 
         public string TimePeriod { get; set; }
         public string DateOfBooking { get; set; }
+        public int Status { get; set; }
     }
 
     public class UpdateAppointments
     {
+        public string BookingId { get; set; }
         public int CompanyId { get; set; }
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
@@ -120,11 +127,23 @@ namespace Demo_App.Model
         public int DurationInHours { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
-        public string BookingDate { get; set; }
+        public string DateOfBooking { get; set; }
         public string TimePeriod { get; set; }
         public string CommentNotes { get; set; }
     }
-
+    public class CalenderAppointmentDetail
+    {
+        public string StartTime { get; set; }
+        public string BookingDate { get; set; }
+        public string CustomerName { get; set; }
+        public string DurationHrsMin { get; set; }
+        public string AppointmentDetail { get; set; }
+    }
+    public class CustomerAppointmentDetail
+    {
+        public string BookingDate { get; set; }
+        public string AppointmentDetail { get; set; }
+    }
     public class AppointmentDetails
     {
         public string BookingId { get; set; }
@@ -139,24 +158,25 @@ namespace Demo_App.Model
         public string Colour { get; set; }
         public int status { get; set; }
         public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string DurationHrsMin { get; set; }
         public string BookingDate { get; set; }
+       
         public string AppointmentDetail { get; set; }
         public string CommentNotes { get; set; }
         public string TimePeriod { get; set; }
-
-
     }
 
     public class Notes
     {
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public int CompanyId { get; set; }
         public string Description { get; set; }
         public string WhoAddedThis { get; set; }
-        public DateTime CreationDate { get; set; }
+        public string CreationDate { get; set; }
     }
 
     public class WorkingHoursofEmployee
@@ -168,7 +188,21 @@ namespace Demo_App.Model
         public string Day { get; set; }
 
     }
-
+    public class Customers
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string PostCode { get; set; }
+        public string Email { get; set; }
+        public string TelephoneNo { get; set; }
+        public DateTime CreationDate { get; set; }
+        public int EntityStatus { get; set; }
+    }
     public class AllAppointments
     {
         public string Id { get; set; }
@@ -179,12 +213,13 @@ namespace Demo_App.Model
         public AssignProvider Employee { get; set; }
 
         public RequestAddService Service { get; set; }
-
-        public List<int> CustomerIds { get; set; }
+        
+        public List<Customers> Customers { get; set; }
         public int Status { get; set; }
         public string Start { get; set; }
         public string End { get; set; }
-        public string BookingDate { get; set; }
+        //public string BookingDate { get; set; }
+        //public string CreationDate { get; set; }
         public string Notes { get; set; }
 
 
@@ -313,7 +348,7 @@ namespace Demo_App.Model
 
         public string CreationDate { get; set; }
 
-        //public List<StaffWorkingHours> WorkingHours { get; set; }
+        public List<StaffWorkingHours> WorkingHours { get; set; }
 
         //public int EntityStatus { get; set; }
 
@@ -348,4 +383,27 @@ namespace Demo_App.Model
         public int EntityStatus { get; set; }
     }
 
+    public class Employees
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string TelephoneNo { get; set; }
+        public DateTime CreationDate { get; set; }
+        public List<WorkingHours> WorkingHours { get; set; }
+        public int EntityStatus { get; set; }
+    }
+    public class WeekofDay
+    {
+        public string WeekofDayorDate { get; set; }
+    }
+    public class AllWeekofDay
+    {
+        public List<WeekofDay> weekList { get; set; }
+    }
 }

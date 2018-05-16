@@ -23,14 +23,16 @@ namespace Demo_App
         public RegPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = reg = new RequestData();
         }
         
         public async void OnRegClicked(object sender, EventArgs args)
         {
             if (!IsValid()) return;
-            var DomainUrl = "http://bookingmanager25-001-site1.btempurl.com/";
+            
+            var DomainUrl = "http://bookingmanager27-001-site1.itempurl.com/";
+            
             Application.Current.Properties["DomainUrl"] = DomainUrl;
             var regdata = reg;
             string email = reg.Email;
@@ -49,13 +51,13 @@ namespace Demo_App
 
         private async Task<string> RegisterMethod(string url, RequestData item)
         {
-            string result = "";
+            string result="";
             try
             {
                 //HttpClient client = new HttpClient();
 
                 RequestData objRequestData = new RequestData();
-                objRequestData.Id = -1;
+                //objRequestData.Id = -1;
                 objRequestData.Name = item.Name;
                 objRequestData.Address = "aa";
                 objRequestData.Email = item.Email;
@@ -66,7 +68,7 @@ namespace Demo_App
                 objRequestData.Town = "aaaaa";
                 objRequestData.Description = "aa";
                 objRequestData.Password = item.Password;
-                objRequestData.CreationDate = System.DateTime.Now.ToString();
+                objRequestData.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                 var data = JsonConvert.SerializeObject(objRequestData);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -85,14 +87,14 @@ namespace Demo_App
                         dynamic ResponseToken = jsonObject["ReturnObject"]["AuthToken"];
                         Application.Current.Properties["Token"] = ResponseToken.Value;
                         Application.Current.Properties["CompanyId"] = ResponseValue.Value;
-                        Navigation.PushAsync(new CreateAccountUser(objRequestData));
+                        await Navigation.PushAsync(new CreateAccountUser(objRequestData));
                     }
 
                 }
             }
             catch (Exception ex)
             {
-                var a = ex;
+                ex.ToString();
                
             }
             return result;
@@ -132,6 +134,7 @@ namespace Demo_App
                 }
                 catch (Exception ex)
                 {
+                    ex.ToString();
                 }
             }
 

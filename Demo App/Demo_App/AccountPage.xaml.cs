@@ -39,6 +39,21 @@ namespace Demo_App
             Application.Current.MainPage.Navigation.PushAsync(new ServiceCategoriesPage( CategoryID));
         }
 
+        public async void LogOut_Tapped(object sender,EventArgs args)
+        {
+            var LogOut = await DisplayAlert("Log Out", "Are you sure you want to Log Out", "Log Out", "No");
+            if (LogOut)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new WelcomePage());
+            }
+            else
+            {
+                //await Navigation.PushAsync(new StaffProfileDetailsPage());
+            }
+
+            //Application.Current.MainPage.Navigation.PushAsync(new WelcomePage());
+        }
+
         private void Service_Tapped(object sender, EventArgs args)
         {
             Application.Current.MainPage.Navigation.PushAsync(new ServicePage());

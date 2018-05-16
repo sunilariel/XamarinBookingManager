@@ -97,9 +97,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DurationTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EditBufferTimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EditCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)EditDurationTimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EditServiceDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -133,11 +135,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BasePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\BreakTime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\BreakTimeHoursofEmployee.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\DateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IProgressInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Register.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\RequestData.cs" />

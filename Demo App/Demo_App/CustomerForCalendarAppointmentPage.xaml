@@ -21,12 +21,14 @@
                         <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="0,20,0,0">
                             <Image  Source="plus2.png" WidthRequest="40" HeightRequest="40" />
                         </StackLayout>
+                        
                         <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,20,0,0">
                             <Label Text="New Customer" HorizontalOptions="StartAndExpand"></Label>
+                            
                         </StackLayout>
-                        <!--<StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AddServiceNavigation"/>
-                        </StackLayout.GestureRecognizers>-->
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddNewCustomerForBookingTime"/>
+                        </StackLayout.GestureRecognizers>
                     </Grid>
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="White">

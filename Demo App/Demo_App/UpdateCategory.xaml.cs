@@ -37,7 +37,7 @@ namespace Demo_App
                 obj.Id = CategoryId;
                 obj.CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
                 obj.Name = CategoryName.Text;
-                obj.CreationDate = "2017-12-14T13:11:52.8721492+01:00";
+                obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
                 var serializeddata = JsonConvert.SerializeObject(obj);
 
                 var result = PostData("POST", serializeddata, apiUrl);

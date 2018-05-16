@@ -16,7 +16,9 @@ namespace Demo_App.Model
     {
         public int Id { get; set; }
         public string CompanyId { get; set; }
+        public int CategoryID { get; set; }
         public string Name { get; set; }
+        public int ServiceId { get; set; }
         public string CreationDate { get; set; }
         public string EntityStatus { get; set; }
         public bool Confirmed { get; set; }

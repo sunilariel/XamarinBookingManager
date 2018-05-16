@@ -25,8 +25,9 @@ namespace Demo_App.Model
 
     public class AssignedServicetoStaff : INotifyPropertyChanged
     {
-        bool _isAssigned;
         bool _AllAssigned;
+        bool _isAssigned;
+        public event PropertyChangedEventHandler PropertyChanged;
         public int Id { get; set; }
         public int ServiceId { get; set; }
         public int CompanyId { get; set; }
@@ -43,7 +44,7 @@ namespace Demo_App.Model
         public string Description { get; set; }
         //public bool isAssigned { get; set; }
         public string ServiceDetails { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public bool AllAssigned
         {
@@ -81,7 +82,7 @@ namespace Demo_App.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
+    }   
 
     public class ServiceDetails
     {

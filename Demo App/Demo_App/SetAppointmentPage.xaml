@@ -26,7 +26,7 @@
                             </Grid.ColumnDefinitions>
                             <Label x:Name="shedulerStaff" Text="All Scheduler" TextColor="White" FontSize="14" HorizontalOptions="End" Grid.Column="0"/>
                             <Image x:Name="dropdownArrow" Source="DropDownArrow.png" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Grid.Column="1">
-                               
+
                             </Image>
                         </Grid>
                         <StackLayout.GestureRecognizers>
@@ -53,6 +53,12 @@
                     <ContentView x:Name="Placeholder" Grid.Row="0"/>
                     <StackLayout x:Name="listData" Grid.Row="0" BackgroundColor="White" IsVisible="False">
                         <ScrollView>
+                            <StackLayout Grid.Column="0">
+                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="abc" FontAttributes="Bold"></Label>
+                            </StackLayout>
                             <ListView x:Name="StaffList" ItemSelected="StaffSelectedForAppointment" RowHeight="70">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -133,11 +139,11 @@
                                 </StackLayout>
                             </Grid>
                         </StackLayout>-->
-                    
+
                 </Grid>
             </StackLayout>
             <StackLayout HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Padding="0,10,20,0" BackgroundColor="Transparent">
-            <Image x:Name="floataction" Source="plus.png" HeightRequest="30" HorizontalOptions="EndAndExpand">
+                <Image x:Name="floataction" Source="plus.png" HeightRequest="30" HorizontalOptions="EndAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="OnOpenPupup"/>

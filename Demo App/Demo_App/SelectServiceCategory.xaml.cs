@@ -23,12 +23,16 @@ namespace Demo_App
         public ServicesAllocatedToCategory serviceCount = null;
         public Customer objCust = null;
         string PageName = "";
+        string selectedDateofBooking;
+        int StatusID;
         #endregion
 
-        public SelectServiceCategory(string pagename)
+        public SelectServiceCategory(string pagename,string DateofBooking,int statusId)
         {
             InitializeComponent();
             PageName = pagename;
+            selectedDateofBooking = DateofBooking;
+            StatusID = statusId;
             GetCategories(CompanyId);
             BindingContext = serviceCount;
         }
@@ -44,17 +48,20 @@ namespace Demo_App
             }
             catch (Exception e)
             {
-
+                e.ToString();
             }
 
         }
 
         private void SelectServiceForCustomerClick(object sender, SelectedItemChangedEventArgs e)
         {
-
+            if (e.SelectedItem == null)
+                return;
+            
             var Category = e.SelectedItem as ServicesAllocatedToCategory;
             Application.Current.Properties["CategoryID"] = Category.CategoryId;
-            Navigation.PushAsync(new SelectServicesForAppontment(PageName));
+            Navigation.PushAsync(new SelectServicesForAppontment(PageName,Category.CategoryId,Category.CategoryName,selectedDateofBooking,StatusID));
+            ((ListView)sender).SelectedItem = null;
         }
 
         public void GetCategories(string Id)
@@ -66,13 +73,15 @@ namespace Demo_App
                 ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
                 foreach (var item in ListofAllCategories)
                 {
-                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
+                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
                     var resultData = PostData("GET", "", ApiUrl);
                     ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
+                    
+                    
 
                     ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
                     AllocateServices.CategoryName = item.Name;
-                    AllocateServices.CategoryId = item.Id;
+                    AllocateServices.CategoryId = item.Id;                      
                     AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + " services";
 
                     ListOfAssignServiceCount.Add(AllocateServices);

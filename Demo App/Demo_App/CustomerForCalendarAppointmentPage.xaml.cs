@@ -1,5 +1,6 @@
 ﻿using Demo_App.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,17 +15,17 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CustomerForCalendarAppointmentPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CustomerForCalendarAppointmentPage : ContentPage
+    {
         public AddAppointments objaddAppointment = null;
-		public CustomerForCalendarAppointmentPage (AddAppointments obj)
-		{
+        public CustomerForCalendarAppointmentPage(AddAppointments obj,string page)
+        {
             try
             {
                 InitializeComponent();
-                var hrs = obj.DurationInMinutes / 60;
-                var min = obj.DurationInMinutes % 60;
+                //var hrs = obj.DurationInMinutes;
+                //var min = obj.DurationInMinutes;
                 objaddAppointment = new AddAppointments();
                 objaddAppointment.ServiceId = obj.ServiceId;
                 objaddAppointment.ServiceName = obj.ServiceName;
@@ -32,12 +33,12 @@ namespace Demo_App
                 objaddAppointment.EmployeeName = obj.EmployeeName;
                 objaddAppointment.Cost = obj.Cost;
                 objaddAppointment.StartTime = obj.StartTime;
-                
-                
+                objaddAppointment.CompanyId = obj.CompanyId;
 
-                objaddAppointment.StartTime = obj.TimePeriod;
-                objaddAppointment.DurationInHours = hrs;
-                objaddAppointment.DurationInMinutes = min;
+                objaddAppointment.EndTime = obj.EndTime;
+                objaddAppointment.TimePeriod = obj.TimePeriod;
+                objaddAppointment.DurationInHours = obj.DurationInHours;
+                objaddAppointment.DurationInMinutes = obj.DurationInMinutes;
                 objaddAppointment.DateOfBooking = obj.DateOfBooking;
                 var customerlist = GetAllCustomer();
                 if (customerlist.Count > 5)
@@ -45,17 +46,27 @@ namespace Demo_App
                     CustomerSearchBar.IsVisible = true;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
         }
 
-        private void selectedCustomerForAppointment(object sender,SelectedItemChangedEventArgs e)
+
+        private void AddNewCustomerForBookingTime(object sender, EventArgs args)
         {
+            Application.Current.MainPage.Navigation.PushAsync(new NewCustomerPage(objaddAppointment, "AddCustomerBookingTime"));
+        }
+
+        private void selectedCustomerForAppointment(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+            
             var data = e.SelectedItem as Customer;
             Application.Current.Properties["SelectedCustomerId"] = data.Id;
             Navigation.PushAsync(new CalendarCreateAppointmentPage(objaddAppointment));
+            ((ListView)sender).SelectedItem = null;
         }
 
         public ObservableCollection<Customer> GetAllCustomer()
@@ -70,6 +81,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

@@ -43,24 +43,34 @@ namespace Demo_App
                 foreach (var item in ListofAllService)
                 {
                     if (item.isAssigned == true)
-                    {
-                        var Url = Application.Current.Properties["DomainUrl"] + "api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
+                    {                        
                         AssignServiceToCategory obj = new AssignServiceToCategory();
                         obj.CategoryName = CategoryName;
                         obj.CompanyId = Convert.ToInt32(CompanyId);
                         obj.CategoryID = Convert.ToInt32(CategoryID);
-                        obj.CreationDate = DateTime.Now.ToString();
+                        obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
                         obj.ServiceId = item.Id;
                         //obj.isAssigned = true;
-
+                        var Url = Application.Current.Properties["DomainUrl"] + "/api/services/AssignCategoryToService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
                         var SerializedData = JsonConvert.SerializeObject(obj);
                         var result = PostData("PUT", SerializedData, Url);
 
                     }
                     else
-                    {                      
-                        var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
-                        var result = PostData("POST", "", apiUrl);
+                    {
+                        AssignServiceToCategory obj = new AssignServiceToCategory();
+                        obj.CategoryName = CategoryName;
+                        obj.CompanyId = Convert.ToInt32(CompanyId);
+                        obj.CategoryID = Convert.ToInt32(CategoryID);
+                        obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                        obj.ServiceId = item.Id;
+                        //obj.isAssigned = true;
+                        //api/services/DeAllocateCategoryFromService?companyId={companyId}&categoryId={categoryId}&serviceId={serviceId}
+
+
+                        var SerializedData = JsonConvert.SerializeObject(obj);
+                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/DeAllocateCategoryFromService?companyId=" + CompanyId + "&categoryId=" + CategoryID + "&serviceId=" + item.Id;
+                        var result = PostData("POST", SerializedData, apiUrl);
                     }
                 }
 
@@ -72,13 +82,13 @@ namespace Demo_App
             }
         }
 
-        public void AssignAllProvider(object Sender, EventArgs args)
+        public void AssignAllProviders(object Sender,EventArgs args)
         {
             try
-            {
-
-                CheckBox AllProvider = (CheckBox)Sender;
-                if (AllProvider.Checked == true)
+            {         
+                
+                CheckBox AllProviders = (CheckBox)Sender;
+                if (AllProviders.Checked == true)
                 {
                     foreach (var item in ListofAllService)
                     {
@@ -120,6 +130,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return 0;
             }
         }
@@ -181,8 +192,6 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                httpRequest.ContentLength = 0;
-
                 if (SerializedData != "")
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
@@ -201,37 +210,6 @@ namespace Demo_App
             {
                 return e.ToString();
             }
-
-
-            //try
-            //{
-            //    var result = "";
-            //    HttpWebRequest httpRequest = HttpWebRequest.CreateHttp(Url);
-            //    httpRequest.Method = Method;
-            //    httpRequest.ContentType = "application/json";
-            //    httpRequest.ProtocolVersion = HttpVersion.Version10;
-            //    httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
-
-            //    httpRequest.ContentLength = 0;
-
-            //    if (SerializedData != "")
-            //    {
-            //        var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
-            //        streamWriter.Write(SerializedData);
-            //        streamWriter.Close();
-            //    }
-
-            //    var httpWebResponse = (HttpWebResponse)httpRequest.GetResponse();
-
-            //    using (var StreamReader = new StreamReader(httpWebResponse.GetResponseStream()))
-            //    {
-            //        return result = StreamReader.ReadToEnd();
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    return e.ToString();
-            //}
         }
     }
 }

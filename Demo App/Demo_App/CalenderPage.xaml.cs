@@ -13,7 +13,7 @@ using System.Net.Http;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-
+using System.Threading;
 
 namespace Demo_App
 {
@@ -27,84 +27,442 @@ namespace Demo_App
         public static SfSchedule schedulee;
         public bool IsMonthView = false;
         int i = 0;
+        int statusId;
         string[] currentWeek = new string[7];
-        public AppointmentDetails obj = null;
+        //string WeekMonth;
+
+        public CalenderAppointmentDetail obj = null;
+        public WeekofDay objweek = null;
         int EmployeeId;
-        ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointments = new ObservableCollection<CalenderAppointmentDetail>();
+        List<string> week = new List<string>();
+        ObservableCollection<WeekofDay> Listofweek = new ObservableCollection<WeekofDay>();
+
+        ObservableCollection<AllAppointments> appointments = new ObservableCollection<AllAppointments>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsMON = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsTUE = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsWED = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsTHU = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsFRI = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsSAT = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsSUN = new ObservableCollection<CalenderAppointmentDetail>();
+        ObservableCollection<Employees> objEmp = new ObservableCollection<Employees>();
+
+
         #endregion
 
         public CalenderPage()
         {
             try
-            {
-                currentWeek = GetCurrentWeek();
-                BindingContext = currentWeek;
+            {                
                 if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
                 {
                     if (Application.Current.Properties.ContainsKey("SelectedEmpId") == true)
                     {
                         EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
                     }
-                    var datalist = GetAppointmentBookingByEmployeeID();
-                    //foreach (var list in datalist)
-                    //{
-                    //    var firstLabel = new Label
-                    //    {                        
-                    //        HorizontalOptions = LayoutOptions.StartAndExpand,
-                    //        TextColor = Xamarin.Forms.Color.FromHex("#000000")
-                    //    };
-                    //    firstLabel.Text = list.AppointmentDetail;
-                    //    //MonAppointmentBox.Children.Add(firstLabel);
-                    //}
+
+
+
+                    currentWeek = GetCurrentWeek();
+                    BindingContext = currentWeek;
+                    isCalenderPageOpen = true;
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    InitializeComponent();
+                    System.DateTime today = System.DateTime.Today;
+                    int currentDayOfWeek = (int)today.DayOfWeek;
+                    System.DateTime sunday = today.AddDays(-currentDayOfWeek);
+                    System.DateTime monday = sunday.AddDays(1);
+                    if (currentDayOfWeek == 0)
+                    {
+                        monday = monday.AddDays(-7);
+                    }
+                    var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+
+                    foreach (var item in dates)
+                    {
+
+                        var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM");
+                        week.Add(dd);
+                    }
+                    WeekMonlbl.Text = currentWeek[0];
+                    WeekTuelbl.Text = currentWeek[1];
+                    WeekWedlbl.Text = currentWeek[2];
+                    WeekThulbl.Text = currentWeek[3];
+                    WeekFrilbl.Text = currentWeek[4];
+                    WeekSatlbl.Text = currentWeek[5];
+                    WeekSunlbl.Text = currentWeek[6];
+
+
+                    //MondaylblM.Text = week[0];
+
+                    Mondaylbl.Text = week[0];
+                    Tuesdaylbl.Text = week[1];
+                    Wednesdaylbl.Text = week[2];
+                    Thursdaylbl.Text = week[3];
+                    Fridaylbl.Text = week[4];
+                    Saturdaylbl.Text = week[5];
+                    Sundaylbl.Text = week[6];
+
+                    GetAppointmentBookingByEmployeeID();
+                    var MON = Convert.ToDateTime(week[0]).ToString("dd-MMM-yyyy");
+                    var TUE = Convert.ToDateTime(week[1]).ToString("dd-MMM-yyyy");
+                    var WED = Convert.ToDateTime(week[2]).ToString("dd-MMM-yyyy");
+                    var THU = Convert.ToDateTime(week[3]).ToString("dd-MMM-yyyy");
+                    var FRI = Convert.ToDateTime(week[4]).ToString("dd-MMM-yyyy");
+                    var SAT = Convert.ToDateTime(week[5]).ToString("dd-MMM-yyyy");
+                    var SUN = Convert.ToDateTime(week[6]).ToString("dd-MMM-yyyy");
+
+
+                    listViewMON.IsVisible = false;
+                    listViewTUE.IsVisible = false;
+                    listViewWED.IsVisible = false;
+                    listViewTHU.IsVisible = false;
+                    listViewFRI.IsVisible = false;
+                    listViewSAT.IsVisible = false;
+                    listViewSUN.IsVisible = false;
+
+
+                    listEmptyMON.IsVisible = true;
+                    listEmptyTUE.IsVisible = true;
+                    listEmptyWED.IsVisible = true;
+                    listEmptyTHU.IsVisible = true;
+                    listEmptyFRI.IsVisible = true;
+                    listEmptySAT.IsVisible = true;
+                    listEmptySUN.IsVisible = true;
+
+                    foreach (var item in ListofAppointments)
+                    {
+                        //listEmptyMON.IsVisible = true;
+                        var d = item.BookingDate.Split(',');
+                        var date = Convert.ToDateTime(d[0]).ToString("dd-MMM-yyyy");
+
+                        if (MON == date)
+                        {
+                            listViewMON.IsVisible = true;
+                            listEmptyMON.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsMON.Add(obj);
+                            CustomerAppoimentListMON.ItemsSource = ListofAppointmentsMON;
+                            //CustomerAppoimentListMONDay.ItemsSource = ListofAppointmentsMON;
+
+                        }
+                        else if (TUE == date)
+                        {
+                            listViewTUE.IsVisible = true;
+                            listEmptyTUE.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsTUE.Add(obj);
+                            CustomerAppoimentListTUE.ItemsSource = ListofAppointmentsTUE;
+
+                        }
+                        else if (WED == date)
+                        {
+                            listViewWED.IsVisible = true;
+                            listEmptyWED.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsWED.Add(obj);
+                            CustomerAppoimentListWED.ItemsSource = ListofAppointmentsWED;
+
+                        }
+                        else if (THU == date)
+                        {
+
+                            listViewTHU.IsVisible = true;
+                            listEmptyTHU.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsTHU.Add(obj);
+                            CustomerAppoimentListTHU.ItemsSource = ListofAppointmentsTHU;
+
+                        }
+                        else if (FRI == date)
+                        {
+                            listViewFRI.IsVisible = true;
+                            listEmptyFRI.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsFRI.Add(obj);
+                            CustomerAppoimentListFRI.ItemsSource = ListofAppointmentsFRI;
+
+                        }
+                        else if (SAT == date)
+                        {
+                            listViewSAT.IsVisible = true;
+                            listEmptySAT.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsSAT.Add(obj);
+                            CustomerAppoimentListSAT.ItemsSource = ListofAppointmentsSAT;
+
+                        }
+                        else if (SUN == date)
+                        {
+                            listViewSUN.IsVisible = true;
+                            listEmptySUN.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsSUN.Add(obj);
+                            CustomerAppoimentListSUN.ItemsSource = ListofAppointmentsSUN;
+
+                        }
+
+                    }
+
+
+                    schedulee = new SfSchedule();
+                    ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
+                    viewHeaderStyle.DayTextColor = Color.Black;
+                    viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
+                    schedulee.ViewHeaderStyle = viewHeaderStyle;
+                    DependencyService.Get<IProgressInterface>().Hide();
+
                 }
-                isCalenderPageOpen = true;
-                NavigationPage.SetHasNavigationBar(this, false);
-                InitializeComponent();
+                else
+                {
 
-                WeekMonlbl.Text = currentWeek[0];
-                WeekTuelbl.Text = currentWeek[1];
-                WeekWedlbl.Text = currentWeek[2];
-                WeekThulbl.Text = currentWeek[3];
-                WeekFrilbl.Text = currentWeek[4];
-                WeekSatlbl.Text = currentWeek[5];
-                WeekSunlbl.Text = currentWeek[6];
 
-                Mondaylbl.Text = "MON" + " " + currentWeek[0];
-                Tuesdaylbl.Text = "TUE" + " " + currentWeek[1];
-                Wednesdaylbl.Text = "WED" + " " + currentWeek[2];
-                Thursdaylbl.Text = "THU" + " " + currentWeek[3];
-                Fridaylbl.Text = "FRI" + " " + currentWeek[4];
-                Saturdaylbl.Text = "SAT" + " " + currentWeek[5];
-                Sundaylbl.Text = "SUN" + " " + currentWeek[6];
-                schedulee = new SfSchedule();
-                ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
-                viewHeaderStyle.DayTextColor = Color.Black;
-                viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
-                schedulee.ViewHeaderStyle = viewHeaderStyle;
+                    //DependencyService.Get<IProgressInterface>().Show();
+
+
+                    currentWeek = GetCurrentWeek();
+                    BindingContext = currentWeek;
+                    isCalenderPageOpen = true;
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    InitializeComponent();
+                    System.DateTime today = System.DateTime.Today;
+                    int currentDayOfWeek = (int)today.DayOfWeek;
+                    System.DateTime sunday = today.AddDays(-currentDayOfWeek);
+                    System.DateTime monday = sunday.AddDays(1);
+                    if (currentDayOfWeek == 0)
+                    {
+                        monday = monday.AddDays(-7);
+                    }
+                    var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+
+                    foreach (var item in dates)
+                    {
+
+                        var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM");
+                        week.Add(dd);
+                    }
+                    WeekMonlbl.Text = currentWeek[0];
+                    WeekTuelbl.Text = currentWeek[1];
+                    WeekWedlbl.Text = currentWeek[2];
+                    WeekThulbl.Text = currentWeek[3];
+                    WeekFrilbl.Text = currentWeek[4];
+                    WeekSatlbl.Text = currentWeek[5];
+                    WeekSunlbl.Text = currentWeek[6];
+
+
+                    //MondaylblM.Text = week[0];
+
+                    Mondaylbl.Text = week[0];
+                    Tuesdaylbl.Text = week[1];
+                    Wednesdaylbl.Text = week[2];
+                    Thursdaylbl.Text = week[3];
+                    Fridaylbl.Text = week[4];
+                    Saturdaylbl.Text = week[5];
+                    Sundaylbl.Text = week[6];
+
+                    GetAppointmentBookingByEmployeeIDs();
+                    var MON = Convert.ToDateTime(week[0]).ToString("dd-MMM-yyyy");
+                    var TUE = Convert.ToDateTime(week[1]).ToString("dd-MMM-yyyy");
+                    var WED = Convert.ToDateTime(week[2]).ToString("dd-MMM-yyyy");
+                    var THU = Convert.ToDateTime(week[3]).ToString("dd-MMM-yyyy");
+                    var FRI = Convert.ToDateTime(week[4]).ToString("dd-MMM-yyyy");
+                    var SAT = Convert.ToDateTime(week[5]).ToString("dd-MMM-yyyy");
+                    var SUN = Convert.ToDateTime(week[6]).ToString("dd-MMM-yyyy");
+
+
+                    listViewMON.IsVisible = false;
+                    listViewTUE.IsVisible = false;
+                    listViewWED.IsVisible = false;
+                    listViewTHU.IsVisible = false;
+                    listViewFRI.IsVisible = false;
+                    listViewSAT.IsVisible = false;
+                    listViewSUN.IsVisible = false;
+
+
+                    listEmptyMON.IsVisible = true;
+                    listEmptyTUE.IsVisible = true;
+                    listEmptyWED.IsVisible = true;
+                    listEmptyTHU.IsVisible = true;
+                    listEmptyFRI.IsVisible = true;
+                    listEmptySAT.IsVisible = true;
+                    listEmptySUN.IsVisible = true;
+
+                    foreach (var item in ListofAppointments)
+                    {
+                        //listEmptyMON.IsVisible = true;
+                        var d = item.BookingDate.Split(',');
+                        var date = Convert.ToDateTime(d[0]).ToString("dd-MMM-yyyy");
+
+                        if (MON == date)
+                        {
+                            listViewMON.IsVisible = true;
+                            listEmptyMON.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsMON.Add(obj);
+                            CustomerAppoimentListMON.ItemsSource = ListofAppointmentsMON;
+                            //CustomerAppoimentListMONDay.ItemsSource = ListofAppointmentsMON;
+
+                        }
+                        else if (TUE == date)
+                        {
+                            listViewTUE.IsVisible = true;
+                            listEmptyTUE.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsTUE.Add(obj);
+                            CustomerAppoimentListTUE.ItemsSource = ListofAppointmentsTUE;
+
+                        }
+                        else if (WED == date)
+                        {
+                            listViewWED.IsVisible = true;
+                            listEmptyWED.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsWED.Add(obj);
+                            CustomerAppoimentListWED.ItemsSource = ListofAppointmentsWED;
+
+                        }
+                        else if (THU == date)
+                        {
+
+                            listViewTHU.IsVisible = true;
+                            listEmptyTHU.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsTHU.Add(obj);
+                            CustomerAppoimentListTHU.ItemsSource = ListofAppointmentsTHU;
+
+                        }
+                        else if (FRI == date)
+                        {
+                            listViewFRI.IsVisible = true;
+                            listEmptyFRI.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsFRI.Add(obj);
+                            CustomerAppoimentListFRI.ItemsSource = ListofAppointmentsFRI;
+
+                        }
+                        else if (SAT == date)
+                        {
+                            listViewSAT.IsVisible = true;
+                            listEmptySAT.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsSAT.Add(obj);
+                            CustomerAppoimentListSAT.ItemsSource = ListofAppointmentsSAT;
+
+                        }
+                        else if (SUN == date)
+                        {
+                            listViewSUN.IsVisible = true;
+                            listEmptySUN.IsVisible = false;
+                            obj = new CalenderAppointmentDetail();
+                            obj.StartTime = item.StartTime;
+                            obj.BookingDate = item.BookingDate;
+                            obj.CustomerName = item.CustomerName;
+                            obj.DurationHrsMin = item.DurationHrsMin;
+                            obj.AppointmentDetail = item.AppointmentDetail;
+                            ListofAppointmentsSUN.Add(obj);
+                            CustomerAppoimentListSUN.ItemsSource = ListofAppointmentsSUN;
+
+                        }
+
+                    }
+
+
+                    schedulee = new SfSchedule();
+                    ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
+                    viewHeaderStyle.DayTextColor = Color.Black;
+                    viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
+                    schedulee.ViewHeaderStyle = viewHeaderStyle;
+
+                    DependencyService.Get<IProgressInterface>().Hide();
+
+                    //schedulee = new SfSchedule();
+                    //var CurrentDate = System.DateTime.Now;
+                    //System.DateTime SpecificDate = new System.DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
+                    //schedulee.NavigateTo(SpecificDate);
+                    //schedule.CellTapped += GetAvailableTimeForAppointments;
+
+
+                }
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
-                      
+
         }
 
-        //private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
-        //{
-        //    Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID))
-        //}
-
+       
         public static SfSchedule getScheduleObj()
         {
             return schedulee;
         }
-
-
-        //private void Schedule_VisibleDatesChangedEvent(object sender, VisibleDatesChangedEventArgs args)
-        //{
-
-        //}
-
         private void ChangeMonthView(object sender, EventArgs e)
         {
             try
@@ -112,9 +470,10 @@ namespace Demo_App
                 IsMonthView = !IsMonthView;
                 if (IsMonthView)
                 {
+
                     dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
-                    schedulerFullMonthView.IsVisible = true;
                     schedulerWeekView.IsVisible = false;
+                    schedulerFullMonthView.IsVisible = true;
                     MonthViewSettings monthViewSettings = new MonthViewSettings();
                     monthViewSettings.MonthLabelSettings.DayFormat = "E";
                 }
@@ -125,11 +484,13 @@ namespace Demo_App
                     schedulerWeekView.IsVisible = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
         }
+
+
 
         public string[] GetCurrentWeek()
         {
@@ -145,6 +506,8 @@ namespace Demo_App
                 System.Threading.Thread.CurrentThread.CurrentCulture = _culture;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = _uiculture;
 
+
+
                 DateTime startOfWeek = DateTime.Today.AddDays(
           (int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek -
           (int)DateTime.Today.DayOfWeek);
@@ -157,36 +520,134 @@ namespace Demo_App
 
                 return result.Split(',');
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                ex.ToString();
                 return null;
             }
         }
 
-      
-
-            private void AddNewAppointment(object sender, EventArgs e)
+        private void AddNewAppointment(object sender, EventArgs e)
         {
             try
             {
+
+                Xamarin.Forms.Grid grid = (Xamarin.Forms.Grid)sender;
+                string ssss = string.Empty;
+                var s = grid.Children[0];
+                Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
+                var selectedD = label.Text;
+                var DateofBooking = Convert.ToDateTime(selectedD).ToString();
+
                 if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
                 {
                     Application.Current.MainPage.Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
                 }
                 else
                 {
-                    Application.Current.MainPage.Navigation.PushAsync(new SelectServiceCategory("NewCalAppointment"));
+                    Application.Current.MainPage.Navigation.PushAsync(new SelectServiceCategory("NewCalAppointment", DateofBooking,statusId));
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
-           
+
             // MonAppointmentBox.Children.Add(firstLabel);
         }
 
-        public ObservableCollection<AppointmentDetails> GetAppointmentBookingByEmployeeID()
+
+
+
+        public void GetSelectedCustomerById()
+        {
+            try
+            {
+                string apiURL = Application.Current.Properties["DomainUrl"] + "/api/staff/GetAllEmployees?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiURL);
+                //objEmp = JsonConvert.DeserializeObject<Employees>(result);
+
+                ObservableCollection<Employees> objEmp = JsonConvert.DeserializeObject<ObservableCollection<Employees>>(result);
+
+
+                //objEmp = JsonConvert.DeserializeObject<ObservableCollection<Employees>>(result);
+
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+        }
+
+
+
+        public ObservableCollection<CalenderAppointmentDetail> GetAppointmentBookingByEmployeeIDs()
+        {
+            try
+            {
+                string apiURLs = Application.Current.Properties["DomainUrl"] + "/api/staff/GetAllEmployees?companyId=" + CompanyId;
+                var results = PostData("GET", "", apiURLs);
+                //objEmp = JsonConvert.DeserializeObject<Employees>(result);
+
+                ObservableCollection<Employees> objEmp = JsonConvert.DeserializeObject<ObservableCollection<Employees>>(results);
+
+                ListofAppointments = new ObservableCollection<CalenderAppointmentDetail>();
+                foreach (var item in objEmp)
+                {
+                    string[] StartTime = { };
+                    var startDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(-1)).ToString("dd-MM-yyyy");
+                    var endDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(1)).ToString("dd-MM-yyyy");
+                    string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForEmployeesByIdBetweenDates?companyId=" + item.CompanyId + "&commaSeperatedEmployeeIds=" + item.Id + "&startDate=" + startDate + "&endDate=" + endDate;
+
+                    var result = PostData("GET", "", apiURL);
+                    ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
+                    foreach (var appointment in appointments)
+                    {
+
+                        var datebooking = appointment.Start;
+                        var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
+                        System.DateTime startTime = Convert.ToDateTime(appointment.Start);
+                        string Time = startTime.ToString("hh:mm tt");
+                        Time = Time.ToUpper();
+                        var DateTimeofBooking = DateOFbooking + "," + Time;
+                        obj = new CalenderAppointmentDetail();
+                        obj.StartTime = Time;
+                        obj.BookingDate = DateTimeofBooking;
+                        string DurationHours = Convert.ToString(appointment.Service == null ? 0 : appointment.Service.DurationInMinutes / 60);
+                        string durmin = Convert.ToString(appointment.Service == null ? 0 : appointment.Service.DurationInMinutes % 60); ;
+                        string durhrs = DurationHours + "hrs";
+                        string durationMins = durmin + "mins";
+                        string Duration = durhrs + " " + durationMins;
+                        obj.DurationHrsMin = Duration;
+                        string detail = appointment.Service.Name + "," + " w/ " + appointment.Employee.FirstName + "," + " $" + appointment.Service.Cost;
+                        string details = detail;
+
+                        if (details.Length > 18)
+                        {
+                            details = string.Concat(details.Substring(0, 18), "...");
+                        }
+                        obj.AppointmentDetail = details;
+                        obj.CustomerName = appointment.Customers.Select(x => x.FirstName).FirstOrDefault();
+                        //obj.CommentNotes = "abc";
+                        //obj.TimePeriod = Duration;
+                        ListofAppointments.Add(obj);
+                    }
+                }
+                return ListofAppointments;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                return null;
+            }
+
+            //CustomerAppoimentList.ItemsSource = ListofAppointment;
+
+        }
+
+
+        public ObservableCollection<CalenderAppointmentDetail> GetAppointmentBookingByEmployeeID()
         {
             try
             {
@@ -194,56 +655,64 @@ namespace Demo_App
                 var startDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(-1)).ToString("dd-MM-yyyy");
                 var endDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(1)).ToString("dd-MM-yyyy");
                 string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForEmployeesByIdBetweenDates?companyId=" + CompanyId + "&commaSeperatedEmployeeIds=" + EmployeeId + "&startDate=" + startDate + "&endDate=" + endDate;
+
                 var result = PostData("GET", "", apiURL);
 
                 ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
-                ListofAppointment = new ObservableCollection<AppointmentDetails>();
+                ListofAppointments = new ObservableCollection<CalenderAppointmentDetail>();
+
                 foreach (var appointment in appointments)
-                {                  
-                    string DurationHours = Convert.ToString(appointment.Service.DurationInMinutes == null ? 0 : appointment.Service.DurationInMinutes / 60);
-                    string durmin = Convert.ToString(appointment.Service.DurationInMinutes == null ? 0 : appointment.Service.DurationInMinutes % 60); ;
+                {
+                    string DurationHours = Convert.ToString(appointment.Service == null ? 0 : appointment.Service.DurationInMinutes / 60);
+                    string durmin = Convert.ToString(appointment.Service == null ? 0 : appointment.Service.DurationInMinutes % 60); ;
                     string durhrs = DurationHours + "hrs";
                     string durationMins = durmin + "mins";
                     string Duration = durhrs + " " + durationMins;
                     var datebooking = appointment.Start;
                     var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
-                    string detail = appointment.Employee.FirstName + "," + appointment.Service.Name + "," + Duration + "," + appointment.Service.Cost;
-                    DateTime startTime = Convert.ToDateTime(appointment.Start);
-                    string Time = startTime.ToShortTimeString();
+
+                    string detail = appointment.Service.Name + "," + " w/ " + appointment.Employee.FirstName + "," + " $" + appointment.Service.Cost;
+
+                    System.DateTime startTime = Convert.ToDateTime(appointment.Start);
+                    string Time = startTime.ToString("hh:mm tt");
+                    Time = Time.ToUpper();
                     var DateTimeofBooking = DateOFbooking + "," + Time;
-                    obj = new AppointmentDetails();
-                    obj.BookingId = appointment.Id;
-                    obj.EmployeeId = appointment.EmployeeId.ToString();
-                    obj.ServiceId = appointment.ServiceId.ToString();
-                    obj.EmployeeName = (appointment.Employee) == null ? "" : appointment.Employee.FirstName;
-                    obj.ServiceName = (appointment.Service) == null ? "" : appointment.Service.Name;
-                    obj.DurationInHours = (appointment.Service) == null ? 0 : appointment.Service.DurationInHours;
-                    obj.DurationInMinutes = (appointment.Service) == null ? 0 : appointment.Service.DurationInMinutes;
-                    obj.Cost = (appointment.Service) == null ? 0 : appointment.Service.Cost;
-                    obj.Currency = (appointment.Service) == null ? "" : appointment.Service.Currency;
-                    obj.status = appointment.Status;
-                    obj.StartTime = appointment.Start;
-                    obj.EndTime = appointment.End;
-                    obj.BookingDate = DateTimeofBooking;
-                    obj.Colour = (appointment.Service) == null ? "" : appointment.Service.Colour;
+                    obj = new CalenderAppointmentDetail();
+
+
+
                     obj.DurationHrsMin = Duration;
-                    obj.AppointmentDetail = detail;
-                    obj.CommentNotes = appointment.Notes;
-                    ListofAppointment.Add(obj);
+
+                    string details = detail;
+
+                    if (details.Length > 18)
+                    {
+                        details = string.Concat(details.Substring(0, 18), "...");
+                    }
+
+                    obj.AppointmentDetail = details;
+
+
+                    //obj.AppointmentDetail = detail;
+                    obj.CustomerName = appointment.Customers.Select(x => x.FirstName).FirstOrDefault();
+
+                    //obj.TimePeriod = Duration;
+                    ListofAppointments.Add(obj);
 
                 }
-                return ListofAppointment;
+                return ListofAppointments;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                ex.ToString();
                 return null;
             }
-            
+
             //CustomerAppoimentList.ItemsSource = ListofAppointment;
-            
+
         }
 
-      
+
         public string SetCompanyWorkingHours(ReqWorkingHours dataobj)
         {
             DateTime starttime = DateTime.Parse(dataobj.Start, CultureInfo.InvariantCulture);

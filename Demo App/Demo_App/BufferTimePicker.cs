@@ -108,7 +108,18 @@ namespace Demo_App
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             ObservableCollection<object> todaycollectionBuffer = new ObservableCollection<object>();
             todaycollectionBuffer = (ObservableCollection<Object>)e.NewValue;
-            Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
+
+            string PageName;
+            PageName = Convert.ToString(Application.Current.Properties["selectPage"]);
+
+            if (PageName == "ServiceCreateAfterRegistration")
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterRegistration"));
+            }
+            else
+            {
+                Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
+            }            
             throw new NotImplementedException();
         }
     }
