@@ -35,17 +35,21 @@ namespace Demo_App
         public bool IsFloatActionRotated = false;
         public int centerHeight = 0;
         public int EmpID;
-        string EmpName = "";
+        string EmpName;
         string selectesPageN;
-        string PageName;
+        //string PageName;
+        string DateDaysofWeek;
         ObservableCollection<Staff> AllStaffList = new ObservableCollection<Staff>();
         #endregion
 
-        public SetAppointmentPage(string selectedName)
+        public SetAppointmentPage(string selectedName, string empName, string weekDateDays)
         {
+
+            DateDaysofWeek = weekDateDays;
             selectesPageN = selectedName;
             InitializeComponent();
             GetStaff();
+            EmpName = empName;
             if (selectedName == "selectedPageCustomer")
             {
                 var pages = new CustomerPage();
@@ -86,46 +90,92 @@ namespace Demo_App
             }
             else
             {
-                Application.Current.Properties["FloatingCalenderPageName"] = "CalenderPage";
-                var page = new CalenderPage();
+                var page = new CalenderPage(DateDaysofWeek);
                 Placeholder.Content = page.Content;
                 this.Title = "Calender";
+                if (empName != "")
+                {
+                    shedulerStaff.Text = empName;
+                }
+                else
+                {
+                    shedulerStaff.Text = "All Schedules";
+                }
+
+                Application.Current.Properties["FloatingCalenderPageName"] = "CalenderPage";
+                
                 middleF.HeightRequest = App.ScreenHeight - 180;
             }
 
 
         }
+
+        //SchedulerAllStaff
+        private void SchedulerAllStaff(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedStaff = e.SelectedItem as Staff;
+            //EmpID = Convert.ToInt32(selectedStaff.Id);
+            //EmpName = selectedStaff.FirstName;
+
+            Application.Current.Properties.Remove("SelectedEmpId");
+            Application.Current.Properties.Remove("LastSelectedStaff");
+
+            //shedulerStaff.Text = "All Scheduler";
+            //shedulerStaff.Text = selectedStaff.FirstName;
+            //Application.Current.Properties["SelectedEmpId"] = selectedStaff.Id;
+            //Application.Current.Properties["LastSelectedStaff"] = selectedStaff.FirstName;
+            dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
+            listData.IsVisible = false;
+            AlllistData.IsVisible = false;
+            Placeholder.IsVisible = true;
+            Navigation.PushAsync(new SetAppointmentPage("", "", ""));
+
+        }
+
+
         private void StaffSelectedForAppointment(object sender, SelectedItemChangedEventArgs e)
         {
             var selectedStaff = e.SelectedItem as Staff;
             EmpID = Convert.ToInt32(selectedStaff.Id);
             EmpName = selectedStaff.FirstName;
-            shedulerStaff.Text = "All Scheduler";
+            shedulerStaff.Text = "All Schedules";
             shedulerStaff.Text = selectedStaff.FirstName;
             Application.Current.Properties["SelectedEmpId"] = selectedStaff.Id;
             Application.Current.Properties["LastSelectedStaff"] = selectedStaff.FirstName;
             dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
             listData.IsVisible = false;
+            AlllistData.IsVisible = false;
             Placeholder.IsVisible = true;
-            Navigation.PushAsync(new SetAppointmentPage(""));
+            Navigation.PushAsync(new SetAppointmentPage("", EmpName, ""));
+
         }
+
         void Icon1_Tapped(object sender, EventArgs args)
         {
+            var page = new CalenderPage("");
+            Placeholder.Content = page.Content;
             //y++;
+            CALENDERLabelColor.TextColor= Xamarin.Forms.Color.MediumTurquoise;
+            CUSTOMERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACTIVITYLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACCOUNTLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            icon1Enable.IsEnabled = false;
+            icon2Enable.IsEnabled = true;
+            icon3Enable.IsEnabled = true;
+            icon4Enable.IsEnabled = true;
             Application.Current.Properties.Remove("FloatingCustomerPageName");
             Application.Current.Properties.Remove("FloatingActivityPageName");
             Application.Current.Properties.Remove("FloatingAccountPageName");
 
             Application.Current.Properties["FloatingCalenderPageName"] = "CalenderPage";
-            var page = new CalenderPage();
-            Placeholder.Content = page.Content;
+            
             if (Application.Current.Properties.ContainsKey("LastSelectedStaff") == true)
             {
                 shedulerStaff.Text = Application.Current.Properties["LastSelectedStaff"].ToString();
             }
             else
             {
-                shedulerStaff.Text = "All Scheduler";
+                shedulerStaff.Text = "All Schedules";
             }
 
             dropdownArrow.IsVisible = true;
@@ -133,13 +183,22 @@ namespace Demo_App
         }
 
         void Icon2_Tapped(object sender, EventArgs args)
-        {
+        {            
+            var page = new CustomerPage();
+            Placeholder.Content = page.Content;
+            CALENDERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            CUSTOMERLabelColor.TextColor = Xamarin.Forms.Color.MediumTurquoise;
+            ACTIVITYLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACCOUNTLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            icon1Enable.IsEnabled = true;
+            icon2Enable.IsEnabled = false;
+            icon3Enable.IsEnabled = true;
+            icon4Enable.IsEnabled = true;
             Application.Current.Properties.Remove("FloatingCalenderPageName");
             Application.Current.Properties.Remove("FloatingActivityPageName");
             Application.Current.Properties.Remove("FloatingAccountPageName");
             Application.Current.Properties["FloatingCustomerPageName"] = "CustomerPage";
-            var page = new CustomerPage();
-            Placeholder.Content = page.Content;
+            
             //this.Title = "Customer";
             shedulerStaff.Text = "Customer";
             dropdownArrow.IsVisible = false;
@@ -149,12 +208,21 @@ namespace Demo_App
 
         void Icon3_Tapped(object sender, EventArgs args)
         {
+            var page = new ActivityPage();
+            Placeholder.Content = page.Content;
+            CALENDERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            CUSTOMERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACTIVITYLabelColor.TextColor = Xamarin.Forms.Color.MediumTurquoise;
+            ACCOUNTLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            icon1Enable.IsEnabled = true;
+            icon2Enable.IsEnabled = true;
+            icon3Enable.IsEnabled = false;
+            icon4Enable.IsEnabled = true;
             Application.Current.Properties.Remove("FloatingCalenderPageName");
             Application.Current.Properties.Remove("FloatingCustomerPageName");
             Application.Current.Properties.Remove("FloatingAccountPageName");
             Application.Current.Properties["FloatingActivityPageName"] = "ActivityPage";
-            var page = new ActivityPage();
-            Placeholder.Content = page.Content;
+           
             //this.Title = "Activity";
             shedulerStaff.Text = "Activity";
             dropdownArrow.IsVisible = false;
@@ -164,12 +232,21 @@ namespace Demo_App
 
         void Icon4_Tapped(object sender, EventArgs args)
         {
+            var page = new AccountPage();
+            Placeholder.Content = page.Content;
+            CALENDERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            CUSTOMERLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACTIVITYLabelColor.TextColor = Xamarin.Forms.Color.Black;
+            ACCOUNTLabelColor.TextColor = Xamarin.Forms.Color.MediumTurquoise;
+            icon1Enable.IsEnabled = true;
+            icon2Enable.IsEnabled = true;
+            icon3Enable.IsEnabled = true;
+            icon4Enable.IsEnabled = false;
             Application.Current.Properties.Remove("FloatingCalenderPageName");
             Application.Current.Properties.Remove("FloatingCustomerPageName");
             Application.Current.Properties.Remove("FloatingActivityPageName");
             Application.Current.Properties["FloatingAccountPageName"] = "AccountPage";
-            var page = new AccountPage();
-            Placeholder.Content = page.Content;
+            
             //this.Title = "Account";
             shedulerStaff.Text = "Account";
             dropdownArrow.IsVisible = false;
@@ -248,12 +325,14 @@ namespace Demo_App
             if (IsStaffListVisible)
             {
                 dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
+                AlllistData.IsVisible = true;
                 listData.IsVisible = true;
                 Placeholder.IsVisible = false;
             }
             else
             {
                 dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
+                AlllistData.IsVisible = false;
                 listData.IsVisible = false;
                 Placeholder.IsVisible = true;
             }
@@ -265,7 +344,7 @@ namespace Demo_App
         private void Schedulee_ScheduleCellTapped(object sender, ScheduleTappedEventArgs e)
         {
 
-            Navigation.PushAsync(new GetAllocateServiceForEmployeePage());
+            Navigation.PushAsync(new GetAllocateServiceForEmployeePage(EmpID, "", ""));
         }
 
         public void GetStaff()
@@ -279,6 +358,7 @@ namespace Demo_App
                 var result = PostData(Method, null, Url);
                 AllStaffList = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
                 StaffList.ItemsSource = AllStaffList;
+
             }
             catch (Exception e)
             {
@@ -316,7 +396,7 @@ namespace Demo_App
                 return e.ToString();
             }
         }
-       
+
         protected override bool OnBackButtonPressed()
         {
             Device.BeginInvokeOnMainThread(async () =>

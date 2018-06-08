@@ -13,6 +13,8 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using Android.Widget;
+using XLabs.Forms.Controls;
+
 
 namespace Demo_App
 {
@@ -24,11 +26,13 @@ namespace Demo_App
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         string CategoryName = "";
+        string btnname = "";
         #endregion
 
-        public AddServiceToCategoryPage(ObservableCollection<AssignedServicetoStaff> ListofServices, int CategoryId, string categoryName)
+        public AddServiceToCategoryPage(ObservableCollection<AssignedServicetoStaff> ListofServices, int CategoryId, string categoryName,string btnName)
         {
             InitializeComponent();
+            btnname = btnName;
             ListofAllService = ListofServices;
             CategoryID = CategoryId;
             CategoryName = categoryName.ToString();
@@ -74,7 +78,7 @@ namespace Demo_App
                     }
                 }
 
-                Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName));
+                Navigation.PushAsync(new CategoryDetailsPage(CategoryID, CategoryName,btnname));
             }
             catch (Exception e)
             {
@@ -85,9 +89,9 @@ namespace Demo_App
         public void AssignAllProviders(object Sender,EventArgs args)
         {
             try
-            {         
-                
-                CheckBox AllProviders = (CheckBox)Sender;
+            {
+
+                XLabs.Forms.Controls.CheckBox AllProviders = (XLabs.Forms.Controls.CheckBox)Sender;
                 if (AllProviders.Checked == true)
                 {
                     foreach (var item in ListofAllService)

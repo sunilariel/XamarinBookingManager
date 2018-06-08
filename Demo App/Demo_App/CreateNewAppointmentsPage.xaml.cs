@@ -149,7 +149,7 @@ namespace Demo_App
                 {
                     ListofTimeSlots.IsVisible = false;
                     TimeSlotFrame.IsVisible = true;
-                    TimeSlotlbel.Text = "No Slots available for" + dateOfBookings.ToString("dd-MMM-yyyy");
+                    TimeSlotlbel.Text = "No Slots available for " + dateOfBookings.ToString("dd-MMM-yyyy");
 
                     hasValue = false;
                 }
@@ -268,7 +268,7 @@ namespace Demo_App
                 CurrentSelectedDay = currentDay.ToString();
                 SelectedDateOfBooking = selectDate;
 
-                var s = SelectedDateOfBooking.ToString("dd-MM-yyyy");
+                var s = SelectedDateOfBooking.ToString("dd-MMM-yyyy");
 
                 var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
                 objAddAppointment.DateOfBooking = BookingDate;
@@ -278,9 +278,14 @@ namespace Demo_App
                 var result = PostData("GET", "", apiUrl);
 
                 bool hasValue = true;
+                ListofTimeSlots.IsVisible = true;
+                TimeSlotFrame.IsVisible = false;
                 if (result.Contains("Key\":null"))
                 {
-
+                    
+                    ListofTimeSlots.IsVisible = false;
+                    TimeSlotFrame.IsVisible = true;
+                    TimeSlotlbel.Text = "No Slots available for " + s;
                     hasValue = false;
                 }
                 if (hasValue == true)

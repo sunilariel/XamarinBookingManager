@@ -42,7 +42,7 @@ namespace Demo_App
 
                 var result = PostData("POST", serializeddata, apiUrl);
 
-                Navigation.PushAsync(new CategoryDetailsPage(CategoryId, CategoryName.Text));
+                Navigation.PushAsync(new CategoryDetailsPage(CategoryId, CategoryName.Text,"update"));
             }
             catch (Exception e)
             {

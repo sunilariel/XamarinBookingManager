@@ -37,6 +37,10 @@ namespace Demo_App
         DateTime DateOfBooking;
         Dictionary<string, int> Data = null;
         int StatusId;
+        public AppointmentDetails objs = null;
+        public BookAppointment objbook = null;
+        ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
+        int statusIDDDd;
         #endregion
 
         public AppointmentDetailsPage(AppointmentDetails appointment)
@@ -45,6 +49,7 @@ namespace Demo_App
             {
                 InitializeComponent();
                 GetSelectedCustomerById();
+                GetAppointmentDetails();
                 objNotes = new Notes();
                 objNotes.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 if (objCust != null)
@@ -68,7 +73,7 @@ namespace Demo_App
                 DateTime endTime = Convert.ToDateTime(appointment.EndTime);
                 string TimeEnd = endTime.ToShortTimeString();
                 string TimePeriod = TimeStart + "-" + TimeEnd;
-                StatusId = appointment.status;
+                StatusId = statusIDDDd;
                 addAppointments = new AddAppointments();
                 addAppointments.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 addAppointments.BookingId = appointment.BookingId;
@@ -83,6 +88,11 @@ namespace Demo_App
                 addAppointments.EndTime = appointment.EndTime;
                 addAppointments.TimePeriod = TimePeriod;
                 addAppointments.DateOfBooking = appointment.BookingDate;
+
+
+
+
+
 
                 service = new Service();
                 service.Id = Convert.ToInt32(appointment.ServiceId);
@@ -108,7 +118,7 @@ namespace Demo_App
                 obj.DurationInMinutes = appointment.DurationInMinutes;
                 obj.Cost = appointment.Cost;
                 obj.Currency = appointment.Currency;
-                obj.status = appointment.status;
+                obj.status = statusIDDDd;
                 obj.StartTime = appointment.StartTime;
                 obj.EndTime = appointment.EndTime;
                 obj.BookingDate = appointment.BookingDate;
@@ -122,7 +132,8 @@ namespace Demo_App
                 Data = new Dictionary<string, int>
             {
                { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
-               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7},
+               //{ "Custom Label",8}
             };
                 foreach (var item in Data.Keys)
                 {
@@ -131,6 +142,7 @@ namespace Demo_App
                 }
                 obj.status = Convert.ToInt32(obj.status) - 1;
                 AppointmentsPicker.SelectedIndex = obj.status;
+
             }
             catch (Exception e)
             {
@@ -138,6 +150,29 @@ namespace Demo_App
             }
         }
 
+        public void GetAppointmentDetails()
+        {
+            try
+            {
+                string[] StartTime = { };
+                var startDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(-1)).ToString("dd-MM-yyyy");
+
+                var endDate = Convert.ToDateTime(DateTime.Now.Date.AddYears(1)).ToString("dd-MM-yyyy");
+
+
+                string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForCustomerByIdBetweenDates?customerId=" + objCust.Id + "&startDate=" + startDate + "&endDate=" + endDate;
+
+                var result = PostData("GET", "", apiURL);
+
+                ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
+                statusIDDDd = appointments.Select(x => x.Status).FirstOrDefault();
+
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
         public void GetSelectedCustomerById()
         {
             try
@@ -162,7 +197,7 @@ namespace Demo_App
             //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
             //var selectedD = label.Text;
             var DateofBooking = Convert.ToDateTime(DateOfBooking).ToString();
-            Navigation.PushAsync(new SelectServiceCategory("EditAppointment", DateofBooking,StatusId));
+            Navigation.PushAsync(new SelectServiceCategory("EditAppointment", DateofBooking, StatusId));
         }
 
         private void UpdateAppointmentbyBookingDateClick(object sender, EventArgs e)
@@ -185,7 +220,7 @@ namespace Demo_App
             //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
             //var selectedD = label.Text;
             var DateofBooking = Convert.ToDateTime(DateOfBooking).ToString();
-            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment", DateofBooking,StatusId));
+            Navigation.PushAsync(new SelectStaffForAppointmentPage(service, "EditAppointment", DateofBooking, StatusId));
         }
 
         private void EditCommentClick(object sender, EventArgs e)
@@ -194,12 +229,37 @@ namespace Demo_App
             Navigation.PushAsync(new AddNotesPage());
         }
 
-        public string DeleteAppointment()
+        public async void DeleteAppointment()
         {
-            string apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/DeleteBooking?bookingId=" + obj.BookingId;
+            try
+            {
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to cancel this appointment", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/booking/DeleteBooking?bookingId=" + obj.BookingId;
 
-            var result = PostData("DELETE", "", apiUrl);
-            return result;
+                    var result = PostData("DELETE", "", apiUrl);
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 3; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    await Navigation.PushAsync(new AddAppointmentsPage(objbook));
+                }
+                else
+                {
+                    //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+                    await Navigation.PushAsync(new AppointmentDetailsPage(obj));
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+
         }
 
         public string SetStatusOfAppointment()

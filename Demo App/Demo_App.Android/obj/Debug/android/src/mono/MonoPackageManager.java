@@ -118,6 +118,11 @@ class MonoPackageManager_Resources {
 		"SkiaSharp.dll",
 		"SkiaSharp.Views.Android.dll",
 		"SkiaSharp.Views.Forms.dll",
+		"Syncfusion.Core.XForms.dll",
+		"Syncfusion.DataSource.Portable.dll",
+		"Syncfusion.GridCommon.Portable.dll",
+		"Syncfusion.SfListView.XForms.Android.dll",
+		"Syncfusion.SfListView.XForms.dll",
 		"Syncfusion.SfPicker.Android.dll",
 		"Syncfusion.SfPicker.XForms.Android.dll",
 		"Syncfusion.SfPicker.XForms.dll",
@@ -158,5 +163,5 @@ class MonoPackageManager_Resources {
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = null;
+	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_25";
 }

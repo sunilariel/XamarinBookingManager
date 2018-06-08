@@ -15,9 +15,9 @@ using System.Collections.ObjectModel;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectServicesForAppontment : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SelectServicesForAppontment : ContentPage
+    {
         #region GloblesFields
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         //string CategoryID = Convert.ToString(Application.Current.Properties["CategoryID"]);
@@ -34,15 +34,30 @@ namespace Demo_App
         string selectedDateofBooking;
         #endregion
 
-        public SelectServicesForAppontment (string pagename,int categoryID,string categoryName,string DateofBooking,int statusid)
-		{
-			InitializeComponent ();
+        public SelectServicesForAppontment(string pagename, int categoryID, string categoryName, string DateofBooking, int statusid)
+        {
+            InitializeComponent();
             PageName = pagename;
             CategoryID = categoryID;
             CategoryName = categoryName;
             StatusId = statusid;
             selectedDateofBooking = DateofBooking;
-            GetSelectedService();
+
+            if (CategoryID == 0)
+            {
+                var ww = GetAllService();
+                nameText.IsVisible = false;
+                if (ww.Count == 0)
+                {
+                    nameText.IsVisible = true;
+                    nameText.Text = "Please first add service";
+                }
+            }
+            else
+            {
+                GetSelectedService();
+            }
+
         }
 
         //private void AddNewAppointment(object sender,SelectedItemChangedEventArgs e)
@@ -51,10 +66,12 @@ namespace Demo_App
         //    Navigation.PushAsync(new CreateNewAppointmentsPage(service));
         //}
 
-        private void SelectStaffForCustomer(object sender,SelectedItemChangedEventArgs e)
+        private void SelectStaffForCustomer(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
                 var servicedata = e.SelectedItem as AssignedServicetoStaff;
                 Service service = new Service();
                 service.Name = servicedata.Name;
@@ -65,7 +82,7 @@ namespace Demo_App
                 service.CategoryName = CategoryName;
 
                 //service.CategoryId = Convert.ToInt32(Application.Current.Properties["CategoryID"]);
-                
+
                 //service.CategoryName = servicedata.CategoryName;
                 service.Buffer = servicedata.Buffer;
                 service.CompanyId = servicedata.CompanyId;
@@ -81,16 +98,52 @@ namespace Demo_App
 
                 service.DurationInHours = 0;
                 service.DurationInMinutes = Convert.ToInt32(totalMinutes);
-                
-                Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName,selectedDateofBooking, StatusId));
+
+                Navigation.PushAsync(new SelectStaffForAppointmentPage(service, PageName, selectedDateofBooking, StatusId));
+                ((ListView)sender).SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
         }
 
-       
+        public ObservableCollection<AssignedServicetoStaff> GetAllService()
+        {
+            try
+            {
+                //var apiU = Application.Current.Properties["DomainUrl"] + "api/services/GetServicesForCompany?companyId=" + CompanyId;
+
+
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetServicesForCompany?companyId=" + CompanyId;
+                var result = PostData("GET", "", apiUrl);
+
+                ListOfAssignServiceData = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+
+                foreach (var item in ListOfAssignServiceData)
+                {
+                    //var totalHours = Convert.ToInt32(item.DurationInHours);
+                    var totalMinutes = Convert.ToInt32(item.DurationInMinutes);
+                    //var hour = TimeSpan.FromHours(totalHours);
+                    var time = TimeSpan.FromMinutes(totalMinutes);
+                    var durationHours = string.Format("{0:00}", (int)time.Hours);
+                    var durationMinutes = string.Format("{0:00}", (int)time.Minutes);
+
+                    var details = durationHours + "hrs " + durationMinutes + "mins" + " " + " $ " + item.Cost;
+                    item.ServiceDetails = details;
+                }
+
+
+                ListofAllServices.ItemsSource = ListOfAssignServiceData;
+
+                return ListOfAssignServiceData;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+                return null;
+            }
+        }
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
         {
@@ -116,13 +169,14 @@ namespace Demo_App
                 ListofAllServices.ItemsSource = ListOfAssignServiceData;
                 return ListOfAssignServiceData;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
 
-        
+
 
         public string PostData(string Method, string SerializedData, string Url)
         {

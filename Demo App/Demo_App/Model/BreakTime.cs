@@ -15,6 +15,28 @@ namespace Demo_App.Model
         public string CreationDate { get; set; }
     }
 
+    public class SaveStaffBreakTime
+    {
+        //public int BreakID { get; set; }
+        public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
+        public int DayOfWeek { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
+        public string CreationDate { get; set; }
+    }
+
+    public class StaffBreakDetails
+    {
+        public string BreakID { get; set; }
+        public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
+        public int DayOfWeek { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
+        public string CreationDate { get; set; }
+    }
+
     public class StaffBreakTime
     {
         public string Id { get; set; }

@@ -34,10 +34,10 @@ namespace Demo_App
         public Notes objNotes = null;
         string PageName = "";
         string selectedDateofBooking;
-        int TotalDurationHoursAndDurationMinutes;
+        //int TotalDurationHoursAndDurationMinutes;
         #endregion
 
-        public SelectStaffForAppointmentPage(Service service, string pagename, string DateofBooking,int statusId)
+        public SelectStaffForAppointmentPage(Service service, string pagename, string DateofBooking, int statusId)
         {
             InitializeComponent();
             PageName = pagename;
@@ -52,20 +52,29 @@ namespace Demo_App
             ServiceName = service.Name;
             var staffData = GetServiceProvider();
             //GetSelectedStaff();
-
-            foreach (var item in staffData)
+            nemeStafftext.IsVisible = false;
+            if (staffData.Count == 0)
             {
-                serviceobj = new AssignedServicetoStaff();
-                serviceobj.Id = item.Id;
-                if (item.confirmed == true)
-                {
-                    serviceobj.Name = item.FirstName;
-                    ListofData.Add(serviceobj);
-                }
-                //var result = serviceobj;
-
+                nemeStafftext.IsVisible = true;
+                nemeStafftext.Text = "Please first add staff";
             }
-            ListofSelectedStaff.ItemsSource = ListofData;
+            else
+            {
+                foreach (var item in staffData)
+                {
+                    serviceobj = new AssignedServicetoStaff();
+                    serviceobj.Id = item.Id;
+                    if (item.confirmed == true)
+                    {
+                        serviceobj.Name = item.FirstName;
+                        ListofData.Add(serviceobj);
+                    }
+                    //var result = serviceobj;
+
+                }
+                ListofSelectedStaff.ItemsSource = ListofData;
+            }
+
         }
 
         private void AddNewAppointmentForCustomerClick(object sender, SelectedItemChangedEventArgs e)
@@ -74,10 +83,10 @@ namespace Demo_App
             {
                 if (e.SelectedItem == null)
                     return;
-                
+
                 AssignedServicetoStaff EmployeeData = new AssignedServicetoStaff();
                 EmployeeData = e.SelectedItem as AssignedServicetoStaff;
-                Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName, EmployeeData.Id, EmployeeData.Name, Cost, DurationInHours, DurationInMinutes, PageName, selectedDateofBooking,statusID));
+                Navigation.PushAsync(new CreateNewAppointmentsPage(ServiceId, ServiceName, EmployeeData.Id, EmployeeData.Name, Cost, DurationInHours, DurationInMinutes, PageName, selectedDateofBooking, statusID));
                 ((ListView)sender).SelectedItem = null;
             }
             catch (Exception ex)

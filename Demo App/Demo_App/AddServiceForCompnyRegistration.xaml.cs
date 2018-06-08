@@ -48,7 +48,7 @@ namespace Demo_App
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
-            Navigation.PushAsync(new SetAppointmentPage(""));
+            Navigation.PushAsync(new SetAppointmentPage("","",""));
         }
 
         public void GetService()

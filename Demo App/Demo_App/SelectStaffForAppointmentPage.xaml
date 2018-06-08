@@ -5,6 +5,7 @@
              Title="Select Staff">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="nemeStafftext"></Label>
             <ListView x:Name="ListofSelectedStaff" ItemSelected="AddNewAppointmentForCustomerClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>

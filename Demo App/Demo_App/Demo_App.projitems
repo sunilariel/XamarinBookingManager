@@ -21,6 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)AddAppointmentsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AddBreaks.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AddNotesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,12 +144,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\DateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Helper\Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\IProgressInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Register.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\RequestData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\StaffWorkingHours.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TestModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MorePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -570,6 +575,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)AddServiceForCompnyRegistration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AddBreaks.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

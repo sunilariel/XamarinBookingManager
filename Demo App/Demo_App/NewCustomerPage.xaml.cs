@@ -85,23 +85,23 @@ namespace Demo_App
                 }
                 else if (pageN == "selectedPageCustomer")
                 {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
                 }
                 else if(pageN == "CalenderPage")
                 {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
                 }
                 else if(pageN== "CustomerPage")
                 {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
                 }
                 else if (pageN == "ActivityPage")
                 {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
                 }
                 else if (pageN == "AccountPage")
                 {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN));
+                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
                 }
             }
             catch (Exception e)

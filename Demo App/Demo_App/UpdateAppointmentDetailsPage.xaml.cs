@@ -103,7 +103,8 @@ namespace Demo_App
                 Data = new Dictionary<string, int>
                 {
                     { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
-                   { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7},
+               //{ "Custom Label",8}
                 };
 
                 foreach (var item in Data.Keys)
@@ -111,22 +112,7 @@ namespace Demo_App
                     AppointmentsPicker.Items.Add(item);
                 }
                 appointment.Status = appointment.Status - 1;
-                AppointmentsPicker.SelectedIndex = appointment.Status;
-
-            //    Data = new Dictionary<string, int>
-            //{
-            //   { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
-            //   { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
-            //};
-            //    foreach (var item in Data.Keys)
-            //    {
-            //        AppointmentsPicker.Items.Add(item);
-
-            //    }
-            //    obj.status = Convert.ToInt32(obj.status) - 1;
-            //    AppointmentsPicker.SelectedIndex = obj.status;
-
-
+                AppointmentsPicker.SelectedIndex = appointment.Status;          
 
                 service = new Service();
                 service.Id = appointment.ServiceId;

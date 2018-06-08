@@ -9,32 +9,58 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
-            <ListView x:Name="ListofAllServices" BackgroundColor="White">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout HorizontalOptions="StartAndExpand">
-                                <Grid ColumnSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="40"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="40"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Column="0">
-                                        <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="White">
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="10,15,0,0">
+                            <Label x:Name="AllocatedProviderCount" HorizontalOptions="StartAndExpand"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,15,0,0">
+                            <Label Text="Select All" HorizontalOptions="End"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,10,0,0">
+                            <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding AllAssigned,Mode=TwoWay}" CheckedChanged="AssignAllProvider" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="White">
+                    <ListView x:Name="ListofAllServices" BackgroundColor="White">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Grid ColumnSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="40"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0">
+                                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                            </StackLayout>
+                                            <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="1">
+                                                <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"/>
+                                            </StackLayout>
+                                            <StackLayout  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
+                                                <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{x:Binding isAssigned,Mode=TwoWay}" CheckedChanged="AssignProvider"/>
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
-                                    <StackLayout Padding="20,0,0,0"  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="1">
-                                        <Label Text="{x:Binding Name,Mode=TwoWay}" YAlign="Center" FontSize="Medium"/>
-                                    </StackLayout>
-                                    <StackLayout  VerticalOptions="Center"  Orientation="Vertical" Grid.Column="2" HorizontalOptions="End">
-                                        <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{x:Binding isAssigned,Mode=TwoWay}" />
-                                    </StackLayout>
-                                </Grid>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

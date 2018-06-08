@@ -4,7 +4,9 @@
              x:Class="Demo_App.CategoryDetailsPage"
              Title="Category Details">
     <ContentPage.ToolbarItems>
-        <ToolbarItem  Text="Save" Order="Primary" Priority="0" Clicked="SaveCategoryDetails"/>
+        <ToolbarItem x:Name="saveButton" Text="Save" Order="Primary" Priority="0" Clicked="SaveCategoryDetails"/>
+        <ToolbarItem x:Name="UpdateButton" Text="Update" Order="Primary" Priority="0" Clicked="UpdateCategoryDetails"/>
+        <ToolbarItem x:Name="DeleteButton" Text="delete" Order="Secondary" Priority="1" Clicked="DeleteCategoryDetails" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">

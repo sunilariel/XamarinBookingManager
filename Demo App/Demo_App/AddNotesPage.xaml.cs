@@ -21,7 +21,7 @@ namespace Demo_App
         #region GlobleFields
         int CustomerId;
         public Customer objCust = null;
-        ObservableCollection<Notes> ListNotes = new ObservableCollection<Notes>();
+        ObservableCollection<CustomerNotesDetail> ListNotes = new ObservableCollection<CustomerNotesDetail>();
         //ObservableCollection<Notes> notesList = new ObservableCollection<Notes>();
         #endregion
 
@@ -32,8 +32,8 @@ namespace Demo_App
                 InitializeComponent();
                 GetSelectedCustomerById();
                 CustomerId = objCust.Id;
-               var notesList = GetAllCustomerNotes();
-                
+                var notesList = GetAllCustomerNotes();
+
                 ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
                 foreach (var data in notesList)
                 {
@@ -48,9 +48,31 @@ namespace Demo_App
                     notesLst.Add(obj);
                 }
                 notesLst.OrderByDescending(x => x.CreationDate);
-               
-                    CustomerNote.Text = notesLst[0].Description;
 
+                string mystring = notesLst[0].Description;
+
+                System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<.+?>|&nbsp;");
+                mystring = rx.Replace(mystring, "");
+                CustomerNote.Text = mystring;
+
+                //if (mystring.Length >= 5)
+                //{
+                //    string str = mystring.Substring(0, 5);
+                //    if (str == "<div>")
+                //    {
+                //        string mystrings = mystring.Remove(mystring.Length - 6, 6);
+                //        string Descriptions = mystrings.Substring(17);
+                //        CustomerNote.Text = Descriptions;
+                //    }
+                //    else
+                //    {
+                //        CustomerNote.Text = mystring;
+                //    }
+                //}
+                //else
+                //{
+                //    CustomerNote.Text = mystring;
+                //}              
             }
             catch (Exception e)
             {
@@ -66,7 +88,7 @@ namespace Demo_App
                 var Method = "GET";
                 var result = PostData(Method, "", Url);
                 objCust = JsonConvert.DeserializeObject<Customer>(result);
-                
+
             }
             catch (Exception e)
             {
@@ -75,7 +97,7 @@ namespace Demo_App
 
         }
 
-        public ObservableCollection<Notes> GetAllCustomerNotes()
+        public ObservableCollection<CustomerNotesDetail> GetAllCustomerNotes()
         {
             try
             {
@@ -84,15 +106,15 @@ namespace Demo_App
                 var Method = "GET";
 
                 var result = PostData(Method, "", Url);
-                ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
+                ListNotes = JsonConvert.DeserializeObject<ObservableCollection<CustomerNotesDetail>>(result);
                 return ListNotes;
             }
             catch (Exception e)
             {
                 e.ToString();
-                ObservableCollection<Notes> objnotes = new ObservableCollection<Notes>();
-                return objnotes;
-                
+                //ObservableCollection<CustomerNotesDetail> objnotes = new ObservableCollection<CustomerNotesDetail>();
+                return null;
+
             }
 
         }
@@ -101,9 +123,16 @@ namespace Demo_App
         {
             try
             {
-                GetSelectedCustomerById();               
+                GetSelectedCustomerById();
+
+                //var l = ListNotes;
+
+                //var Method = "DELETE";
+                //var Url = Application.Current.Properties["DomainUrl"] + "api/customer/DeleteCustomerNote?companyId=" + Convert.ToInt32(Application.Current.Properties["CompanyId"]) + "&customerNoteId=" + objCust.Id;
+                //PostData(Method, "", Url);
+
                 Notes obj = new Notes();
-                obj.Id = -1;
+                //obj.Id = -1;
                 if (objCust != null)
                 {
                     obj.CustomerId = objCust.Id;
@@ -117,19 +146,29 @@ namespace Demo_App
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
                 var result = PostData("POST", SerializedData, apiUrl);
 
+                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
 
-                //var data = JsonConvert.SerializeObject(obj);
-                //var Url = Application.Current.Properties["DomainUrl"] + "api/customer/AddNote";
-                //var ApiMethod = "POST";
+                }
+                Navigation.PushAsync(new CutomerProfilePage());
+                int pCount = Navigation.NavigationStack.Count();
 
-                //var result = PostData(ApiMethod, data, Url);
+                for (int i = 0; i < pCount; i++)
+                {
+                    if (i == 3)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    }
+                }
+                //Navigation.PopAsync(true);
             }
             catch (Exception ex)
             {
                 ex.ToString();
             }
 
-            Navigation.PopAsync(true);
+            
         }
 
         public string PostData(string Method, string SerializedData, string Url)

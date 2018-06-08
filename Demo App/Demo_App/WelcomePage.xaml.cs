@@ -16,11 +16,8 @@ namespace Demo_App
         public WelcomePage()
         {
             InitializeComponent();            
-            NavigationPage.SetHasNavigationBar(this, false);
-
-           
+            NavigationPage.SetHasNavigationBar(this, false);           
         }
-
         async void NavigateToRegisterPage(object sender, EventArgs e)
         {
             try
@@ -32,27 +29,20 @@ namespace Demo_App
                 ex.ToString();
             }
 
-        }
-
-        
-
+        }        
         public void NavigateToLoginPage(object sender, EventArgs e)
         {
             try
             {                
                 //DependencyService.Get<IProgressInterface>().Show();
                 Navigation.PushAsync(new LoginPage());
-                
-
+                //Navigation.PushAsync(new FeedbackPage());
             }
             catch (Exception ex)
             {
                 ex.ToString();
             }
-
-        }
-
-       
+        }       
         protected override bool OnBackButtonPressed()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -67,7 +57,5 @@ namespace Demo_App
             });
             return true;
         }
-
     }
-
 }

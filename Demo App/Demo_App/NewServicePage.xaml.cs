@@ -106,8 +106,13 @@ namespace Demo_App
         {
             try
             {
-                if (ServiceName.Text == "")
+                if (ServiceName.Text == "" || duration.Text == ""|| ServiceCost.Text == "")
+                {
+                    DisplayAlert("Success", "All fields is required", "ok");
                     return;
+                }                              
+                //DisplayAlert("Success", "Cost is required", "ok");
+                
 
                 if (duration.Text != "" || ServiceCost.Text != "")
                 {

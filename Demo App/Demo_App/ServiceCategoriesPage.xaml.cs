@@ -107,7 +107,7 @@ namespace Demo_App
                     return;
                 
                 var Category = e.SelectedItem as ServicesAllocatedToCategory;
-                Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName));
+                Navigation.PushAsync(new CategoryDetailsPage(Category.CategoryId, Category.CategoryName,"delete"));
                 ((ListView)sender).SelectedItem = null;
             }
             catch(Exception ex)

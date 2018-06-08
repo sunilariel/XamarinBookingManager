@@ -40,14 +40,10 @@ namespace Demo_App.Model
         public bool IsOffAllDay { get; set; }
     }
 
-    public class CompanyBusinessHours
-    {
-        //public TimeSpan Start { get; set; }
-        //public TimeSpan End { get; set; }
-        //public string NameOfDay { get; set; }
-        //public bool IsOffAllDay { get; set; }
-        public List<CompanyWorkingHours> CompanyWorkingHours { get; set; }
-    }
+    //public class CompanyBusinessHours
+    //{        
+    //    public List<CompanyWorkingHours> CompanyWorkingHours { get; set; }
+    //}
     public class CompanyWorkingHours
     {
         public int Id { get; set; }
@@ -60,18 +56,27 @@ namespace Demo_App.Model
         public string EntityStatus { get; set; }        
     }
 
-    public class CWorkingHours
-    {
-        public string Url { get; set; }
+    //public int Id { get; set; }
+    //    public int CompanyId { get; set; }
+    //    public string Start { get; set; }
+    //    public string End { get; set; }
+    //    public string NameOfDay { get; set; }
+    //    public bool IsOffAllDay { get; set; }
+    //    public string CreationDate { get; set; }
 
-        public List<CReqWorkingHours> CReqWorkingHours { get; set; }
-    }
+
+    //public class CWorkingHours
+    //{
+    //    public string Url { get; set; }
+
+    //    public List<CReqWorkingHours> CReqWorkingHours { get; set; }
+    //}
     public class CReqWorkingHours
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }
-        public TimeSpan Start { get; set; }
-        public TimeSpan End { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
         public string NameOfDay { get; set; }
         public bool IsOffAllDay { get; set; }
         public string CreationDate { get; set; }

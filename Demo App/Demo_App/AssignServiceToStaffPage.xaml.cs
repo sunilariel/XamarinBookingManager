@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XLabs.Forms.Controls;
 
 namespace Demo_App
 {
@@ -21,10 +22,15 @@ namespace Demo_App
         string result = "";
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int EmployeeId;
-        ObservableCollection<AssignedServicetoStaff> ListofServices = new ObservableCollection<AssignedServicetoStaff>();
+        public AssignedServicetoStaff objs = null;
+        //ObservableCollection<AssignedServicetoStaff> ListofServices = new ObservableCollection<AssignedServicetoStaff>();
+        ObservableCollection<AssignedServicetoStaff> ListofServices = null;
+
+
+
         public Staff obj = null;
         #endregion
-        public AssignServiceToStaffPage (Staff ObjStaff)
+        public AssignServiceToStaffPage (Staff ObjStaff, ObservableCollection<AssignedServicetoStaff> ListofAllocatedServices)
 		{
             try
             {
@@ -37,7 +43,9 @@ namespace Demo_App
                 obj.Address = ObjStaff.Address;
                 obj.TelephoneNo = ObjStaff.TelephoneNo;
                 EmployeeId = ObjStaff.Id;
-                ListofServices = GetAllService();
+                ListofServices = ListofAllocatedServices;
+                //ListofServices = GetAllService();
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
                 ListofAllServices.ItemsSource = ListofServices;
             }
             catch(Exception e)
@@ -45,6 +53,90 @@ namespace Demo_App
                 e.ToString();
             }
         }
+
+        public void AssignAllProvider(object Sender, EventArgs args)
+        {
+            try
+            {
+
+                CheckBox AllProvider = (CheckBox)Sender;
+                if (AllProvider.Checked == true)
+                {
+                    foreach (var item in ListofServices)
+                    {
+                        //  AllStaffChecked.Checked = true;    
+                        item.AllAssigned = true;
+                        item.isAssigned = true;
+                    }
+                }
+                else
+                {
+                    foreach (var item in ListofServices)
+                    {
+                        //  AllStaffChecked.Checked = false;
+                        item.AllAssigned = true;
+                        item.isAssigned = false;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public void AssignProvider(object Sender, EventArgs args)
+        {
+            try
+            {
+                for (int i = 0; i < ListofServices.Count; i++)
+                {
+                    if (ListofServices[i].isAssigned == false)
+                    {
+                        foreach (var item in ListofServices)
+                        {
+                            item.AllAssigned = false;
+                        }
+                        break;
+                    }
+                    else
+                    {
+
+                        ListofServices[i].AllAssigned = true;
+                        // AllStaffChecked.Checked = true;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+        }
+
+        public int GetAllocatedServiceCount()
+        {
+            try
+            {
+                int count = 0;
+                foreach (var item in ListofServices)
+                {
+                    if (item.isAssigned == true)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+                return 0;
+            }
+        }
+
 
         public ObservableCollection<AssignedServicetoStaff> GetAllService()
         {
@@ -54,10 +146,12 @@ namespace Demo_App
                 var result = PostData("GET", "", apiUrl);
 
                 ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
+                
                 return ListofServices;
             }
             catch(Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -67,7 +161,8 @@ namespace Demo_App
             try
             {
                 var data = ListofServices;
-                foreach (var item in data)
+                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/AllocateService";
+                foreach (var item in ListofServices)
                 {
                     if (item.isAssigned == true)
                     {
@@ -77,13 +172,37 @@ namespace Demo_App
                         obj.ServiceId = item.Id;
                         obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
-
                         var SerializedData = JsonConvert.SerializeObject(obj);
 
-                        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
                         var result = PostData("POST", SerializedData, apiUrl);
                     }
+                    else
+                    {
+                        AssignServiceToStaff obj = new AssignServiceToStaff();
+                        var SerializedData = JsonConvert.SerializeObject(obj);
+                        var Url = Application.Current.Properties["DomainUrl"] + "/api/staff/DeAllocateServiceForEmployee?companyId=" + CompanyId + "&employeeId=" + EmployeeId + "&serviceId=" + item.Id;
+                        var result = PostData("POST", SerializedData, Url);
+                    }
                 }
+
+
+                //foreach (var item in data)
+                //{
+                //    if (item.isAssigned == true)
+                //    {
+                //        AssignServiceToStaff obj = new AssignServiceToStaff();
+                //        obj.CompanyId = Convert.ToInt32(CompanyId);
+                //        obj.EmployeeId = EmployeeId;
+                //        obj.ServiceId = item.Id;
+                //        obj.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+
+
+                //        var SerializedData = JsonConvert.SerializeObject(obj);
+
+                //        var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/AssignServiceToStaff";
+                //        var result = PostData("POST", SerializedData, apiUrl);
+                //    }
+                //}
 
                 Navigation.PushAsync(new StaffServicePeofile());
             }

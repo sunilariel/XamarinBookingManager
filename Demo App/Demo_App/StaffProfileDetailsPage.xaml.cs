@@ -14,9 +14,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class StaffProfileDetailsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class StaffProfileDetailsPage : ContentPage
+    {
         #region GlobleFields
         public Staff objStaff = null;
         public int StaffId;
@@ -26,16 +26,27 @@ namespace Demo_App
         int ListofAllocatedServicesCount = 0;
         #endregion
 
-        public StaffProfileDetailsPage ()
-		{
+        public StaffProfileDetailsPage()
+        {
+            if (Application.Current.Properties.ContainsKey("SelectedEmployeeID") == true)
+            {
+                StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
+            }
+            else if (Application.Current.Properties.ContainsKey("EmployeeID") == true)
+            {
+                StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
+            }
+
+
+
             //StaffId = Convert.ToInt32(Application.Current.Properties["EmployeeID"]);
-            StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
-            InitializeComponent ();
+            //StaffId = Convert.ToInt32(Application.Current.Properties["SelectedEmployeeID"]);
+            InitializeComponent();
             GetAllocatedServicetoStaff();
             GetEmployeeDetail();
-            
-           GetAllTimeOffForEmployee();
-            ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " +"services active";
+
+            GetAllTimeOffForEmployee();
+            ServiceAllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
 
             //Objstaff = new Staff();
             //Objstaff.Id = staff.Id;
@@ -49,16 +60,16 @@ namespace Demo_App
 
         private void CrossClick(object sender, EventArgs e)
         {
-
+            Application.Current.Properties.Remove("EmployeeID");
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
             }
 
-           // Navigation.PopAsync(true);
+            // Navigation.PopAsync(true);
 
             Navigation.PushAsync(new StaffPage());
-           
+
             int pCount = Navigation.NavigationStack.Count();
 
             for (int i = 0; i < pCount; i++)
@@ -73,6 +84,7 @@ namespace Demo_App
 
         protected override bool OnBackButtonPressed()
         {
+            Application.Current.Properties.Remove("EmployeeID");
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
@@ -96,7 +108,8 @@ namespace Demo_App
 
         private void BreaksClick(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BreaksPage(StaffId));
+            SaveStaffBreakTime obj = new SaveStaffBreakTime();
+            Navigation.PushAsync(new BreaksPage(obj, StaffId, "", CompanyId));
         }
         private void WorkingDaysClick(object sender, EventArgs e)
         {
@@ -190,11 +203,11 @@ namespace Demo_App
                                 Saturday.TextColor = Xamarin.Forms.Color.Black;
                             }
                             break;
-                        
+
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -242,7 +255,7 @@ namespace Demo_App
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -258,7 +271,7 @@ namespace Demo_App
                 ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
                 return ListofServices;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -277,7 +290,7 @@ namespace Demo_App
                         CustomerProfile.HeightRequest = 150;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
@@ -286,6 +299,7 @@ namespace Demo_App
 
         public async void DeleteStaff(int Id)
         {
+            Application.Current.Properties.Remove("EmployeeID");
             try
             {
 
@@ -295,16 +309,16 @@ namespace Demo_App
                     var CompanyId = Application.Current.Properties["CompanyId"];
                     var Method = "DELETE";
                     var Url = Application.Current.Properties["DomainUrl"] + "/api/companyregistration/DeleteStaff?id=" + StaffId;
-                    var result = PostData(Method, null, Url);                   
+                    var result = PostData(Method, null, Url);
 
-                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 3; PageIndex--)
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
                     }
 
                     // Navigation.PopAsync(true);
 
-                     Navigation.PushAsync(new StaffPage());
+                    await Navigation.PushAsync(new StaffPage());
 
                     int pCount = Navigation.NavigationStack.Count();
 
@@ -324,9 +338,9 @@ namespace Demo_App
                     await Navigation.PushAsync(new StaffProfileDetailsPage());
                 }
 
-                
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -348,7 +362,7 @@ namespace Demo_App
                 httpRequest.ProtocolVersion = HttpVersion.Version10;
                 httpRequest.Headers.Add("Token", Convert.ToString(Application.Current.Properties["Token"]));
 
-                if (SerializedData != "" )
+                if (SerializedData != "")
 
                 {
                     var streamWriter = new StreamWriter(httpRequest.GetRequestStream());

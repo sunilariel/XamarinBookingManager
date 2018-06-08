@@ -19,12 +19,15 @@ namespace Demo_App
     {
         #region GloblesVariables
         int CategoryId;
+        string CategoryName;
+        int ComID;
         int statusId;
         string PageName = "";
         public Customer objCust = null;
-        public AppointmentDetails obj = null;
+        
         public Notes objNotes = null;
         public BookAppointment objBookAppointment = null;
+        public AppointmentDetails obj = null;
         ObservableCollection<AppointmentDetails> ListofAppointment = new ObservableCollection<AppointmentDetails>();
         #endregion
 
@@ -34,6 +37,7 @@ namespace Demo_App
             {
                 InitializeComponent();
                 GetSelectedCustomerById();
+                ComID = objCust.CompanyId;
                 BindingContext = objCust;
                 this.Title = objCust.FirstName + "'s" + " appointments";
                 if (objAppointment != null)
@@ -57,11 +61,11 @@ namespace Demo_App
                 }
                 GetAppointmentDetails();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
-            
+
         }
 
         public void GetSelectedCustomerById()
@@ -86,7 +90,7 @@ namespace Demo_App
             {
                 if (e.SelectedItem == null)
                     return;
-                
+
                 var data = e.SelectedItem as AppointmentDetails;
                 string bookingdate = data.BookingDate.Split(',')[0];
                 obj = new AppointmentDetails();
@@ -113,9 +117,9 @@ namespace Demo_App
                 obj.AppointmentDetail = data.AppointmentDetail;
                 obj.CommentNotes = data.CommentNotes;
                 obj.TimePeriod = TimePeriod;
-                Navigation.PushAsync(new AppointmentDetailsPage(obj));((ListView)sender).SelectedItem = null;
+                Navigation.PushAsync(new AppointmentDetailsPage(obj)); ((ListView)sender).SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
             }
@@ -129,8 +133,22 @@ namespace Demo_App
             //var s = grid.Children[0];
             //Xamarin.Forms.Label label = (Xamarin.Forms.Label)s;
             //var selectedD = label.Text;
+            var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + ComID;
+            var result = PostData("GET", "", apiUrl);
+            ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
+            var c = ListofAllCategories.ToList();
             var DateofBooking = Convert.ToDateTime(DateTime.Now).ToString();
-            Navigation.PushAsync(new SelectServiceCategory("NewAppointment", DateofBooking,statusId));
+            if (c.Count == 0)
+            {
+                Navigation.PushAsync(new SelectServicesForAppontment("NewAppointment", CategoryId, CategoryName, DateofBooking, statusId));
+            }
+            else
+            {
+
+                Navigation.PushAsync(new SelectServiceCategory("NewAppointment", DateofBooking, statusId));
+            }
+
+
         }
 
         public ObservableCollection<AppointmentDetails> GetAppointmentDetails()
@@ -144,7 +162,7 @@ namespace Demo_App
 
 
                 string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForCustomerByIdBetweenDates?customerId=" + objCust.Id + "&startDate=" + startDate + "&endDate=" + endDate;
-                
+
                 var result = PostData("GET", "", apiURL);
 
                 ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
@@ -159,8 +177,8 @@ namespace Demo_App
                     string durhrs = DurationHours + "hrs";
                     string durationMins = durmin + "mins";
                     string Duration = durhrs + " " + durationMins;
-                    var datebooking = appointment.Start; 
-                     var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
+                    var datebooking = appointment.Start;
+                    var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
                     string detail = appointment.Employee.FirstName + "," + appointment.Service.Name + "," + Duration + "," + appointment.Service.Cost;
                     DateTime startTime = Convert.ToDateTime(appointment.Start);
                     string Time = startTime.ToShortTimeString();
@@ -187,15 +205,17 @@ namespace Demo_App
                     ListofAppointment.Add(obj);
 
                 }
-               
+                CustomerAppoimentList.ItemsSource = ListofAppointment;
+                return ListofAppointment;
+
             }
             catch (Exception e)
             {
                 e.ToString();
+                return null;
             }
 
-            CustomerAppoimentList.ItemsSource = ListofAppointment;
-            return ListofAppointment;
+            
         }
 
         public string PostData(string Method, string SerializedData, string Url)

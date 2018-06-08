@@ -32,7 +32,7 @@ namespace Demo_App
             InitializeComponent();
             PageName = pagename;
             selectedDateofBooking = DateofBooking;
-            StatusID = statusId;
+            StatusID = statusId;           
             GetCategories(CompanyId);
             BindingContext = serviceCount;
         }
@@ -64,6 +64,15 @@ namespace Demo_App
             ((ListView)sender).SelectedItem = null;
         }
 
+        public void GetAllService_Click(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+            var Category = e.SelectedItem as ServicesAllocatedToCategory;
+            Navigation.PushAsync(new SelectServicesForAppontment(PageName, Category.CategoryId, Category.CategoryName, selectedDateofBooking, StatusID));
+            ((ListView)sender).SelectedItem = null;
+        }
+
         public void GetCategories(string Id)
         {
             try
@@ -71,23 +80,40 @@ namespace Demo_App
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetServiceCategoriesForCompany?companyId=" + Id;
                 var result = PostData("GET", "", apiUrl);
                 ObservableCollection<Category> ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(result);
-                foreach (var item in ListofAllCategories)
-                {
-                    var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
-                    var resultData = PostData("GET", "", ApiUrl);
-                    ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
-                    
-                    
 
-                    ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
-                    AllocateServices.CategoryName = item.Name;
-                    AllocateServices.CategoryId = item.Id;                      
-                    AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + " services";
+                var c = ListofAllCategories.ToList();
 
-                    ListOfAssignServiceCount.Add(AllocateServices);
-                }
+                //if (c.Count == 0)
+                //{
+                //    var apiU = Application.Current.Properties["DomainUrl"] + "api/services/GetServicesForCompany?companyId=" + Id;
+                //    var results = PostData("Get", "", apiU);
+                //    ObservableCollection<Service> ListOfAllService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(results);
 
-                ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;
+                //    ServicesAllocatedToCategory AllServices = new ServicesAllocatedToCategory();
+                //    AllServices.AllocatedServiceCount = ListOfAllService.Count + " services";
+                //    ListOfAssignServiceCount.Add(AllServices);
+                //    ListofServiceData.ItemsSource = ListOfAssignServiceCount;
+                //}
+
+                //else
+                //{
+                    foreach (var item in ListofAllCategories)
+                    {
+                        var ApiUrl = Application.Current.Properties["DomainUrl"] + "/api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + item.Id;
+                        var resultData = PostData("GET", "", ApiUrl);
+                        ObservableCollection<Service> ListOfAssignService = JsonConvert.DeserializeObject<ObservableCollection<Service>>(resultData);
+                        ServicesAllocatedToCategory AllocateServices = new ServicesAllocatedToCategory();
+                        AllocateServices.CategoryName = item.Name;
+                        AllocateServices.CategoryId = item.Id;
+                        AllocateServices.AllocatedServiceCount = ListOfAssignService.Count + " services";
+
+                        ListOfAssignServiceCount.Add(AllocateServices);
+                    }
+                    //ListofServiceData.ItemsSource = ListOfAssignServiceCount;
+                    ListofCategoriesData.ItemsSource = ListOfAssignServiceCount;                   
+                //}
+
+                
             }
             catch (Exception e)
             {

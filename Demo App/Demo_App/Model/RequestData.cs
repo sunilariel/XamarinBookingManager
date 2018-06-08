@@ -169,9 +169,19 @@ namespace Demo_App.Model
         public string TimePeriod { get; set; }
     }
 
-    public class Notes
+    public class CustomerNotesDetail
     {
         public int Id { get; set; }
+        public int CustomerId { get; set; }
+        public int CompanyId { get; set; }
+        public string Description { get; set; }
+        public string WhoAddedThis { get; set; }
+        public string CreationDate { get; set; }
+    }
+
+    public class Notes
+    {
+        //public int Id { get; set; }
         public int CustomerId { get; set; }
         public int CompanyId { get; set; }
         public string Description { get; set; }

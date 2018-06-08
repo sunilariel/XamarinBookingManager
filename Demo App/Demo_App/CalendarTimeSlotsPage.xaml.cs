@@ -51,7 +51,24 @@ namespace Demo_App
                 objAddAppointment.CompanyId = obj.CompanyId;
                 objAddAppointment.Cost = obj.Cost;
                 objAddAppointment.Currency = obj.Currency;
-                objAddAppointment.DateOfBooking = obj.DateOfBooking;
+
+
+
+                //objAddAppointment.DateOfBooking = obj.DateOfBooking;
+
+                var selectDate = Convert.ToDateTime(obj.DateOfBooking);
+                var dateOfBookings = selectDate.ToString("dd-MM-yyyy");
+                var currentDay = selectDate.DayOfWeek;
+                CurrentSelectedDay = currentDay.ToString();
+                SelectedDateOfBooking = selectDate;
+
+                var s = SelectedDateOfBooking.ToString("dd-MM-yyyy");
+
+                var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
+                objAddAppointment.DateOfBooking = BookingDate;
+
+
+
                 objAddAppointment.DurationInHours = obj.DurationInHours;
                 objAddAppointment.DurationInMinutes = obj.DurationInMinutes;
                 objAddAppointment.EmployeeId = obj.EmployeeId;
@@ -86,20 +103,26 @@ namespace Demo_App
                 //objAddAppointment.DateOfBooking = BookingDate;
 
 
-                var selectDate = Convert.ToDateTime(CurrentSelectedDay);
+                var selectDate = Convert.ToDateTime(SelectedDateOfBooking);
                 var dateOfBookings = selectDate.ToString("dd-MM-yyyy");
                 var currentDay = selectDate.DayOfWeek;
                 CurrentSelectedDay = currentDay.ToString();
                 SelectedDateOfBooking = selectDate;
-
+                var datet = SelectedDateOfBooking.ToString("dd-MMM-yyyy");
 
                 string url = Convert.ToString(Application.Current.Properties["DomainUrl"]);
                 var apiUrl = url + "api/booking/GetFreeBookingSlotsForEmployee?companyId=" + Convert.ToInt32(CompanyId) + "&serviceId=" + serviceID + "&employeeId=" + EmployeeId + "&dateOfBooking=" + dateOfBookings + "&day=" + CurrentSelectedDay;
                 var result = PostData("GET", "", apiUrl);
 
                 bool hasValue = true;
+                ListofTimeSlots.IsVisible = true;
+                TimeSlotFrame.IsVisible = false;
                 if (result.Contains("Key\":null"))
                 {
+                    
+                    ListofTimeSlots.IsVisible = false;
+                    TimeSlotFrame.IsVisible = true;
+                    TimeSlotlbel.Text = "No Slots available for " + datet;
                     hasValue = false;
                 }
                 if (hasValue == true)
@@ -170,11 +193,13 @@ namespace Demo_App
                 var result = PostData("GET", "", apiUrl);
 
                 bool hasValue = true;
+                ListofTimeSlots.IsVisible = true;
+                TimeSlotFrame.IsVisible = false;
                 if (result.Contains("Key\":null"))
                 {
                     ListofTimeSlots.IsVisible = false;
                     TimeSlotFrame.IsVisible = true;
-                    TimeSlotlbel.Text = "No Slots available for" + dateOfBooking.ToString("dd-MMM-yyyy");
+                    TimeSlotlbel.Text = "No Slots available for " + dateOfBooking.ToString("dd-MMM-yyyy");
 
                     hasValue = false;
                 }
@@ -237,6 +262,14 @@ namespace Demo_App
                     return;
                 
                 var data = e.SelectedItem;
+                var time = data.ToString();
+                var t = Convert.ToString(time.Split(' ')[0]);
+                var StartTime = Convert.ToString(t.Split(':')[0]);
+                var EndTime = Convert.ToString(t.Split(':')[1]);
+                objAddAppointment.StartTime = StartTime;
+                objAddAppointment.EndTime = EndTime;
+
+
                 objAddAppointment.TimePeriod = data.ToString();
                 //AppointmentDetails objAppointment = new AppointmentDetails();
                 if (PageName == "CalandarAppointment")

@@ -4,10 +4,6 @@
               xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"           
              Title="Calendar"
              x:Class="Demo_App.CalenderPage">
-
-
-
-
     <ContentPage.Content>
         <!--<syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView" ViewHeaderHeight="50"/>-->
         <StackLayout>
@@ -18,11 +14,11 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="currentMonth" Text="CurrentMonth" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
-                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="35" WidthRequest="35" Grid.Column="1"/>
-                    <StackLayout.GestureRecognizers>
+                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" Grid.Column="1"/>
+                    <Label.GestureRecognizers>
                         <TapGestureRecognizer 
                                     Tapped="ChangeMonthView"/>
-                    </StackLayout.GestureRecognizers>
+                    </Label.GestureRecognizers>
 
                 </Grid>
             </StackLayout>
@@ -37,34 +33,54 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0">
+                    <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="0">
+                        <!--<Label/>-->
+                        <Image VerticalOptions="Center" Source="pickerarrow.png" HeightRequest="35"  WidthRequest="35">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Tapped="LeftNavigateArrow_ClickEvent"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
                         <Label Text="Mon" TextColor="Black"/>
                         <Label x:Name="WeekMonlbl" Text="{Binding currentWeek[0]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="1">
+                    <StackLayout Grid.Column="2">
                         <Label Text="Tue" TextColor="Black"/>
                         <Label x:Name="WeekTuelbl" Text="{Binding currentWeek[1]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="2">
+                    <StackLayout Grid.Column="3">
                         <Label Text="Wed" TextColor="Black"/>
                         <Label x:Name="WeekWedlbl" Text="{Binding currentWeek[2]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="3">
+                    <StackLayout Grid.Column="4">
                         <Label Text="Thu" TextColor="Black"/>
                         <Label x:Name="WeekThulbl" Text="{Binding currentWeek[3]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="4">
+                    <StackLayout Grid.Column="5">
                         <Label Text="Fri" TextColor="Black"/>
                         <Label x:Name="WeekFrilbl" Text="{Binding currentWeek[4]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="5">
+                    <StackLayout Grid.Column="6">
                         <Label Text="Sat" TextColor="Black"/>
                         <Label x:Name="WeekSatlbl" Text="{Binding currentWeek[5]}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="6">
+                    <StackLayout Grid.Column="7">
                         <Label Text="Sun" TextColor="Black"/>
                         <Label x:Name="WeekSunlbl" Text="{Binding currentWeek[6]}" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="8">
+                        <!--<Label/>-->
+                        <Image VerticalOptions="Center" Source="pickerarrowCopy.png" HeightRequest="35"  WidthRequest="35">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Tapped="RightNavigateArrow_ClickEvent"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                     </StackLayout>
                 </Grid>
             </StackLayout>

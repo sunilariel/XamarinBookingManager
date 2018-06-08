@@ -21,23 +21,40 @@ namespace Demo_App
         int EmpID;
         string EmpName;
         string TimePeriods;
-        DateTime dateofBooking;
+        string dateofBooking;
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         ObservableCollection<AssignedServicetoStaff> ListOfAllocatedServiceForEmployee = new ObservableCollection<AssignedServicetoStaff>();
         #endregion
 
-        public GetAllocateServiceForEmployeePage()
+        public GetAllocateServiceForEmployeePage(int empID,string empName,string DateteofBooking)
         {
             InitializeComponent();
             GetAllocatedServiceForEmployee();
 
+
+            dateofBooking = DateteofBooking;
+            EmpID = empID;
+            EmpName = empName;
         }
 
         private void GetTimeforNewAppointmentClick(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
-                return;            
-            var Data = e.SelectedItem as AddAppointments;
+                return;
+            var d = e.SelectedItem as AssignedServicetoStaff;            
+            AddAppointments Data = new AddAppointments();
+            Data.CompanyId = d.CompanyId;
+            Data.Cost = d.Cost;
+            Data.Currency = d.Currency;
+            Data.DateOfBooking = dateofBooking;
+            Data.DurationInHours = d.DurationInHours;
+            Data.DurationInMinutes = d.DurationInMinutes;
+            Data.EmployeeId = EmpID;
+            Data.EmployeeName = EmpName;
+            Data.ServiceName = d.Name;
+            Data.ServiceId = d.Id;
+            //Data.Status = 0;
+
             Navigation.PushAsync(new CalendarTimeSlotsPage(Data, "CalandarAppointment"));
             ((ListView)sender).SelectedItem = null;
         }

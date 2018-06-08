@@ -97,7 +97,8 @@ namespace Demo_App
                 Data = new Dictionary<string, int>
             {
                 { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
-               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7},
+               //{ "Custom Label",8}
             };
 
                 foreach (var item in Data.Keys)
@@ -174,7 +175,7 @@ namespace Demo_App
                 dynamic data = JObject.Parse(result);
                 var msg = Convert.ToString(data.Message);
                 DisplayAlert("Success", msg, "ok");               
-                Navigation.PushAsync(new SetAppointmentPage(""));
+                Navigation.PushAsync(new SetAppointmentPage("","",""));
             }
             catch (Exception ex)
             {

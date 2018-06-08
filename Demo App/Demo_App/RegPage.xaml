@@ -15,6 +15,27 @@
             <!--<Label Text="Or Use" HorizontalOptions="Center" Margin="10,2,2,10" TextColor="Black"></Label>
             <Button Text="Facebook" Margin="0,0,0,0" TextColor="White" BackgroundColor="#577BC9" HorizontalOptions="Center" WidthRequest="360" BorderRadius="10" BorderWidth="8"/>
             <Button Text="Google" Margin="0,0,0,0" TextColor="White" BackgroundColor="#FF5A5A" HorizontalOptions="Center" WidthRequest="360" BorderRadius="10" BorderWidth="8"/>-->
+
+            <!--<StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Margin="100,0,0,0" Text="Create an account" TextColor="#50aaa5">
+                </Label>
+                <Label Text="- Free" Margin="0,0,0,30" TextColor="Black"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NavigateToRegisterPage"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>-->
+
+
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Margin="100,0,0,0" TextColor="#50aaa5" Text="Already have an account?" HorizontalOptions="Center"/>
+                <Label Margin="0,0,0,30" Text="Sign in" TextColor="Black"/>
+                <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+            Tapped="OnLabelTapped"/>
+            </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

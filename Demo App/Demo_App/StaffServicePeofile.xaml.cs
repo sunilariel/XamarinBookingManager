@@ -13,9 +13,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Demo_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class StaffServicePeofile : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class StaffServicePeofile : ContentPage
+    {
         #region GlobleFields
         public int StaffId;
         public string CompanyId = (Application.Current.Properties["CompanyId"]).ToString();
@@ -25,8 +25,8 @@ namespace Demo_App
         public Staff objStaff = null;
         #endregion
 
-        public StaffServicePeofile ()
-		{
+        public StaffServicePeofile()
+        {
             try
             {
                 InitializeComponent();
@@ -38,7 +38,7 @@ namespace Demo_App
                 AllocationCount.Text = ListofAllocatedServicesCount + "/" + ListofServicesCount + " " + "services active";
                 BindingContext = objStaff;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -49,14 +49,16 @@ namespace Demo_App
         }
         private void ServiceProvided(object sender, EventArgs args)
         {
-            Navigation.PushAsync(new AssignServiceToStaffPage(objStaff));
+            Navigation.PushAsync(new AssignServiceToStaffPage(objStaff, ListOfServices));
         }
         private void BreaksClick(object sender, EventArgs args)
         {
-            
+            SaveStaffBreakTime obj = new SaveStaffBreakTime();
+            Navigation.PushAsync(new BreaksPage(obj, StaffId, "", CompanyId));
         }
         private void DoneClick(object sender, EventArgs args)
         {
+            Application.Current.Properties.Remove("EmployeeID");
             //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
             //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
             //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
@@ -69,7 +71,7 @@ namespace Demo_App
 
             //Navigation.PopAsync(true);           
 
-            Navigation.PushAsync(new StaffPage());                    
+            Navigation.PushAsync(new StaffPage());
 
             int pCount = Navigation.NavigationStack.Count();
 
@@ -84,8 +86,11 @@ namespace Demo_App
 
         }
 
-        private void CrossClick(object sender,EventArgs e)
+        private void CrossClick(object sender, EventArgs e)
         {
+
+            Application.Current.Properties.Remove("EmployeeID");
+
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
@@ -94,7 +99,7 @@ namespace Demo_App
             //Navigation.PopAsync(true);
 
             Navigation.PushAsync(new StaffPage());
-           
+
             int pCount = Navigation.NavigationStack.Count();
 
             for (int i = 0; i < pCount; i++)
@@ -108,6 +113,7 @@ namespace Demo_App
 
         protected override bool OnBackButtonPressed()
         {
+            Application.Current.Properties.Remove("EmployeeID");
             for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
@@ -156,7 +162,7 @@ namespace Demo_App
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -264,7 +270,7 @@ namespace Demo_App
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
             }
@@ -280,7 +286,7 @@ namespace Demo_App
                 ObservableCollection<AssignedServicetoStaff> ListofServices = JsonConvert.DeserializeObject<ObservableCollection<AssignedServicetoStaff>>(result);
                 return ListofServices;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }

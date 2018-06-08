@@ -45,20 +45,42 @@
                     </StackLayout>
                 </Grid>
             </StackLayout>
+            
             <StackLayout x:Name="middleF" VerticalOptions="Center" BackgroundColor="White" >
-                <Grid ColumnSpacing="0" RowSpacing="0">
+                <ContentView x:Name="Placeholder" Grid.Row="0"></ContentView>
+                <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentView x:Name="Placeholder" Grid.Row="0"/>
-                    <StackLayout x:Name="listData" Grid.Row="0" BackgroundColor="White" IsVisible="False">
-                        <ScrollView>
-                            <StackLayout Grid.Column="0">
+                    
+
+
+                    <StackLayout x:Name="AlllistData" IsVisible="False" Grid.Row="0" BackgroundColor="White" HeightRequest="50">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="0,20,0,0">
                                 <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
                             </StackLayout>
-                            <StackLayout Grid.Column="1">
-                                <Label Text="abc" FontAttributes="Bold"></Label>
+
+                            <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,20,0,0">
+                                <Label Text="All Schedules" HorizontalOptions="StartAndExpand"></Label>
+
                             </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SchedulerAllStaff"/>
+                            </StackLayout.GestureRecognizers>
+                            <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddServiceNavigation"/>
+                        </StackLayout.GestureRecognizers>-->
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout x:Name="listData" Grid.Row="1" BackgroundColor="White" IsVisible="False">
+                        <ScrollView>
                             <ListView x:Name="StaffList" ItemSelected="StaffSelectedForAppointment" RowHeight="70">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -160,36 +182,36 @@
                             <ColumnDefinition Width="*"/>
                             <!--<ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
-                        <StackLayout Spacing="0" Grid.Column="0" BackgroundColor="White">
+                        <StackLayout x:Name="icon1Enable" Spacing="0" Grid.Column="0" BackgroundColor="White">
                             <Image HeightRequest="30" Source="calender.png"/>
-                            <Label Text="CALENDER" FontSize="10"
+                            <Label Text="CALENDER" x:Name="CALENDERLabelColor" FontSize="10"
                        HorizontalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Icon1_Tapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                        <StackLayout Spacing="0" Grid.Column="2" BackgroundColor="White">
+                        <StackLayout x:Name="icon3Enable" Spacing="0" Grid.Column="2" BackgroundColor="White">
                             <Image HeightRequest="30" Source="Activity.png"/>
-                            <Label Text="ACTIVITY" FontSize="10"
+                            <Label Text="ACTIVITY" x:Name="ACTIVITYLabelColor" FontSize="10"
                        HorizontalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Icon3_Tapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                        <StackLayout Spacing="0" Grid.Column="1" BackgroundColor="White">
+                        <StackLayout x:Name="icon2Enable" Spacing="0" Grid.Column="1" BackgroundColor="White">
                             <Image HeightRequest="30" Source="customer.png"/>
-                            <Label Text="CUSTOMER" FontSize="10"
+                            <Label Text="CUSTOMER" x:Name="CUSTOMERLabelColor" FontSize="10"
                        HorizontalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Icon2_Tapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                        <StackLayout Spacing="0" Grid.Column="3" BackgroundColor="White">
+                        <StackLayout x:Name="icon4Enable" Spacing="0" Grid.Column="3" BackgroundColor="White">
                             <Image HeightRequest="30" Source="account.png"/>
-                            <Label Text="ACCOUNT" FontSize="10"
+                            <Label Text="ACCOUNT" x:Name="ACCOUNTLabelColor" FontSize="10"
                        HorizontalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Icon4_Tapped"/>

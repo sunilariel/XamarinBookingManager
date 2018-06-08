@@ -65,7 +65,7 @@ namespace Demo_App
                 int CategoryId = Convert.ToInt32(ResponseValue.Value);
                 string categoryName = obj.Name;
 
-                Navigation.PushAsync(new AddServiceToCategoryPage(GetAllServices(CompanyId), CategoryId, categoryName));
+                Navigation.PushAsync(new AddServiceToCategoryPage(GetAllServices(CompanyId), CategoryId, categoryName,"save"));
             }
             catch(Exception e)
             {

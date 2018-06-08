@@ -12,7 +12,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Collections.ObjectModel;
-
+using XLabs.Forms.Controls;
 
 namespace Demo_App
 {
@@ -31,10 +31,95 @@ namespace Demo_App
             EmployeeId = StaffId;
 			InitializeComponent ();
             ListofServices = ListofAllocatedServices;
+            AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
             ListofAllServices.ItemsSource = ListofServices;
 
             // GetService();
         }
+
+        public void AssignAllProvider(object Sender, EventArgs args)
+        {
+            try
+            {
+
+                CheckBox AllProvider = (CheckBox)Sender;
+                if (AllProvider.Checked == true)
+                {
+                    foreach (var item in ListofServices)
+                    {
+                        //  AllStaffChecked.Checked = true;    
+                        item.AllAssigned = true;
+                        item.isAssigned = true;
+                    }
+                }
+                else
+                {
+                    foreach (var item in ListofServices)
+                    {
+                        //  AllStaffChecked.Checked = false;
+                        item.AllAssigned = true;
+                        item.isAssigned = false;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public void AssignProvider(object Sender, EventArgs args)
+        {
+            try
+            {
+                for (int i = 0; i < ListofServices.Count; i++)
+                {
+                    if (ListofServices[i].isAssigned == false)
+                    {
+                        foreach (var item in ListofServices)
+                        {
+                            item.AllAssigned = false;
+                        }
+                        break;
+                    }
+                    else
+                    {
+
+                        ListofServices[i].AllAssigned = true;
+                        // AllStaffChecked.Checked = true;
+                    }
+                }
+                AllocatedProviderCount.Text = GetAllocatedServiceCount() + " " + "Service selected";
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+        }
+
+        public int GetAllocatedServiceCount()
+        {
+            try
+            {
+                int count = 0;
+                foreach (var item in ListofServices)
+                {
+                    if (item.isAssigned == true)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+                return 0;
+            }
+        }
+
 
         //public void GetService()
         //{

@@ -3,10 +3,364 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Demo_App"
              x:Class="Demo_App.BreaksPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Breaks">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="SaveStaffBreaks" Text="save" Order="Primary" Priority="0"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <local:CustomTimePicker x:Name="Timepicker" ColumnHeaderHeight="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" IsVisible="False"/>
+
+
+
+
+        <StackLayout Padding="0,5,0,0">
+            <ScrollView>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+                    <StackLayout x:Name="eMONStacLayout" Grid.Row="0" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="MondayLbl" Text="Mon" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableMondayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+
+                    <!--<StackLayout x:Name="listViewMON" Grid.Row="1" Padding="10">
+                        <syncfusion:SfListView x:Name="listView">
+                            <syncfusion:SfListView.LeftSwipeTemplate>
+                                <DataTemplate x:Name="LeftSwipeTemplate">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid BackgroundColor="#009EDA" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                                <Label Text="Hello"></Label>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid BackgroundColor="#DC595F" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="1">
+                                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                                <Image Grid.Column="0"
+                   Grid.Row="0"
+                   HeightRequest="35"
+                   WidthRequest="35"
+                   BackgroundColor="Transparent"
+                   BindingContextChanged="rightImage_BindingContextChanged"
+                   Source="Delete.png" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </syncfusion:SfListView.LeftSwipeTemplate>
+                        </syncfusion:SfListView>
+                    </StackLayout>-->
+
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewMON" Grid.Row="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                        <ListView x:Name="BreakStaffListMON" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="hh:00 tt" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="hh:00 tt" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout x:Name="MONWhite" Grid.Row="2" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+
+                    <StackLayout x:Name="MonLightGray" BackgroundColor="LightGray" Grid.Row="3" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+
+                    <StackLayout x:Name="eTUEStacLayout" Grid.Row="4" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="TuesdayLbl" Text="Tue" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableTuesdayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewTUE" Grid.Row="5">
+                        <ListView x:Name="BreakStaffListTUE" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="TUEWhite" Grid.Row="6" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="TUELightGray" BackgroundColor="LightGray" Grid.Row="7" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="eWEDStacLayout" Grid.Row="8" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="WednesdayLbl" Text="Wed" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableWednesdayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewWED" Grid.Row="9">
+                        <ListView x:Name="BreakStaffListWED" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="WEDWhite" Grid.Row="10" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="WEDLightGray" BackgroundColor="LightGray" Grid.Row="11" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="eTHUStacLayout" Grid.Row="12" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="ThursdayLbl" Text="Thu" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableThursdayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewTHU" Grid.Row="13">
+                        <ListView x:Name="BreakStaffListTHU" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="THUWhite" Grid.Row="14" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="THULightGray" BackgroundColor="LightGray" Grid.Row="15" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="eFRIStacLayout" Grid.Row="16" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="FridayLbl" Text="Fri" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableFridayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewFRI" Grid.Row="17">
+                        <ListView x:Name="BreakStaffListFRI" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="FRIWhite" Grid.Row="18" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="FRILightGray" BackgroundColor="LightGray" Grid.Row="19" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="eSATStacLayout" Grid.Row="20" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="SaturdayLbl" Text="Sat" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableSaturdayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewSAT" Grid.Row="21">
+                        <ListView x:Name="BreakStaffListSAT" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="SATWhite" Grid.Row="22" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                    <StackLayout x:Name="SATLightGray" BackgroundColor="LightGray" Grid.Row="23" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+
+                    <StackLayout x:Name="eSUNStacLayout" Grid.Row="24" Padding="20" BackgroundColor="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" x:Name="SundayLbl" Text="Sun" TextColor="Black"/>
+                            <Label Grid.Column="1" x:Name="enableSundayLbl" Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand"></Label>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BreaksClick"/>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout BackgroundColor="White" x:Name="listViewSUN" Grid.Row="25">
+                        <ListView x:Name="BreakStaffListSUN" RowHeight="70">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
+                                            <Image Source="clock.png" HeightRequest="30" WidthRequest="30"/>
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                            <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="SUNWhite" Grid.Row="26" Padding="1">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+
+                    <StackLayout x:Name="SUNLightGray" BackgroundColor="LightGray" Grid.Row="27" Padding="2">
+                        <!--<Label Text="No appointment booked"></Label>-->
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+        <!--<StackLayout>
+            <local:CustomTimePicker x:Name="Timepicker" ColumnHeaderHeight="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" IsVisible="False"/>                                                
             <ListView x:Name="BreakTimeList" BackgroundColor="White" RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -16,20 +370,20 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" Padding="20">
+                                <StackLayout Grid.Column="0" Padding="10">
                                     <Label Text="{Binding NameOfDay}" TextColor="Black"></Label>
-                                    <!--<Grid ColumnSpacing="0">
+                                    <Grid ColumnSpacing="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <StackLayout Grid.Column="0">
+                                        <StackLayout x:Name="ddddff" Grid.Column="0">
                                             <TimePicker Time="{Binding Start,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                         </StackLayout>
                                         <StackLayout Grid.Column="1">
                                             <TimePicker Time="{Binding End,Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" ></TimePicker>
                                         </StackLayout>
-                                    </Grid>-->
+                                    </Grid>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,20,10,0">
                                     <Label Text="Breaks +" TextColor="#25DBF1" HorizontalOptions="EndAndExpand">
@@ -41,9 +395,13 @@
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
+                       
                     </DataTemplate>
+                    
                 </ListView.ItemTemplate>
+                
             </ListView>
-        </StackLayout>
+           
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

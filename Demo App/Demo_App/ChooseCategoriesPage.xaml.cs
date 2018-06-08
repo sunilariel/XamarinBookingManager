@@ -72,7 +72,7 @@ namespace Demo_App
             if (PAgeName== "CalenderPage" || PAgeName== "CustomerPage" || PAgeName== "ActivityPage" || PAgeName== "AccountPage")
             {
                 Application.Current.Properties.Remove("ServiceName");
-                Navigation.PushAsync(new SetAppointmentPage(PAgeName));
+                Navigation.PushAsync(new SetAppointmentPage(PAgeName,"",""));
             }
             else
             {
@@ -82,8 +82,6 @@ namespace Demo_App
 
                 }
                 Navigation.PushAsync(new ServicePage());
-
-
                 int pCount = Navigation.NavigationStack.Count();
 
                 for (int i = 0; i < pCount; i++)

@@ -286,7 +286,7 @@ namespace Demo_App
                     var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteService?companyId=" + ServiceId;
                     var result = PostData("DELETE", "", apiUrl);
 
-                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 3; PageIndex--)
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
 
@@ -294,7 +294,7 @@ namespace Demo_App
 
                     //Navigation.PopAsync(true);
 
-                    Navigation.PushAsync(new ServicePage());
+                    await Navigation.PushAsync(new ServicePage());
 
 
                     int pCount = Navigation.NavigationStack.Count();

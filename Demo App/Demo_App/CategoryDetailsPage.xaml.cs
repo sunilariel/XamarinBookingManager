@@ -22,13 +22,36 @@ namespace Demo_App
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
         int CategoryID;
         string NameofCategory;
+        string btnname = "";
         ObservableCollection<AssignedServicetoStaff> ListOfAssignService = new ObservableCollection<AssignedServicetoStaff>();
         ObservableCollection<AssignServiceToCategory> ListofAllAssignedServices = new ObservableCollection<AssignServiceToCategory>();
-        public CategoryDetailsPage(int categoryId, string categoryName)
+        public CategoryDetailsPage(int categoryId, string categoryName, string btnName)
         {
             try
             {
                 InitializeComponent();
+                btnname = btnName;
+                ToolbarItems.Remove(saveButton);
+                ToolbarItems.Remove(UpdateButton);
+                ToolbarItems.Remove(DeleteButton);
+                if (btnname == "delete")
+                {
+                    ToolbarItems.Remove(saveButton);
+                    ToolbarItems.Remove(UpdateButton);
+                    ToolbarItems.Add(DeleteButton);
+                }
+                else if (btnname == "update")
+                {
+                    ToolbarItems.Remove(saveButton);
+                    ToolbarItems.Add(UpdateButton);
+                    ToolbarItems.Remove(DeleteButton);
+                }
+                else
+                {
+                    ToolbarItems.Add(saveButton);
+                    ToolbarItems.Remove(UpdateButton);
+                    ToolbarItems.Remove(DeleteButton);
+                }
                 CategoryID = categoryId;
                 NameofCategory = categoryName;
                 var provider = GetSelectedService();
@@ -37,15 +60,15 @@ namespace Demo_App
                 {
                     if (item.isAssigned == true)
                     {
-                        ServiceString = ServiceString + item.Name +  " , ";
+                        ServiceString = ServiceString + item.Name + " , ";
                     }
                 }
                 if (ServiceString.Length > 0)
                 {
-                    CategoryServices.Text = ServiceString.Substring(0, ServiceString.Length - 1);
+                    CategoryServices.Text = ServiceString.Remove(ServiceString.Length - 2);
                 }
                 CategoryName.Text = NameofCategory;
-            }           
+            }
 
             catch (Exception e)
             {
@@ -54,7 +77,7 @@ namespace Demo_App
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetSelectedService()
-        {           
+        {
             try
             {
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/GetAllServicesForCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
@@ -70,13 +93,13 @@ namespace Demo_App
 
                 //foreach (var service in ListofAllAssignedServices)
                 //{
-                    foreach (var assignService in ListOfAssignService)
-                    {
-                        //if (service.Id == assignService.Id)
-                        //{
-                            assignService.isAssigned = true;
-                        //}
-                    }
+                foreach (var assignService in ListOfAssignService)
+                {
+                    //if (service.Id == assignService.Id)
+                    //{
+                    assignService.isAssigned = true;
+                    //}
+                }
                 //}
                 return ListOfAssignService;
             }
@@ -86,8 +109,71 @@ namespace Demo_App
                 return null;
             }
         }
+        public async void DeleteCategoryDetails()
+        {
+            try
+            {
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Category", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/services/DeleteCategory?companyId=" + CompanyId + "&categoryId=" + CategoryID;
+
+                    var result = PostData("DELETE", "", apiUrl);
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 3; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    //Navigation.PopAsync(true);           
+
+                   await Navigation.PushAsync(new ServiceCategoriesPage(CategoryID));
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 2)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+
+                }
+                else
+                {
+                    //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+                    await Navigation.PushAsync(new CategoryDetailsPage(CategoryID, NameofCategory, btnname));
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
 
 
+        public void UpdateCategoryDetails()
+        {
+            for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+            }
+
+            //Navigation.PopAsync(true);           
+
+            Navigation.PushAsync(new ServiceCategoriesPage(CategoryID));
+
+            int pCount = Navigation.NavigationStack.Count();
+
+            for (int i = 0; i < pCount; i++)
+            {
+                if (i == 3)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[i]);
+                }
+            }
+        }
 
         public void SaveCategoryDetails()
         {
@@ -130,7 +216,7 @@ namespace Demo_App
         //}
 
         public void EditCategoryService()
-        {                   
+        {
             var AllServices = GetService();
             foreach (var item in ListOfAssignService)
             {
@@ -144,7 +230,7 @@ namespace Demo_App
 
                 }
             }
-            Navigation.PushAsync(new AddServiceToCategoryPage(AllServices, CategoryID, NameofCategory));
+            Navigation.PushAsync(new AddServiceToCategoryPage(AllServices, CategoryID, NameofCategory, "update"));
         }
 
         public ObservableCollection<AssignedServicetoStaff> GetService()

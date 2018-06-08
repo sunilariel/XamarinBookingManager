@@ -23,7 +23,7 @@ namespace Demo_App
         public RegPage()
         {
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = reg = new RequestData();
         }
         
@@ -31,7 +31,7 @@ namespace Demo_App
         {
             if (!IsValid()) return;
             
-            var DomainUrl = "http://bookingmanager27-001-site1.itempurl.com/";
+            var DomainUrl = "http://bookingmanager29-001-site1.gtempurl.com/";
             
             Application.Current.Properties["DomainUrl"] = DomainUrl;
             var regdata = reg;
@@ -99,7 +99,13 @@ namespace Demo_App
             }
             return result;
         }
-
+        public void OnLabelTapped(object sender, EventArgs args)
+        {
+            Navigation.PushAsync(new LoginPage());
+            // Your code here
+            // Example:
+            // DisplayAlert("Message", "You clicked on the label", "OK");
+        }
         public string UserExist(string email)
         {
             try

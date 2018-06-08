@@ -89,7 +89,7 @@ namespace Demo_App
 
 
 
-            string RegisterUrl = "http://bookingmanager27-001-site1.itempurl.com/api/companyregistration/CreateAccount";
+            string RegisterUrl = "http://bookingmanager29-001-site1.gtempurl.com/api/companyregistration/CreateAccount";
 
             var req = objRequestData;
             var result = await RegisterMethod(RegisterUrl, req);

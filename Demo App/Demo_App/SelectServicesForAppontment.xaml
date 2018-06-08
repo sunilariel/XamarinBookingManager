@@ -5,6 +5,7 @@
              Title="Select Services">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="nameText"></Label>
             <ListView x:Name="ListofAllServices" ItemSelected="SelectStaffForCustomer">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -20,7 +21,7 @@
                                         <Image HeightRequest="30" WidthRequest="30" Source="user.png" HorizontalOptions="Center"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Name}" TextColor="Black"/>
+                                        <Label x:Name="nametext" Text="{Binding Name}" TextColor="Black"/>
                                         <Label Text="{Binding ServiceDetails}"/>
                                         <!--<Label Grid.Column="1" Text="{Binding Cost}"/>-->
                                     </StackLayout>

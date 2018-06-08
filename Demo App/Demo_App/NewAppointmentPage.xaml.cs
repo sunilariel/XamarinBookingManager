@@ -111,6 +111,9 @@ namespace Demo_App
                 }
                 foreach (var item in notesList)
                 {
+                    System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<.+?>|&nbsp;");
+                    item.Description = rx.Replace(item.Description, "");
+                    //CustomerNote.Text = mystring;
                     AddComment.Text = item.Description;
                 }
                 BindingContext = objAddAppointments;
@@ -119,7 +122,8 @@ namespace Demo_App
                 Data = new Dictionary<string, int>
             {
                { "No Label",1}, { "Pending",2}, { "Confirmed",3}, { "Done",4},
-               { "No-Show",5}, { "Paid",6},{ "Running Late",7}, { "Custom Label",8},
+               { "No-Show",5}, { "Paid",6},{ "Running Late",7},
+               //{ "Custom Label",8}
             };
 
                 if(objAddAppointments.Status != 0)
@@ -250,7 +254,7 @@ namespace Demo_App
                 var msg = Convert.ToString(data.Message);
                 DisplayAlert("Success", msg, "ok");
 
-                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 4; PageIndex--)
+                for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
                 }

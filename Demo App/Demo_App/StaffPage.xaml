@@ -34,7 +34,10 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <!--<TextCell Text="{Binding FirstName}" TextColor="Black" />-->
+                                
+                                
                                 <ViewCell>
+                                    
                                     <StackLayout Padding="10">
                                         <Grid ColumnSpacing="0">
                                             <Grid.ColumnDefinitions>
