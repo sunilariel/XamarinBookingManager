@@ -105,27 +105,6 @@
       <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.55.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Licensing, Version=16.2.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Licensing.16.2.0.41\lib\MonoAndroid10\Syncfusion.Licensing.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPicker.Android, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfPicker.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms.Android, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfPicker.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.Android, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfSchedule.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms.Android, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
