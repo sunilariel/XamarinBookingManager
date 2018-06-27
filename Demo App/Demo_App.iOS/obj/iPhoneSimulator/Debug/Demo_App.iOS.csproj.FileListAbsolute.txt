@@ -1,0 +1,195 @@
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-568h@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-Portrait.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-Portrait@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@3x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@3x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@2x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@3x.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\calender.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.csproj.CoreCompileInputs.cache
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.MainPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.App.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.RegPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.LoginPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.WelcomePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SetAppointmentPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CalenderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ActivityPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AccountPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.MorePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SettingPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.BusinessHoursPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AppointmentSlotPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.PasscodeLockPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NotificationPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServicePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ChangePasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AboutPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.FeedbackPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SupportPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ImportStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ImportCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ForgotPasswordPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.Currency.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.Timezone.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewServicePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewStaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.FloatingButtonPopup.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewCustomerPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddressPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffServicePeofile.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceProviderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ChooseCategoriesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddNotesPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddServiceToCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CategoryDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewCategoryPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CutomerProfilePage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffProfileDetailsPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.BreaksPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServicesProviderPage.xaml.g.cs
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\left_arrow.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\lock.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\mail.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\more.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\plus.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\plus2.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Serviceprofile.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\share.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\timezone.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\user.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\weekstartday.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\importcustomer.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\email.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\CallingIcon.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\chat.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\clock.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Cross.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\customer.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\appointment_Slot.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\account.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Activity.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Appointment.png
+D:\Xamarin_Mayank\mayank\Demo App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.csprojResolveAssemblyReference.cache
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-568h@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-Portrait.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default-Portrait@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Default@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@3x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@3x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@2x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@3x.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\calender.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\left_arrow.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\lock.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\mail.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\more.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\plus.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\plus2.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Serviceprofile.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\share.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\timezone.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\user.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\weekstartday.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\importcustomer.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\email.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\CallingIcon.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\chat.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\clock.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Cross.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\customer.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\appointment_Slot.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\account.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Activity.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\Appointment.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\DropDownArrow.png
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\optimized\
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.csprojResolveAssemblyReference.cache
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.csproj.CoreCompileInputs.cache
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.MainPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.App.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.RegPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.LoginPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.WelcomePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SetAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CalenderPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CustomerPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ActivityPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AccountPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.MorePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SettingPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.BusinessHoursPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AppointmentSlotPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.PasscodeLockPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NotificationPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceCategoriesPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServicePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ProfilePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ChangePasswordPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AboutPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.FeedbackPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SupportPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ImportStaffPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ImportCustomerPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ForgotPasswordPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.Currency.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.Timezone.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewServicePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewStaffPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.FloatingButtonPopup.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewCustomerPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddressPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffServicePeofile.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceProviderPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ChooseCategoriesPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServiceDetailsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddNotesPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddServiceToCategoryPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CategoryDetailsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewCategoryPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CutomerProfilePage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.StaffProfileDetailsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.BreaksPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.ServicesProviderPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.EditCustomerPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AddAppointmentsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AppointmentDetailsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.EditServiceDetails.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.EditStaffPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SelectServiceCategory.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.UpdateCategory.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SelectServicesForAppontment.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CreateNewAppointmentsPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.SelectStaffForAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.NewAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.AssignServiceToStaffPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.CustomerCommentsForAppointmentPage.xaml.g.cs
+D:\New Clone Xamarin App\Demo App\Demo_App.iOS\obj\iPhoneSimulator\Debug\Demo_App.iOS.UpdateAppointmentDetailsPage.xaml.g.cs

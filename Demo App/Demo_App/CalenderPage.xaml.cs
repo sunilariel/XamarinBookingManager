@@ -73,7 +73,13 @@ namespace Demo_App
                     {
                         EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
                         empName = Convert.ToString(Application.Current.Properties["LastSelectedStaff"]);
-                    }                  
+                    }
+
+
+
+                    //currentWeek = GetCurrentWeek();
+                    //BindingContext = currentWeek;
+                    //InitializeComponent();
                     isCalenderPageOpen = true;
                     NavigationPage.SetHasNavigationBar(this, false);
 
@@ -86,7 +92,12 @@ namespace Demo_App
                     {
                         var dt = DateDayofWeek.Split(' ');
                         var sdt = dt[1];
-                        var date = Convert.ToDateTime(sdt);                       
+                        var date = Convert.ToDateTime(sdt);
+
+                        //var cW = week;
+
+                        //var dwe = cW[6];
+                        //DateTime dst = Convert.ToDateTime(dwe);
                         DateTime today = date;
                         int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
                         DateTime nextTuesday = today.AddDays(daysUntilTuesday);
@@ -103,10 +114,24 @@ namespace Demo_App
                         week.Clear();
                         foreach (var item in dates)
                         {
+                            //var ddde = item.Date;
+                            //var d = Convert.ToString(ddde);
+                            //week.Add(d);
+
                             var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
                             week.Add(dd);
                         }
                     }
+
+
+
+                    //WeekMonlbl.Text = currentWeek[0];
+                    //WeekTuelbl.Text = currentWeek[1];
+                    //WeekWedlbl.Text = currentWeek[2];
+                    //WeekThulbl.Text = currentWeek[3];
+                    //WeekFrilbl.Text = currentWeek[4];
+                    //WeekSatlbl.Text = currentWeek[5];
+                    //WeekSunlbl.Text = currentWeek[6];
 
                     WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
                     WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
@@ -267,7 +292,7 @@ namespace Demo_App
                     calender.DateClicked += Calendar_DateClicked;
                     calender.RightArrowClicked += Calendar_RightArrowClicked;
                     calender.LeftArrowClicked += Calendar_LeftArrowClicked;
-
+                  
 
                     schedulee = new SfSchedule();
                     ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
@@ -532,7 +557,7 @@ namespace Demo_App
 
                     //calender.SelectedDate = t;
 
-
+                    
 
                     calender.DateClicked += Calendar_DateClicked;
                     calender.RightArrowClicked += Calendar_RightArrowClicked;
@@ -551,7 +576,7 @@ namespace Demo_App
 
         }
         public DateTime DateSelectedcommand { get; set; }
-        private void Calendar_RightArrowClicked(object sender, DateTimeEventArgs e)
+        private void Calendar_RightArrowClicked(object sender,DateTimeEventArgs e)
         {
             var d = e.DateTime.ToString("MMM yyyy");
             currentMonth.Text = d;
@@ -565,7 +590,7 @@ namespace Demo_App
         private void Calendar_DateClicked(object sender, DateTimeEventArgs e)
         {
             try
-            {
+            {                
                 System.DateTime today = e.DateTime;
                 int currentDayOfWeek = (int)today.DayOfWeek;
                 System.DateTime sunday = today.AddDays(-currentDayOfWeek);
@@ -756,18 +781,18 @@ namespace Demo_App
         private void ChangeMonthView(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 IsMonthView = !IsMonthView;
                 if (IsMonthView)
                 {
                     //calender.DateClicked += Calendar_DateClicked;
                     XamForms.Controls.Calendar c = (XamForms.Controls.Calendar)calender;
-                    var dd = c.TitleLabelText;
+                    var dd= c.TitleLabelText;
                     currentMonth.Text = dd;
 
                     dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
                     schedulerWeekView.IsVisible = false;
-                    schedulerFullMonthView.IsVisible = true;
+                    schedulerFullMonthView.IsVisible = true;                    
                     MonthViewSettings monthViewSettings = new MonthViewSettings();
                     monthViewSettings.MonthLabelSettings.DayFormat = "E";
                 }
