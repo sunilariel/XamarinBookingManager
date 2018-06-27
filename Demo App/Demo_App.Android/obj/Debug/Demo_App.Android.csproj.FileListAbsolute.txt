@@ -2804,7 +2804,6 @@ D:\Clone-27-June-2018\Demo App\Demo_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\bin\Debug\Xamarin.iOS.xml
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\bin\Debug\Xamarin.iOS.dll.mdb
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\bin\Debug\Mono.Security.pdb
-D:\Clone-27-June-2018\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csprojResolveAssemblyReference.cache
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\obj\Debug\Demo_App.Android.csproj.CoreCompileInputs.cache
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.MainPage.xaml.g.cs
 D:\Clone-27-June-2018\Demo App\Demo_App.Android\obj\Debug\Demo_App.Droid.App.xaml.g.cs
