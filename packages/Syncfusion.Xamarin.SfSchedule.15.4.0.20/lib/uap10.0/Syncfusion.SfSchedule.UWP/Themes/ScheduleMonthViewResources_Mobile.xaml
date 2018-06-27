@@ -1,0 +1,282 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:Syncfusion.UI.Xaml.Schedule">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="MonthViewLabelForegroundThemeBrush" Color="Black" />
+            <SolidColorBrush x:Key="ExpandingBorderBrush" Color="Black" />
+            <SolidColorBrush x:Key="WeekNumberBorder" Color="Black"/>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="MonthViewLabelForegroundThemeBrush" Color="{StaticResource SystemColorWindowColor}" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="MonthViewLabelForegroundThemeBrush" Color="LightGray" />
+            <SolidColorBrush x:Key="ExpandingBorderBrush" Color="LightGray" />
+            <SolidColorBrush x:Key="WeekNumberBorder" Color="Gray"/>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <local:BoolToVisibilityConverter x:Key="booltovisible"/>
+    <local:ExpandingAppointmentVisibility x:Key="Appvisibility"></local:ExpandingAppointmentVisibility>
+    <!--Appointment Layout Panel-->
+    <Style TargetType="local:ScheduleMonthAppointmentLayoutItemsControl">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <local:ScheduleMonthAppointmentLayoutPanel Background="Transparent" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleMonthAppointmentLayoutItemsControl">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid>
+                            <ItemsPresenter x:Name="PART_ItemsPresenter"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--MonthviewDaysControl-->
+    <Style TargetType="local:ScheduleMonthDateContentControl">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleMonthDateContentControl">
+                    <Border BorderBrush="{TemplateBinding MonthViewLineStroke}" Background="{TemplateBinding Background}" >
+                        <Grid x:Name="LayoutRoot"  >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.75*"/>
+                            </Grid.RowDefinitions>
+                            <local:ScheduleRectangleBorder x:Name="Border" Background="{TemplateBinding ScheduleBackground}" BorderBrush="LightGray"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="2" BottomBrush="{TemplateBinding StrokeLine}" LeftBrush="{TemplateBinding StrokeLine}" RightBrush="{TemplateBinding StrokeLine}" TopBrush="{TemplateBinding StrokeLine}"/>
+                            <Rectangle x:Name="ContentRectangle" Fill="Transparent" Grid.Row="1"/>
+                            <Rectangle x:Name="DateRectangle" Grid.Row="0"/>
+                            <local:CustomTextBlock x:Name="Date" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalAlignment}"  FontSize="{TemplateBinding FontSize}" Margin="10,0,0,0" FontWeight="Light" Foreground="{TemplateBinding TextForeground}" DateTimeValue="{TemplateBinding DateText}" MonthDateFormat="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path= MonthDateFormat}" DateTimeFormat="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path= MonthDateFormat}" FontFamily="Segoe UI"  />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Header Content Control-->
+    <Style TargetType="local:ScheduleMonthViewHeaderControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleMonthViewHeaderControl">
+                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}">
+                        <TextBlock x:Name="DayText" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Margin}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding DayText}" FontSize="{TemplateBinding FontSize}"  />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="ScheduleMonthViewHeaderItemsControlPanelKey">
+        <local:ScheduleMonthViewHeaderItemsLayoutPanel  ></local:ScheduleMonthViewHeaderItemsLayoutPanel>
+    </ItemsPanelTemplate>
+
+    <!--HeaderItemsControl-->
+    <Style TargetType="local:ScheduleMonthViewHeaderItemsControl">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="ItemsPanel" Value="{StaticResource ScheduleMonthViewHeaderItemsControlPanelKey}"></Setter>
+         
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleMonthViewHeaderItemsControl">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ItemsPresenter></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- monthChilditemControl-->
+    <Style TargetType="local:MonthChildItemControl">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <local:MonthViewItemPanel></local:MonthViewItemPanel>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MonthChildItemControl">
+                    <Grid>
+                        <Border BorderBrush="{ThemeResource ExpandingBorderBrush}" BorderThickness="0,0,0.7,.7">
+                            <ItemsPresenter></ItemsPresenter>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--MonthChildItems (For MultiResource support)-->
+    <Style TargetType="local:MonthChildItems">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MonthChildItems">
+                    <Border BorderBrush="{ThemeResource ExpandingBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,0,0,1" >
+                        <Grid Background="{TemplateBinding Background}" x:Name="LayoutRoot">
+                   
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--WindowsPhoneAppointment Layout Panel-->
+    <Style TargetType="local:ExpandingItemControl">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"></StackPanel>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExpandingItemControl">
+                    <Grid>
+                        <ItemsPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--expanding -->
+    <Style TargetType="local:ExpandingControl">
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExpandingControl">
+                    <Border BorderBrush="{ThemeResource ExpandingBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,0,0,1">
+                        <ScrollViewer Margin="7,10,0,0" VerticalContentAlignment="Top" 
+                                      VerticalScrollBarVisibility="Visible" VerticalScrollMode="Auto">
+                            <Grid x:Name="ExpandingView">
+                                <local:ExpandingItemControl DataContext="{TemplateBinding AppointmentCollection}" Margin="3,3,0,0" x:Name="ExpandingItems"
+                                                            ItemsSource="{Binding}" AppointmentTemplate="{TemplateBinding AppointmentTemplate}"
+                                                            Visibility="{Binding Converter={StaticResource Appvisibility },ConverterParameter=Appointmentcollection}">
+                                </local:ExpandingItemControl>
+
+                                <TextBlock x:Name="EventsTextBlock" Text="no events" Margin="5,5,0,0" Foreground="Gray" 
+                                           DataContext="{TemplateBinding AppointmentCollection}" 
+                                           Visibility="{Binding Converter={StaticResource Appvisibility}, ConverterParameter=Emptycollection}">
+                                </TextBlock>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <ItemsPanelTemplate x:Key="WeekNumberInMonthItemsPanelKey">
+        <local:WeekNumberInMonthLayoutPanel  ></local:WeekNumberInMonthLayoutPanel>
+    </ItemsPanelTemplate>
+
+    <!--DisplayingWeekNumberInMonth-->
+    <Style TargetType="local:WeekNumberInMonthItemsControl">
+        <Setter Property="ItemsPanel" Value="{StaticResource WeekNumberInMonthItemsPanelKey}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WeekNumberInMonthItemsControl">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ItemsPresenter></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="local:WeekNumberInMonth">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WeekNumberInMonth">
+                    <Grid x:Name="gridLayout" Background="{TemplateBinding Background}" >
+                        <Border BorderThickness="0,0,1,1" BorderBrush="{ThemeResource WeekNumberBorder}">
+                            <TextBlock x:Name="WeekNumber" HorizontalAlignment="Center"  VerticalAlignment="Center"  TextAlignment="Center"
+                                   Text="{TemplateBinding WeekNumber}"  FontSize="{TemplateBinding FontSize}"  FontWeight="{TemplateBinding FontWeight}"  FontFamily="{TemplateBinding FontFamily}">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--MonthView-->
+    <Style TargetType="local:ScheduleMonthView">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="BorderThickness" Value="0,0.7,0,0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleMonthView">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <local:WeekNumberInMonthItemsControl x:Name="WeekNumberInMonthItems" MinWidth="25"
+                                                             Visibility="{Binding Path=ShowWeekNumber,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource booltovisible}}"
+                                                             Grid.Row="1" Grid.Column="0" 
+                                                             ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent},Path=WeekNumbersInMonth}"
+                                                             ExpandingControlIndex="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ExpandingControlIndex}"
+                                                             Background="{TemplateBinding Background}" />
+
+
+                        <Border Grid.Row="1" Grid.Column="1" BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{ThemeResource ExpandingBorderBrush}">
+
+                            <local:MonthChildItemControl Grid.Row="1" x:Name="monthChildItemControl"  
+                                                          ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MonthViewCells}" 
+                                                         ShowAppointmentsInline="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowAppointmentsInline}" >
+                            </local:MonthChildItemControl>
+                        </Border>
+
+                        <local:ScheduleMonthViewHeaderItemsControl x:Name="PART_MonthViewHeaderItemsControl" Grid.Row="0"  Grid.Column="1" 
+                                                                    Background="{TemplateBinding Background}"   ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MonthViewHeader}"/>
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:CustomTextBlock">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="local:CustomTextBlock">
+                    <Border  Background="Transparent" >
+                        <TextBlock  Height="{TemplateBinding Height}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" FontSize="{TemplateBinding FontSize}"  Width="{TemplateBinding Width}"  FontWeight="{TemplateBinding FontWeight}"  FontFamily="{TemplateBinding FontFamily}"  Foreground="{TemplateBinding  Foreground}"  
+                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path= Text}"  
+                                    TextWrapping="{Binding TextWrapping, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+

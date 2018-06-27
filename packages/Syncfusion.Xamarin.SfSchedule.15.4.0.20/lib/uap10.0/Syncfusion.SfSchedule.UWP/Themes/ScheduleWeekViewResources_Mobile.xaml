@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:Syncfusion.UI.Xaml.Schedule">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="WeekViewItemBorderBrush" Color="Black" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="WeekViewItemBorderBrush" Color="LightGray" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <local:StartTimeConverter x:Key="timeconverter"/>
+
+    <Style TargetType="local:WeekViewItem">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource WeekViewItemBorderBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="0,0,0.7,0.7"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WeekViewItem">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0 1 0 1">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Polygon Grid.Row="0" Points="1,1 1,15 15,1" HorizontalAlignment="Left" Fill="{TemplateBinding CurrentDateBackground}" />
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock  Text="{TemplateBinding Days}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Margin="8,9,0,0" Grid.Column="0"  />
+                                <TextBlock  Text="{TemplateBinding Dates}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Margin="5,9,0,0" Grid.Column="1" />
+                            </Grid>
+                            <TextBlock Grid.Row="0" Text="{TemplateBinding EventCount}" Visibility="{TemplateBinding EventCountVisibility}" Margin="7,30,0,0" Foreground="{TemplateBinding Foreground}" FontSize="12"/>
+                            <local:VisibleAppointmentsPanel VisibleAppointmentCollection="{TemplateBinding AppointmentCollection}"  Margin="0,0,0,5" Visibility="{TemplateBinding AppointmentVisibility}" Grid.Row="1">
+                            </local:VisibleAppointmentsPanel>
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ScheduleWeekView">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource WeekViewItemBorderBrush}"/>
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0,0.7,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleWeekView">
+                    <Grid x:Name="WeekMainGrid">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <local:ScheduleWeekViewItemsControl x:Name="WeekViewitemsControl" 
+                                                            VisibleAppointments="{Binding VisibleAppointments,RelativeSource={RelativeSource TemplatedParent}}"
+                                                            CurrentDateBackground="{Binding CurrentDateBackground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            SelectedDates="{Binding RelativeSource={RelativeSource TemplatedParent},Path=SelectedDates}"
+                                                            FirstDayOfWeek ="{Binding FirstDayOfWeek, RelativeSource={RelativeSource TemplatedParent}}">
+                            </local:ScheduleWeekViewItemsControl>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="ScheduleWeekViewItemsPanel">
+        <local:WeekViewPanel/>
+    </ItemsPanelTemplate>
+
+    <Style TargetType="local:ScheduleWeekViewItemsControl">
+        <Setter Property="ItemsPanel" Value="{StaticResource ScheduleWeekViewItemsPanel}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ScheduleWeekViewItemsControl">
+                    <Grid>
+                        <ItemsPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:WeekAppointmentsControl">
+        <Setter Property="Foreground" Value="{ThemeResource WeekViewItemBorderBrush}"/>
+     <Setter Property="FontSize"  Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WeekAppointmentsControl">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="7,0,0,0" FontWeight="Normal"  FontSize="{TemplateBinding FontSize}"  Foreground="{TemplateBinding Foreground}" 
+                                   Text="{Binding Converter={StaticResource timeconverter}}"/>
+                        <TextBlock Margin="7,0,0,0" Grid.Column="1" FontWeight="Normal" FontSize="12" 
+                                   Foreground="{Binding AppointmentBackground}" 
+                                   Text="{Binding Subject}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+
