@@ -5,7 +5,7 @@
              Title="Select Services">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="nameText"></Label>
+            <Label IsVisible="False" x:Name="nameText"></Label>
             <ListView x:Name="ListofAllServices" ItemSelected="SelectStaffForCustomer">
                 <ListView.ItemTemplate>
                     <DataTemplate>

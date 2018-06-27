@@ -40,6 +40,7 @@ namespace Demo_App
             }
             catch(Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

@@ -34,12 +34,12 @@
                                 <StackLayout Grid.Column="1" Padding="0,5,0,0">
                                     <Label Text="{Binding FirstName }"
                                            HorizontalOptions="Center" VerticalOptions="Start" TextColor="White"></Label>
-                                    <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40">
-                                        <!--<Image.GestureRecognizers>
+                                    <!--<Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40">
+                                        --><!--<Image.GestureRecognizers>
                                             <TapGestureRecognizer 
                                      Tapped="OnOpenPupup"/>
-                                        </Image.GestureRecognizers>-->
-                                    </Image>
+                                        </Image.GestureRecognizers>--><!--
+                                    </Image>-->
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="10,5,10,0">
                                     <!--<Image x:Name="plusimsge" Source="plus2.png"   HeightRequest="20" WidthRequest="20"/>-->
@@ -62,25 +62,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image  Source="Appointment.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
-                                <Image  Source="CallingIcon.png" HeightRequest="30" WidthRequest="30" Grid.Column="1">
-                                    <!--<Image.GestureRecognizers>
+                                <!--<Image  Source="Appointment.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>-->
+                                <Image  Source="CallingIcon.png" HeightRequest="30" WidthRequest="30" Grid.Column="3">
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer 
                                     Tapped="CallingClick"/>
-                                    </Image.GestureRecognizers>-->
+                                    </Image.GestureRecognizers>
                                 </Image>
-                                <Image  Source="chat.png" HeightRequest="30" WidthRequest="30" Grid.Column="2">
-                                    <!--<Image.GestureRecognizers>
+                                <!--<Image  Source="chat.png" HeightRequest="30" WidthRequest="30" Grid.Column="2">
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer 
                                     Tapped="SendingMessageClick"/>
-                                    </Image.GestureRecognizers>-->
-                                </Image>
-                                <Image  Source="mail.png" HeightRequest="30" WidthRequest="30" Grid.Column="3">
-                                    <!--<Image.GestureRecognizers>
+                                    </Image.GestureRecognizers>
+                                </Image>-->
+                                <!--<Image  Source="mail.png" HeightRequest="30" WidthRequest="30" Grid.Column="3">
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer 
                                     Tapped="EmailClick"/>
-                                    </Image.GestureRecognizers>-->
-                                </Image>
+                                    </Image.GestureRecognizers>
+                                </Image>-->
                             </Grid>
                         </StackLayout>
                     </Grid>
@@ -98,11 +98,12 @@
                         <StackLayout BackgroundColor="White" Grid.Row="0" >
                             <Grid ColumnSpacing="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="5"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Image Grid.Column="0" Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                <StackLayout Grid.Column="0">
+                                    <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,10,0,0">
                                     <Label Text="{Binding FirstName }" TextColor="Black"></Label>
                                     <Label x:Name="Emaillbl" Text="{Binding Email}" ></Label>
@@ -118,12 +119,12 @@
                         <StackLayout  BackgroundColor="White" Grid.Row="1" >
                             <Grid ColumnSpacing="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="5"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                                    <Image  Source="user.png" HeightRequest="30" WidthRequest="30" />
+                                <StackLayout Grid.Column="0">
+                                    <!--<Image  Source="user.png" HeightRequest="30" WidthRequest="30" />-->
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,20,0,0">
                                     <Label Text="Appointments" FontAttributes="Bold"></Label>
@@ -140,14 +141,16 @@
                         <StackLayout  BackgroundColor="White" Grid.Row="2">
                             <Grid ColumnSpacing="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="5"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="user.png" HeightRequest="30" WidthRequest="30" Grid.Column="0"/>
-                                <StackLayout Grid.Column="1" Padding="0,10,0,0">
+                                <StackLayout Grid.Column="0">
+                                <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Padding="0,20,0,0">
                                     <Label Text="Notes"></Label>
-                                    <Label x:Name="Noteslbl" FontAttributes="Bold"></Label>
+                                    <!--<Label x:Name="Noteslbl" FontAttributes="Bold"></Label>-->
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Padding="10">
                                     <Image  Source="left_arrow.png" HeightRequest="30" WidthRequest="30" />

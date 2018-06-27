@@ -73,7 +73,7 @@
                             <StackLayout Grid.Row="1" Padding="10,10,0,0" BackgroundColor="White">
                                 <Label Text="Duration" HorizontalOptions="Start"></Label>
                                 <Entry x:Name="duration" HorizontalOptions="Start"></Entry>
-                                <local:EditDurationTimePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="300" PickerMode="Dialog" PickerWidth="230" />
+                                <local:EditDurationTimePicker x:Name="date" WidthRequest="300" HeightRequest="350" HorizontalOptions="Center" VerticalOptions="Center" PickerHeight="250" PickerMode="Dialog" PickerWidth="250"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Button_Clicked"/>
                                 </StackLayout.GestureRecognizers>

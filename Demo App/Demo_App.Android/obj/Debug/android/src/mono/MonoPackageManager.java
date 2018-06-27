@@ -108,16 +108,7 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "Demo_App.Android.dll" comes first in this list. */
 		"Demo_App.Android.dll",
 		"AndHUD.dll",
-		"ExifLib.dll",
-		"FormsViewGroup.dll",
-		"Newtonsoft.Json.dll",
 		"Plugin.CurrentActivity.dll",
-		"Rg.Plugins.Popup.dll",
-		"Rg.Plugins.Popup.Droid.dll",
-		"Rg.Plugins.Popup.Platform.dll",
-		"SkiaSharp.dll",
-		"SkiaSharp.Views.Android.dll",
-		"SkiaSharp.Views.Forms.dll",
 		"Syncfusion.Core.XForms.dll",
 		"Syncfusion.DataSource.Portable.dll",
 		"Syncfusion.GridCommon.Portable.dll",
@@ -129,6 +120,15 @@ class MonoPackageManager_Resources {
 		"Syncfusion.SfSchedule.Android.dll",
 		"Syncfusion.SfSchedule.XForms.Android.dll",
 		"Syncfusion.SfSchedule.XForms.dll",
+		"ExifLib.dll",
+		"FormsViewGroup.dll",
+		"Newtonsoft.Json.dll",
+		"Rg.Plugins.Popup.dll",
+		"Rg.Plugins.Popup.Droid.dll",
+		"Rg.Plugins.Popup.Platform.dll",
+		"SkiaSharp.dll",
+		"SkiaSharp.Views.Android.dll",
+		"SkiaSharp.Views.Forms.dll",
 		"Telerik.Xamarin.Android.Common.dll",
 		"Telerik.Xamarin.Android.Data.dll",
 		"Telerik.Xamarin.Android.Input.dll",
@@ -151,6 +151,7 @@ class MonoPackageManager_Resources {
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
+		"Xamarin.iOS.dll",
 		"XamForms.Controls.Calendar.dll",
 		"XamForms.Controls.Calendar.Droid.dll",
 		"XLabs.Core.dll",
@@ -163,5 +164,5 @@ class MonoPackageManager_Resources {
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_25";
+	public static final String ApiPackageName = null;
 }

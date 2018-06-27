@@ -61,6 +61,8 @@ namespace Demo_App
             //Enable Column Header of SfPicker
             ShowColumnHeader = false;
 
+            
+
             //SfPicker header text
             HeaderText = "Select Buffer Time";
 
@@ -119,7 +121,7 @@ namespace Demo_App
             else
             {
                 Navigation.PushAsync(new NewServicePage(todaycollection, todaycollectionBuffer, "ServiceCreateAfterLogin"));
-            }            
+            }
             throw new NotImplementedException();
         }
     }

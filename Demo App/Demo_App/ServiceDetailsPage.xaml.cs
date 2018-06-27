@@ -310,7 +310,7 @@ namespace Demo_App
                 }
                 else
                 {
-                    await Navigation.PushAsync(new ServiceDetailsPage());
+                    //await Navigation.PushAsync(new ServiceDetailsPage());
                 }
 
 

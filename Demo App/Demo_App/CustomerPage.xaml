@@ -46,11 +46,11 @@
                                     <StackLayout Padding="10">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="5"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <StackLayout Grid.Column="0" Padding="10">
-                                                <Image Source="user.png" HeightRequest="30" WidthRequest="30"/>
+                                            <StackLayout Grid.Column="0">
+                                                <!--<Image Source="user.png" HeightRequest="30" WidthRequest="30"/>-->
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label Text="{Binding FirstName}" FontAttributes="Bold"></Label>

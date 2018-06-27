@@ -179,10 +179,10 @@ namespace Demo_App
                     string Duration = durhrs + " " + durationMins;
                     var datebooking = appointment.Start;
                     var DateOFbooking = Convert.ToDateTime(datebooking).ToString("dd-MMM-yyyy");
-                    string detail = appointment.Employee.FirstName + "," + appointment.Service.Name + "," + Duration + "," + appointment.Service.Cost;
+                    string detail = appointment.Employee.FirstName + ", " + appointment.Service.Name + ", " + Duration + ", " + appointment.Service.Cost;
                     DateTime startTime = Convert.ToDateTime(appointment.Start);
                     string Time = startTime.ToShortTimeString();
-                    var DateTimeofBooking = DateOFbooking + "," + Time;
+                    var DateTimeofBooking = DateOFbooking + ", " + Time;
                     obj = new AppointmentDetails();
                     obj.BookingId = appointment.Id;
                     obj.EmployeeId = appointment.EmployeeId.ToString();

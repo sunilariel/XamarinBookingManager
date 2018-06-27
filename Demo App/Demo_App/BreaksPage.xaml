@@ -11,10 +11,6 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-
-
-
-
         <StackLayout Padding="0,5,0,0">
             <ScrollView>
                 <Grid RowSpacing="0">
@@ -99,7 +95,7 @@
 
                     <StackLayout BackgroundColor="White" x:Name="listViewMON" Grid.Row="1">
                         <!--<Label Text="No appointment booked"></Label>-->
-                        <ListView x:Name="BreakStaffListMON" RowHeight="70">
+                        <ListView x:Name="BreakStaffListMON" ItemSelected="DeleteBreakStaffListMON" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -108,6 +104,15 @@
                                             <TimePicker Format="hh:00 tt" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="hh:00 tt" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+                                            
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteMondayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
+
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -137,7 +142,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewTUE" Grid.Row="5">
-                        <ListView x:Name="BreakStaffListTUE" RowHeight="70">
+                        <ListView x:Name="BreakStaffListTUE" ItemSelected="DeleteBreakStaffListTUE" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -146,6 +151,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteTuesdayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -174,7 +186,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewWED" Grid.Row="9">
-                        <ListView x:Name="BreakStaffListWED" RowHeight="70">
+                        <ListView x:Name="BreakStaffListWED" ItemSelected="DeleteBreakStaffListWED" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -183,6 +195,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteWednesdayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -211,7 +230,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewTHU" Grid.Row="13">
-                        <ListView x:Name="BreakStaffListTHU" RowHeight="70">
+                        <ListView x:Name="BreakStaffListTHU" ItemSelected="DeleteBreakStaffListTHU" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -220,6 +239,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteThursdayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -248,7 +274,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewFRI" Grid.Row="17">
-                        <ListView x:Name="BreakStaffListFRI" RowHeight="70">
+                        <ListView x:Name="BreakStaffListFRI" ItemSelected="DeleteBreakStaffListFRI" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -257,6 +283,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteFridayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -285,7 +318,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewSAT" Grid.Row="21">
-                        <ListView x:Name="BreakStaffListSAT" RowHeight="70">
+                        <ListView x:Name="BreakStaffListSAT" ItemSelected="DeleteBreakStaffListSAT" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -294,6 +327,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteSaturdayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -323,7 +363,7 @@
                     </StackLayout>
 
                     <StackLayout BackgroundColor="White" x:Name="listViewSUN" Grid.Row="25">
-                        <ListView x:Name="BreakStaffListSUN" RowHeight="70">
+                        <ListView x:Name="BreakStaffListSUN" ItemSelected="DeleteBreakStaffListSUN" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -332,6 +372,13 @@
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding Start, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
                                             <Image Source="pickerArrow1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                                             <TimePicker Format="HH:00 tt" Margin="0,3,0,0" Time= "{Binding End, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></TimePicker>
+
+                                            <Image HorizontalOptions="CenterAndExpand" Source="delete1.png" HeightRequest="30" WidthRequest="30">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding .}" CommandParameter="{Binding .}" Tapped="DeleteSundayBreak"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

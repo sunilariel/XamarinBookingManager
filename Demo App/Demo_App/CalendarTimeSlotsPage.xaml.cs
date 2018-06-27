@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Syncfusion.SfSchedule.XForms;
+//using Syncfusion.SfSchedule.XForms;
+using XamForms.Controls;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.IO;
@@ -23,7 +24,7 @@ namespace Demo_App
         #region GloblesFields
 
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        public static SfSchedule schedulee;
+        //public static SfSchedule schedulee;
         int serviceID;
         
         string CurrentSelectedDay;
@@ -79,11 +80,13 @@ namespace Demo_App
                 objAddAppointment.StartTime = obj.StartTime;
                 objAddAppointment.TimePeriod = obj.TimePeriod;                                                                       
                 GetAvailableTime();
-                schedulee = new SfSchedule();
+                //schedulee = new SfSchedule();
                 var CurrentDate = DateTime.Now;
                 DateTime SpecificDate = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-                schedulee.NavigateTo(SpecificDate);
-                schedule.CellTapped += GetAvailableTimeForAppointments;
+                //schedulee.NavigateTo(SpecificDate);
+                //schedule.CellTapped += GetAvailableTimeForAppointments;
+                calender.SelectedDate = Convert.ToDateTime(obj.DateOfBooking);
+                calender.DateClicked += GetAvailableTimeForAppointments;
             }
             catch (Exception e)
             {
@@ -177,13 +180,14 @@ namespace Demo_App
 
         }
 
-        private void GetAvailableTimeForAppointments(object sender, CellTappedEventArgs e)
+        private void GetAvailableTimeForAppointments(object sender, DateTimeEventArgs e)
         {
             try
             {
                 //DisplayAlert("CustomizeHeader", "888888888", "cancel");
-                var currentDay = e.Datetime.DayOfWeek;
-                var dateOfBooking = e.Datetime.Date;
+
+                var currentDay = e.DateTime.DayOfWeek;
+                var dateOfBooking = e.DateTime.Date;
                 CurrentSelectedDay = currentDay.ToString();
                 SelectedDateOfBooking = dateOfBooking;
                 var BookingDate = CurrentSelectedDay + "," + SelectedDateOfBooking.ToString("dd-MMM-yyyy");
@@ -249,7 +253,7 @@ namespace Demo_App
             }
             catch (Exception ex)
             {
-                e.ToString();
+                ex.ToString();
             }
 
         }

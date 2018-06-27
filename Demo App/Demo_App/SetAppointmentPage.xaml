@@ -165,12 +165,12 @@
                 </Grid>
             </StackLayout>
             <StackLayout HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Padding="0,10,20,0" BackgroundColor="Transparent">
-                <Image x:Name="floataction" Source="plus.png" HeightRequest="30" HorizontalOptions="EndAndExpand">
+                <!--<Image x:Name="floataction" Source="plus.png" HeightRequest="30" HorizontalOptions="EndAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer 
                         Tapped="OnOpenPupup"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
             </StackLayout>
             <StackLayout VerticalOptions="End" HeightRequest="70" BackgroundColor="White">
                 <StackLayout  VerticalOptions="EndAndExpand">

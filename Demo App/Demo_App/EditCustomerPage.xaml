@@ -32,7 +32,7 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Padding="0,5,0,0">
                                     <Label Text="{Binding FirstName}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-                                    <Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40"/>
+                                    <!--<Image Source="Serviceprofile.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40"/>-->
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" HorizontalOptions="End" Padding="10,5,10,0">
                                     <Label Text="Update" TextColor="White"/>

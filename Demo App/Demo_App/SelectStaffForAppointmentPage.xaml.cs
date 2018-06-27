@@ -52,11 +52,11 @@ namespace Demo_App
             ServiceName = service.Name;
             var staffData = GetServiceProvider();
             //GetSelectedStaff();
-            nemeStafftext.IsVisible = false;
+            nameStafftext.IsVisible = false;
             if (staffData.Count == 0)
             {
-                nemeStafftext.IsVisible = true;
-                nemeStafftext.Text = "Please first add staff";
+                nameStafftext.IsVisible = true;
+                nameStafftext.Text = "Please first add staff";
             }
             else
             {

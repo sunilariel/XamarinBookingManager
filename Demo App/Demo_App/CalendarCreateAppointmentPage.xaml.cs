@@ -34,7 +34,7 @@ namespace Demo_App
         DateTime dateOfBooking;
         string book;
         //string Booking;
-        //string TimePeriods;
+        string TimePeriods;
         public Customer objCust = null;
         int CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
         public Customer aaa = null;
@@ -54,9 +54,9 @@ namespace Demo_App
 
                 GetSelectedCustomerById();
 
-                StartHour = objAddAppointment.StartTime;
-                StartMinutes = objAddAppointment.EndTime;
-                //TimePeriods = objAddAppointment.TimePeriod;
+                //StartHour = objAddAppointment.StartTime;
+                //StartMinutes = objAddAppointment.EndTime;
+                TimePeriods = objAddAppointment.TimePeriod;
                 EmpID = objAddAppointment.EmployeeId;
                 //EmpName = objAddAppointment.EmployeeName;
                 ServiceID = objAddAppointment.ServiceId;
@@ -142,9 +142,19 @@ namespace Demo_App
                 objbookAppointment.CompanyId = CompanyId;                
                 objbookAppointment.ServiceId = ServiceID;                
                 objbookAppointment.EmployeeId = EmpID;
-                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();           
+                objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
+
+                var sH = TimePeriods;
+                var tf = sH.Split(' ', '-');
+                var jj = tf[0] + ' ' + tf[1];
+                DateTime timejone = Convert.ToDateTime(jj);
+                var StartHour = timejone.ToString("HH");
+                var StartMinutes = timejone.ToString("mm");
+
                 objbookAppointment.StartHour = StartHour;                
-                objbookAppointment.StartMinute = StartMinutes;                          
+                objbookAppointment.StartMinute = StartMinutes;  
+                
+
                 objbookAppointment.EndHour = EndHour;                
                 objbookAppointment.EndMinute = EndMinute;    
                 
@@ -168,14 +178,26 @@ namespace Demo_App
                 var Url = Application.Current.Properties["DomainUrl"] + "/api/booking/BookAppointment";
                 var SerializedData = JsonConvert.SerializeObject(objbookAppointment);
                 var result = PostData("POST", SerializedData, Url);
-
-
                 
-
                 dynamic data = JObject.Parse(result);
                 var msg = Convert.ToString(data.Message);
-                DisplayAlert("Success", msg, "ok");               
-                Navigation.PushAsync(new SetAppointmentPage("","",""));
+                DisplayAlert("Success", msg, "ok");
+
+                var date = book.Split(',');
+                DateTime d = Convert.ToDateTime(date[1]);
+
+                System.DateTime today = d;
+                int currentDayOfWeek = (int)today.DayOfWeek;
+                System.DateTime sunday = today.AddDays(-currentDayOfWeek);
+                System.DateTime monday = sunday.AddDays(1);
+                if (currentDayOfWeek == 0)
+                {
+                    monday = monday.AddDays(-7);
+                }
+                var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+                var eee = dates[0];               
+                var fullDate = eee.ToString("ddd dd-MMM-yyyy");
+                Navigation.PushAsync(new SetAppointmentPage("","", fullDate));
             }
             catch (Exception ex)
             {

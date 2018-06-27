@@ -10,7 +10,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+//using Android.Content;
 
+using Foundation;
+using UIKit;
 
 namespace Demo_App
 {
@@ -33,35 +36,35 @@ namespace Demo_App
                 InitializeComponent();
                 GetSelectedCustomerById();
                 CustomerId = objCust.Id;
-                var notesList = GetAllCustomerNotes();
+                //var notesList = GetAllCustomerNotes();
                 // var notesList1=   notesList.OrderByDescending(x => x.CreationDate);
                 BindingContext = objCust;
-                foreach (var item in notesList)
-                {
-                    string mystring = item.Description;
-                    if (mystring.Length >= 5)
-                    {
-                        string str = mystring.Substring(0, 5);
-                        if (str == "<div>")
-                        {
-                            string mystrings = mystring.Remove(mystring.Length - 6, 6);
-                            string Descriptions = mystrings.Substring(17);
+                //foreach (var item in notesList)
+                //{
+                //    string mystring = item.Description;
+                //    if (mystring.Length >= 5)
+                //    {
+                //        string str = mystring.Substring(0, 5);
+                //        if (str == "<div>")
+                //        {
+                //            string mystrings = mystring.Remove(mystring.Length - 6, 6);
+                //            string Descriptions = mystrings.Substring(17);
 
-                            Noteslbl.Text = string.Concat(Descriptions, "...");
-                        }
-                        else
-                        {
-                            Noteslbl.Text = string.Concat(item.Description, "...");
-                        }
-                    }
-                    else
-                    {
-                        Noteslbl.Text = string.Concat(item.Description, "...");
-                    }
+                //            Noteslbl.Text = string.Concat(Descriptions, "...");
+                //        }
+                //        else
+                //        {
+                //            Noteslbl.Text = string.Concat(item.Description, "...");
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Noteslbl.Text = string.Concat(item.Description, "...");
+                //    }
 
 
 
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -69,82 +72,82 @@ namespace Demo_App
             }
 
         }
-        protected override void OnAppearing()
-        {
-            try
-            {
-                base.OnAppearing();
-                var notesList = GetAllCustomerNotes();
-                ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
-                foreach (var data in notesList)
-                {
-                    Notes obj = new Notes();
-                    obj.CompanyId = data.CompanyId;
-                    obj.CreationDate = data.CreationDate;
-                    obj.CustomerId = data.CustomerId;
-                    obj.Description = data.Description;
-                    obj.WhoAddedThis = data.WhoAddedThis;
-                    notesLst.Add(obj);
-                }
-                notesLst.OrderByDescending(x => x.CreationDate);
+        //protected override void OnAppearing()
+        //{
+        //    try
+        //    {
+        //        base.OnAppearing();
+        //        var notesList = GetAllCustomerNotes();
+        //        ObservableCollection<Notes> notesLst = new ObservableCollection<Notes>();
+        //        foreach (var data in notesList)
+        //        {
+        //            Notes obj = new Notes();
+        //            obj.CompanyId = data.CompanyId;
+        //            obj.CreationDate = data.CreationDate;
+        //            obj.CustomerId = data.CustomerId;
+        //            obj.Description = data.Description;
+        //            obj.WhoAddedThis = data.WhoAddedThis;
+        //            notesLst.Add(obj);
+        //        }
+        //        notesLst.OrderByDescending(x => x.CreationDate);
 
-                if (notesLst.Count != 0)
-                {
-                    string mystring = notesLst[0].Description;
-
-
-                    System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<.+?>|&nbsp;");
-                    mystring = rx.Replace(mystring, "");
+        //        if (notesLst.Count != 0)
+        //        {
+        //            string mystring = notesLst[0].Description;
 
 
-
-                    if (mystring.Length >= 5)
-                    {
-                        string str = mystring.Substring(0, 5);
-                        if (str == "<div>")
-                        {
-                            string mystrings = mystring.Remove(mystring.Length - 6, 6);
-                            string Descriptions = mystrings.Substring(17);
-                            if (Descriptions.Length > 25)
-                            {
-                                Noteslbl.Text = string.Concat(Descriptions.Substring(0, 25), "...");
-                            }
-                            else
-                            {
-                                Noteslbl.Text = string.Concat(Descriptions, "...");
-                            }
-
-                        }
-                        else
-                        {
-                            if (mystring.Length > 25)
-                            {
-                                Noteslbl.Text = string.Concat(mystring.Substring(0, 25), "...");
-                            }
-                            else
-                            {
-                                Noteslbl.Text = string.Concat(mystring, "...");
-                            }
-
-                        }
-                    }
-                    else
-                    {
-                        Noteslbl.Text = string.Concat(mystring, "...");
-                    }
+        //            System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<.+?>|&nbsp;");
+        //            mystring = rx.Replace(mystring, "");
 
 
 
+        //            if (mystring.Length >= 5)
+        //            {
+        //                string str = mystring.Substring(0, 5);
+        //                if (str == "<div>")
+        //                {
+        //                    string mystrings = mystring.Remove(mystring.Length - 6, 6);
+        //                    string Descriptions = mystrings.Substring(17);
+        //                    if (Descriptions.Length > 25)
+        //                    {
+        //                        Noteslbl.Text = string.Concat(Descriptions.Substring(0, 25), "...");
+        //                    }
+        //                    else
+        //                    {
+        //                        Noteslbl.Text = string.Concat(Descriptions, "...");
+        //                    }
+
+        //                }
+        //                else
+        //                {
+        //                    if (mystring.Length > 25)
+        //                    {
+        //                        Noteslbl.Text = string.Concat(mystring.Substring(0, 25), "...");
+        //                    }
+        //                    else
+        //                    {
+        //                        Noteslbl.Text = string.Concat(mystring, "...");
+        //                    }
+
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Noteslbl.Text = string.Concat(mystring, "...");
+        //            }
 
 
-                }
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
 
-        }
+
+
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        e.ToString();
+        //    }
+
+        //}
 
         private void CrossClick(object sender, EventArgs e)
         {
@@ -201,6 +204,42 @@ namespace Demo_App
         {
             Navigation.PushAsync(new EditCustomerPage());
         }
+
+        public async void CallingClick()
+        {
+            try
+            {
+                GetSelectedCustomerById();
+                var p = objCust.TelephoneNo;
+
+                if (p == null)
+                {
+                    await DisplayAlert("Dial a Number", "No Contact  Available", "ok");
+                }
+                else
+                {
+                    var confirmed = await DisplayAlert("Dial a Number", "Would you like to call " + p + " ?", "Yes", "No");
+                    if (confirmed)
+                    {
+                        DependencyService.Get<IPhoneCall>().MakeQuickCall(p.ToString());
+                    }
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        //public void StartPhoneCall()
+        //{
+
+
+
+        //}
+
         public async void DeleteCustomer()
         {
             try
@@ -235,8 +274,8 @@ namespace Demo_App
                 }
                 else
                 {
-                    await Navigation.PushAsync(new CutomerProfilePage());
-                }                
+                    //await Navigation.PushAsync(new CutomerProfilePage());
+                }
             }
             catch (Exception e)
             {
@@ -272,8 +311,9 @@ namespace Demo_App
                 ListNotes = JsonConvert.DeserializeObject<ObservableCollection<Notes>>(result);
                 return ListNotes;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                ex.ToString();
                 ObservableCollection<Notes> objnotes = new ObservableCollection<Notes>();
                 return objnotes;
             }

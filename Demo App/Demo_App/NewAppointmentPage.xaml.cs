@@ -25,6 +25,7 @@ namespace Demo_App
         string ServiceName = "";
         int CustID;
         double Cost;
+        string TimePeriods;
         string StartHour;
         string StartMinutes;
         int EndHour;
@@ -55,8 +56,10 @@ namespace Demo_App
 
                 GetSelectedCustomerById();
                 day = Day;
-                StartHour = objAddAppointments.StartTime;
-                StartMinutes = objAddAppointments.EndTime;
+                //StartHour = objAddAppointments.StartTime;
+                //StartMinutes = objAddAppointments.EndTime;
+                TimePeriods = objAddAppointments.TimePeriod;
+
                 EndHour = objAddAppointments.DurationInHours;
                 EndMinute = objAddAppointments.DurationInMinutes;
 
@@ -223,6 +226,14 @@ namespace Demo_App
                 objbookAppointment.ServiceId = ServiceID;
                 objbookAppointment.EmployeeId = EmpID;
                 objbookAppointment.CustomerIdsCommaSeperated = CustID.ToString();
+
+                var sH = TimePeriods;
+                var tf = sH.Split(' ', '-');
+                var jj = tf[0] + ' ' + tf[1];
+                DateTime timejone = Convert.ToDateTime(jj);
+                var StartHour = timejone.ToString("HH");
+                var StartMinutes = timejone.ToString("mm");
+
                 objbookAppointment.StartHour = StartHour;
                 objbookAppointment.StartMinute = StartMinutes;
                 objbookAppointment.EndHour = EndHour;

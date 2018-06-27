@@ -136,13 +136,14 @@ namespace Demo_App
         {
             try
             {
-                if (e.SelectedItem == null)
-                    return;
-
+                //if (e.SelectedItem == null)
+                //    return;
+                
                 var staff = e.SelectedItem as Staff;
                 Application.Current.Properties["SelectedEmployeeID"] = staff.Id;
                 Navigation.PushAsync(new StaffProfileDetailsPage());
-                ((ListView)sender).SelectedItem = null;
+
+                //((ListView)sender).SelectedItem = null;
             }
             catch (Exception ex)
             {

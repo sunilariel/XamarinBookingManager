@@ -16,6 +16,10 @@ using System.Globalization;
 using Newtonsoft.Json.Linq;
 using System.Collections.ObjectModel;
 
+using Demo_App.Behaviors;
+using Demo_App.Behaviors.Base;
+using System.Text.RegularExpressions;
+
 namespace Demo_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -31,12 +35,26 @@ namespace Demo_App
             InitializeComponent();
         }
 
+        private void ValidateEmail()
+        {
+            string email = StaffEmail.Text;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            
+        }
+
         public void AddStaff(object sender, SelectedItemChangedEventArgs e)
         {
             try
             {
-                if (StaffFirstName.Text == null)
+                string email = StaffEmail.Text;
+                Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                Match match = regex.Match(email);
+
+
+                if (StaffFirstName.Text == null || match.Success == false)
                 {
+                    DisplayAlert("Success", "Please enter value for required fields", "ok");
                     return;
                 }
                 else
@@ -44,13 +62,52 @@ namespace Demo_App
                     Staff obj = new Staff();
                     obj.Id = 0;
                     obj.CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                    obj.UserName = StaffEmail.Text;
+                    if (StaffEmail.Text == null)
+                    {
+                        obj.UserName = "";
+                    }
+                    else
+                    {
+                        obj.UserName = StaffEmail.Text;
+                    }
+
                     obj.Password = "";
                     obj.FirstName = StaffFirstName.Text;
-                    obj.LastName = StaffLastName.Text;
-                    obj.Address = StaffAddress.Text;
-                    obj.Email = StaffEmail.Text;
-                    obj.TelephoneNo = StaffPhoneNumber.Text;
+                    if (StaffLastName.Text == null)
+                    {
+                        obj.LastName = "";
+                    }
+                    else
+                    {
+                        obj.LastName = StaffLastName.Text;
+                    }
+
+                    if (StaffAddress.Text == null)
+                    {
+                        obj.Address = "";
+                    }
+                    else
+                    {
+                        obj.Address = StaffAddress.Text;
+                    }
+                    if (StaffEmail.Text == null)
+                    {
+                        obj.Email = "";
+                    }
+                    else
+                    {
+                        obj.Email = StaffEmail.Text;
+                    }
+                    if (StaffPhoneNumber.Text == null)
+                    {
+                        obj.TelephoneNo = "";
+                    }
+                    else
+                    {
+                        obj.TelephoneNo = StaffPhoneNumber.Text;
+                    }
+
+
                     obj.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                     var data = JsonConvert.SerializeObject(obj);
@@ -114,7 +171,7 @@ namespace Demo_App
         {
             try
             {
-                var CompanyId =Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "api/company/GetOpeningHours?companyId=" + CompanyId;
                 var result = PostData("GET", "", apiUrl);
                 CompanyListWorkingDays = JsonConvert.DeserializeObject<ObservableCollection<CompanyWorkingHours>>(result);
@@ -157,13 +214,13 @@ namespace Demo_App
                 BHours.CreationDate = System.DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
                 BHours.EntityStatus = "0";
                 switch (BHours.NameOfDayAsString)
-                {                    
+                {
                     case "Sunday":
                         foreach (var item in CompanyListWorkingDays)
                         {
                             switch (item.NameOfDay)
                             {
-                                case "Sunday":                                    
+                                case "Sunday":
                                     BHours.Id = item.Id;
                                     BHours.Start = item.Start;
                                     BHours.End = item.End;
@@ -176,8 +233,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                            
-                        }                        
+                            }
+                        }
                         break;
                     case "Monday":
                         foreach (var item in CompanyListWorkingDays)
@@ -196,8 +253,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                            
-                        }                       
+                            }
+                        }
                         break;
                     case "Tuesday":
                         foreach (var item in CompanyListWorkingDays)
@@ -216,8 +273,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                           
-                        }                        
+                            }
+                        }
                         break;
                     case "Wednesday":
                         foreach (var item in CompanyListWorkingDays)
@@ -236,8 +293,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                            
-                        }                        
+                            }
+                        }
                         break;
                     case "Thursday":
                         foreach (var item in CompanyListWorkingDays)
@@ -256,8 +313,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                           
-                        }                        
+                            }
+                        }
                         break;
                     case "Friday":
                         foreach (var item in CompanyListWorkingDays)
@@ -276,8 +333,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                            
-                        }                                 
+                            }
+                        }
                         break;
                     case "Saturday":
                         foreach (var item in CompanyListWorkingDays)
@@ -296,8 +353,8 @@ namespace Demo_App
                                         BHours.IsOffAllDay = true;
                                     }
                                     break;
-                            }                            
-                        }                        
+                            }
+                        }
                         break;
                 }
                 var SerializedObj = JsonConvert.SerializeObject(BHours);

@@ -143,7 +143,7 @@ namespace Demo_App
                 else
                 {
                     //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-                    await Navigation.PushAsync(new CategoryDetailsPage(CategoryID, NameofCategory, btnname));
+                    //await Navigation.PushAsync(new CategoryDetailsPage(CategoryID, NameofCategory, btnname));
                 }
             }
             catch (Exception e)

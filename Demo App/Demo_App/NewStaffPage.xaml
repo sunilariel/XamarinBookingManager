@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Demo_App.NewStaffPage" NavigationPage.HasNavigationBar="False">
+             xmlns:behaviors="clr-namespace:Demo_App.Behaviors"
+             x:Class="Demo_App.NewStaffPage"
+             NavigationPage.HasNavigationBar="False">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem x:Name="profile" Text="New Staff"/>
         <ToolbarItem Text="Create" Clicked="AddStaff"/>
@@ -66,14 +68,35 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image Grid.Column="0" Source="user.png" HeightRequest="20" WidthRequest="20"/>
-                                <StackLayout Grid.Column="1">
+                                <StackLayout VerticalOptions="End" Grid.Column="1">
                                     <Label Text="Name"></Label>
                                     <!--<local:CustomEntry Text="First Name" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="StaffFirstName"  Placeholder="First Name" FontSize="Small"/>
+
+                                    <Entry x:Name="StaffFirstName"  Placeholder="First Name" FontSize="Small">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryValidatorBehavior x:Name="CodeValidator"/>
+                                        </Entry.Behaviors>
+                                    </Entry>
                                 </StackLayout>
-                                <StackLayout Grid.Column="2" Padding="10,25,10,10">
+                               
+                                    <Image VerticalOptions="End" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image"
+                                 Binding="{Binding Source={x:Reference CodeValidator}, Path=IsValid}"
+                                 Value="True">
+                                                <Setter Property="Source" Value="success.png" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Image"
+                                 Binding="{Binding Source={x:Reference CodeValidator}, Path=IsValid}"
+                                 Value="False">
+                                                <Setter Property="Source" Value="error.png" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                               
+                                <StackLayout VerticalOptions="End" Grid.Column="3">
                                     <!--<local:CustomEntry Text="Last Name" TextColor="Gray" FontSize="Small" />-->
-                                    <Entry x:Name="StaffLastName" Placeholder="Last Name" FontSize="Small" VerticalOptions="End" Grid.Column="2"/>
+                                    <Entry x:Name="StaffLastName" Placeholder="Last Name" FontSize="Small" VerticalOptions="End" Grid.Column="3"/>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
@@ -83,15 +106,36 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
                                     <Image  Source="user.png" HeightRequest="30" WidthRequest="30" />
                                 </StackLayout>
-                                <StackLayout Grid.Column="1">
-                                    <Label Text="Email (optional)"></Label>
+                                <StackLayout VerticalOptions="End" Grid.Column="1">
+                                    <Label Text="Email"></Label>
                                     <!--<local:CustomEntry Text="Email" TextColor="Gray" FontSize="Small"/>-->
-                                    <Entry x:Name="StaffEmail"  Placeholder="Email" FontSize="Small"/>
+                                    <Entry x:Name="StaffEmail"  Placeholder="Email" FontSize="Small">
+                                        <Entry.Behaviors>
+                                            <behaviors:EmailValidatorBehavior x:Name="CodeValidators"/>
+                                        </Entry.Behaviors>
+                                    </Entry>
                                 </StackLayout>
+                               
+                                    <Image VerticalOptions="End" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image"
+                                 Binding="{Binding Source={x:Reference CodeValidators}, Path=IsValid}"
+                                 Value="True">
+                                                <Setter Property="Source" Value="success.png" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Image"
+                                 Binding="{Binding Source={x:Reference CodeValidators}, Path=IsValid}"
+                                 Value="False">
+                                                <Setter Property="Source" Value="error.png" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                
                             </Grid>
                         </StackLayout>
 

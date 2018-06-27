@@ -40,10 +40,10 @@ namespace Demo_App
                 PageName = pagename;
 
                 Application.Current.Properties["selectPage"] = pagename;
-
+                
                 InitializeComponent();
 
-                if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "" || Application.Current.Properties["ServiceCost"] != null || Application.Current.Properties["ServiceCost"] != ""|| Application.Current.Properties["ServiceDurationTime"] != null || Application.Current.Properties["ServiceDurationTime"] != ""|| Application.Current.Properties["ServiceBufferTime"] != null || Application.Current.Properties["ServiceBufferTime"] != "")
+                if (Application.Current.Properties["ServiceName"] != null || Application.Current.Properties["ServiceName"] != "" || Application.Current.Properties["ServiceCost"] != null || Application.Current.Properties["ServiceCost"] != "" || Application.Current.Properties["ServiceDurationTime"] != null || Application.Current.Properties["ServiceDurationTime"] != "" || Application.Current.Properties["ServiceBufferTime"] != null || Application.Current.Properties["ServiceBufferTime"] != "")
                 {
                     ServiceName.Text = Convert.ToString(Application.Current.Properties["ServiceName"]);
                     ServiceCost.Text = Convert.ToString(Application.Current.Properties["ServiceCost"]);
@@ -57,14 +57,14 @@ namespace Demo_App
                 if (todaycollection.Count > 0)
                 {
                     int Minutes = Convert.ToInt32(todaycollection[0]) * 60 + Convert.ToInt32(todaycollection[1]);
-                    DurationOfService = Minutes + " min";                    
-                    duration.Text = DurationOfService;                    
+                    DurationOfService = Minutes + " min";
+                    duration.Text = DurationOfService;
                 }
 
                 if (todaycollectionBuffer.Count > 0)
                 {
                     int Min = Convert.ToInt32(todaycollectionBuffer[0]) * 60 + Convert.ToInt32(todaycollectionBuffer[1]);
-                    string BufferTimeOfService = Min + " min";                    
+                    string BufferTimeOfService = Min + " min";
                     if (Application.Current.Properties["ServiceDurationTime"] != null)
                     {
                         duration.Text = Convert.ToString(Application.Current.Properties["ServiceDurationTime"]);
@@ -76,18 +76,18 @@ namespace Demo_App
             {
                 e.ToString();
             }
-            
+
         }
-       
+
 
         private void Button_Clicked(object sender, EventArgs e)
         {
             Application.Current.Properties["ServiceName"] = ServiceName.Text;
             Application.Current.Properties["serviceProfileTitle"] = ServiceName.Text;
             Application.Current.Properties["ServiceCost"] = ServiceCost.Text;
-           
+
             //Application.Current.Properties["ServiceBufferTime"] = BufferTime.Text;
-           
+
             date.IsOpen = !date.IsOpen;
 
         }
@@ -97,22 +97,34 @@ namespace Demo_App
             Application.Current.Properties["serviceProfileTitle"] = ServiceName.Text;
             Application.Current.Properties["ServiceCost"] = ServiceCost.Text;
             Application.Current.Properties["ServiceDurationTime"] = duration.Text;
-           
+
             //buffer.IsOpen = !buffer.IsOpen;
-           
+
         }
 
         public void AddService()
         {
             try
             {
-                if (ServiceName.Text == "" || duration.Text == ""|| ServiceCost.Text == "")
+                var serviceName = GetService();
+
+                foreach (var item in serviceName)
+                {
+                    if (item.Name.ToLower() == ServiceName.Text.ToLower())
+                    {
+                        DisplayAlert("Success", "Service Already Exists.", "ok");
+                        return;
+                    }
+                }
+
+
+                if (ServiceName.Text == "" || duration.Text == "" || ServiceCost.Text == "")
                 {
                     DisplayAlert("Success", "All fields is required", "ok");
                     return;
-                }                              
+                }
                 //DisplayAlert("Success", "Cost is required", "ok");
-                
+
 
                 if (duration.Text != "" || ServiceCost.Text != "")
                 {
@@ -174,7 +186,7 @@ namespace Demo_App
                         {
                             Navigation.PushAsync(new ServiceProviderPage(GetStaff(), "AddService"));
                         }
-                        else if (PageName == "CalenderPage"|| PageName == "CustomerPage"|| PageName == "ActivityPage"|| PageName == "AccountPage")
+                        else if (PageName == "CalenderPage" || PageName == "CustomerPage" || PageName == "ActivityPage" || PageName == "AccountPage")
                         {
                             Navigation.PushAsync(new ServiceProviderPage(GetStaff(), PageName));
                         }

@@ -3,17 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Feedback"
              xmlns:local="clr-namespace:Demo_App;assembly:Demo_App"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
              x:Class="Demo_App.FeedbackPage">
 
-    <syncfusion:SfListView>
+
+    <StackLayout>
+        <!--<controls:Calendar CalendarWeekRule="FirstFullWeek" SelectedTextColor="LightBlue" SelectedDate="{Binding CalendarSelectedDate, Mode=TwoWay}" x:Name="calender" DateCommand="{Binding DateSelectedcommand}"/>-->
+
+       
         
-    </syncfusion:SfListView>
-   
+    </StackLayout>
+    <!--<StackLayout>
+        <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30"/>
+    </StackLayout>-->
     <!--<StackLayout>
             <StackLayout Padding="5,10">
                 <Entry FontSize="10" FontAttributes="None" WidthRequest="500" Placeholder="Experience an issue or have a request? Let us know!" />
             </StackLayout>
         </StackLayout>-->
-    
+
 </ContentPage>

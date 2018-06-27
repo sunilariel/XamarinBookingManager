@@ -99,6 +99,13 @@ namespace Demo_App.Model
     {
         public string AllocatedServiceCount { get; set; }
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryName { get; set; }       
+    }
+
+    public class AllServiceInCompany
+    {
+        public string AllCompanyServices { get; set; }
+        public int ServiceId { get; set; }
+        public string ServiceName { get; set; }
     }
 }

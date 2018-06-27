@@ -51,6 +51,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssignServiceToStaffPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\Base\BehaviorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\EmailValidatorBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\EntryValidatorBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BreaksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -145,6 +148,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\DateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Helper\Converter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IPhoneCall.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\IProgressInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Login.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Register.cs" />

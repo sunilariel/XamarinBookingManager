@@ -12,7 +12,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Collections.ObjectModel;
-using Android.Widget;
+//using Android.Widget;
 using XLabs.Forms.Controls;
 
 

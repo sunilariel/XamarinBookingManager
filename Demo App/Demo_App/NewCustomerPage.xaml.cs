@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace Demo_App
 {
@@ -54,55 +55,73 @@ namespace Demo_App
         public void AddCustomer()
         {
             try
-            {
-                var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
-                Customer obj = new Customer();
-                obj.Id = 0;
-                obj.CompanyId = CompanyId;
-                obj.UserName = CustomerEmail.Text;
-                obj.Password = "123456";
-                obj.FirstName = CustomerName.Text;
-                obj.LastName = "";
-                obj.Address = CustomerAddress.Text;
-                obj.PostCode = "";
-                obj.Email = CustomerEmail.Text;
-                obj.TelephoneNo = CustomerPhoneNumber.Text;
-                obj.CreationDate = Convert.ToString(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"));
+            {                
+                string email = CustomerEmail.Text;
+                Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                if (CustomerEmail.Text == null)
+                {
+                    DisplayAlert("Success", "Please enter value for required fields", "ok");
+                    return;
+                }                
+                Match match = regex.Match(email);
+                if (CustomerName.Text == null || match.Success == false)
+                {
+                    DisplayAlert("Success", "Please enter value for required fields", "ok");
+                    return;
+                }
+                else
+                {
 
-                var data = JsonConvert.SerializeObject(obj);
-                var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
-                var result = PostData("POST", data, apiUrl);
+                    var CompanyId = Convert.ToInt32(Application.Current.Properties["CompanyId"]);
+                    Customer obj = new Customer();
+                    obj.Id = 0;
+                    obj.CompanyId = CompanyId;
+                    obj.UserName = CustomerEmail.Text;
+                    obj.Password = "123456";
+                    obj.FirstName = CustomerName.Text;
+                    obj.LastName = "";
+                    obj.Address = CustomerAddress.Text;
+                    obj.PostCode = "";
+                    obj.Email = CustomerEmail.Text;
+                    obj.TelephoneNo = CustomerPhoneNumber.Text;
+                    obj.CreationDate = Convert.ToString(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"));
 
-                dynamic successData = JObject.Parse(result);
-                var msg = Convert.ToString(successData.Message);
-                DisplayAlert("Success", msg, "ok");
+                    var data = JsonConvert.SerializeObject(obj);
+                    var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/clientreservation/CreateCustomer";
+                    var result = PostData("POST", data, apiUrl);
 
-                //selectedPageCustomer
-                //AddCustomerBookingTime
-                if (pageN == "AddCustomerBookingTime")
-                {
-                    Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objaddAppointment, pageN));
+                    dynamic successData = JObject.Parse(result);
+                    var msg = Convert.ToString(successData.Message);
+                    DisplayAlert("Success", msg, "ok");
+
+                    //selectedPageCustomer
+                    //AddCustomerBookingTime
+                    if (pageN == "AddCustomerBookingTime")
+                    {
+                        Navigation.PushAsync(new CustomerForCalendarAppointmentPage(objaddAppointment, pageN));
+                    }
+                    else if (pageN == "selectedPageCustomer")
+                    {
+                        Navigation.PushAsync(new SetAppointmentPage(pageN, "", ""));
+                    }
+                    else if (pageN == "CalenderPage")
+                    {
+                        Navigation.PushAsync(new SetAppointmentPage(pageN, "", ""));
+                    }
+                    else if (pageN == "CustomerPage")
+                    {
+                        Navigation.PushAsync(new SetAppointmentPage(pageN, "", ""));
+                    }
+                    else if (pageN == "ActivityPage")
+                    {
+                        Navigation.PushAsync(new SetAppointmentPage(pageN, "", ""));
+                    }
+                    else if (pageN == "AccountPage")
+                    {
+                        Navigation.PushAsync(new SetAppointmentPage(pageN, "", ""));
+                    }
                 }
-                else if (pageN == "selectedPageCustomer")
-                {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
-                }
-                else if(pageN == "CalenderPage")
-                {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
-                }
-                else if(pageN== "CustomerPage")
-                {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
-                }
-                else if (pageN == "ActivityPage")
-                {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
-                }
-                else if (pageN == "AccountPage")
-                {
-                    Navigation.PushAsync(new SetAppointmentPage(pageN,"",""));
-                }
+
             }
             catch (Exception e)
             {

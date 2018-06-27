@@ -206,8 +206,9 @@ namespace Demo_App
                 ListofAllCategories = JsonConvert.DeserializeObject<ObservableCollection<AssignCategory>>(result);
                 return ListofAllCategories;
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
+                ex.ToString();
                 return null;
             }
         }
@@ -223,6 +224,7 @@ namespace Demo_App
             }
             catch(Exception e)
             {
+                e.ToString();
                 return null;
             }
         }

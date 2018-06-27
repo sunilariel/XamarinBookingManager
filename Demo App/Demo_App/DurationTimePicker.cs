@@ -108,7 +108,7 @@ namespace Demo_App
                 else
                     Minute.Add(j.ToString());
             }
-
+            
             Time.Add(Hour);
             Time.Add(Minute);
             this.OkButtonClicked += DurationTimePicker_OkButtonClicked;

@@ -1,4 +1,4 @@
-﻿using Java.Util;
+﻿//using Java.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Telerik.XamarinForms.Input;
+//using Telerik.XamarinForms.Input;
 using Syncfusion.SfSchedule.XForms;
 using Demo_App;
 using Rg.Plugins.Popup.Services;
@@ -128,7 +128,7 @@ namespace Demo_App
             listData.IsVisible = false;
             AlllistData.IsVisible = false;
             Placeholder.IsVisible = true;
-            Navigation.PushAsync(new SetAppointmentPage("", "", ""));
+            Navigation.PushAsync(new SetAppointmentPage("", "", DateDaysofWeek));
 
         }
 
@@ -146,13 +146,13 @@ namespace Demo_App
             listData.IsVisible = false;
             AlllistData.IsVisible = false;
             Placeholder.IsVisible = true;
-            Navigation.PushAsync(new SetAppointmentPage("", EmpName, ""));
+            Navigation.PushAsync(new SetAppointmentPage("", EmpName, DateDaysofWeek));
 
         }
 
         void Icon1_Tapped(object sender, EventArgs args)
         {
-            var page = new CalenderPage("");
+            var page = new CalenderPage(DateDaysofWeek);
             Placeholder.Content = page.Content;
             //y++;
             CALENDERLabelColor.TextColor= Xamarin.Forms.Color.MediumTurquoise;
@@ -300,24 +300,24 @@ namespace Demo_App
             }
 
         }
-        private async void OnOpenPupup(object sender, EventArgs e)
-        {
-            IsFloatActionRotated = !IsFloatActionRotated;
-            var page = new FloatingButtonPopup();
-            //await Navigation.PushPopupAsync(page);
-            if (IsFloatActionRotated)
-            {
-                await PopupNavigation.PushAsync(page);
-                await floataction.RotateTo(45, 200, Easing.SinInOut);
-                await floataction.RotateTo(0, 200, Easing.SinInOut);
-            }
-            else
-            {
-                //await PopupNavigation.PopAsync(true);
-                await floataction.RotateTo(0, 200, Easing.SinInOut);
-            }
+        //private async void OnOpenPupup(object sender, EventArgs e)
+        //{
+        //    IsFloatActionRotated = !IsFloatActionRotated;
+        //    var page = new FloatingButtonPopup();
+        //    //await Navigation.PushPopupAsync(page);
+        //    if (IsFloatActionRotated)
+        //    {
+        //        await PopupNavigation.PushAsync(page);
+        //        await floataction.RotateTo(45, 200, Easing.SinInOut);
+        //        await floataction.RotateTo(0, 200, Easing.SinInOut);
+        //    }
+        //    else
+        //    {
+        //        //await PopupNavigation.PopAsync(true);
+        //        await floataction.RotateTo(0, 200, Easing.SinInOut);
+        //    }
 
-        }
+        //}
 
         private void StaffDataPage(object sender, EventArgs e)
         {

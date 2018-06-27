@@ -14,6 +14,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading;
+using XamForms.Controls;
 
 namespace Demo_App
 {
@@ -54,7 +55,7 @@ namespace Demo_App
         ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsSAT = new ObservableCollection<CalenderAppointmentDetail>();
         ObservableCollection<CalenderAppointmentDetail> ListofAppointmentsSUN = new ObservableCollection<CalenderAppointmentDetail>();
         ObservableCollection<Employees> objEmp = new ObservableCollection<Employees>();
-
+        string datedayofweek;
 
         #endregion
 
@@ -62,6 +63,7 @@ namespace Demo_App
         {
             try
             {
+                datedayofweek = DateDayofWeek;
                 InitializeComponent();
 
                 //await Task.Delay(5000)
@@ -71,16 +73,10 @@ namespace Demo_App
                     {
                         EmployeeId = Convert.ToInt32(Application.Current.Properties["SelectedEmpId"]);
                         empName = Convert.ToString(Application.Current.Properties["LastSelectedStaff"]);
-                    }
-
-
-
-                    //currentWeek = GetCurrentWeek();
-                    //BindingContext = currentWeek;
-                    //InitializeComponent();
+                    }                  
                     isCalenderPageOpen = true;
                     NavigationPage.SetHasNavigationBar(this, false);
-                    
+
 
                     if (DateDayofWeek == "")
                     {
@@ -90,12 +86,7 @@ namespace Demo_App
                     {
                         var dt = DateDayofWeek.Split(' ');
                         var sdt = dt[1];
-                        var date = Convert.ToDateTime(sdt);
-
-                        //var cW = week;
-
-                        //var dwe = cW[6];
-                        //DateTime dst = Convert.ToDateTime(dwe);
+                        var date = Convert.ToDateTime(sdt);                       
                         DateTime today = date;
                         int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7);
                         DateTime nextTuesday = today.AddDays(daysUntilTuesday);
@@ -112,16 +103,12 @@ namespace Demo_App
                         week.Clear();
                         foreach (var item in dates)
                         {
-                            //var ddde = item.Date;
-                            //var d = Convert.ToString(ddde);
-                            //week.Add(d);
-
                             var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
                             week.Add(dd);
                         }
                     }
 
-                    
+
 
                     //WeekMonlbl.Text = currentWeek[0];
                     //WeekTuelbl.Text = currentWeek[1];
@@ -158,7 +145,7 @@ namespace Demo_App
                     var FRI = Convert.ToDateTime(week[4]).ToString("dd-MMM-yyyy");
                     var SAT = Convert.ToDateTime(week[5]).ToString("dd-MMM-yyyy");
                     var SUN = Convert.ToDateTime(week[6]).ToString("dd-MMM-yyyy");
-                    currentMonth.Text = Convert.ToDateTime(week[0]).ToString("MMMM yyyy");
+                    currentMonth.Text = Convert.ToDateTime(week[0]).ToString("MMM yyyy");
 
                     listViewMON.IsVisible = false;
                     listViewTUE.IsVisible = false;
@@ -286,6 +273,11 @@ namespace Demo_App
 
                     }
 
+                    //calender.SelectedDate = DateTime.Now;
+                    calender.DateClicked += Calendar_DateClicked;
+                    calender.RightArrowClicked += Calendar_RightArrowClicked;
+                    calender.LeftArrowClicked += Calendar_LeftArrowClicked;
+
 
                     schedulee = new SfSchedule();
                     ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
@@ -309,13 +301,13 @@ namespace Demo_App
                     //InitializeComponent();
 
 
-                    if (DateDayofWeek == "")
+                    if (datedayofweek == "")
                     {
                         WeekofDays();
                     }
                     else
                     {
-                        var dt = DateDayofWeek.Split(' ');
+                        var dt = datedayofweek.Split(' ');
                         var sdt = dt[1];
                         var date = Convert.ToDateTime(sdt);
 
@@ -408,7 +400,7 @@ namespace Demo_App
                     var FRI = Convert.ToDateTime(week[4]).ToString("dd-MMM-yyyy");
                     var SAT = Convert.ToDateTime(week[5]).ToString("dd-MMM-yyyy");
                     var SUN = Convert.ToDateTime(week[6]).ToString("dd-MMM-yyyy");
-                    currentMonth.Text = Convert.ToDateTime(week[0]).ToString("MMMM yyyy");
+                    currentMonth.Text = Convert.ToDateTime(week[0]).ToString("MMM yyyy");
 
                     listViewMON.IsVisible = false;
                     listViewTUE.IsVisible = false;
@@ -476,7 +468,7 @@ namespace Demo_App
                             CustomerAppoimentListWED.ItemsSource = ListofAppointmentsWED;
 
                         }
-                        
+
                         else if (THU == date)
                         {
 
@@ -542,15 +534,22 @@ namespace Demo_App
                     viewHeaderStyle.DayTextColor = Color.Black;
                     viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
                     schedulee.ViewHeaderStyle = viewHeaderStyle;
+                    //calender.SelectedDate = DateTime.Now;
+
+                    //string v = "Wednesday,18-Jul-2018";
+                    //var f = v.Split(',');
+                    //DateTime t = Convert.ToDateTime(f[1]);
+
+                    //calender.SelectedDate = t;
+
+
+
+                    calender.DateClicked += Calendar_DateClicked;
+                    calender.RightArrowClicked += Calendar_RightArrowClicked;
+                    calender.LeftArrowClicked += Calendar_LeftArrowClicked;
+                    //DateSelectedcommand = DateTime.Now;
 
                     DependencyService.Get<IProgressInterface>().Hide();
-
-                    //schedulee = new SfSchedule();
-                    //var CurrentDate = System.DateTime.Now;
-                    //System.DateTime SpecificDate = new System.DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-                    //schedulee.NavigateTo(SpecificDate);
-                    //schedule.CellTapped += GetAvailableTimeForAppointments;
-
 
                 }
 
@@ -558,6 +557,67 @@ namespace Demo_App
             catch (Exception e)
             {
                 e.ToString();
+            }
+
+        }
+        public DateTime DateSelectedcommand { get; set; }
+        private void Calendar_RightArrowClicked(object sender, DateTimeEventArgs e)
+        {
+            var d = e.DateTime.ToString("MMM yyyy");
+            currentMonth.Text = d;
+
+        }
+        private void Calendar_LeftArrowClicked(object sender, DateTimeEventArgs e)
+        {
+            var d = e.DateTime.ToString("MMM yyyy");
+            currentMonth.Text = d;
+        }
+        private void Calendar_DateClicked(object sender, DateTimeEventArgs e)
+        {
+            try
+            {
+                System.DateTime today = e.DateTime;
+                int currentDayOfWeek = (int)today.DayOfWeek;
+                System.DateTime sunday = today.AddDays(-currentDayOfWeek);
+                System.DateTime monday = sunday.AddDays(1);
+                if (currentDayOfWeek == 0)
+                {
+                    monday = monday.AddDays(-7);
+                }
+                var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+                week.Clear();
+                foreach (var item in dates)
+                {
+
+                    var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
+                    week.Add(dd);
+                }
+                WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
+                WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
+                WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
+                WeekThulbl.Text = Convert.ToDateTime(week[3]).ToString("dd");
+                WeekFrilbl.Text = Convert.ToDateTime(week[4]).ToString("dd");
+                WeekSatlbl.Text = Convert.ToDateTime(week[5]).ToString("dd");
+                WeekSunlbl.Text = Convert.ToDateTime(week[6]).ToString("dd");
+
+                Mondaylbl.Text = "MON" + " " + Convert.ToDateTime(week[0]).ToString("dd-MMM");
+                Tuesdaylbl.Text = "TUE" + " " + Convert.ToDateTime(week[1]).ToString("dd-MMM");
+                Wednesdaylbl.Text = "WED" + " " + Convert.ToDateTime(week[2]).ToString("dd-MMM");
+                Thursdaylbl.Text = "THU" + " " + Convert.ToDateTime(week[3]).ToString("dd-MMM");
+                Fridaylbl.Text = "FRI" + " " + Convert.ToDateTime(week[4]).ToString("dd-MMM");
+                Saturdaylbl.Text = "SAT" + " " + Convert.ToDateTime(week[5]).ToString("dd-MMM");
+                Sundaylbl.Text = "SUN" + " " + Convert.ToDateTime(week[6]).ToString("dd-MMM");
+
+                string weekDateDay = week[0];
+
+                Application.Current.MainPage.Navigation.PushAsync(new SetAppointmentPage(selectesPageN, empName, weekDateDay));
+                dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
+                schedulerFullMonthView.IsVisible = false;
+                schedulerWeekView.IsVisible = true;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
             }
 
         }
@@ -582,108 +642,121 @@ namespace Demo_App
             }
         }
 
-        public async void LeftNavigateArrow_ClickEvent(object sender, EventArgs e)
+        public void LeftNavigateArrow_ClickEvent(object sender, EventArgs e)
         {
-            var cW = week;
-
-            var dwe = cW[0];
-            DateTime dst = Convert.ToDateTime(dwe);
-            DateTime today = dst;
-            int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7) - 1;
-            DateTime nextTuesday = today.AddDays(daysUntilTuesday);
-            int currentDayOfWeek = (int)nextTuesday.DayOfWeek;
-            DateTime sunday = nextTuesday.AddDays(-currentDayOfWeek);
-            DateTime monday = sunday.AddDays(1);
-            // If we started on Sunday, we should actually have gone *back*
-            // 6 days instead of forward 1...
-            if (currentDayOfWeek == 0)
+            try
             {
-                monday = monday.AddDays(-7);
+                var cW = week;
+
+                var dwe = cW[0];
+                DateTime dst = Convert.ToDateTime(dwe);
+                DateTime today = dst;
+                int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7) - 1;
+                DateTime nextTuesday = today.AddDays(daysUntilTuesday);
+                int currentDayOfWeek = (int)nextTuesday.DayOfWeek;
+                DateTime sunday = nextTuesday.AddDays(-currentDayOfWeek);
+                DateTime monday = sunday.AddDays(1);
+                // If we started on Sunday, we should actually have gone *back*
+                // 6 days instead of forward 1...
+                if (currentDayOfWeek == 0)
+                {
+                    monday = monday.AddDays(-7);
+                }
+                var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+                week.Clear();
+                foreach (var item in dates)
+                {
+                    //var ddde = item.Date;
+                    //var d = Convert.ToString(ddde);
+                    //week.Add(d);
+
+                    var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
+                    week.Add(dd);
+                }
+
+                WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
+                WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
+                WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
+                WeekThulbl.Text = Convert.ToDateTime(week[3]).ToString("dd");
+                WeekFrilbl.Text = Convert.ToDateTime(week[4]).ToString("dd");
+                WeekSatlbl.Text = Convert.ToDateTime(week[5]).ToString("dd");
+                WeekSunlbl.Text = Convert.ToDateTime(week[6]).ToString("dd");
+
+                Mondaylbl.Text = "MON" + " " + Convert.ToDateTime(week[0]).ToString("dd-MMM");
+                Tuesdaylbl.Text = "TUE" + " " + Convert.ToDateTime(week[1]).ToString("dd-MMM");
+                Wednesdaylbl.Text = "WED" + " " + Convert.ToDateTime(week[2]).ToString("dd-MMM");
+                Thursdaylbl.Text = "THU" + " " + Convert.ToDateTime(week[3]).ToString("dd-MMM");
+                Fridaylbl.Text = "FRI" + " " + Convert.ToDateTime(week[4]).ToString("dd-MMM");
+                Saturdaylbl.Text = "SAT" + " " + Convert.ToDateTime(week[5]).ToString("dd-MMM");
+                Sundaylbl.Text = "SUN" + " " + Convert.ToDateTime(week[6]).ToString("dd-MMM");
+
+                string weekDateDay = week[0];
+
+                Application.Current.MainPage.Navigation.PushAsync(new SetAppointmentPage(selectesPageN, empName, weekDateDay));
             }
-            var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
-            week.Clear();
-            foreach (var item in dates)
+            catch (Exception ex)
             {
-                //var ddde = item.Date;
-                //var d = Convert.ToString(ddde);
-                //week.Add(d);
-
-                var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
-                week.Add(dd);
+                ex.ToString();
             }
 
-            WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
-            WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
-            WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
-            WeekThulbl.Text = Convert.ToDateTime(week[3]).ToString("dd");
-            WeekFrilbl.Text = Convert.ToDateTime(week[4]).ToString("dd");
-            WeekSatlbl.Text = Convert.ToDateTime(week[5]).ToString("dd");
-            WeekSunlbl.Text = Convert.ToDateTime(week[6]).ToString("dd");
-
-            Mondaylbl.Text = "MON" + " " + Convert.ToDateTime(week[0]).ToString("dd-MMM");
-            Tuesdaylbl.Text = "TUE" + " " + Convert.ToDateTime(week[1]).ToString("dd-MMM");
-            Wednesdaylbl.Text = "WED" + " " + Convert.ToDateTime(week[2]).ToString("dd-MMM");
-            Thursdaylbl.Text = "THU" + " " + Convert.ToDateTime(week[3]).ToString("dd-MMM");
-            Fridaylbl.Text = "FRI" + " " + Convert.ToDateTime(week[4]).ToString("dd-MMM");
-            Saturdaylbl.Text = "SAT" + " " + Convert.ToDateTime(week[5]).ToString("dd-MMM");
-            Sundaylbl.Text = "SUN" + " " + Convert.ToDateTime(week[6]).ToString("dd-MMM");
-
-            string weekDateDay = week[0];
-
-           await Application.Current.MainPage.Navigation.PushAsync(new SetAppointmentPage(selectesPageN, empName, weekDateDay));
         }
         public async void RightNavigateArrow_ClickEvent(object sender, EventArgs e)
         {
-            
-            var cW = week;
-
-            var dwe = cW[6];
-            DateTime dst = Convert.ToDateTime(dwe);
-            DateTime today = dst;
-            int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7) + 1;
-            DateTime nextTuesday = today.AddDays(daysUntilTuesday);
-            int currentDayOfWeek = (int)nextTuesday.DayOfWeek;
-            DateTime sunday = nextTuesday.AddDays(-currentDayOfWeek);
-            DateTime monday = sunday.AddDays(1);
-            // If we started on Sunday, we should actually have gone *back*
-            // 6 days instead of forward 1...
-            if (currentDayOfWeek == 0)
+            try
             {
-                monday = monday.AddDays(-7);
+
+                var cW = week;
+
+                var dwe = cW[6];
+                DateTime dst = Convert.ToDateTime(dwe);
+                DateTime today = dst;
+                int daysUntilTuesday = (((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7) + 1;
+                DateTime nextTuesday = today.AddDays(daysUntilTuesday);
+                int currentDayOfWeek = (int)nextTuesday.DayOfWeek;
+                DateTime sunday = nextTuesday.AddDays(-currentDayOfWeek);
+                DateTime monday = sunday.AddDays(1);
+                // If we started on Sunday, we should actually have gone *back*
+                // 6 days instead of forward 1...
+                if (currentDayOfWeek == 0)
+                {
+                    monday = monday.AddDays(-7);
+                }
+                var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
+                week.Clear();
+                foreach (var item in dates)
+                {
+                    //var ddde = item.Date;
+                    //var d = Convert.ToString(ddde);
+                    //week.Add(d);
+
+                    var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
+                    week.Add(dd);
+                }
+
+                WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
+                WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
+                WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
+                WeekThulbl.Text = Convert.ToDateTime(week[3]).ToString("dd");
+                WeekFrilbl.Text = Convert.ToDateTime(week[4]).ToString("dd");
+                WeekSatlbl.Text = Convert.ToDateTime(week[5]).ToString("dd");
+                WeekSunlbl.Text = Convert.ToDateTime(week[6]).ToString("dd");
+
+                Mondaylbl.Text = "MON" + " " + Convert.ToDateTime(week[0]).ToString("dd-MMM");
+                Tuesdaylbl.Text = "TUE" + " " + Convert.ToDateTime(week[1]).ToString("dd-MMM");
+                Wednesdaylbl.Text = "WED" + " " + Convert.ToDateTime(week[2]).ToString("dd-MMM");
+                Thursdaylbl.Text = "THU" + " " + Convert.ToDateTime(week[3]).ToString("dd-MMM");
+                Fridaylbl.Text = "FRI" + " " + Convert.ToDateTime(week[4]).ToString("dd-MMM");
+                Saturdaylbl.Text = "SAT" + " " + Convert.ToDateTime(week[5]).ToString("dd-MMM");
+                Sundaylbl.Text = "SUN" + " " + Convert.ToDateTime(week[6]).ToString("dd-MMM");
+
+                string weekDateDay = week[0];
+
+                await Application.Current.MainPage.Navigation.PushAsync(new SetAppointmentPage(selectesPageN, empName, weekDateDay));
             }
-            var dates = Enumerable.Range(0, 7).Select(days => monday.AddDays(days)).ToList();
-            week.Clear();
-            foreach (var item in dates)
+            catch (Exception ex)
             {
-                //var ddde = item.Date;
-                //var d = Convert.ToString(ddde);
-                //week.Add(d);
-
-                var dd = item.DayOfWeek.ToString().ToUpper().Substring(0, 3) + " " + item.Date.ToString("dd-MMM-yyyy");
-                week.Add(dd);
+                ex.ToString();
             }
-
-            WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
-            WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
-            WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
-            WeekThulbl.Text = Convert.ToDateTime(week[3]).ToString("dd");
-            WeekFrilbl.Text = Convert.ToDateTime(week[4]).ToString("dd");
-            WeekSatlbl.Text = Convert.ToDateTime(week[5]).ToString("dd");
-            WeekSunlbl.Text = Convert.ToDateTime(week[6]).ToString("dd");
-
-            Mondaylbl.Text = "MON" + " " + Convert.ToDateTime(week[0]).ToString("dd-MMM");
-            Tuesdaylbl.Text = "TUE" + " " + Convert.ToDateTime(week[1]).ToString("dd-MMM");
-            Wednesdaylbl.Text = "WED" + " " + Convert.ToDateTime(week[2]).ToString("dd-MMM");
-            Thursdaylbl.Text = "THU" + " " + Convert.ToDateTime(week[3]).ToString("dd-MMM");
-            Fridaylbl.Text = "FRI" + " " + Convert.ToDateTime(week[4]).ToString("dd-MMM");
-            Saturdaylbl.Text = "SAT" + " " + Convert.ToDateTime(week[5]).ToString("dd-MMM");
-            Sundaylbl.Text = "SUN" + " " + Convert.ToDateTime(week[6]).ToString("dd-MMM");
-
-            string weekDateDay = week[0];
-
-           await Application.Current.MainPage.Navigation.PushAsync(new SetAppointmentPage(selectesPageN, empName, weekDateDay));
-
-
         }
 
         public static SfSchedule getScheduleObj()
@@ -697,6 +770,10 @@ namespace Demo_App
                 IsMonthView = !IsMonthView;
                 if (IsMonthView)
                 {
+                    //calender.DateClicked += Calendar_DateClicked;
+                    XamForms.Controls.Calendar c = (XamForms.Controls.Calendar)calender;
+                    var dd = c.TitleLabelText;
+                    currentMonth.Text = dd;
 
                     dropdownArrow.RotateTo(180, 200, Easing.SinInOut);
                     schedulerWeekView.IsVisible = false;
@@ -709,6 +786,7 @@ namespace Demo_App
                     dropdownArrow.RotateTo(0, 200, Easing.SinInOut);
                     schedulerFullMonthView.IsVisible = false;
                     schedulerWeekView.IsVisible = true;
+                    currentMonth.Text = Convert.ToDateTime(week[0]).ToString("MMM yyyy");
                 }
             }
             catch (Exception ex)
@@ -716,8 +794,6 @@ namespace Demo_App
                 ex.ToString();
             }
         }
-
-
 
         //public string[] GetCurrentWeek()
         //{
@@ -797,10 +873,6 @@ namespace Demo_App
 
             // MonAppointmentBox.Children.Add(firstLabel);
         }
-
-
-
-
         public void GetSelectedCustomerById()
         {
             try
@@ -821,11 +893,10 @@ namespace Demo_App
             }
 
         }
-
         public ObservableCollection<CalenderAppointmentDetail> GetAppointmentBookingByEmployeeIDs()
         {
             try
-            {                               
+            {
                 string apiURLs = Application.Current.Properties["DomainUrl"] + "/api/staff/GetAllEmployees?companyId=" + CompanyId;
                 var results = PostData("GET", "", apiURLs);
                 //objEmp = JsonConvert.DeserializeObject<Employees>(result);
@@ -841,7 +912,7 @@ namespace Demo_App
                     string apiURL = Application.Current.Properties["DomainUrl"] + "api/booking/GetBookingsForEmployeesByIdBetweenDates?companyId=" + item.CompanyId + "&commaSeperatedEmployeeIds=" + item.Id + "&startDate=" + startDate + "&endDate=" + endDate;
 
                     var result = PostData("GET", "", apiURL);
-                    
+
                     ObservableCollection<AllAppointments> appointments = JsonConvert.DeserializeObject<ObservableCollection<AllAppointments>>(result);
                     foreach (var appointment in appointments)
                     {
@@ -886,8 +957,6 @@ namespace Demo_App
             //CustomerAppoimentList.ItemsSource = ListofAppointment;
 
         }
-
-
         public ObservableCollection<CalenderAppointmentDetail> GetAppointmentBookingByEmployeeID()
         {
             try
@@ -979,8 +1048,6 @@ namespace Demo_App
             //CustomerAppoimentList.ItemsSource = ListofAppointment;
 
         }
-
-
         public string SetCompanyWorkingHours(ReqWorkingHours dataobj)
         {
             DateTime starttime = DateTime.Parse(dataobj.Start, CultureInfo.InvariantCulture);
@@ -994,7 +1061,6 @@ namespace Demo_App
             var result = PostData("POST", jsonString, apiURL);
             return result;
         }
-
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

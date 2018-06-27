@@ -251,7 +251,7 @@ namespace Demo_App
                 else
                 {
                     //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-                    await Navigation.PushAsync(new AppointmentDetailsPage(obj));
+                    //await Navigation.PushAsync(new AppointmentDetailsPage(obj));
                 }
             }
             catch (Exception e)

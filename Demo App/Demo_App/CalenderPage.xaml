@@ -1,92 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"           
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"         xmlns:cont="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar" 
              Title="Calendar"
              x:Class="Demo_App.CalenderPage">
     <ContentPage.Content>
-        <!--<syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView" ViewHeaderHeight="50"/>-->
         <StackLayout>
-            <StackLayout VerticalOptions="Start" HeightRequest="100">
-                <Grid ColumnSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="currentMonth" Text="CurrentMonth" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
-                    <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" Grid.Column="1"/>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer 
+            <StackLayout Padding="0,5,0,0">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="currentMonth" Text="CurrentMonth" TextColor="Black" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
+                            <Image x:Name="dropdownArrow" Source="ArrowdropDown.png" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" Grid.Column="1"/>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
                                     Tapped="ChangeMonthView"/>
-                    </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout x:Name="schedulerFullMonthView" IsVisible="False" Grid.Row="1">
+                        <cont:Calendar SelectedTextColor="LightBlue" SelectedDate="{Binding CalendarSelectedDate, Mode=TwoWay}" x:Name="calender" DateCommand="{Binding DateSelectedcommand}" MinimumHeightRequest="300"></cont:Calendar>
+                    </StackLayout>
 
-                </Grid>
-            </StackLayout>
-
-            <StackLayout x:Name="schedulerWeekView" Padding="10,0,10,0" HeightRequest="140">
-                <Grid ColumnSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="0">
-                        <!--<Label/>-->
-                        <Image VerticalOptions="Center" Source="pickerarrow.png" HeightRequest="35"  WidthRequest="35">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer 
+                    <StackLayout x:Name="schedulerWeekView" Grid.Row="2">
+                        <Grid ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="0">
+                                <!--<Label/>-->
+                                <Image VerticalOptions="Center" Source="pickerarrow.png" HeightRequest="35"  WidthRequest="35">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                     Tapped="LeftNavigateArrow_ClickEvent"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1">
-                        <Label Text="Mon" TextColor="Black"/>
-                        <Label x:Name="WeekMonlbl" Text="{Binding currentWeek[0]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="2">
-                        <Label Text="Tue" TextColor="Black"/>
-                        <Label x:Name="WeekTuelbl" Text="{Binding currentWeek[1]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="3">
-                        <Label Text="Wed" TextColor="Black"/>
-                        <Label x:Name="WeekWedlbl" Text="{Binding currentWeek[2]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="4">
-                        <Label Text="Thu" TextColor="Black"/>
-                        <Label x:Name="WeekThulbl" Text="{Binding currentWeek[3]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="5">
-                        <Label Text="Fri" TextColor="Black"/>
-                        <Label x:Name="WeekFrilbl" Text="{Binding currentWeek[4]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="6">
-                        <Label Text="Sat" TextColor="Black"/>
-                        <Label x:Name="WeekSatlbl" Text="{Binding currentWeek[5]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="7">
-                        <Label Text="Sun" TextColor="Black"/>
-                        <Label x:Name="WeekSunlbl" Text="{Binding currentWeek[6]}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="8">
-                        <!--<Label/>-->
-                        <Image VerticalOptions="Center" Source="pickerarrowCopy.png" HeightRequest="35"  WidthRequest="35">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer 
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Mon" TextColor="Black"/>
+                                <Label x:Name="WeekMonlbl" Text="{Binding currentWeek[0]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2">
+                                <Label Text="Tue" TextColor="Black"/>
+                                <Label x:Name="WeekTuelbl" Text="{Binding currentWeek[1]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="3">
+                                <Label Text="Wed" TextColor="Black"/>
+                                <Label x:Name="WeekWedlbl" Text="{Binding currentWeek[2]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="4">
+                                <Label Text="Thu" TextColor="Black"/>
+                                <Label x:Name="WeekThulbl" Text="{Binding currentWeek[3]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="5">
+                                <Label Text="Fri" TextColor="Black"/>
+                                <Label x:Name="WeekFrilbl" Text="{Binding currentWeek[4]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="6">
+                                <Label Text="Sat" TextColor="Black"/>
+                                <Label x:Name="WeekSatlbl" Text="{Binding currentWeek[5]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="7">
+                                <Label Text="Sun" TextColor="Black"/>
+                                <Label x:Name="WeekSunlbl" Text="{Binding currentWeek[6]}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Padding="10" Grid.Column="8">
+                                <!--<Label/>-->
+                                <Image VerticalOptions="Center" Source="pickerarrowCopy.png" HeightRequest="35"  WidthRequest="35">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                     Tapped="RightNavigateArrow_ClickEvent"/>
-                            </Image.GestureRecognizers>
-                        </Image>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Grid>
                     </StackLayout>
-                </Grid>
-            </StackLayout>
 
-            <StackLayout Padding="0,5,0,0" x:Name="schedulerFullMonthView" IsVisible="False" VerticalOptions="CenterAndExpand">
-                <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView" ViewHeaderHeight="30" HeaderHeight="0" HeightRequest="170"/>
+                </Grid>
             </StackLayout>
             <StackLayout Padding="0,5,0,0">
                 <ScrollView>
@@ -154,9 +161,13 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackLayout>
+
                         <StackLayout x:Name="listEmptyMON" Grid.Row="2" Padding="10">
                             <Label Text="No appointment booked"></Label>
                         </StackLayout>
+
+
+
                         <StackLayout Grid.Row="3" Padding="10" BackgroundColor="LightGray">
                             <Grid>
                                 <Grid.ColumnDefinitions>

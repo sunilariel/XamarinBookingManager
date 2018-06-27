@@ -27,7 +27,7 @@
                         <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,15,0,0">
                             <Label Text="Select All" HorizontalOptions="End"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,10,0,0">
+                        <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="8,15,0,0">
                             <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding AllAssigned,Mode=TwoWay}" CheckedChanged="AssignAllProvider" />
                         </StackLayout>
                     </Grid>

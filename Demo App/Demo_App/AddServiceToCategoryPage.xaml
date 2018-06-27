@@ -24,10 +24,10 @@
                         <StackLayout Grid.Column="0" VerticalOptions="Center" Padding="10,15,0,0">
                             <Label x:Name="AllocatedProviderCount" HorizontalOptions="StartAndExpand"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="0,15,0,0">
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="10,15,0,0">
                             <Label Text="Select All" HorizontalOptions="End"></Label>
                         </StackLayout>
-                        <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,10,0,0">
+                        <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="8,15,0,0">
                             <controls:CheckBox HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Checked="{Binding AllAssigned,Mode=TwoWay}" CheckedChanged="AssignAllProviders"/>
                         </StackLayout>
                     </Grid>

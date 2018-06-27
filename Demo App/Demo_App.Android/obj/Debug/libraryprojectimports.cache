@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
-  <Jars>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\bin\Common.jar;D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\bin\Data.jar;D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\bin\Input.jar;D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\bin\List.jar;D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\bin\Primitives.jar</Jars>
+  <Jars>obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\bin\Common.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\bin\Data.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\bin\Input.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\bin\List.jar;D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\bin\Primitives.jar</Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\AndHUD\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfListView.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\AndHUD\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfListView.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.XForms.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\AndHUD\library_project_imports\assets</ResolvedAssetDirectory>
@@ -46,27 +46,27 @@
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\AndHUD.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfListView.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Gurmeet\Clone-June-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\AndHUD.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\SkiaSharp.Views.Forms.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfListView.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfPicker.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Syncfusion.SfSchedule.XForms.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Common.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Data.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Input.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.List.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.Xamarin.Android.Primitives.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Common.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Input.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Telerik.XamarinForms.Primitives.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XamForms.Controls.Calendar.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Forms.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Clone26-j-2018\Demo App\Demo_App.Android\obj\Debug\__library_projects__\XLabs.Platform.Droid.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

@@ -26,20 +26,20 @@ namespace Demo_App
         public StaffBreakTime BHours = null;
         ObservableCollection<StaffBreakTime> AddBreakTimeLists = new ObservableCollection<StaffBreakTime>();
 
-        public AddBreaks(int staffId, string day,int compID)
+        public AddBreaks(int staffId, string day, int compID)
         {
             InitializeComponent();
             StaffIDs = staffId;
             SelectDay = day;
             CompanyID = compID;
-            TimeSpan tmStart = new TimeSpan(0,13, 00, 00);
-            TimeSpan tmEnd = new TimeSpan(0, 14, 00, 00);                           
+            TimeSpan tmStart = new TimeSpan(0, 13, 00, 00);
+            TimeSpan tmEnd = new TimeSpan(0, 14, 00, 00);
             BHours = new StaffBreakTime();
             BHours.CompanyId = CompanyID;
-            BHours.CreationDate= DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+            BHours.CreationDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
             BHours.NameOfDay = day;
-            
-            
+
+
 
             BHours.Start = tmStart;
             BHours.End = tmEnd;
@@ -53,14 +53,14 @@ namespace Demo_App
             //    StartPicker.Items.Add(item);
             //    EndPicker.Items.Add(item);
             //}
-            
+
         }
 
         public void SaveStaffBreaks_Clicked(object sender, EventArgs e)
         {
             //List<SaveStaffBreakTime> obj = new List<SaveStaffBreakTime>();
             SaveStaffBreakTime obj = new SaveStaffBreakTime();
-            
+
             foreach (var item in AddBreakTimeLists)
             {
                 int weekValue = 0;
@@ -89,13 +89,16 @@ namespace Demo_App
                         break;
                 }
                 //`}
-               
-                string stt = item.Start.ToString();
-                DateTime st = Convert.ToDateTime(stt);
-                string StartTime = st.ToString("HH:mm");
 
+                string stt = item.Start.ToString();
                 string ett = item.End.ToString();
+                DateTime st = Convert.ToDateTime(stt);
                 DateTime et = Convert.ToDateTime(ett);
+                if (st == et)
+                {
+                    et = et.AddHours(1);
+                }
+                string StartTime = st.ToString("HH:mm");
                 string EndTime = et.ToString("HH:mm");
                 //SaveStaffBreakTime staff = new SaveStaffBreakTime();
                 //obj.BreakID = 0;
@@ -104,7 +107,7 @@ namespace Demo_App
                 obj.DayOfWeek = weekValue;
                 obj.EmployeeId = item.EmployeeId;
                 obj.Start = StartTime;
-                obj.End = EndTime;                
+                obj.End = EndTime;
                 var SerializedObj = JsonConvert.SerializeObject(obj);
                 var apiUrl = Application.Current.Properties["DomainUrl"] + "/api/staff/AddBreak";
                 var result = PostData("POST", SerializedObj, apiUrl);
@@ -119,7 +122,7 @@ namespace Demo_App
 
             // Navigation.PopAsync(true);
 
-            Navigation.PushAsync(new BreaksPage(obj,StaffIDs, SelectDay, Convert.ToString(CompanyID)));
+            Navigation.PushAsync(new BreaksPage(obj, StaffIDs, SelectDay, Convert.ToString(CompanyID)));
 
 
             int pCount = Navigation.NavigationStack.Count();

@@ -5,23 +5,40 @@
              Title="Select Service Category">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
-            <Grid RowSpacing="1">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Padding="20" BackgroundColor="White">
-                    <Label Text="All Services" TextColor="Black" HorizontalOptions="StartAndExpand"/>
+                <StackLayout Grid.Row="0" Padding="20,0,0,0" HeightRequest="60" BackgroundColor="White">
+                    <Label Text="All Services" TextColor="Black"/>
+                    <Label x:Name="AllCompanyServicess"/>
                 </StackLayout>
+                
                 <StackLayout Grid.Row="1" BackgroundColor="White">
-                    <ListView x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick">
+                    <ListView RowHeight="50" x:Name="ListofCategoriesData" ItemSelected="SelectServiceForCustomerClick">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <!--<TextCell Text="{Binding Name}" TextColor="Black" />-->
-                                <ViewCell Height="70">
-                                    <StackLayout Padding="20,0,0,0" BackgroundColor="White" HeightRequest="70">
+                                <ViewCell>
+                                    <StackLayout Padding="20,0,0,0" BackgroundColor="White">
                                         <Label Text="{Binding CategoryName}" TextColor="Black"/>
                                         <Label Text="{Binding AllocatedServiceCount}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" BackgroundColor="White">
+                    <ListView RowHeight="50" x:Name="ListofNotAssignData">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="20,5,0,0" BackgroundColor="White">
+                                        <Label FontSize="Large" TextColor="Red" Text="{Binding Name}" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

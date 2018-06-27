@@ -4,7 +4,7 @@
              x:Class="Demo_App.AppointmentDetailsPage"
              Title="Appointments Details">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="delete" Order="Secondary" Priority="1" Clicked="DeleteAppointment"/>
+        <ToolbarItem Text="delete" Clicked="DeleteAppointment"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightGray">
@@ -26,12 +26,12 @@
                 <StackLayout Grid.Row="1" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="clock.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="{Binding BookingDate}"/>
@@ -49,11 +49,11 @@
                 <StackLayout Grid.Row="2" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="user.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label x:Name="AppointmentCustomerName" TextColor="Black"/>
@@ -65,12 +65,12 @@
                 <StackLayout Grid.Row="3" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="user.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Staff"/>
@@ -88,12 +88,12 @@
                 <StackLayout Grid.Row="4" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="user.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Service"/>
@@ -111,12 +111,12 @@
                 <StackLayout Grid.Row="5" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="user.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Cost"/>
@@ -131,12 +131,12 @@
                 <StackLayout Grid.Row="6" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Padding="0,10,0,0">
-                            <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
+                        <StackLayout Grid.Column="0">
+                            <!--<Image  Source="user.png" WidthRequest="30" HeightRequest="30" />-->
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <Label Text="Comments"/>
@@ -151,7 +151,7 @@
                     </Grid>
 
                 </StackLayout>
-                <StackLayout Grid.Row="7" BackgroundColor="White">
+                <!--<StackLayout Grid.Row="7" BackgroundColor="White">
                     <Grid ColumnSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -164,7 +164,7 @@
                             <Image  Source="user.png" WidthRequest="30" HeightRequest="30" />
                         </StackLayout>
                     </Grid>
-                </StackLayout>
+                </StackLayout>-->
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -48,6 +48,7 @@ namespace Demo_App
         {
             InitializeComponent();
             SelectDay = day;
+
             oldStartTime = ob.Start;
             oldEndTime = ob.End;
             CompanyID = Convert.ToInt32(compId);
@@ -241,13 +242,11 @@ namespace Demo_App
                         obj.NameOfDay = item.NameOfDay;
                         obj.EmployeeId = item.EmployeeId;
                         obj.Id = item.Id;
-
-
                         obj.Start = item.Start;
                         obj.End = item.End;
                         ListofsMON.Add(obj);
                         BreakStaffListMON.ItemsSource = ListofsMON;
-                        
+
                     }
                 }
                 else if (item.NameOfDay == "2")
@@ -861,6 +860,546 @@ namespace Demo_App
         {
 
         }
+        public async void DeleteMondayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID=Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }                   
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteTuesdayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteWednesdayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteThursdayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteFridayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteSaturdayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public async void DeleteSundayBreak(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Image image = (Xamarin.Forms.Image)sender;
+                var data = image.BindingContext;
+                var Bdata = data as StaffBreakTime;
+                string BreakId = Bdata.Id;
+                int empID = Bdata.EmployeeId;
+                //string sDay = Bdata.NameOfDay;
+                string cID = Bdata.CompanyId.ToString();
+                var confirmed = await DisplayAlert("Confirm", "Are you sure You want to delete this Break Time", "Yes", "No");
+                if (confirmed)
+                {
+                    string apiUrl = Application.Current.Properties["DomainUrl"] + "api/staff/DeleteBreak?id=" + BreakId;
+
+                    var result = PostData("DELETE", "", apiUrl);
+                    //SaveStaffBreakTime ob, int EmployeeId, string day, string compId
+
+
+                    for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    }
+
+                    // Navigation.PopAsync(true);
+
+                    SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    int pCount = Navigation.NavigationStack.Count();
+
+                    for (int i = 0; i < pCount; i++)
+                    {
+                        if (i == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    //for (int PageIndex = Navigation.NavigationStack.Count - 1; PageIndex >= 5; PageIndex--)
+                    //{
+                    //    Navigation.RemovePage(Navigation.NavigationStack[PageIndex]);
+                    //}
+
+                    //// Navigation.PopAsync(true);
+
+                    //SaveStaffBreakTime sObj = new SaveStaffBreakTime();
+                    //await Navigation.PushAsync(new BreaksPage(sObj, empID, "", cID));
+
+
+                    //int pCount = Navigation.NavigationStack.Count();
+
+                    //for (int i = 0; i < pCount; i++)
+                    //{
+                    //    if (i == 4)
+                    //    {
+                    //        Navigation.RemovePage(Navigation.NavigationStack[i]);
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public void DeleteBreakStaffListMON(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListTUE(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListWED(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListTHU(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListFRI(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListSAT(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+        public void DeleteBreakStaffListSUN(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
+
         public ObservableCollection<ProviderWorkingHours> GetBreakTimeofHours()
         {
             try
@@ -893,8 +1432,6 @@ namespace Demo_App
                 throw;
             }
         }
-
-
         public ObservableCollection<StaffBreakTime> GetBreakTimeofEmployee()
         {
             try
@@ -912,6 +1449,7 @@ namespace Demo_App
                     TimeSpan.TryParse(item.End, out end);
 
                     obj = new StaffBreakTime();
+
                     obj.Id = item.Id;
                     obj.CompanyId = item.CompanyId;
                     obj.EmployeeId = item.EmployeeId;
@@ -930,7 +1468,6 @@ namespace Demo_App
             }
 
         }
-
         public string PostData(string Method, string SerializedData, string Url)
         {
             try

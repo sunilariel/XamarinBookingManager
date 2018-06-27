@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Syncfusion.SfSchedule.XForms;
+//using Syncfusion.SfSchedule.XForms;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.IO;
@@ -14,6 +14,7 @@ using Demo_App.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
+using XamForms.Controls;
 
 namespace Demo_App
 {
@@ -22,7 +23,7 @@ namespace Demo_App
     {
         #region GloblesVariables
         string CompanyId = Convert.ToString(Application.Current.Properties["CompanyId"]);
-        public static SfSchedule schedulee;
+        //public static SfSchedule schedulee;
         int serviceID;
 
         //int DurationInMinutes;
@@ -74,12 +75,17 @@ namespace Demo_App
                 //objAddAppointment.DurationInMinutes = totalMinutes;
 
                 GetAvailableTime();
-                schedulee = new SfSchedule();
+                //schedulee = new SfSchedule();
                 var CurrentDate = System.DateTime.Now;
                 DateTime SpecificDate = new System.DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, 0, 0, 0);
-                schedulee.NavigateTo(SpecificDate);
-                schedule.CellTapped += GetAvailableTimeForAppointments;
+                //schedulee.NavigateTo(SpecificDate);
+                //schedule.CellTapped += GetAvailableTimeForAppointments;
                 //GetAppointmentWorkinghours();
+                calender.SelectedDate = Convert.ToDateTime(dateofBooking);
+                calender.CalendarStartDate(DateTime.Now);
+                calender.DateClicked += GetAvailableTimeForAppointments;
+
+
             }
             catch (Exception e)
             {
@@ -87,11 +93,11 @@ namespace Demo_App
             }
         }
 
-        public static SfSchedule getScheduleObj()
-        {
+        ////public static SfSchedule getScheduleObj()
+        ////{
 
-            return schedulee;
-        }
+        ////    return schedulee;
+        ////}
 
         //public static WorkingHoursofEmployee getworkinghourofemployee()
         //{
@@ -122,14 +128,17 @@ namespace Demo_App
         }
 
 
-        private void GetAvailableTimeForAppointments(object sender, CellTappedEventArgs e)
+        private void GetAvailableTimeForAppointments(object sender, DateTimeEventArgs e)
         {
             try
             {
 
-                var currentDay = e.Datetime.DayOfWeek;
-                var dateOfBookings = e.Datetime.Date;
-                var currentTime = e.Datetime.TimeOfDay;
+                var currentDay = e.DateTime.DayOfWeek;
+                var dateOfBookings = e.DateTime.Date;
+
+                //var currentDay = e.Datetime.DayOfWeek;
+                //var dateOfBookings = e.DateTime.Date;
+                //var currentTime = e.Datetime.TimeOfDay;
                 CurrentSelectedDay = currentDay.ToString();
                 SelectedDateOfBooking = dateOfBookings;
 
@@ -204,6 +213,9 @@ namespace Demo_App
         {
             try
             {
+                if (e.SelectedItem == null)
+                    return;
+
                 var data = e.SelectedItem;
                 var time = data.ToString();
                 var t = Convert.ToString(time.Split(' ')[0]);
@@ -244,6 +256,7 @@ namespace Demo_App
                 {
                     Navigation.PushAsync(new NewAppointmentPage(objAddAppointment, CurrentSelectedDay, SelectedDateOfBooking));
                 }
+                 ((ListView)sender).SelectedItem = null;
             }
             catch (Exception ex)
             {

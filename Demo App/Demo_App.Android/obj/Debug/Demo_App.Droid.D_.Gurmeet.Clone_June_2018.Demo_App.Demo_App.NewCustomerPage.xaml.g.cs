@@ -18,7 +18,13 @@ namespace Demo_App {
         private global::Xamarin.Forms.Entry CustomerName;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Demo_App.Behaviors.EntryValidatorBehavior CodeValidator;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Entry CustomerEmail;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Demo_App.Behaviors.EmailValidatorBehavior CodeValidators;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Entry CustomerPhoneNumber;
@@ -30,7 +36,9 @@ namespace Demo_App {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(NewCustomerPage));
             CustomerName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "CustomerName");
+            CodeValidator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Demo_App.Behaviors.EntryValidatorBehavior>(this, "CodeValidator");
             CustomerEmail = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "CustomerEmail");
+            CodeValidators = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Demo_App.Behaviors.EmailValidatorBehavior>(this, "CodeValidators");
             CustomerPhoneNumber = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "CustomerPhoneNumber");
             CustomerAddress = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "CustomerAddress");
         }

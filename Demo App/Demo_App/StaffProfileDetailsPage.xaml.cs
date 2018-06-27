@@ -58,6 +58,34 @@ namespace Demo_App
             BindingContext = objStaff;
         }
 
+        public async void CallingClick()
+        {
+            try
+            {
+                GetEmployeeDetail();
+                var p = objStaff.TelephoneNo;
+                if (p == null)
+                {
+                    await DisplayAlert("Dial a Number", "No Contact  Available", "ok");
+                }
+                else
+                {
+                    var confirmed = await DisplayAlert("Dial a Number", "Would you like to call " + p + "?", "Yes", "No");
+                    if (confirmed)
+                    {
+                        DependencyService.Get<IPhoneCall>().MakeQuickCall(p.ToString());
+                    }
+                }
+
+                
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+
         private void CrossClick(object sender, EventArgs e)
         {
             Application.Current.Properties.Remove("EmployeeID");
@@ -273,6 +301,7 @@ namespace Demo_App
             }
             catch (Exception e)
             {
+                e.ToString();
                 return null;
             }
         }
@@ -335,7 +364,7 @@ namespace Demo_App
                 }
                 else
                 {
-                    await Navigation.PushAsync(new StaffProfileDetailsPage());
+                    //await Navigation.PushAsync(new StaffProfileDetailsPage());
                 }
 
 
