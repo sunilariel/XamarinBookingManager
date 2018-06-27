@@ -108,16 +108,6 @@ namespace Demo_App
                         }
                     }
 
-
-
-                    //WeekMonlbl.Text = currentWeek[0];
-                    //WeekTuelbl.Text = currentWeek[1];
-                    //WeekWedlbl.Text = currentWeek[2];
-                    //WeekThulbl.Text = currentWeek[3];
-                    //WeekFrilbl.Text = currentWeek[4];
-                    //WeekSatlbl.Text = currentWeek[5];
-                    //WeekSunlbl.Text = currentWeek[6];
-
                     WeekMonlbl.Text = Convert.ToDateTime(week[0]).ToString("dd");
                     WeekTuelbl.Text = Convert.ToDateTime(week[1]).ToString("dd");
                     WeekWedlbl.Text = Convert.ToDateTime(week[2]).ToString("dd");
