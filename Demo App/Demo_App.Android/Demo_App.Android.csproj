@@ -63,9 +63,6 @@
     <EnableProguard>false</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AndHUD, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AndHUD.1.2.0\lib\MonoAndroid\AndHUD.dll</HintPath>
-    </Reference>
     <Reference Include="ExifLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ExifLib.PCL.1.0.2-pre01\lib\netstandard1.0\ExifLib.dll</HintPath>
     </Reference>
