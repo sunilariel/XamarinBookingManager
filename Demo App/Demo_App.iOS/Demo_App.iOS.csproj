@@ -189,41 +189,26 @@
     <Reference Include="SkiaSharp.Views.iOS, Version=1.55.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SkiaSharp.Views.1.55.1\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Core.XForms, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.Core.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.Core.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.DataSource.Portable, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.DataSource.16.1.0.37\lib\Xamarin.iOS10\Syncfusion.DataSource.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.GridCommon.Portable, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.16.1.0.37\lib\Xamarin.iOS10\Syncfusion.GridCommon.Portable.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.Licensing, Version=16.2.0.41, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Licensing.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.Licensing.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfListView.XForms, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.16.1.0.37\lib\Xamarin.iOS10\Syncfusion.SfListView.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.iOS, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfPicker.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfListView.XForms.iOS, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.16.1.0.37\lib\Xamarin.iOS10\Syncfusion.SfListView.XForms.iOS.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.XForms, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfPicker.iOS.dll</HintPath>
+    <Reference Include="Syncfusion.SfPicker.XForms.iOS, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.iOS, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfSchedule.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfPicker.XForms.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfPicker.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfPicker.XForms.iOS.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.XForms, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfSchedule.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfSchedule.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.iOS.dll</HintPath>
+    <Reference Include="Syncfusion.SfSchedule.XForms.iOS, Version=16.2451.0.41, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.16.2.0.41\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
@@ -258,6 +243,12 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.38779\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="XamForms.Controls.Calendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.1\lib\Xamarin.iOS10\XamForms.Controls.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="XamForms.Controls.Calendar.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.1\lib\Xamarin.iOS10\XamForms.Controls.Calendar.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="XLabs.Core, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XLabs.Core.2.3.0-pre05\lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Core.dll</HintPath>
     </Reference>

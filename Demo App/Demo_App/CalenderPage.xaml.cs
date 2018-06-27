@@ -548,17 +548,7 @@ namespace Demo_App
                     ViewHeaderStyle viewHeaderStyle = new ViewHeaderStyle();
                     viewHeaderStyle.DayTextColor = Color.Black;
                     viewHeaderStyle.DayTextStyle = Font.OfSize("Arial", 15);
-                    schedulee.ViewHeaderStyle = viewHeaderStyle;
-                    //calender.SelectedDate = DateTime.Now;
-
-                    //string v = "Wednesday,18-Jul-2018";
-                    //var f = v.Split(',');
-                    //DateTime t = Convert.ToDateTime(f[1]);
-
-                    //calender.SelectedDate = t;
-
-                    
-
+                    schedulee.ViewHeaderStyle = viewHeaderStyle;                                       
                     calender.DateClicked += Calendar_DateClicked;
                     calender.RightArrowClicked += Calendar_RightArrowClicked;
                     calender.LeftArrowClicked += Calendar_LeftArrowClicked;

@@ -2959,7 +2959,7 @@ containing a value of this type.
         public static int mr_ic_pause_light=0x7f0200d4;
         public static int mr_ic_play_dark=0x7f0200d5;
         public static int mr_ic_play_light=0x7f0200d6;
-        public static int notification_template_icon_bg=0x7f0200ec;
+        public static int notification_template_icon_bg=0x7f0200ed;
         public static int pickerarrow=0x7f0200d7;
         public static int pickerarrow1=0x7f0200d8;
         public static int pickerarrowcopy=0x7f0200d9;
@@ -2967,20 +2967,21 @@ containing a value of this type.
         public static int plus2=0x7f0200db;
         public static int pressable_item_background=0x7f0200dc;
         public static int profile=0x7f0200dd;
-        public static int roundedbg=0x7f0200de;
-        public static int roundedbgdark=0x7f0200df;
-        public static int selectable_item_background=0x7f0200e0;
-        public static int serviceprofile=0x7f0200e1;
-        public static int setting=0x7f0200e2;
-        public static int shade_bottom=0x7f0200e3;
-        public static int shade_corner=0x7f0200e4;
-        public static int shade_right=0x7f0200e5;
-        public static int share=0x7f0200e6;
-        public static int success=0x7f0200e7;
-        public static int tab_view_popup_background=0x7f0200e8;
-        public static int timezone=0x7f0200e9;
-        public static int user=0x7f0200ea;
-        public static int weekstartday=0x7f0200eb;
+        public static int recurrence=0x7f0200de;
+        public static int roundedbg=0x7f0200df;
+        public static int roundedbgdark=0x7f0200e0;
+        public static int selectable_item_background=0x7f0200e1;
+        public static int serviceprofile=0x7f0200e2;
+        public static int setting=0x7f0200e3;
+        public static int shade_bottom=0x7f0200e4;
+        public static int shade_corner=0x7f0200e5;
+        public static int shade_right=0x7f0200e6;
+        public static int share=0x7f0200e7;
+        public static int success=0x7f0200e8;
+        public static int tab_view_popup_background=0x7f0200e9;
+        public static int timezone=0x7f0200ea;
+        public static int user=0x7f0200eb;
+        public static int weekstartday=0x7f0200ec;
     }
     public static final class id {
         public static int Block=0x7f070042;

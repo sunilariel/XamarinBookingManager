@@ -2959,7 +2959,7 @@ containing a value of this type.
         public static final int mr_ic_pause_light=0x7f0200d4;
         public static final int mr_ic_play_dark=0x7f0200d5;
         public static final int mr_ic_play_light=0x7f0200d6;
-        public static final int notification_template_icon_bg=0x7f0200ec;
+        public static final int notification_template_icon_bg=0x7f0200ed;
         public static final int pickerarrow=0x7f0200d7;
         public static final int pickerarrow1=0x7f0200d8;
         public static final int pickerarrowcopy=0x7f0200d9;
@@ -2967,20 +2967,21 @@ containing a value of this type.
         public static final int plus2=0x7f0200db;
         public static final int pressable_item_background=0x7f0200dc;
         public static final int profile=0x7f0200dd;
-        public static final int roundedbg=0x7f0200de;
-        public static final int roundedbgdark=0x7f0200df;
-        public static final int selectable_item_background=0x7f0200e0;
-        public static final int serviceprofile=0x7f0200e1;
-        public static final int setting=0x7f0200e2;
-        public static final int shade_bottom=0x7f0200e3;
-        public static final int shade_corner=0x7f0200e4;
-        public static final int shade_right=0x7f0200e5;
-        public static final int share=0x7f0200e6;
-        public static final int success=0x7f0200e7;
-        public static final int tab_view_popup_background=0x7f0200e8;
-        public static final int timezone=0x7f0200e9;
-        public static final int user=0x7f0200ea;
-        public static final int weekstartday=0x7f0200eb;
+        public static final int recurrence=0x7f0200de;
+        public static final int roundedbg=0x7f0200df;
+        public static final int roundedbgdark=0x7f0200e0;
+        public static final int selectable_item_background=0x7f0200e1;
+        public static final int serviceprofile=0x7f0200e2;
+        public static final int setting=0x7f0200e3;
+        public static final int shade_bottom=0x7f0200e4;
+        public static final int shade_corner=0x7f0200e5;
+        public static final int shade_right=0x7f0200e6;
+        public static final int share=0x7f0200e7;
+        public static final int success=0x7f0200e8;
+        public static final int tab_view_popup_background=0x7f0200e9;
+        public static final int timezone=0x7f0200ea;
+        public static final int user=0x7f0200eb;
+        public static final int weekstartday=0x7f0200ec;
     }
     public static final class id {
         public static final int Block=0x7f070042;
