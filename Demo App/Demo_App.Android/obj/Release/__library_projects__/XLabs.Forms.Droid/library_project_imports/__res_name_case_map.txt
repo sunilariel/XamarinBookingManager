@@ -1,0 +1,14 @@
+layout/calendar_pager.axml;layout/calendar_pager.xml
+Values/Strings.xml;values/strings.xml
+color/calendar_text_selector.xml;color/calendar_text_selector.xml
+drawable/ad16.jpg;drawable/ad16.jpg
+drawable/calendar_bg_selector.xml;drawable/calendar_bg_selector.xml
+layout/calendar_pager_layout.xml;layout/calendar_pager_layout.xml
+layout/calendar_picker.xml;layout/calendar_picker.xml
+layout/dialog.xml;layout/dialog.xml
+layout/month.xml;layout/month.xml
+layout/week.xml;layout/week.xml
+Values/attrs.xml;values/attrs.xml
+Values/colors.xml;values/colors.xml
+Values/dimens.xml;values/dimens.xml
+Values/styles.xml;values/styles.xml
