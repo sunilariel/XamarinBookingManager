@@ -112,3 +112,8 @@ D:\Clone-22-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\Demo_App.iOS.Indust
 D:\Clone-22-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\Demo_App.iOS.AddStaffForCompanyRegistration.xaml.g.cs
 D:\Clone-22-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\Demo_App.iOS.AddServiceForCompnyRegistration.xaml.g.cs
 D:\Clone-22-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\Demo_App.iOS.AddBreaks.xaml.g.cs
+D:\Clone 28-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\Clone 28-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
+D:\Clone 28-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+D:\Clone 28-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\optimized\
+D:\Clone 28-June-2018\Demo App\Demo_App.iOS\obj\iPhone\Debug\Demo_App.iOS.csproj.CoreCompileInputs.cache
