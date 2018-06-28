@@ -65,7 +65,6 @@ namespace Demo_App.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::Demo_App.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::Com.Syncfusion.Schedule.Resource.Drawable.arrow_down = global::Demo_App.Droid.Resource.Drawable.arrow_down;
 			global::Com.Syncfusion.Schedule.Resource.Drawable.arrow_up = global::Demo_App.Droid.Resource.Drawable.arrow_up;
-			global::Com.Syncfusion.Schedule.Resource.Drawable.Recurrence = global::Demo_App.Droid.Resource.Drawable.Recurrence;
 			global::Com.Syncfusion.Schedule.Resource.String.No_Appointments = global::Demo_App.Droid.Resource.String.No_Appointments;
 			global::Com.Syncfusion.Schedule.Resource.String.all_day = global::Demo_App.Droid.Resource.String.all_day;
 			global::Com.Syncfusion.Schedule.Resource.String.library_name = global::Demo_App.Droid.Resource.String.library_name;
@@ -10150,8 +10149,8 @@ namespace Demo_App.Droid
 			// aapt resource value: 0x7f0200d6
 			public const int mr_ic_play_light = 2130837718;
 			
-			// aapt resource value: 0x7f0200ed
-			public const int notification_template_icon_bg = 2130837741;
+			// aapt resource value: 0x7f0200ec
+			public const int notification_template_icon_bg = 2130837740;
 			
 			// aapt resource value: 0x7f0200d7
 			public const int pickerarrow = 2130837719;
@@ -10175,49 +10174,46 @@ namespace Demo_App.Droid
 			public const int profile = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int Recurrence = 2130837726;
+			public const int roundedbg = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int roundedbg = 2130837727;
+			public const int roundedbgdark = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int roundedbgdark = 2130837728;
+			public const int selectable_item_background = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int selectable_item_background = 2130837729;
+			public const int Serviceprofile = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int Serviceprofile = 2130837730;
+			public const int setting = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int setting = 2130837731;
+			public const int shade_bottom = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int shade_bottom = 2130837732;
+			public const int shade_corner = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int shade_corner = 2130837733;
+			public const int shade_right = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int shade_right = 2130837734;
+			public const int share = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int share = 2130837735;
+			public const int success = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int success = 2130837736;
+			public const int tab_view_popup_background = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int tab_view_popup_background = 2130837737;
+			public const int timezone = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int timezone = 2130837738;
+			public const int user = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int user = 2130837739;
-			
-			// aapt resource value: 0x7f0200ec
-			public const int weekstartday = 2130837740;
+			public const int weekstartday = 2130837739;
 			
 			static Drawable()
 			{
